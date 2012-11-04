@@ -1,0 +1,9 @@
+" Compatibility
+set nocompatible
+
+" Plugins
+silent! call pathogen#infect()
+silent! call pathogen#helptags()
+
+syntax on
+set ruler
