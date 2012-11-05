@@ -9,7 +9,8 @@ set nocompatible                         "don't need to keep compatibility with 
 filetype plugin indent on                "enable detection, plugins and indenting in one step
 syntax on                                "Turn on syntax highlighting
 
-highlight comment ctermfg=cyan		 "set default comment color to cyan instead of darkblue
+highlight comment ctermfg=cyan           "set default comment color to cyan instead of darkblue
+"set background=dark                      "make vim use colors that look good on a dark background
 set showcmd                              "show incomplete cmds down the bottom
 set showmode                             "show current mode down the bottom
 set foldenable                           "enable folding
@@ -19,10 +20,10 @@ set incsearch                            "find the next match as we type the sea
 set hlsearch                             "hilight searches by default
 set ignorecase                           "ignore case when searching
 
-set shiftwidth=2                         "number of spaces to use in each autoindent step
-set tabstop=2                            "two tab spaces
-set softtabstop=2                        "number of spaces to skip or insert when <BS>ing or <Tab>ing
-set expandtab                            "spaces instead of tabs for better cross-editor compatibility
+"set shiftwidth=2                         "number of spaces to use in each autoindent step
+"set tabstop=2                            "two tab spaces
+"set softtabstop=2                        "number of spaces to skip or insert when <BS>ing or <Tab>ing
+"set expandtab                            "spaces instead of tabs for better cross-editor compatibility
 "set smarttab                             "use shiftwidth and softtabstop to insert or delete (on <BS>) blanks
 "set cindent                              "recommended seting for automatic C-style indentation
 "set autoindent                           "automatic indentation in non-C files
@@ -36,6 +37,11 @@ set shiftround                           "when at 3 spaces, and I hit > ... go t
 "set cursorline                           "underline the current line in the file
 "set cursorcolumn                         "highlight the current column. Visible in GUI mode only.
 set ruler                                 "show me a ruler
+set number                               "Show line numbers
+set hidden                               "allow hiding buffers with unsaved changes
+set cmdheight=2                          "make the command line a little taller to hide "press enter to viem more" text
+set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+colorscheme vividchalk 
 
 "highlight tabs and trailing white space
 highlight LiteralTabs ctermbg=darkgreen guibg=darkgreen
