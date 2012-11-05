@@ -36,5 +36,5 @@
 	ignore = dirty
 [submodule "vim/bundle/ack.vim"]
 	path = vim/bundle/ack.vim
- 	url = git://github.com/geekq/ack.vim.git
+	url = git://github.com/geekq/ack.vim.git
 	ignore = dirty
