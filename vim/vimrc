@@ -1,12 +1,35 @@
-" Compatibility
-set nocompatible
-
-" Plugins
+" Plugins handling by pathogen
 silent! call pathogen#infect()
 silent! call pathogen#helptags()
 
-syntax on
+set nocompatible                         "don't need to keep compatibility with Vi
 
-filetype plugin indent on
+filetype plugin indent on                "enable detection, plugins and indenting in one step
+syntax on                                "Turn on syntax highlighting
 
-set ruler
+"set background=dark                      "make vim use colors that look good on a dark background
+set showcmd                              "show incomplete cmds down the bottom
+set showmode                             "show current mode down the bottom
+set foldenable                           "enable folding
+set showmatch                            "set show matching parenthesis
+
+set incsearch                            "find the next match as we type the search
+set hlsearch                             "hilight searches by default
+set ignorecase                           "ignore case when searching
+
+"set shiftwidth=2                         "number of spaces to use in each autoindent step
+"set tabstop=2                            "two tab spaces
+"set softtabstop=2                        "number of spaces to skip or insert when <BS>ing or <Tab>ing
+"set expandtab                            "spaces instead of tabs for better cross-editor compatibility
+"set smarttab                             "use shiftwidth and softtabstop to insert or delete (on <BS>) blanks
+"set cindent                              "recommended seting for automatic C-style indentation
+"set autoindent                           "automatic indentation in non-C files
+"set nowrap                               "no wrapping
+"set copyindent                           "copy the previous indentation on autoindenting
+"set backspace=indent,eol,start           "allow backspacing over everything in insert mode
+
+"set noerrorbells                         "don't make noise
+"set shiftround                           "when at 3 spaces, and I hit > ... go to 4, not 5
+
+"set cursorline                           "underline the current line in the file
+"set cursorcolumn                         "highlight the current column. Visible in GUI mode only.
