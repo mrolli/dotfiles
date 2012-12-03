@@ -12,7 +12,6 @@ PATH=~/bin:$PATH
 PATH=/usr/local/bin:$PATH
 PATH=/usr/local/git/bin:$PATH
 [ -d /Applications/Xcode.app/Contents/Developer/usr/bin  ] && PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin/
-[ -d /usr/local/benerator/bin ] && PATH=$PATH:/usr/local/benerator/bin && export BENERATOR_HOME=/usr/local/benerator
 
 # some useful aliases
 alias ls='ls -G'
