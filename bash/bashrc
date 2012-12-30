@@ -34,7 +34,36 @@ source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWUPSTREAM="auto verbose"
-PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[33m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+
+# build prompt
+ResetColours="$(tput sgr0)"
+Black="$(tput setaf 0)"
+DarkGrey="$(tput bold ; tput setaf 0)"
+LightGrey="$(tput setaf 7)"
+White="$(tput bold ; tput setaf 7)"
+Red="$(tput setaf 1)"
+LightRed="$(tput bold ; tput setaf 1)"
+Green="$(tput setaf 2)"
+LightGreen="$(tput bold ; tput setaf 2)"
+Brown="$(tput setaf 3)"
+Yellow="$(tput bold ; tput setaf 3)"
+Blue="$(tput setaf 4)"
+LightBlue="$(tput bold ; tput setaf 4)"
+Purple="$(tput setaf 5)"
+Pink="$(tput bold ; tput setaf 5)"
+Cyan="$(tput setaf 6)"
+LightCyan="$(tput bold ; tput setaf 6)"
+
+function exit_colour {
+  if [[ $1 -eq 0  ]]; then
+    echo "$DarkGrey"
+  else
+    echo "$Red"
+  fi
+}
+
+#PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[33m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+PS1="\[\$(exit_colour \$?)\]\!${ResetColours} \[$Green\]\u@\h\[${ResetColours}:\[${Yellow}\]\w\[${Red}\]"'$(__git_ps1)'"\[${ResetColours}\$ "
 
 # finally export built PATH variable
 export PATH=$PATH
