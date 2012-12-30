@@ -34,7 +34,6 @@ source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWUPSTREAM="auto verbose"
-#PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[33m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
 
 # finally export built PATH variable
