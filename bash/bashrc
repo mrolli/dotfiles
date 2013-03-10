@@ -22,7 +22,6 @@ export LSCOLORS=Dxfxcxdxbxegedabagacad
 export TERM=xterm-color
 export EDITOR=vim
 export SVNEDITOR=vim
-export ACTIVEMQ_HOME=/Users/mrolli/Developer/projects/ds-fs12/apache-activemq-5.6.0
 
 # setup git-achievements
 if [ -d ~/bin/git-achievements ]; then
@@ -69,3 +68,4 @@ PS1="\[\$(exit_colour \$?)\]\!${ResetColours} \[$Green\]\u@\h\[${ResetColours}:\
 
 # finally export built PATH variable
 export PATH=$PATH
+
