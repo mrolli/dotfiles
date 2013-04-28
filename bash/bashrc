@@ -36,6 +36,9 @@ GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWUPSTREAM="auto verbose"
 
+# rbenv stuff
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 # build prompt
 ResetColours="$(tput sgr0)"
 Black="$(tput setaf 0)"
