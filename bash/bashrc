@@ -10,7 +10,6 @@ HISTSIZE=1000000
 # Build path
 PATH=~/bin:$PATH
 PATH=/usr/local/bin:$PATH
-PATH=/usr/local/git/bin:$PATH
 [ -d /Applications/Xcode.app/Contents/Developer/usr/bin  ] && PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin/
 
 # some useful aliases
