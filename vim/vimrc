@@ -6,6 +6,9 @@ set nocompatible
 call pathogen#infect()
 call pathogen#helptags()
 
+"set colorscheme
+colorscheme jellybeans
+
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
