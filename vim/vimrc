@@ -7,7 +7,7 @@ call pathogen#infect()
 call pathogen#helptags()
 
 "set colorscheme
-colorscheme jellybeans
+colorscheme jellybeans "shady
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -34,6 +34,12 @@ match ExtraWhitespace /\s\+$/
 " active pastetoggle
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+
+" configure NERDTree
+"map ctrl+n to open NERDTree
+map <C-n> :NERDTreeToggle<CR>
+"close vim if NERDTree is the last open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 set incsearch   "find the next match as we type the search
 set hlsearch    "hilight searches by default
