@@ -39,12 +39,6 @@ match ExtraWhitespace /\s\+$/
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
-" configure NERDTree
-"map ctrl+n to open NERDTree
-map <C-n> :NERDTreeToggle<CR>
-"close vim if NERDTree is the last open buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
 set incsearch   "find the next match as we type the search
 set hlsearch    "hilight searches by default
 set ignorecase  "ignore case when searching
@@ -294,6 +288,12 @@ endfunction
 
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" configure NERDTree
+"map ctrl+n to open NERDTree
+map <C-n> :NERDTreeToggle<CR>
+"close vim if NERDTree is the last open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
 
