@@ -46,3 +46,6 @@
 [submodule "vim/bundle/vim-phpcomplete"]
 	path = vim/bundle/vim-phpcomplete
 	url = git://github.com/shawncplus/phpcomplete.vim.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
