@@ -46,17 +46,24 @@ set ignorecase  "ignore case when searching
 set wrap        "dont wrap lines
 set linebreak   "wrap lines at convenient points
 
-if v:version >= 703
-    "undo settings
-    set undodir=~/.vim/undofiles
-    set undofile
+" Swap files in a central location, no swap files amongst project.
+" Can be a bad idea when editing several files of the same name.
+set backupdir=~/.vim/swap
+set directory=~/.vim/swap
+"undo settings
+set undodir=~/.vim/undofiles
+set undofile
 
+if v:version >= 703
     " mark the ideal max text width
     "set colorcolumn=+1
     " mark current line and column
     "set cursorline                           "underline the current line in the file
     "set cursorcolumn                         "highlight the current column. Visible in GUI mode only.
 endif
+
+" Default to Unicode/UTF-8 rather than latin1
+set encoding=utf-8
 
 "default indent settings
 set shiftwidth=4
@@ -115,16 +122,17 @@ endfunction
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " configure NERDTree
-"map ctrl+n to open NERDTree
 map <C-n> :NERDTreeToggle<CR>
 "close vim if NERDTree is the last open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" Arrow keys navigate split windows!
+nmap <Up> <C-W><Up>
+nmap <Down> <C-W><Down>
+nmap <Left> <C-W><Left>
+nmap <Right> <C-W><Right>
 
-
-
-
-" remains of the day
-"set noerrorbells                         "don't make noise
-"set shiftround                           "when at 3 spaces, and I hit > ... go to 4, not 5
+" Reselect visual block after indent (thanks @twe4ked)
+vnoremap < <gv
+vnoremap > >gv
 
