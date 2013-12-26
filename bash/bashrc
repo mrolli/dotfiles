@@ -8,9 +8,8 @@ HISTFILESIZE=1000000
 HISTSIZE=1000000
 
 # Build path
-PATH=~/bin:$PATH
 PATH=/usr/local/bin:$PATH
-[ -d /Applications/Xcode.app/Contents/Developer/usr/bin  ] && PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin/
+PATH=~/bin:$PATH
 
 # some useful aliases
 alias ls='ls -G'
@@ -18,7 +17,8 @@ alias dir='ls -al'
 
 # environment variables
 export LSCOLORS=Dxfxcxdxbxegedabagacad
-export TERM=xterm-color
+#export TERM=xterm-color
+export TERM=xterm
 export EDITOR=vim
 export SVNEDITOR=vim
 
