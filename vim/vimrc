@@ -121,6 +121,9 @@ endfunction
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+"lin ruby scripts on save
+autocmd FileType ruby map <F3> :w<CR>:!ruby -c %<CR>
+
 " configure NERDTree
 map <C-n> :NERDTreeToggle<CR>
 "close vim if NERDTree is the last open buffer
