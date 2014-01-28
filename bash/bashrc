@@ -8,12 +8,10 @@ HISTFILESIZE=1000000
 HISTSIZE=1000000
 
 # Build path
-PATH=/usr/local/bin:$PATH
 PATH=~/bin:$PATH
 
-# some useful aliases
+# colored ls output
 alias ls='ls -G'
-alias dir='ls -al'
 # start SMclient on remote host
 alias SMclient='ssh gpfs03-local SMclient'
 
@@ -23,12 +21,6 @@ export TERM=xterm-256color
 #export TERM=xterm
 export EDITOR=vim
 export SVNEDITOR=vim
-
-# setup git-achievements
-if [ -d ~/bin/git-achievements ]; then
-  PATH=$PATH:~/bin/git-achievements
-  alias git="git-achievements"
-fi
 
 # setup git completion
 source ~/.git-completion.sh
