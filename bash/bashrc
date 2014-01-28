@@ -14,11 +14,13 @@ PATH=~/bin:$PATH
 # some useful aliases
 alias ls='ls -G'
 alias dir='ls -al'
+# start SMclient on remote host
+alias SMclient='ssh gpfs03-local SMclient'
 
 # environment variables
 export LSCOLORS=Dxfxcxdxbxegedabagacad
-#export TERM=xterm-color
-export TERM=xterm
+export TERM=xterm-256color
+#export TERM=xterm
 export EDITOR=vim
 export SVNEDITOR=vim
 
