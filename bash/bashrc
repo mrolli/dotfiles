@@ -1,6 +1,6 @@
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
+    . /etc/bashrc
 fi
 
 # Keep plenty of history.
@@ -18,7 +18,6 @@ alias SMclient='ssh gpfs03-local SMclient'
 # environment variables
 export LSCOLORS=Dxfxcxdxbxegedabagacad
 export TERM=xterm-256color
-#export TERM=xterm
 export EDITOR=vim
 export SVNEDITOR=vim
 
@@ -32,35 +31,34 @@ GIT_PS1_SHOWUPSTREAM="auto verbose"
 # rbenv stuff
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-# build prompt
-ResetColours="$(tput sgr0)"
-Black="$(tput setaf 0)"
-DarkGrey="$(tput bold ; tput setaf 0)"
-LightGrey="$(tput setaf 7)"
-White="$(tput bold ; tput setaf 7)"
-Red="$(tput setaf 1)"
-LightRed="$(tput bold ; tput setaf 1)"
-Green="$(tput setaf 2)"
-LightGreen="$(tput bold ; tput setaf 2)"
-Brown="$(tput setaf 3)"
-Yellow="$(tput bold ; tput setaf 3)"
-Blue="$(tput setaf 4)"
-LightBlue="$(tput bold ; tput setaf 4)"
-Purple="$(tput setaf 5)"
-Pink="$(tput bold ; tput setaf 5)"
-Cyan="$(tput setaf 6)"
-LightCyan="$(tput bold ; tput setaf 6)"
+# build command prompt
+ps1_prompt() {
+    local ps1_exit=$?
+    local ps1_status="\!"
+    local YELLOW="\[\033[1;33m\]"
+    local GREEN="\[\033[32m\]"
+    local RED="\[\033[31m\]"
+    local NOCLR="\[\033[0m\]"
 
-function exit_colour {
-  if [[ $1 -eq 0  ]]; then
-    echo "$DarkGrey"
-  else
-    echo "$Red"
-  fi
+    # define user/hosts and directory string
+    local ps1_host=" ${GREEN}\u@\h${NOCLR}"
+    local ps1_dir=" ${YELLOW}\W${NOCLR}"
+
+    # setup exit status string
+    if [ $ps1_exit -ne 0 ]; then
+        local ps1_status="${RED}\!${NOCLR}"
+    fi
+
+    # setup git repo string
+    ps1_git=""
+    if test "$(type -t __git_ps1)" = "function"; then
+        ps1_git="${RED}"$(__git_ps1)"${NOCLR}"
+    fi
+
+    PS1="${ps1_status}${ps1_host}${ps1_dir}${ps1_git} \$ "
 }
-
-#PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[33m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
-PS1="\[\$(exit_colour \$?)\]\!${ResetColours} \[$Green\]\u@\h\[${ResetColours}:\[${Yellow}\]\w\[${Red}\]"'$(__git_ps1)'"\[${ResetColours}\$ "
+# preserve earlier PROMPT_COMMAND entries
+PROMPT_COMMAND="ps1_prompt;$PROMPT_COMMAND"
 
 # finally export built PATH variable
 export PATH=$PATH
