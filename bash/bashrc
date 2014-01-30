@@ -29,7 +29,7 @@ GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWUPSTREAM="auto verbose"
 
 # rbenv stuff
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv >/dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
 # build command prompt
 ps1_prompt() {
