@@ -6,8 +6,30 @@ set nocompatible
 call pathogen#infect()
 call pathogen#helptags()
 
-"set colorscheme
-colorscheme jellybeans "shady
+"load ftplugins and indent files
+filetype plugin on
+filetype indent on
+
+"turn on syntax highlighting
+syntax on
+
+"tell the term has 256 colors
+if has("gui_running")
+    colorscheme bubblegum
+elseif &t_Co == 256
+    colorscheme bubblegum
+endif
+
+" always display status line
+set laststatus=2
+
+"airline configuration
+let g:airline_theme='bubblegum'
+
+"syntastic configuration
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -18,26 +40,19 @@ set history=1000
 set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
 set showmatch   "set show matching parenthesis
-
 set number      "show line numbers
 
-"display tabs and trailing spaces with dots
-"set list
-"set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
-
 "highlight tabs and trailing spaces
-highlight LiteralTabs ctermbg=darkgreen guibg=darkgreen
+highlight LiteralTabs ctermbg=red guibg=red
 autocmd ColorScheme * highlight LiteralTabs ctermbg=red guibg=red
-match LiteralTabs /\s\  /
-
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match LiteralTabs /\s\    /
+highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-"match ExtraWhitespace /\s\+\%#\@<!$/
 match ExtraWhitespace /\s\+$/
 
 " active pastetoggle
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
+"nnoremap <F2> :set invpaste paste?<CR>
+"set pastetoggle=<F2>
 
 set incsearch   "find the next match as we type the search
 set hlsearch    "hilight searches by default
@@ -53,14 +68,6 @@ set directory=~/.vim/swap
 "undo settings
 set undodir=~/.vim/undofiles
 set undofile
-
-if v:version >= 703
-    " mark the ideal max text width
-    "set colorcolumn=+1
-    " mark current line and column
-    "set cursorline                           "underline the current line in the file
-    "set cursorcolumn                         "highlight the current column. Visible in GUI mode only.
-endif
 
 " Default to Unicode/UTF-8 rather than latin1
 set encoding=utf-8
@@ -87,24 +94,13 @@ set scrolloff=3
 set sidescrolloff=7
 set sidescroll=1
 
-"load ftplugins and indent files
-filetype plugin on
-filetype indent on
-
-"turn on syntax highlighting
-syntax on
-
 "some stuff to get the mouse going in term
 "set mouse=a
 "set ttymouse=xterm2
 
-"tell the term has 256 colors
-set t_Co=256
-
 "hide buffers when not displayed
 set hidden
 
-set laststatus=2
 
 "jump to last cursor position when opening a file
 "dont do it when writing a commit log entry
@@ -121,9 +117,6 @@ endfunction
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-"lin ruby scripts on save
-autocmd FileType ruby map <F3> :w<CR>:!ruby -c %<CR>
-
 " configure NERDTree
 map <C-n> :NERDTreeToggle<CR>
 "close vim if NERDTree is the last open buffer
@@ -138,4 +131,15 @@ nmap <Right> <C-W><Right>
 " Reselect visual block after indent (thanks @twe4ked)
 vnoremap < <gv
 vnoremap > >gv
+
+" TexLive stuff
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
 
