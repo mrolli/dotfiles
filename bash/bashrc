@@ -41,7 +41,14 @@ ps1_prompt() {
     local NOCLR="\[\033[0m\]"
 
     # define user/hosts and directory string
-    local ps1_host=" ${GREEN}\u@\h${NOCLR}"
+    if [ $UID -eq 0 ]; then
+        local HOSTCOLOR=$RED
+        local PSEND="#"
+    else
+        local HOSTCOLOR=$GREEN
+        local PSEND="\$"
+    fi
+    local ps1_host=" ${HOSTCOLOR}\u@\h${NOCLR}"
     local ps1_dir=" ${YELLOW}\W${NOCLR}"
 
     # setup exit status string
