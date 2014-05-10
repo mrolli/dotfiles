@@ -6,7 +6,7 @@ if [ -f ~/.vim/autoload/pathogen.vim ];
 then
     echo -e "... already setup - skip.\n"
 else
-    mkdir -p ~/.vim/autoload ~/.vim/bundle
+    mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/colors
     curl -LSso ~/.vim/autoload/pathogen.vim \
         https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
     echo -e "... done.\n"
