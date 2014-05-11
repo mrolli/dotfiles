@@ -36,7 +36,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
 "signify configuration
-let g:signify_vcs_list = [ 'git', 'subversion' ]
+let g:signify_vcs_list = [ 'git' ]
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
