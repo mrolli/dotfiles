@@ -58,9 +58,10 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
-" active pastetoggle
-"nnoremap <F2> :set invpaste paste?<CR>
-"set pastetoggle=<F2>
+"some key assignments
+nnoremap <F2> :buffers<CR>:buffer<Space>
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
 
 set incsearch   "find the next match as we type the search
 set hlsearch    "hilight searches by default
