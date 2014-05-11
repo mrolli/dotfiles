@@ -6,6 +6,10 @@ set nocompatible
 call pathogen#infect()
 call pathogen#helptags()
 
+"first of all change leader to something more
+"convenient on a sg keyboard
+let mapleader = ","
+
 "load ftplugins and indent files
 filetype plugin on
 filetype indent on
@@ -31,6 +35,9 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
+"signify configuration
+let g:signify_vcs_list = [ 'git', 'subversion' ]
+
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -41,6 +48,7 @@ set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
 set showmatch   "set show matching parenthesis
 set number      "show line numbers
+set scrolloff=3 "scroll that many lines if cursor leaves viewport
 
 "highlight tabs and trailing spaces
 highlight LiteralTabs ctermbg=red guibg=red
