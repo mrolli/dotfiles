@@ -41,4 +41,5 @@ cd ~/.vim/bundle
 [ -d vim-surround ] || git clone git://github.com/tpope/vim-surround.git
 echo -e "\nAll bundles setup.\n"
 
+cd $OLDPWD
 exit 0
