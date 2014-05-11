@@ -1,0 +1,27 @@
+[user]
+    name = Michael Rolli
+    email = michael@rollis.ch
+[color]
+    ui = auto
+    interactive = true
+    grep = true
+    diff = true
+    status = true
+[core]
+    autocrlf = input
+    editor = vim
+    excludesfile = ~/.gitignore_global
+[grep]
+    lineNumber = true
+[pack]
+    threads = 0
+[diff]
+    renamelimit = 0
+[merge]
+    tool = opendiff
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
+[mergetool "sourcetree"]
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
