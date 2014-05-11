@@ -1,6 +1,10 @@
 [user]
     name = Michael Rolli
     email = michael@rollis.ch
+[alias]
+    ci = commit -v
+    co = checkout
+    st = status
 [color]
     ui = auto
     interactive = true
@@ -19,6 +23,10 @@
     renamelimit = 0
 [merge]
     tool = opendiff
+[commit]
+    template = ~/.gitmessage
+[fetch]
+    prune = true
 [difftool "sourcetree"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
     path =
