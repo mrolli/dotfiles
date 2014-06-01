@@ -34,6 +34,7 @@ let g:airline_theme='bubblegum'
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
+let g:syntastic_puppet_puppetlint_args = "--no-80chars-check"
 
 "signify configuration
 let g:signify_vcs_list = [ 'git' ]
