@@ -23,6 +23,7 @@ export SVNEDITOR=vim
 
 # setup bash completion
 source ~/.tmux-completion.sh
+source ~/.vagrant-completion.sh
 source ~/.git-completion.sh
 source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true

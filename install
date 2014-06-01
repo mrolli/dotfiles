@@ -13,6 +13,7 @@ ln -fs ".dotfiles/git/gitignore_global"       "${HOME}/.gitignore_global"
 #ln -fs ".dotfiles/readline/inputrc"          "${HOME}/.inputrc"
 ln -fs ".dotfiles/tmux/tmux.conf"             "${HOME}/.tmux.conf"
 ln -fs ".dotfiles/tmux/tmux-completion.bash"  "${HOME}/.tmux-completion.sh"
+ln -fs ".dotfiles/vagrant/vagrant-completion.bash" "${HOME}/.vagrant-completion.sh"
 ln -fs ".dotfiles/vim/vimrc"                  "${HOME}/.vimrc"
 
 # Link in directories, removing whatever's already there first.
