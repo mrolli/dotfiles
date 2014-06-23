@@ -34,12 +34,13 @@ cd ~/.vim/bundle
 #[ -d vim-phpcomplete ] || git clone github.com/shawncplus/phpcomplete.vim.git vim-phpcomplete
 [ -d vim-puppet ] || git clone git://github.com/rodjek/vim-puppet.git
 [ -d vim-sensible ] || git clone git://github.com/tpope/vim-sensible.git
-[ -d tlib_vim ] || git clone https://github.com/tomtom/tlib_vim.git # dependancy of snnipmate
-[ -d vim-addon-mw-utils ] || git clone https://github.com/MarcWeber/vim-addon-mw-utils.git # dependancy of snnipmate
-[ -d vim-snipmate ] || git clone https://github.com/garbas/vim-snipmate.git
+#[ -d tlib_vim ] || git clone https://github.com/tomtom/tlib_vim.git # dependency of snnipmate
+#[ -d vim-addon-mw-utils ] || git clone https://github.com/MarcWeber/vim-addon-mw-utils.git # dependency of snnipmate
+[ -d snipmate.vim ] || git clone git://github.com/ervandew/snipmate.vim.git
+[ -d snipmate.vim/snippets ] && rm -rf snipmate.vim/snippets # conflicts with below vim-snippets if directory is available
 [ -d vim-snippets ] || git clone https://github.com/honza/vim-snippets.git
 [ -d vim-surround ] || git clone git://github.com/tpope/vim-surround.git
-echo -e "\nAll bundles setup.\n"
+echo -e "All bundles setup.\n"
 
 cd $OLDPWD
 exit 0
