@@ -2,7 +2,7 @@
 
 # (The MIT License)
 #
-# Copyright (c) 2013 Kura
+# Copyright (c) 2014 Kura
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
@@ -24,10 +24,6 @@
 
 
 __pwdln() {
-
-   # Doing PE from the beginning of the string is needed
-   # so we get a string of 0 len to break the until loop.
-
    pwdmod="${PWD}/"
    itr=0
    until [[ -z "$pwdmod" ]];do
@@ -35,20 +31,13 @@ __pwdln() {
       pwdmod="${pwdmod#*/}"
    done
    echo -n $(($itr-1))
-
 }
 
 __vagrantinvestigate() {
-
     if [ -f "${PWD}/.vagrant" -o -d "${PWD}/.vagrant" ];then
       echo "${PWD}/.vagrant"
       return 0
    else
-      #  Since we didn't find a $PWD/.vagrant, we're going to pop
-      #  a directory off the end of the $pwdmod2
-      #  stack until we come across a ./.vagrant. /home/igneous/proj/1
-      #  will start at /home/igneous/proj because of our loop starting
-      #  at 2.
       pwdmod2="${PWD}"
       for (( i=2; i<=$(__pwdln); i++ ));do
          pwdmod2="${pwdmod2%/*}"
@@ -58,16 +47,13 @@ __vagrantinvestigate() {
          fi
       done
    fi
-
    return 1
-
 }
 
-_vagrant()
-{
+_vagrant() {
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    commands="box destroy halt help init package provision reload resume ssh ssh-config status suspend up version"
+    commands="box connect destroy docker-logs docker-run global-status halt help init list-commands login package plugin provision rdp reload resume rsync rsync-auto share ssh ssh-config status suspend up version"	
 
     if [ $COMP_CWORD == 1 ]
     then
@@ -83,20 +69,30 @@ _vagrant()
               COMPREPLY=($(compgen -W "${box_list}" -- ${cur}))
               return 0
             ;;
-            "ssh"|"provision"|"reload"|"halt"|"suspend"|"resume"|"ssh-config"|"up")
+            "up")
+              local up_commands="--no-provision"
+              COMPREPLY=($(compgen -W "${up_commands}" -- ${cur}))
+              return 0
+            ;;
+            "ssh"|"provision"|"reload"|"halt"|"suspend"|"resume"|"ssh-config")
               vagrant_state_file=$(__vagrantinvestigate) || return 1
-              #Got lazy here.. I'd like to eventually replace this with a pure bash solution.
-	      if [[ -f $vagrant_state_file ]]; then 
-		  running_vm_list=$(grep 'active' $vagrant_state_file | sed -e 's/"active"://' | tr ',' '\n' | cut -d '"' -f 2 | tr '\n' ' ')
-	      else 
-		  running_vm_list=$(find $vagrant_state_file -type f -name "id" | awk -F"/" '{print $(NF-2)}')
-	      fi
+      	      if [[ -f $vagrant_state_file ]]
+              then
+		            running_vm_list=$(grep 'active' $vagrant_state_file | sed -e 's/"active"://' | tr ',' '\n' | cut -d '"' -f 2 | tr '\n' ' ')
+      	      else
+		            running_vm_list=$(find $vagrant_state_file -type f -name "id" | awk -F"/" '{print $(NF-2)}')
+      	      fi
               COMPREPLY=($(compgen -W "${running_vm_list}" -- ${cur}))
               return 0
             ;;
             "box")
               box_commands="add help list remove repackage"
               COMPREPLY=($(compgen -W "${box_commands}" -- ${cur}))
+              return 0
+            ;;
+            "plugin")
+              plugin_commands="install license list uninstall update"
+              COMPREPLY=($(compgen -W "${plugin_commands}" -- ${cur}))
               return 0
             ;;
             "help")
@@ -127,4 +123,3 @@ _vagrant()
 
 }
 complete -F _vagrant vagrant
-
