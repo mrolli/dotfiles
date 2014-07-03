@@ -122,4 +122,4 @@ _vagrant() {
     fi
 
 }
-complete -F _vagrant vagrant
+complete -o default -F _vagrant vagrant
