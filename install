@@ -18,5 +18,8 @@ ln -fs ".dotfiles/vim" "${HOME}/.vim"
 [[ -e "${HOME}/.bash_completion.d" ]] && rm -r "${HOME}/.bash_completion.d"
 ln -fs ".dotfiles/bash/completion.d" "${HOME}/.bash_completion.d"
 
+# Fetch packer completion
+curl -L https://raw.githubusercontent.com/mrolli/packer-bash-completion/master/packer -o ~/.bash_completion.d/packer
+
 # Finally setup vim plugins and color schemes
 ~/.vim/setup_vim_env.sh
