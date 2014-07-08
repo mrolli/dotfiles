@@ -1,2 +1,6 @@
 *~
 .DS_Store
+# IDE realted
+.idea
+atlassian-ide-plugin.xml
+

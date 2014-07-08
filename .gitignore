@@ -4,3 +4,5 @@ vim/bundle
 vim/swap/*
 vim/undofiles/*
 vim/.netrwhist
+bash/completion.d/packer
+
