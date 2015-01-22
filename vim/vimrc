@@ -72,11 +72,9 @@ set wrap        "dont wrap lines
 set linebreak   "wrap lines at convenient points
 
 " Swap files in a central location, no swap files amongst project.
-" Can be a bad idea when editing several files of the same name.
-set backupdir=~/.vim/swap
-set directory=~/.vim/swap
-"undo settings
-set undodir=~/.vim/undofiles
+set backupdir=~/.vim/swap//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undofiles//
 set undofile
 
 " Default to Unicode/UTF-8 rather than latin1
@@ -141,6 +139,13 @@ nmap <Right> <C-W><Right>
 " Reselect visual block after indent (thanks @twe4ked)
 vnoremap < <gv
 vnoremap > >gv
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
 
 " TexLive stuff
 " IMPORTANT: grep will sometimes skip displaying the file name if you
