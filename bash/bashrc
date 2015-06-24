@@ -6,6 +6,8 @@ fi
 # Keep plenty of history.
 HISTFILESIZE=1000000
 HISTSIZE=1000000
+shopt -s histappend
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
