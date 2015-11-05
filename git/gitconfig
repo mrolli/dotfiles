@@ -5,6 +5,7 @@
     ci = commit -v
     co = checkout
     st = status
+    s  = status -s
     oneline = log --pretty=tformat:"%Cred%h%Creset%x09%Cgreen%an%Creset%x09%ad%x09%s"  --date=short --graph --decorate
 [color]
     ui = auto
@@ -30,7 +31,7 @@
     prune = true
 [difftool "sourcetree"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
+    path =
 [mergetool "sourcetree"]
     cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
     trustExitCode = true
