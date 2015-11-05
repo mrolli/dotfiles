@@ -2,19 +2,19 @@
 set -g prefix C-a
 
 # Free the original Ctrl-b prefix keybinding
-unbind C-a
+unbind C-b
 
 #setting the delay between prefix and command
 set -sg escape-time 1
 
-# Ensure that we can send Ctrl-f to other apps
+# Ensure that we can send Ctrl-A to other apps
 bind C-a send-prefix
 
 # Set the base index for windows to 1 instead of 0
 set -g base-index 1
 
 # Set the base index for panes to 1 instead of 0
-setw -g pane-base-index 1
+#setw -g pane-base-index 1
 
 # automatically rename windows and panes
 setw -g automatic-rename on
@@ -47,7 +47,10 @@ bind -r K resize-pane -U 5
 bind -r L resize-pane -R 5
 
 # mouse support - set to on if you want to use the mouse
-setw -g mouse off
+setw -g mode-mouse off
+set -g mouse-select-pane off
+#set -g mouse-resize-pane off
+#set -g mouse-select-window off
 
 # screen like window toggling
 bind Tab last-window
@@ -79,12 +82,11 @@ set -g status-justify centre
 setw -g mode-keys vi
 # enable vim like copy/paste
 bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+bind-key -t vi-copy 'y' copy-selection
 unbind p
 bind p paste-buffer
-# Update default binding of `Enter` to also use copy-pipe
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+bind C-c run "tmux save-buffer - | pbcopy-remote"
+bind C-v run "tmux set-buffer \"$(pbpaste-remote)\"; tmux paste-buffer"
 
 # Open panes in the same directory using the tmux-panes script
 unbind v
@@ -99,7 +101,8 @@ bind v send-keys " ~/tmux-panes -h" C-m bind n send-keys " ~/tmux-panes -v" C-m
 #bind-key Up resize-pane -Z \; display-message "Zoom zoom zoom"
 
 # Log output to a text file on demand
-bind P pipe-pane -o "cat >>~/#W.log" \; display "Toggled logging to ~/#W.log"
+#bind P pipe-pane -o "cat >>~/#W.log" \; display "Toggled logging to ~/#W.log"
+#bind P pipe-pane -o "cat |pbcopy"; display "Piped to pbcopy"
 
 # Bad Wolf by Steve Losh
 # # =====================
