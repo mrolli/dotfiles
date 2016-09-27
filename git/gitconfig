@@ -6,6 +6,7 @@
     co = checkout
     st = status
     s  = status -s
+    revert = revert -n
     oneline = log --pretty=tformat:"%Cred%h%Creset%x09%Cgreen%an%Creset%x09%ad%x09%s"  --date=short --graph --decorate
 [color]
     ui = auto
