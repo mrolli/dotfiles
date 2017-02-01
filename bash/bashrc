@@ -20,6 +20,8 @@ PATH=~/bin:$PATH
 
 # colored ls output
 alias ls='ls -G'
+# brewup onliner to keep things up2date
+alias brewup='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # environment variables
 export LSCOLORS=Dxfxcxdxbxegedabagacad
