@@ -8,12 +8,16 @@
     s  = status -s
     revert = revert -n
     oneline = log --pretty=tformat:"%Cred%h%Creset%x09%Cgreen%an%Creset%x09%ad%x09%s"  --date=short --graph --decorate
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [color]
     ui = auto
     interactive = true
     grep = true
     diff = true
     status = true
+[color "diff"]
+    new = green
+    old = red strike
 [core]
     autocrlf = input
     editor = vim
