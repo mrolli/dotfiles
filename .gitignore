@@ -1,5 +1,4 @@
 vim/autoload
-vim/colors
 vim/bundle
 vim/swap/*
 vim/undofiles/*

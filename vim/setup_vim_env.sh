@@ -12,15 +12,6 @@ else
     echo -e "... done.\n"
 fi
 
-# setup color schemes
-echo "Now setting up color schemes..."
-cd ~/.vim/colors
-[ -f bubblegum.vim ] || curl -OSs https://raw.githubusercontent.com/baskerville/bubblegum/master/colors/bubblegum.vim
-[ -f jellybeans.vim ] || curl -OSs https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
-[ -f wombat.vim ] || curl -OSs https://raw.githubusercontent.com/vim-scripts/Wombat/master/colors/wombat.vim
-[ -f wombat256mod.vim ] || curl -OSs https://raw.githubusercontent.com/vim-scripts/wombat256.vim/master/colors/wombat256mod.vim
-echo -e "... done.\n"
-
 # setup bundles
 echo "Now setting up bundles..."
 cd ~/.vim/bundle
@@ -29,6 +20,7 @@ cd ~/.vim/bundle
 [ -d supertab ]     || git clone git://github.com/ervandew/supertab.git
 [ -d tabular ]      || git clone git://github.com/godlygeek/tabular.git
 [ -d vim-airline ]  || git clone git://github.com/bling/vim-airline.git
+#[ -d vim-airline-themes ] || git clone https://github.com/vim-airline/vim-airline-themes
 [ -d vim-signify ]  || git clone https://github.com/mhinz/vim-signify ~/.vim/bundle/vim-signify
 [ -d snipmate.vim ] || git clone git://github.com/ervandew/snipmate.vim.git
 [ -d snipmate.vim/snippets ] && rm -rf snipmate.vim/snippets # conflicts with below vim-snippets if directory is available
