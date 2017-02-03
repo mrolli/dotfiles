@@ -20,7 +20,7 @@ cd ~/.vim/bundle
 [ -d supertab ]     || git clone git://github.com/ervandew/supertab.git
 [ -d tabular ]      || git clone git://github.com/godlygeek/tabular.git
 [ -d vim-airline ]  || git clone git://github.com/bling/vim-airline.git
-#[ -d vim-airline-themes ] || git clone https://github.com/vim-airline/vim-airline-themes
+[ -d vim-airline-themes ] || git clone https://github.com/vim-airline/vim-airline-themes
 [ -d vim-signify ]  || git clone https://github.com/mhinz/vim-signify ~/.vim/bundle/vim-signify
 [ -d snipmate.vim ] || git clone git://github.com/ervandew/snipmate.vim.git
 [ -d snipmate.vim/snippets ] && rm -rf snipmate.vim/snippets # conflicts with below vim-snippets if directory is available
