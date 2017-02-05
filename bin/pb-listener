@@ -1,0 +1,19 @@
+#!/bin/bash
+
+case $1 in
+  start)
+    launchctl load ~/Library/LaunchAgents/pbcopy.plist
+    launchctl load ~/Library/LaunchAgents/pbpaste.plist
+    ;;
+  stop)
+    launchctl unload ~/Library/LaunchAgents/pbcopy.plist
+    launchctl unload ~/Library/LaunchAgents/pbpaste.plist
+    ;;
+  restart)
+    $0 stop
+    $0 start
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    ;;
+esac

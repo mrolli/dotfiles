@@ -1,0 +1,13 @@
+#!/bin/bash
+
+[ $# != 2 ] && echo "Usage: usbcreator bootable.iso /dev/rdisk1" && exit 1
+
+SRC_IMG=$1
+DST_IMG=/tmp/target.img
+DRIVE=$2
+
+hdiutil convert -format UDRW -o $DST_IMG $SRC_IMG
+mv $DST_IMG.dmg $DST_IMG
+diskutil unmountDisk $DRIVE
+sudo dd if=$DST_IMG of=$DRIVE bs=1m
+rm -f $DEST_IMG
