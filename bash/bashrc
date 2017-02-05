@@ -46,7 +46,11 @@ GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWUPSTREAM="auto verbose"
 
 # rbenv stuff
-if which rbenv >/dev/null 2>&1; then eval "$(rbenv init -)"; fi
+if [ -f /opt/boxen/env.sh ]; then
+  source /opt/boxen/env.sh
+elif which rbenv >/dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
 
 # perl5 stuff used for shelldap primarily
 USER_PERL_DIR=~/.perl5
