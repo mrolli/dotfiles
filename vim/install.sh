@@ -1,16 +1,22 @@
 #!/bin/bash
 
 # setup pathogen first if not yet installed
-echo "Setting up pathogen..."
-if [ -f ~/.vim/autoload/pathogen.vim ];
+echo -n "Setting up Vundle... "
+if [ -d ~/.vim/bundle/Vundle.vim ];
 then
-    echo -e "... already setup - skip.\n"
+    echo "already setup - skip."
 else
-    mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/colors
-    curl -LSso ~/.vim/autoload/pathogen.vim \
-        https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-    echo -e "... done.\n"
+    mkdir -p ~/.vim/bundle ~/.vim/colors
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim >/dev/null 2>&1
+    echo "done."
 fi
+
+# Let Vundle do the heavy lifting
+echo -n "Installing specified plugins... "
+vim +PluginInstall +qall
+echo "done."
+
+exit 0
 
 # setup bundles
 echo "Now setting up bundles..."
