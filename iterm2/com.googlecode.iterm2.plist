@@ -64,10 +64,12 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>1169 113 445 77 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>297 162 918 512 0 0 1680 1027 </string>
+	<string>205 297 796 473 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>532 364 585 473 0 0 1680 1027 </string>
+	<string>563 207 1075 748 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>724 310 585 452 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
@@ -638,7 +640,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Monaco 12</string>
+			<string>MenloForPowerline-Regular 12</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -757,7 +759,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-02-12T08:33:58Z</date>
+	<date>2017-02-13T19:57:20Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>UseBorder</key>
