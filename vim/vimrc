@@ -1,55 +1,104 @@
-"Use Vim settings, rather then Vi settings (much better!).
-"This must be first, because it changes other options as a side effect.
-set nocompatible
+" be iMproved
+" This must be first, because it changes other options as a side effect.
+set nocompatible              " required by Vundle
+filetype off                  " required by Vundle
 
-"activate pathogen
-call pathogen#infect()
-call pathogen#helptags()
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-"first of all change leader to something more
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" General Plugins
+Plugin 'itchyny/lightline.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'godlygeek/tabular'
+Plugin 'mhinz/vim-signify'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-surround'
+" Snipmate & Co
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+" Work related
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'rodjek/vim-puppet'
+
+" All of your Plugins must be added before the following line
+call vundle#end()
+filetype plugin indent on    " required by Vundle
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+" auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"change leader to something more
 "convenient on a sg keyboard
 let mapleader = ","
 
-"load ftplugins and indent files
-filetype plugin on
-filetype indent on
-
 "turn on syntax highlighting
-syntax on
-
-"tell the term has 256 colors
-if has("gui_running")
-    colorscheme bubblegum
-elseif &t_Co == 256
-    colorscheme bubblegum
-endif
+syntax enable
+colorscheme bubblegum-256-dark
 
 " always display status line
 set laststatus=2
 
-"airline configuration
-let g:airline_theme='bubblegum'
+" Plugin configuration: syntastic
+source $HOME/.vim/config/lightline.vim
+source $HOME/.vim/config/syntastic.vim
+source $HOME/.vim/config/signify.vim
+source $HOME/.vim/config/nerdtree.vim
 
-"syntastic configuration
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_puppet_puppetlint_args = "--no-80chars-check --no-class_inherits_from_params_class-check --no-autoloader_layout-check"
+set showcmd                    " show incomplete cmds down the bottom
+set noshowmode                 " do not show current mode down the bottom; already shown by lightline
+set showmatch                  " set show matching parenthesis
+set number                     " show line numbers
+set scrolloff=3                " scroll that many lines if cursor leaves viewport
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set history=1000               " store lots of :cmdline history
+set incsearch                  " find the next match as we type the search
+set hlsearch                   " hilight searches by default
+set ignorecase                 " ignore case when searching
+set wrap                       " dont wrap lines
+set linebreak                  " wrap lines at convenient points
+set wildmode=list:longest      " make cmdline tab completion similar to bash
+set wildmenu                   " enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~    " stuff to ignore when tab completing
 
-"signify configuration
-let g:signify_vcs_list = [ 'git' ]
+" Swap files in a central location, no swap files amongst project.
+set backupdir=~/.vim/swap//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undofiles//
+set undofile
 
-"allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" Default to Unicode/UTF-8 rather than latin1
+set encoding=utf-8
 
-"store lots of :cmdline history
-set history=1000
-
-set showcmd     "show incomplete cmds down the bottom
-set showmode    "show current mode down the bottom
-set showmatch   "set show matching parenthesis
-set number      "show line numbers
-set scrolloff=3 "scroll that many lines if cursor leaves viewport
+" Default indentation settings
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+set smarttab
+set autoindent
+set cindent           "recommended seting for automatic C-style indentation
 
 "highlight tabs and trailing spaces
 highlight LiteralTabs ctermbg=red guibg=red
@@ -62,40 +111,11 @@ match ExtraWhitespace /\s\+$/
 "some key assignments
 nnoremap <F2> :buffers<CR>:buffer<Space>
 nnoremap <F3> :set invpaste paste?<CR>
-set pastetoggle=<F3>
-
-set incsearch   "find the next match as we type the search
-set hlsearch    "hilight searches by default
-set ignorecase  "ignore case when searching
-
-set wrap        "dont wrap lines
-set linebreak   "wrap lines at convenient points
-
-" Swap files in a central location, no swap files amongst project.
-set backupdir=~/.vim/swap//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undofiles//
-set undofile
-
-" Default to Unicode/UTF-8 rather than latin1
-set encoding=utf-8
-
-"default indent settings
-set shiftwidth=2
-set softtabstop=2
-"set tabstop=8
-set expandtab
-set autoindent
-"set cindent           "recommended seting for automatic C-style indentation
 
 "folding settings
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
-
-set wildmode=list:longest   "make cmdline tab completion similar to bash
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 
 "vertical/horizontal scroll off settings
 set scrolloff=3
@@ -103,12 +123,16 @@ set sidescrolloff=7
 set sidescroll=1
 
 "some stuff to get the mouse going in term
-"set mouse=a
-"set ttymouse=xterm2
+set mouse=a
+set ttymouse=xterm2
 
 "hide buffers when not displayed
 set hidden
 
+" Force markdown for all files with md extension
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" Fendced languages in markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'puppet']
 
 "jump to last cursor position when opening a file
 "dont do it when writing a commit log entry
@@ -124,11 +148,6 @@ endfunction
 
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" configure NERDTree
-map <C-n> :NERDTreeToggle<CR>
-"close vim if NERDTree is the last open buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Arrow keys navigate split windows!
 nmap <Up> <C-W><Up>
