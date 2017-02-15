@@ -65,11 +65,11 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>1169 113 445 77 0 0 1680 1027 </string>
+	<string>2002 37 445 77 0 0 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>205 297 796 473 0 0 1680 1027 </string>
+	<string>409 475 918 495 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>563 207 1075 748 0 0 1680 1027 </string>
+	<string>1382 496 1075 748 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>724 310 585 452 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
@@ -640,7 +640,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MenloForPowerline-Regular 12</string>
+			<string>MenloForPowerline-Regular 13</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -713,6 +713,8 @@
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>1</integer>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>508581010.62712598</real>
 	<key>PointerActions</key>
@@ -759,7 +761,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-02-13T19:57:20Z</date>
+	<date>2017-02-15T05:36:39Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>UseBorder</key>
