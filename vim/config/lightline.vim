@@ -14,15 +14,12 @@
 "
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'default',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \   'left': [ [ 'mode', 'paste', ], [ 'fugitive', 'filename' ] ],
       \ },
       \ 'component_function': {
       \   'fugitive': 'LightlineFugitive',
-      \   'readonly': 'LightlineReadonly',
-      \   'modified': 'LightlineModified',
       \   'filename': 'LightlineFilename'
       \ },
       \ 'separator': { 'left': '', 'right': '' },
