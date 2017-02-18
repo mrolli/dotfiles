@@ -19,14 +19,19 @@ let g:lightline = {
       \   'left': [ [ 'mode', 'paste', ], [ 'fugitive', 'filename' ] ],
       \   'right': [ [ 'percent', 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'trailingspace', 'trailingtab' ] ]
       \ },
+      \ 'component': {
+      \   'percent': '%p%%',
+      \   'lineinfo': '%l:%v'
+      \ },
       \ 'component_function': {
       \   'fugitive': 'LightlineFugitive',
       \   'filename': 'LightlineFilename',
       \   'trailingspace': 'StatuslineTrailingSpaceWarning',
-      \   'trailingtab': 'StatuslineTabWarning'
+      \   'trailingtab': 'StatuslineTabWarning',
+      \   'mylineinfo': 'MyLineInfo'
       \ },
       \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
+      \ 'subseparator': { 'left': '', 'right': '|' }
       \ }
 
 function! LightlineModified()
