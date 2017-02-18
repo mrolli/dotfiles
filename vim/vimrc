@@ -123,7 +123,7 @@ set sidescrolloff=7
 set sidescroll=1
 
 "some stuff to get the mouse going in term
-set mouse=a
+"set mouse=a
 set ttymouse=xterm2
 
 "hide buffers when not displayed
