@@ -1,6 +1,5 @@
-vim/autoload
-vim/bundle
-vim/swap/*
-vim/undofiles/*
-vim/.netrwhist
+vim.symlink/autoload
+vim.symlink/bundle
+vim.symlink/swap/*
+vim.symlink/undofiles/*
 

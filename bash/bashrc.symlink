@@ -15,8 +15,11 @@ PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
+# Shortcut to the dotfiles path
+export DOTF=$HOME/.dotfiles
+
 # Build path
-PATH=~/bin:$PATH
+PATH=./bin:$DOTF/bin:$PATH
 
 # colored ls output
 alias ls='ls -G'

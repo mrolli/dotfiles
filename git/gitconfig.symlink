@@ -21,7 +21,7 @@
 [core]
     autocrlf = input
     editor = vim
-    excludesfile = /opt/boxen/config/git/gitignore
+    excludesfile = ~/.gitignore
 [grep]
     lineNumber = true
 [pack]
@@ -43,5 +43,3 @@
 [push]
     default = simple
 
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
