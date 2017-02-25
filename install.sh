@@ -108,34 +108,7 @@ install_dotfiles () {
   done
 }
 
-install_fonts () {
-  info 'Installing fonts...'
-
-  if [ -d "$DOTFILES_ROOT_REL/fonts" ]
-  then
-    cd "$DOTFILES_ROOT_REL/fonts"
-
-    SAVEIFS=$IFS
-    IFS=$'\n'
-    for ttf_file in $(find -H . -name '*.ttf')
-    do
-      if [ -f "$FONT_DIR/$ttf_file" ]
-      then
-        success "Skipped $ttf_file"
-      else
-        cp "$ttf_file" "$FONT_DIR/$ttf_file"
-        success "Successfully installed $ttf_file"
-      fi
-    done
-    # restore $IFS
-    IFS=$SAVEIFS
-    cd $HOME
-  fi
-}
-
 install_dotfiles
-echo ''
-install_fonts
 
 echo ''
 echo '  Everything in place, have fun!'
