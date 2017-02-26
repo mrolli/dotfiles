@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
-topicpath=$(dirname $0)
+topic_dir=$(dirname $0)
+source $topic_dir/../shell_functions.sh
 
-open "$topicpath/Dark Background.terminal"
+echo ''
+info "Configuring Terminal.app"
+open "$topic_dir/Dark Background.terminal"
 osascript -e 'tell application "Terminal" to close window 0'
 defaults write com.apple.Terminal "Default Window Settings" -string "Dark Background"
 defaults delete com.apple.Terminal "Startup Window Settings"
+success "Successfully configured Terminal.app"
 
