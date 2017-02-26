@@ -6,10 +6,13 @@ if [ ! -d /Applications/iTerm.app ]; then
 fi
 
 # This generates a preferences file if none is available
-if ! (ps aux | grep "[i]Term.app" >/dev/null 2>&1); then
-  open /Applications/iTerm.app
+if [ ! -f ~/Library/Preferences/com.googlecode.iterm2.plist ]
+then
+  if ! (ps aux | grep "[i]Term.app" >/dev/null 2>&1); then
+    open /Applications/iTerm.app
+  fi
+  osascript -e 'tell application "iTerm" to quit'
 fi
-osascript -e 'tell application "iTerm" to quit'
 
 # Delete all cache dpreferences
 defaults delete com.googlecode.iterm >/dev/null 2>&1
