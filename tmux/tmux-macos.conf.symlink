@@ -1,3 +1,0 @@
-# Run reattach-to-user-namespace on new shell
-set-option -g default-command "reattach-to-user-namespace -l ${SHELL}"
-
