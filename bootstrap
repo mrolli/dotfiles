@@ -110,6 +110,19 @@ install_dotfiles () {
 
 install_dotfiles
 
+# If we're on a Mac, let's install and setup homebrew.
+if [ "$(uname -s)" == "Darwin" ]
+then
+  echo ''
+  info 'Installing dependencies...'
+  if source "$DOTFILES_ROOT_REL"/bin/dot
+  then
+    success "Dependencies installed"
+  else
+    fail "Error installing dependencies"
+  fi
+fi
+
 echo ''
 echo '  Everything in place, have fun!'
 

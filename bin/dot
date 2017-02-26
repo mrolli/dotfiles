@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# dot
+#
+# `dot` handles installation, updates, things like that. Run it periodically
+# to make sure you're on the latest and greatest.
+export DOTF=$HOME/.dotfiles
+
+# Set macOS defaults
+#$DOTF/macos/set-defaults.sh
+
+# Install homebrew
+$DOTF/homebrew/install.sh 2>&1
+
+# Upgrade homebrew
+echo "› brew update"
+brew update
+
+# Install software
+echo "› $DOTF/script/install"
+$DOTF/install
+
+exit 0
+
