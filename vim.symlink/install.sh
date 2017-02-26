@@ -12,5 +12,3 @@ else
   fail "Error installing plugins"
 fi
 
-exit 0
-

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # dot
 #
@@ -6,19 +6,43 @@
 # to make sure you're on the latest and greatest.
 export DOTF=$HOME/.dotfiles
 
-# Set macOS defaults
-#$DOTF/macos/set-defaults.sh
+source $DOTF/shell_functions.sh
 
-# Install homebrew
-$DOTF/homebrew/install.sh 2>&1
+# Set macOS defaults
+echo ''
+info 'Configure macOS settings...'
+#$DOTF/macos/set-defaults.sh
+success 'Successfully configured macOS'
+
+# Setup Homebrew
+$DOTF/homebrew/setup.sh
 
 # Upgrade homebrew
-echo "› brew update"
+echo ''
+info 'Running brew update...'
 brew update
+if [ $? -eq 0 ]
+then
+  success 'Successfullly updated formulae'
+else
+  fail 'Failed to updated formulae'
+  exit 1
+fi
 
-# Install software
-echo "› $DOTF/script/install"
+# Run Homebrew through the Brewfile
+echo ''
+info 'Running brew bundle...'
+brew bundle --file=$DOTF/Brewfile
+if [ $? -eq 0 ]
+then
+  success 'Successfully installed applications'
+else
+  fail 'Failed to install applications'
+  exit 1
+fi
+
+# Run installers
+echo ''
+info "Running installers..."
 $DOTF/install
-
-exit 0
 

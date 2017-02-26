@@ -7,10 +7,13 @@
 #
 # Check for Homebrew
 #
+topic_dir=$(dirname $0)
+source $topic_dir/../shell_functions.sh
+
+echo ''
+info "Installing Homebrew..."
 if test ! $(which brew)
 then
-  echo "  Installing Homebrew for you."
-
   # Install the correct homebrew for each OS type
   if test "$(uname)" = "Darwin"
   then
@@ -19,8 +22,8 @@ then
   then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
   fi
-
+  success 'Successfully installed Homebrew'.
+else
+  success 'Skipping Homebrew'
 fi
-
-exit 0
 

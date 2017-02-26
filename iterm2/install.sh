@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-topic_dir=$(dirname $0)
+topic_dir=$(dirname "$0")
 prefs=~/Library/Preferences/com.googlecode.iterm2.plist
 
 source $topic_dir/../shell_functions.sh
 
 echo ''
-info 'Configuring iterm2'
+info 'Configuring iterm2...'
 
 if [ ! -d /Applications/iTerm.app ]; then
   fail 'iterm2 not found'
@@ -28,7 +28,5 @@ defaults delete com.googlecode.iterm >/dev/null 2>&1
 cp  $topic_dir/com.googlecode.iterm2.plist $prefs
 # Reread preferences into cache
 defaults read -app iterm >/dev/null
-success "Successfully configure iterm2"
-
-exit 0
+success "Successfully configured iterm2"
 

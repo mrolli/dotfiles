@@ -6,10 +6,8 @@ set -e
 
 cd "$(dirname $0)"
 
-# Run Homebrew through the Brewfile
-echo "› brew bundle"
-brew bundle
-
 # find the installers and run them iteratively
 find . -depth 2 -name install.sh | while read installer ; do sh -c "${installer}" ; done
+
+cd - >/dev/null
 
