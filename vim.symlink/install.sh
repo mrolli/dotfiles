@@ -1,20 +1,14 @@
 #!/bin/bash
 
-# setup pathogen first if not yet installed
-echo -n "Setting up Vundle... "
-if [ -d ~/.vim/bundle/Vundle.vim ];
+topic_dir=$(dirname "$0")
+source $topic_dir/../shell_functions.sh
+
+echo ''
+info "Installing vim plugins found in vimrc..."
+if source $topic_dir/plugin_install.sh
 then
-    echo "already setup - skip."
+  success "Successfully installed plugins"
 else
-    mkdir -p ~/.vim/bundle ~/.vim/colors
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim >/dev/null 2>&1
-    echo "done."
+  fail "Error installing plugins"
 fi
-
-# Let Vundle do the heavy lifting
-echo -n "Installing specified plugins... "
-vim +PluginInstall +qall
-echo "done."
-
-exit 0
 

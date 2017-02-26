@@ -13,26 +13,7 @@ FONT_DIR=$HOME/Library/Fonts
 
 set -e
 
-echo ''
-
-info () {
-  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
-}
-
-user () {
-  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
-}
-
-success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
-}
-
-fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-  echo ''
-  exit
-}
-
+source $DOTFILES_ROOT_ABS/shell_functions.sh
 
 link_file () {
   local src=$1 dst=$2
@@ -108,34 +89,21 @@ install_dotfiles () {
   done
 }
 
-install_fonts () {
-  info 'Installing fonts...'
-
-  if [ -d "$DOTFILES_ROOT_REL/fonts" ]
-  then
-    cd "$DOTFILES_ROOT_REL/fonts"
-
-    SAVEIFS=$IFS
-    IFS=$'\n'
-    for ttf_file in $(find -H . -name '*.ttf')
-    do
-      if [ -f "$FONT_DIR/$ttf_file" ]
-      then
-        success "Skipped $ttf_file"
-      else
-        cp "$ttf_file" "$FONT_DIR/$ttf_file"
-        success "Successfully installed $ttf_file"
-      fi
-    done
-    # restore $IFS
-    IFS=$SAVEIFS
-    cd $HOME
-  fi
-}
-
-install_dotfiles
 echo ''
-install_fonts
+install_dotfiles
+
+# If we're on a Mac, let's install and setup homebrew.
+if [ "$(uname -s)" == "Darwin" ]
+then
+  echo ''
+  info 'Installing dependencies...'
+  if source "$DOTFILES_ROOT_REL"/bin/dot
+  then
+    success "Dependencies installed"
+  else
+    fail "Error installing dependencies"
+  fi
+fi
 
 echo ''
 echo '  Everything in place, have fun!'
