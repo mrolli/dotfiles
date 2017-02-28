@@ -7,7 +7,7 @@ on run
   if num > 0 then
     tell application "iTunes"
       if player state is playing then
-        set info to name of current track & " - " & artist of current track
+        set info to artist of current track & " - " & name of current track
       else
         set info to "Not Playing"
       end if
