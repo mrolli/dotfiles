@@ -19,6 +19,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'mhinz/vim-signify'
 Plugin 'ervandew/supertab'
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sleuth'
@@ -99,14 +100,6 @@ set expandtab
 set smarttab
 set autoindent
 set cindent           "recommended seting for automatic C-style indentation
-
-"highlight tabs and trailing spaces
-highlight LiteralTabs ctermbg=red guibg=red
-autocmd ColorScheme * highlight LiteralTabs ctermbg=red guibg=red
-match LiteralTabs /\s\    /
-highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
 
 "some key assignments
 nnoremap <F2> :buffers<CR>:buffer<Space>
