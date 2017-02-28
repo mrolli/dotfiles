@@ -17,6 +17,7 @@ brew 'mas'
 brew 'p7zip'
 brew 'packer'
 brew 'ssh-copy-id'
+brew 'tmux-mem-cpu-load'
 brew 'watch'
 brew 'wget'
 
@@ -27,6 +28,7 @@ brew 'vagrant-completion'
 cask 'font-menlo-for-powerline'
 cask 'google-chrome'
 cask 'iterm2'
+cask 'vlc'
 
 mas '1Password', id: 443987910
 mas 'Alfred', id: 405843582
