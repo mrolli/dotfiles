@@ -19,7 +19,7 @@ bind '"\e[B":history-search-forward'
 export DOTF=$HOME/.dotfiles
 
 # Build path
-PATH=./bin:$DOTF/bin:$PATH
+PATH=bin/:$DOTF/bin:$PATH
 
 # colored ls output
 alias ls='ls -G'
