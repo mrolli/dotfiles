@@ -79,7 +79,7 @@ set-option -g mouse on
 set-option -g default-terminal "screen-256color"
 
 # Status bar design
-set-option -g  status-fg colour245
+set-option -g  status-fg colour248
 set-option -g  status-bg colour236
 set-option -g  status-attr dim
 set-option -g  status-justify centre
@@ -98,22 +98,22 @@ set-option -g message-style fg=colour16,bg=colour142
 # Window status design
 set-option -g window-status-format ' #I:#W '
 set-option -g window-status-current-format ' #I:#W#F '
-set-option -g window-style fg=colour245,bg=colour234
-set-option -g window-status-style fg=colour246,bg=colour237
-set-option -g window-status-current-style fg=colour245,bg=colour234
-set-option -g window-status-activity-style fg=colour250,bg=colour234
-set-option -g window-status-bell-style fg=colour250,bg=colour234
-set-option -g window-status-last-style fg=colour246,bg=colour237
+set-option -g window-style fg=colour248,bg=colour234
+set-option -g window-status-style fg=colour248,bg=colour237
+set-option -g window-status-current-style fg=colour248,bg=colour234
+set-option -g window-status-activity-style fg=colour252,bg=colour234
+set-option -g window-status-bell-style fg=colour252,bg=colour234
+set-option -g window-status-last-style fg=colour248,bg=colour237
 set-option -g window-status-separator ""
 # enable activity alerts
 set-option -g monitor-activity on
 set-option -g visual-activity on
 
 # Pane design
-set-option -g pane-border-style fg=colour245,bg=colour234
+set-option -g pane-border-style fg=colour248,bg=colour234
 set-option -g pane-active-border-style fg=colour39,bg=colour234
 
 # Clock; see C-a t
-set-option -g clock-mode-colour colour245
+set-option -g clock-mode-colour colour248
 set-option -g clock-mode-style 24
 
