@@ -3,8 +3,9 @@
 topic_dir=$(dirname $0)
 source $topic_dir/../shell_functions.sh
 
-doupdate=1
 echo ''
+info 'Setting up macos...'
+doupdate=1
 prompt_confirm "Do you want me to run softwareupdate?" || doupdate=0
 if [ $doupdate -eq 1 ]
 then
@@ -14,7 +15,6 @@ then
 fi
 
 chhostname=1
-echo ''
 prompt_confirm "Do you want me to change the hostname of this machine?" || chhostname=0
 if [ $chhostname -eq 1 ]
 then
@@ -27,3 +27,4 @@ then
   success "Hostname set to ${myhostname}."
 fi
 
+success 'Successfully configured macOS.'
