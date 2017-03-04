@@ -7,7 +7,8 @@ set -e
 cd "$(dirname $0)"
 
 # find the installers and run them iteratively
-find . -depth 2 -name install.sh | while read installer ; do sh -c "${installer}" ; done
+#find . -depth 2 -name install.sh | while read installer; do bash -c "${installer}"; done
+find . -depth 2 -name install.sh -exec bash -c {} \;
 
 cd - >/dev/null
 
