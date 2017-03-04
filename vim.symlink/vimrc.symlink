@@ -99,7 +99,9 @@ set tabstop=2
 set expandtab
 set smarttab
 set autoindent
-set cindent           "recommended seting for automatic C-style indentation
+set cindent           " recommended seting for automatic C-style indentation
+set listchars=tab:▶\  " show a symbol for tabs and set colors on next line
+highlight SpecialKey ctermfg=white ctermbg=9 guibg=#FF0000
 
 "some key assignments
 nnoremap <F2> :buffers<CR>:buffer<Space>
