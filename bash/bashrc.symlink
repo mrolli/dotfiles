@@ -23,6 +23,9 @@ PATH=bin/:$DOTF/bin:$PATH
 
 # colored ls output
 alias ls='ls -G'
+# setup alias vi instead of using /usr/bin/vi
+# due to exit code issues on macOS
+alias vi="vim"
 # brewup onliner to keep things up2date
 alias brewup='brew update && brew upgrade && brew cleanup; brew doctor'
 
