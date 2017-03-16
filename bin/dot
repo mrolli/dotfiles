@@ -8,12 +8,6 @@ export DOTF=$HOME/.dotfiles
 
 source $DOTF/shell_functions.sh
 
-# Set macOS defaults
-echo ''
-info 'Configure macOS settings...'
-#$DOTF/macos/set-defaults.sh
-success 'Successfully configured macOS'
-
 # Setup Homebrew
 $DOTF/homebrew/setup.sh
 
