@@ -26,8 +26,11 @@ bind-key r source-file ~/.tmux.conf \; display "Configuration reloaded!"
 set-option -g base-index 1
 set-window-option -g pane-base-index 1
 
-# Automatically rename windows and panes
-set-window-option -g automatic-rename on
+# Do not automatically rename windows and panes
+set-window-option -g automatic-rename off
+
+# Increase scrollback buffer
+set-option -g history-limit 5000
 
 # Easily toggle synchronization (mnemonic: e is for echo)
 bind-key e set-window-option synchronize-panes on
@@ -69,7 +72,7 @@ bind-key p paste-buffer
 bind-key P pipe-pane -o "cat >>~/#W.log" \; display "Toggled logging to ~/#W.log"
 
 # Mouse support - set to on if you want to use the mouse
-set-option -g mouse on
+#set-option -g mouse on
 
 ######################
 ### Look and Feel  ###
