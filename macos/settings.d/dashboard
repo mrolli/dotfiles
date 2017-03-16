@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+###############################################################################
+# Dashboard                                                                   #
+###############################################################################
+
+# Disable Dashboard
+# Possible values:
+#   1 => disabled
+#   2 => as space
+#   3 => overlay
+defaults write com.apple.dashboard dashboard-enabled-state 1
+
