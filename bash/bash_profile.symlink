@@ -18,6 +18,10 @@ export HISTFILESIZE=${HISTSIZE}
 exportHISTCONTROL=ignoreboth
 # Shortcut to the dotfiles path
 export DOTF=$HOME/.dotfiles
+# rbenv initiation (done before next PATH statement!)
+if which rbenv >/dev/null 2>&1; then
+   eval "$(rbenv init -)"
+fi
 # Build path
 export PATH=bin:$DOTF/bin:$PATH
 
@@ -53,24 +57,6 @@ fi
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWUPSTREAM="auto verbose"
-
-# rbenv stuff
-if [ -f /opt/boxen/env.sh ]; then
-  source /opt/boxen/env.sh
-elif which rbenv >/dev/null 2>&1; then
-  eval "$(rbenv init -)"
-fi
-
-# perl5 stuff used for shelldap primarily
-USER_PERL_DIR=~/.perl5
-if [[ -d $USER_PERL_DIR && -r $USER_PERL_DIR && \
-      -x $USER_PERL_DIR ]]; then
-    PATH="${USER_PERL_DIR}/bin${PATH+:}${PATH}"; export PATH;
-    PERL5LIB="${USER_PERL_DIR}/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
-    PERL_LOCAL_LIB_ROOT="${USER_PERL_DIR}${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
-    PERL_MB_OPT="--install_base \"${USER_PERL_DIR}\""; export PERL_MB_OPT;
-    PERL_MM_OPT="INSTALL_BASE=${USER_PERL_DIR}"; export PERL_MM_OPT;
-fi
 
 # build command prompt
 ps1_prompt() {
