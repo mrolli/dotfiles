@@ -22,8 +22,6 @@ export DOTF=$HOME/.dotfiles
 if which rbenv >/dev/null 2>&1; then
    eval "$(rbenv init -)"
 fi
-# Build path
-export PATH=bin:$DOTF/bin:$PATH
 
 # Always append to histroy...
 shopt -s histappend
@@ -53,6 +51,14 @@ if hash brew 2>/dev/null; then
         done
     fi
 fi
+
+# gopath initialization
+if which go >/dev/null 2>&1
+then
+   export GOPATH=$HOME/Developer/go
+   export PATH=$GOPATH/bin:$PATH
+fi
+
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -93,4 +99,7 @@ ps1_prompt() {
 }
 # preserve earlier PROMPT_COMMAND entries
 PROMPT_COMMAND="ps1_prompt;$PROMPT_COMMAND"
+
+# Build path
+export PATH=bin:$DOTF/bin:$PATH
 
