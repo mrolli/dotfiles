@@ -1,3 +1,13 @@
 # Fix user namespace on macOS
 set-option -g default-command "reattach-to-user-namespace -l ${SHELL}"
 
+# Additionally decorate status bar
+# add cpu/mem/load to left are
+set-option -ag status-left "#[fg=colour245] #(tmux-mem-cpu-load -p -q -g 0 -m 2 --interval 2) #[default]"
+set-option -g  status-left-length 60
+# add current playing so to right area
+set-option -g  status-right '#(itunesplaying) | #H | %d.%m.%y | %R '
+set-option -g  status-right-length 100
+# decorate active windows' tab using powerline
+set-option -g window-status-current-format ' #I:#W#F '
+
