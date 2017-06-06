@@ -33,7 +33,13 @@ bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
 # colored ls output
-alias ls='ls -G'
+if test "$(uname)" = "Darwin"
+then
+  alias ls='ls -G'
+else
+  alias ls='ls --color'
+fi
+
 # setup alias vi instead of using /usr/bin/vi
 # due to exit code issues on macOS
 alias vi="vim"
