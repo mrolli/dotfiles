@@ -37,6 +37,7 @@ cask 'google-chrome'
 cask 'iterm2'
 cask 'spotify'
 cask 'steam'
+cask 'telegram-desktop'
 cask 'textmate'
 cask 'vagrant'
 cask 'virtualbox'
@@ -54,6 +55,5 @@ mas 'Mactracker', id: 430255202
 mas 'Microsoft Remote Desktop', id: 715768417
 mas 'OneDrive', id: 823766827
 mas 'Remote Desktop', id: 409907375
-mas 'Slack', id: 803453959
 mas 'SystemPal', id: 453164367
 
