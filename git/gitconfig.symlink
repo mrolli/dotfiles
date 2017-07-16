@@ -2,10 +2,11 @@
     name = Michael Rolli
     email = michael@rollis.ch
 [alias]
-    ci = commit -v
-    co = checkout
-    st = status
-    s  = status -s
+    ci  = commit -v
+    cia = commit -v --amend
+    co  = checkout
+    st  = status
+    s   = status -s
     revert = revert -n
     oneline = log --pretty=tformat:"%Cred%h%Creset%x09%Cgreen%an%Creset%x09%ad%x09%s"  --date=short --graph --decorate
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
