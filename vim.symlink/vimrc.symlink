@@ -24,6 +24,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 " Snipmate & Co
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -66,6 +67,7 @@ source $HOME/.vim/config/lightline.vim
 source $HOME/.vim/config/syntastic.vim
 source $HOME/.vim/config/signify.vim
 source $HOME/.vim/config/nerdtree.vim
+source $HOME/.vim/config/markdown-preview.vim
 
 set showcmd                    " show incomplete cmds down the bottom
 set noshowmode                 " do not show current mode down the bottom; already shown by lightline
