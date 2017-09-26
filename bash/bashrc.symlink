@@ -3,6 +3,3 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# Source profile if we are in an interactive shell
-[ -n "$PS1" ] && source ~/.bash_profile
-
