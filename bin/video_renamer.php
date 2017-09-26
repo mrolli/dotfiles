@@ -2,8 +2,9 @@
 <?php
 
 $pregReplaceStruct = array(
-//    '/Do.*\.S02E/' => 'Doctor.Who.S02E',
-    '/ /'   => '.',
+    //    '/Do.*\.S02E/' => 'Doctor.Who.S02E',
+    '/-/'    => '',
+    '/ +/'   => '.',
     '/[()]/' => '',
 );
 
@@ -13,6 +14,7 @@ $filenames = glob('*');
 
 foreach ($filenames as $origfilename) {
     $newfilename = preg_replace(array_keys($pregReplaceStruct), array_values($pregReplaceStruct), $origfilename);
+    $newfilename = ucwords($newfilename);
     if ($origfilename !== $newfilename) {
         if ($notest) {
             rename($origfilename, $newfilename);
