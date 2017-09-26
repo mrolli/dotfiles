@@ -47,15 +47,14 @@ alias vi="vim"
 alias brewup='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # source bash completion installed by homebrew if available
-if hash brew 2>/dev/null; then
-    BREW_COMP_DIR=`brew --prefix`/etc/bash_completion.d
-    if [[ -d $BREW_COMP_DIR && -r $BREW_COMP_DIR && \
-        -x $BREW_COMP_DIR ]]; then
-        for i in $(LC_ALL=C command ls "$BREW_COMP_DIR"); do
-            i=$BREW_COMP_DIR/$i
-            [[ -f $i && -r $i ]] && . "$i"
-        done
-    fi
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
+
+# add PDK to the PATH if available
+if [[ -d /opt/puppetlabs/pdk/bin ]]
+then
+  PATH=$PATH:/opt/puppetlabs/pdk/bin
 fi
 
 # gopath initialization
