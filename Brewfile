@@ -55,6 +55,7 @@ mas 'GarageBand', id: 682658836
 mas 'iFinance 4', id: 992362138
 mas 'iMovie', id: 408981434
 #mas 'iMovie 9.0.9', id: 408981434
+mas 'Logic Pro X', id: 634148309
 mas 'Mactracker', id: 430255202
 mas 'Microsoft Remote Desktop', id: 715768417
 mas 'OneDrive', id: 823766827
