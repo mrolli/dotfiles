@@ -57,9 +57,8 @@ mas 'iMovie', id: 408981434
 #mas 'iMovie 9.0.9', id: 408981434
 mas 'Logic Pro X', id: 634148309
 mas 'Mactracker', id: 430255202
-mas 'Microsoft Remote Desktop', id: 715768417
+mas 'Microsoft Remote Desktop 10', id: 1295203466
 mas 'OneDrive', id: 823766827
 mas 'Purple Tree', id: 764936294
 mas 'Remote Desktop', id: 409907375
 mas 'SystemPal', id: 453164367
-
