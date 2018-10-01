@@ -64,6 +64,18 @@ then
    export PATH=$GOPATH/bin:$PATH
 fi
 
+# function wrapper to issue IPMI commands; password stored in ~/.ipmi.pass
+ipmi() { local host; if [ -n "$1" ]; then host=$1; shift; ipmitool -I lanplus -H ${host}.mgmt.unibe.ch -U root -f ~/.ipmi.pass $*; else echo "Usage: ipmi <hostname> <commands/options>"; fi }
+
+# function wrapper to open serial over lan connection; password stored in ~/.ipmi.pass
+isol() { if [ -n "$1" ]; then ipmitool -I lanplus -H $1.mgmt.unibe.ch -U root -f ~/.ipmi.pass sol set enabled true; ipmitool -I lanplus -H $1.mgmt.unibe.ch -U root -f ~/.ipmi.pass -e! sol activate; else echo "Usage: isol <hostname>"; fi }
+
+
+# git-achievements
+export GIT_ACHIEVEMENTS_HOME=$HOME/.git-achieve
+export PATH="${PATH}":"${GIT_ACHIEVEMENTS_HOME}"
+alias git="git-achievements"
+
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -106,5 +118,6 @@ ps1_prompt() {
 PROMPT_COMMAND="ps1_prompt;$PROMPT_COMMAND"
 
 # Build path
+export PATH=/usr/local/sbin:$PATH
 export PATH=bin:$DOTF/bin:$PATH
 
