@@ -41,11 +41,12 @@ cask 'spotify'
 #cask 'steam'
 cask 'telegram-desktop'
 cask 'textmate'
+cask 'tunnelblick'
 cask 'vagrant'
 cask 'virtualbox'
 cask 'virtualbox-extension-pack'
 cask 'vlc'
-#cask 'xquartz'
+cask 'xquartz'
 
 mas '1Password', id: 443987910
 mas 'Alfred', id: 405843582
