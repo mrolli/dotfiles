@@ -44,3 +44,5 @@
 [push]
     default = simple
 
+[achievement]
+    upload = true
