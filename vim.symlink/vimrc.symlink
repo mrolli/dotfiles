@@ -33,6 +33,7 @@ Plugin 'honza/vim-snippets'
 " Work related
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'rodjek/vim-puppet'
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
