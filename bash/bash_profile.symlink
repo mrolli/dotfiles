@@ -15,7 +15,7 @@ export MANPAGER='less -X'
 # Keep plenty of history.
 export HISTSIZE=1000000
 export HISTFILESIZE=${HISTSIZE}
-exportHISTCONTROL=ignoreboth
+export HISTCONTROL=ignoreboth
 # Shortcut to the dotfiles path
 export DOTF=$HOME/.dotfiles
 # rbenv initiation (done before next PATH statement!)
@@ -49,12 +49,6 @@ alias brewup='brew update && brew upgrade && brew cleanup; brew doctor'
 # source bash completion installed by homebrew if available
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 . $(brew --prefix)/etc/bash_completion
-fi
-
-# add PDK to the PATH if available
-if [[ -d /opt/puppetlabs/pdk/bin ]]
-then
-  PATH=$PATH:/opt/puppetlabs/pdk/bin
 fi
 
 # gopath initialization
