@@ -14,8 +14,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 " General Plugins
 Plugin 'itchyny/lightline.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
+Plugin 'maximbaz/lightline-ale'
 Plugin 'godlygeek/tabular'
 Plugin 'mhinz/vim-signify'
 Plugin 'ervandew/supertab'
@@ -63,9 +65,8 @@ colorscheme bubblegum-256-dark
 " always display status line
 set laststatus=2
 
-" Plugin configuration: syntastic
 source $HOME/.vim/config/lightline.vim
-source $HOME/.vim/config/syntastic.vim
+" source $HOME/.vim/config/syntastic.vim
 source $HOME/.vim/config/signify.vim
 source $HOME/.vim/config/nerdtree.vim
 source $HOME/.vim/config/markdown-preview.vim

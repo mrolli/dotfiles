@@ -12,16 +12,21 @@
 "
 " Recommendations: Menlo for Powerline, Cousine for Powerline
 "
-
 let g:lightline = {
       \ 'colorscheme': 'default',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste', ], [ 'fugitive', 'filename' ] ],
-      \   'right': [ [ 'percent', 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'trailingspace', 'trailingtab' ] ]
+      \   'left': [[ 'mode', 'paste', ], [ 'fugitive', 'filename' ]],
+      \   'right': [[ 'percent', 'lineinfo' ], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'trailingspace', 'trailingtab' ]]
       \ },
       \ 'component': {
       \   'percent': '%p%%',
       \   'lineinfo': '%l:%v'
+      \ },
+      \ 'component_expand': {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
       \ },
       \ 'component_function': {
       \   'fugitive': 'LightlineFugitive',
@@ -29,6 +34,12 @@ let g:lightline = {
       \   'trailingspace': 'StatuslineTrailingSpaceWarning',
       \   'trailingtab': 'StatuslineTabWarning',
       \   'mylineinfo': 'MyLineInfo'
+      \ },
+      \ 'component_type': {
+      \   'linter_checking': 'left',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error',
+      \   'linter_ok': 'left',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '|' }
