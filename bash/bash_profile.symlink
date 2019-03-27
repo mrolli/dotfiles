@@ -113,5 +113,5 @@ PROMPT_COMMAND="ps1_prompt;$PROMPT_COMMAND"
 
 # Build path
 export PATH=/usr/local/sbin:$PATH
-export PATH=bin:$DOTF/bin:$PATH
+export PATH=$DOTF/bin:$PATH
 
