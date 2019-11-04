@@ -44,7 +44,9 @@ brew 'bundler-completion'
 brew 'packer-completion'
 brew 'vagrant-completion'
 
+# Casks
 cask 'caskroom/fonts/font-menlo-for-powerline'
+cask 'alfred'
 cask 'appcleaner'
 cask 'cyberduck'
 cask 'dropbox'
