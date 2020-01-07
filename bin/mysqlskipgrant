@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr/local/opt/mariadb/bin/mysqld_safe --skip-grant-tables --basedir=/usr/local/opt/mariadb --datadir=/usr/local/var/mysql --plugin-dir=/usr/local/opt/mariadb/lib/plugin --log-error=~/mysqld.err  --pid-fil
+e=rivendell.pid
