@@ -70,7 +70,6 @@ cask 'virtualbox-extension-pack'
 cask 'xquartz'
 
 mas '1Password', id: 443987910
-mas 'Alfred', id: 405843582
 mas 'BetterSnapTool', id: 417375580
 mas 'Blackmagic Disk Speed Test', id: 425264550
 mas 'GarageBand', id: 682658836
