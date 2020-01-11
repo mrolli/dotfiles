@@ -1,3 +1,4 @@
+Brewfile.lock.json
 vim.symlink/autoload
 vim.symlink/bundle
 vim.symlink/swap/*
