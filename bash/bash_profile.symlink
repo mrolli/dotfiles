@@ -18,10 +18,10 @@ export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
 # Shortcut to the dotfiles path
 export DOTF=$HOME/.dotfiles
-# rbenv initiation (done before next PATH statement!)
-if type rbenv >/dev/null 2>&1; then
-   eval "$(rbenv init -)"
-fi
+
+# Confgigure gem
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
 
 # Alias hub to git if available
 if type hub >/dev/null 2>&1;
