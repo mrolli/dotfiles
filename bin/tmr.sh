@@ -1,16 +1,19 @@
 #!/bin/sh
 
 SESSION_NAME="local"
+PUP_DIR=$HOME/Developer/ubelix/puppet-installer/controlrepo
 
 tmux has-session -t ${SESSION_NAME} >/dev/null 2>&1
 
 if [ $? != 0 ]
 then
-  # Create the session
-  tmux -2 new-session -n puppet -s ${SESSION_NAME} -d
-
-  # First window (0) -- vim and console
-  #tmux send-keys -t ${SESSION_NAME} 'vim' C-m
+  # Create the session and implicitly window (0)
+  tmux -2 new-session -n puppet -s ${SESSION_NAME} -d -c $PUP_DIR
+  # Split window (0) in 4 panes
+  tmux split-window -v -c $PUP_DIR
+  tmux split-window -h -c $PUP_DIR
+  tmux split-window -h -c $PUP_DIR
+  tmux select-layout tiled
 
   # shell (1)
   #tmux new-window -n bash -t ${SESSION_NAME}
