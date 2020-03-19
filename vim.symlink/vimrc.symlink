@@ -28,10 +28,8 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tmhedberg/SimpylFold'
-" Snipmate & Co
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
+" UltiSnips & Co
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 " Work related
 Plugin 'vim-ruby/vim-ruby'
@@ -71,6 +69,7 @@ source $HOME/.vim/config/syntastic.vim
 source $HOME/.vim/config/signify.vim
 source $HOME/.vim/config/nerdtree.vim
 source $HOME/.vim/config/markdown-preview.vim
+source $HOME/.vim/config/ultisnips.vim
 
 set showcmd                    " show incomplete cmds down the bottom
 set noshowmode                 " do not show current mode down the bottom; already shown by lightline
@@ -135,7 +134,7 @@ set hidden
 
 " Force markdown for all files with md extension
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" Fendced languages in markdown
+" Fenced languages in markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'puppet']
 
 "jump to last cursor position when opening a file
