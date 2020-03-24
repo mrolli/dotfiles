@@ -21,7 +21,7 @@ do
       fail "Failed to install $bundle"
     fi
   else
-    success "Skipping $bundle"
+    success "$bundle already installed. Skipping."
   fi
 done
 
