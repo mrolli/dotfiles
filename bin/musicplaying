@@ -9,10 +9,12 @@ on run
         set track_name to name of current track
         set track_duration to duration of current track
         set seconds_played to player position
-              set state to ""
-              if player state is paused then
-                  set state to "(Paused) "
-              end if
+        set state to ""
+        if player state is paused then
+            set state to "♊"
+        else
+            set state to "▶ "
+        end if
 
         set display to state & track_artist & " - " & track_name & " - " & (round ((seconds_played / track_duration) * 100)) & "%"
       end if
@@ -26,12 +28,14 @@ on run
         set track_name to name of current track
         set track_duration to duration of current track
         set seconds_played to player position
-              set state to ""
-              if player state is paused then
-                  set state to "(Paused) "
-              end if
+        set state to ""
+        if player state is paused then
+            set state to "♊"
+        else
+            set state to "▶ "
+        end if
 
-        set display to state & track_artist & " - " & track_name & " - " & (round ((seconds_played / track_duration) * 100)) & "%"
+        set display to state & track_artist & " - " & track_name
       end if
     end tell
   else if application "Spotify" is running and application "Music" is running then
@@ -48,12 +52,14 @@ on run
           set track_name to name of current track
           set track_duration to duration of current track
           set seconds_played to player position
-                set state to ""
-                if player state is paused then
-                    set state to "(Paused) "
-                end if
+          set state to ""
+          if player state is paused then
+              set state to "♊"
+          else
+              set state to "▶ "
+          end if
 
-          set display to state & track_artist & " - " & track_name & " - " & (round ((seconds_played / track_duration) * 100)) & "%"
+          set display to state & track_artist & " - " & track_name
         end if
       end tell
     else if MusicState is "playing" and (spotifyState is "paused" or spotifyState is "stopped") then
@@ -65,10 +71,12 @@ on run
           set track_name to name of current track
           set track_duration to duration of current track
           set seconds_played to player position
-                set state to ""
-                if player state is paused then
-                    set state to "(Paused) "
-                end if
+          set state to ""
+          if player state is paused then
+              set state to "♊"
+          else
+              set state to "▶ "
+          end if
 
           set display to state & track_artist & " - " & track_name & " - " & (round ((seconds_played / track_duration) * 100)) & "%"
         end if
