@@ -6,3 +6,6 @@ let g:UltiSnipsListSnippets="<s-tab><tab>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="context"
+
+" No python warnings when using vim without python3 support
+let g:UltiSnipsNoPythonWarning = 1
