@@ -64,6 +64,10 @@ then
    export PATH=$GOPATH/bin:$PATH
 fi
 
+# Some function used
+function manx() { open x-man-page://$@ ; }
+function manp() { man -t $@ | open -f -a "Preview" ; }
+
 # function wrapper to issue IPMI commands; password stored in ~/.ipmi.pass
 ipmi() { local host; if [ -n "$1" ]; then host=$1; shift; ipmitool -I lanplus -H ${host}.mgmt.unibe.ch -U root -f ~/.ipmi.pass $*; else echo "Usage: ipmi <hostname> <commands/options>"; fi }
 
@@ -76,6 +80,9 @@ export GIT_ACHIEVEMENTS_HOME=$HOME/.git-achieve
 export PATH="${PATH}":"${GIT_ACHIEVEMENTS_HOME}"
 alias git="git-achievements"
 
+# Packer cache directory and Vagrant Cloud token
+export PACKER_CACHE_DIR=$HOME/.packer.d/packer_cache
+source $HOME/.vagrant.d/vcloud_token.sh
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true

@@ -65,6 +65,7 @@ cask 'sequel-pro'
 cask 'textmate'
 cask 'tunnelblick'
 cask 'vagrant'
+cask 'vcv-rack'
 
 # Apps from AppStore
 mas '1Password', id: 443987910
@@ -80,3 +81,4 @@ mas 'Microsoft Remote Desktop 10', id: 1295203466
 mas 'OneDrive', id: 823766827
 mas 'Purple Tree', id: 764936294
 mas 'Remote Desktop', id: 409907375
+#mas 'VMware Remote Console', id: 1230249825
