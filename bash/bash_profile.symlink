@@ -82,7 +82,7 @@ alias git="git-achievements"
 
 # Packer cache directory and Vagrant Cloud token
 export PACKER_CACHE_DIR=$HOME/.packer.d/packer_cache
-source $HOME/.vagrant.d/vcloud_token.sh
+[ -f $HOME/.vagrant.d/vcloud_token.sh ] && source $HOME/.vagrant.d/vcloud_token.sh
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
