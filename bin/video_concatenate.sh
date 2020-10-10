@@ -11,4 +11,4 @@ outfile="$2"
 
 for f in ./*$type; do echo "file '$f'" >> .filelist.txt; done
 ffmpeg -f concat -safe 0 -i .filelist.txt -c copy "${outfile}"
-rm -f .filellist.txt
+rm -f .filelist.txt
