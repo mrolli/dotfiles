@@ -19,8 +19,11 @@ foreach ($filenames as $origfilename) {
     if ($origfilename == 'ranking.txt') {
         continue;
     }
-    $newfilename = preg_replace(array_keys($pregReplaceStruct), array_values($pregReplaceStruct), $origfilename);
-    $newfilename = ucwords($newfilename, " .,\t\r\n\f\v");
+    $ext = strtolower(pathinfo($origfilename, PATHINFO_EXTENSION));
+    $filename = pathinfo($origfilename, PATHINFO_FILENAME);
+    $filename = preg_replace(array_keys($pregReplaceStruct), array_values($pregReplaceStruct), $filename);
+    $filename = ucwords($filename, " .,\t\r\n\f\v");
+    $newfilename = $filename . '.' . $ext;
     if ($origfilename !== $newfilename) {
         if ($notest) {
             rename($origfilename, $newfilename);
