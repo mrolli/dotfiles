@@ -76,9 +76,12 @@ isol() { if [ -n "$1" ]; then ipmitool -I lanplus -H $1.mgmt.unibe.ch -U root -f
 
 
 # git-achievements
-export GIT_ACHIEVEMENTS_HOME=$HOME/.git-achieve
-export PATH="${PATH}":"${GIT_ACHIEVEMENTS_HOME}"
-alias git="git-achievements"
+if [ -d $HOME/.git-achieve ]
+then
+  export GIT_ACHIEVEMENTS_HOME=$HOME/.git-achieve
+  export PATH="${PATH}":"${GIT_ACHIEVEMENTS_HOME}"
+  alias git="git-achievements"
+fi
 
 # Packer cache directory and Vagrant Cloud token
 export PACKER_CACHE_DIR=$HOME/.packer.d/packer_cache
