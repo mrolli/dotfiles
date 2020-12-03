@@ -28,6 +28,8 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'preservim/tagbar'
 " UltiSnips & Co
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -70,6 +72,7 @@ source $HOME/.vim/config/signify.vim
 source $HOME/.vim/config/nerdtree.vim
 source $HOME/.vim/config/markdown-preview.vim
 source $HOME/.vim/config/ultisnips.vim
+source $HOME/.vim/config/editorconfig.vim
 
 set showcmd                    " show incomplete cmds down the bottom
 set noshowmode                 " do not show current mode down the bottom; already shown by lightline
