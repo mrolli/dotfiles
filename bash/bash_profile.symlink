@@ -29,6 +29,12 @@ then
   eval "$(hub alias -s)"
 fi
 
+# Add compleiton for gh
+if type gh >/dev/null 2>&1
+then
+  eval "$(gh completion -s bash)"
+fi
+
 # Always append to histroy...
 shopt -s histappend
 # ... and write it down after each command
