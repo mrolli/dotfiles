@@ -1,4 +1,5 @@
 Brewfile.lock.json
+git/github-token
 vim.symlink/autoload
 vim.symlink/bundle
 vim.symlink/swap/*
