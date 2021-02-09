@@ -8,7 +8,9 @@ tap 'puppetlabs/puppet'
 # Apps from homebrew/core
 brew 'ack'
 brew 'coreutils'
+brew 'ctags'
 brew 'dos2unix'
+brew 'ffmpeg'
 brew 'gh'
 brew 'git'
 brew 'go'
@@ -24,7 +26,6 @@ brew 'pstree'
 #brew 'rbenv-bundler'
 #brew 'rbenv-gemset'
 brew 'reattach-to-user-namespace'
-brew 'ssh-copy-id'
 brew 'tmux'
 brew 'tmux-mem-cpu-load'
 brew 'unrar'
@@ -80,6 +81,7 @@ mas 'Logic Pro X', id: 634148309
 mas 'Mactracker', id: 430255202
 mas 'Microsoft Remote Desktop 10', id: 1295203466
 mas 'OneDrive', id: 823766827
+mas 'Brother P-touch Editor', id: 1453365242
 mas 'Purple Tree', id: 764936294
 mas 'Remote Desktop', id: 409907375
 #mas 'VMware Remote Console', id: 1230249825
