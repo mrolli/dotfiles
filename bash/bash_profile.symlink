@@ -57,6 +57,8 @@ fi
 alias vi="vim"
 # brewup onliner to keep things up2date
 alias brewup='brew update && brew upgrade && brew cleanup; brew doctor'
+prepend() { if [ $# -ne 2 ]; then echo "Usage: ${0} FILE PREFIX"; else mv "${1}" "${2}.${1}"; fi }
+append() { if [ $# -ne 2 ]; then echo "Usage: ${0} FILE SUFFIX"; else mv "${1}" "${1}.${2}"; fi }
 
 # source bash completion installed by homebrew if available
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
