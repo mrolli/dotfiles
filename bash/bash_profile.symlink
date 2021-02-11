@@ -23,12 +23,6 @@ export DOTF=$HOME/.dotfiles
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 
-# Alias hub to git if available
-if type hub >/dev/null 2>&1;
-then
-  eval "$(hub alias -s)"
-fi
-
 # Add compleiton for gh
 if type gh >/dev/null 2>&1
 then
@@ -62,9 +56,15 @@ append() { if [ $# -ne 2 ]; then echo "Usage: ${0} FILE SUFFIX"; else mv "${1}" 
 
 # source bash completion installed by homebrew if available
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
-. $(brew --prefix)/etc/bash_completion
+. /usr/local/etc/bash_completion
 fi
 
+# Add bindirs of brew formula ot PATH
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="/usr/local/sbin:$PATH"
+e
 # gopath initialization
 if which go >/dev/null 2>&1
 then
@@ -75,13 +75,6 @@ fi
 # Some function used
 function manx() { open x-man-page://$@ ; }
 function manp() { man -t $@ | open -f -a "Preview" ; }
-
-# function wrapper to issue IPMI commands; password stored in ~/.ipmi.pass
-ipmi() { local host; if [ -n "$1" ]; then host=$1; shift; ipmitool -I lanplus -H ${host}.mgmt.unibe.ch -U root -f ~/.ipmi.pass $*; else echo "Usage: ipmi <hostname> <commands/options>"; fi }
-
-# function wrapper to open serial over lan connection; password stored in ~/.ipmi.pass
-isol() { if [ -n "$1" ]; then ipmitool -I lanplus -H $1.mgmt.unibe.ch -U root -f ~/.ipmi.pass sol set enabled true; ipmitool -I lanplus -H $1.mgmt.unibe.ch -U root -f ~/.ipmi.pass -e! sol activate; else echo "Usage: isol <hostname>"; fi }
-
 
 # git-achievements
 if [ -d $HOME/.git-achieve ]
@@ -146,7 +139,6 @@ ps1_prompt() {
 PROMPT_COMMAND="ps1_prompt;$PROMPT_COMMAND"
 
 # Build path
-export PATH=/usr/local/sbin:$PATH
 export PATH=$DOTF/bin:$PATH
 
 
