@@ -1,4 +1,4 @@
-Brewfile.lock.json
+Brewfile.*.lock.json
 git/github-token
 vim.symlink/autoload
 vim.symlink/bundle

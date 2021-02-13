@@ -1,7 +1,9 @@
 # .bash_profile
 
 # Exports
-export LSCOLORS=Dxfxcxdxbxegedabagacad
+# https://geoff.greer.fm/lscolors/
+export LSCOLORS="Dxfxcxdxbxegedabagacad"
+export LS_COLORS="di=1;33:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 export TERM=xterm-256color
 export EDITOR=vim
 export SVNEDITOR=vim
@@ -38,16 +40,9 @@ PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
-# colored ls output
-if test "$(uname)" = "Darwin"
-then
-  alias ls='ls -G'
-else
-  alias ls='ls --color'
-fi
-
-# setup alias vi instead of using /usr/bin/vi
-# due to exit code issues on macOS
+# colored ls output but on stdout only!
+alias ls='ls --color=auto'
+# setup alias vi instead of using /usr/bin/vi due to exit code issues on macOS
 alias vi="vim"
 # brewup onliner to keep things up2date
 alias brewup='brew update && brew upgrade && brew cleanup; brew doctor'
@@ -55,16 +50,14 @@ prepend() { if [ $# -ne 2 ]; then echo "Usage: ${0} FILE PREFIX"; else mv "${1}"
 append() { if [ $# -ne 2 ]; then echo "Usage: ${0} FILE SUFFIX"; else mv "${1}" "${1}.${2}"; fi }
 
 # source bash completion installed by homebrew if available
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-. /usr/local/etc/bash_completion
-fi
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # Add bindirs of brew formula ot PATH
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/sbin:$PATH"
-e
+
 # gopath initialization
 if which go >/dev/null 2>&1
 then
