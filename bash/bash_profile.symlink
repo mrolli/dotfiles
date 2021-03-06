@@ -20,10 +20,8 @@ export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
 # Shortcut to the dotfiles path
 export DOTF=$HOME/.dotfiles
-
-# Confgigure gem
-export GEM_HOME=$HOME/.gem
-export PATH=$GEM_HOME/bin:$PATH
+# GPG env var used by gpg-agent
+export GPG_TTY=$(tty)
 
 # Add compleiton for gh
 if type gh >/dev/null 2>&1
@@ -31,7 +29,7 @@ then
   eval "$(gh completion -s bash)"
 fi
 
-# Always append to histroy...
+# Always append to history...
 shopt -s histappend
 # ... and write it down after each command
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"

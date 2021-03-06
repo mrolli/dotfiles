@@ -1,6 +1,7 @@
 [user]
     name = Michael Rolli
     email = michael@rollis.ch
+    signingkey = 4DFE5E3BF4982CAE
 [alias]
     ci  = commit -v
     cia = commit -v --amend
@@ -34,6 +35,7 @@
     tool = opendiff
 [commit]
     template = ~/.gitmessage
+    gpgSign = true
 [fetch]
     prune = true
 [push]
@@ -47,3 +49,5 @@
     process = git-lfs filter-process
 [credential]
     helper = osxkeychain
+[tag]
+    gpgSign = true
