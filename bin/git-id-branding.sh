@@ -1,9 +1,11 @@
 #!/bin/bash
 
-git config user.name "Rolli, Michael (ID)"
-git config user.email "michael.rolli@id.unibe.ch"
+git config user.name "Michael Rolli"
+git config user.email "michael.rolli@unibe.ch"
+git config user.signingkey EA75816558876EAC
 
 git config user.name
 git config user.email
+git config user.signingkey
 
 exit 0
