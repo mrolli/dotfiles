@@ -51,3 +51,5 @@
     helper = osxkeychain
 [tag]
     gpgSign = true
+[init]
+    defaultBranch = main
