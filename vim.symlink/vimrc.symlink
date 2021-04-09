@@ -60,9 +60,12 @@ filetype plugin indent on    " required by Vundle
 "convenient on a sg keyboard
 let mapleader = ","
 
+"setup color scheme
 "turn on syntax highlighting
 syntax enable
-colorscheme bubblegum-256-dark
+"colorscheme bubblegum-256-dark
+set background=dark
+colorscheme solarized
 
 " always display status line
 set laststatus=2

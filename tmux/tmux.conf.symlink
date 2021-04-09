@@ -75,40 +75,53 @@ bind-key P pipe-pane -o "cat >>~/#W.log" \; display "Toggled logging to ~/#W.log
 # Set the default terminal mode to 256color mode
 set-option -g default-terminal "screen-256color"
 
+#### COLOUR (Solarized dark)
+
+# default statusbar colors
+set-option -g status-style fg=yellow,bg=black #yellow and base02
+
+# default window title colors
+set-window-option -g window-status-style fg=brightblue,bg=default #base0 and default
+#set-window-option -g window-status-style dim
+
+# active window title colors
+set-window-option -g window-status-current-style fg=brightred,bg=default #orange and default
+#set-window-option -g window-status-current-style bright
+
+# pane border
+set-option -g pane-border-style fg=black #base02
+set-option -g pane-active-border-style fg=brightgreen #base01
+
+# message text
+set-option -g message-style fg=brightred,bg=black #orange and base01
+
+# pane number display
+set-option -g display-panes-active-colour blue #blue
+set-option -g display-panes-colour brightred #orange
+
+# clock
+set-window-option -g clock-mode-colour green #green
+
+# bell
+set-window-option -g window-status-bell-style fg=black,bg=red #base02, red
+
+#### Additional changes mrolli
+
 # Status bar design
-set-option -g  status-fg colour248
-set-option -g  status-bg colour236
-#set-option -g  status-attr dim
 set-option -g  status-justify centre
 set-option -g  status-interval 2
-set-option -g  status-left "#[fg=green]Session: #S #[fg=yellow]#I #[fg=cyan]#P"
+set-option -g  status-left "#[fg=green]Session: #S #[fg=yellow]#I #[fg=red]#P  #[default]"
 
 # Window mode and message style
-#set-option -g mode-style fg=colour0,bg=colour68
-set-option -g mode-style fg=colour16,bg=colour142
-set-option -g message-style fg=colour16,bg=colour142
+set-option -g message-style fg=black,bg=yellow
 
 # Window status design
-set-option -g window-status-format ' #I:#W '
-set-option -g window-status-current-format '| #I:#W#F |'
-set-option -g window-style fg=colour248,bg=colour234
-set-option -g window-status-style fg=colour248,bg=colour237
-set-option -g window-status-current-style fg=colour248,bg=colour234
-set-option -g window-status-activity-style fg=colour252,bg=colour234
-set-option -g window-status-bell-style fg=colour252,bg=colour234
-set-option -g window-status-last-style fg=colour248,bg=colour237
-set-option -g window-status-separator ""
+#set-option -g window-status-format ' #I:#W '
+set-option -g window-status-current-format '#[fg=yellow]| #I:#W#F |#[default]'
+
 # enable activity alerts
 set-option -g monitor-activity on
 set-option -g visual-activity on
-
-# Pane design
-set-option -g pane-border-style fg=colour248,bg=colour234
-set-option -g pane-active-border-style fg=colour39,bg=colour234
-
-# Clock; see C-a t
-set-option -g clock-mode-colour colour248
-set-option -g clock-mode-style 24
 
 # Offload macOS specific stuff
 if-shell 'test "$(uname -s)" = Darwin' 'source ~/.tmux-macos.conf'

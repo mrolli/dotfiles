@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SESSION_NAME="local"
+SESSION_NAME="$(hostname -s)"
 PUP_DIR=$HOME/Developer/ubelix/puppet-installer/controlrepo
 
 tmux has-session -t ${SESSION_NAME} >/dev/null 2>&1

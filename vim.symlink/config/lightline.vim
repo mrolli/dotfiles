@@ -13,7 +13,7 @@
 " Recommendations: Menlo for Powerline, Cousine for Powerline
 "
 let g:lightline = {
-      \ 'colorscheme': 'default',
+      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [[ 'mode', 'paste', ], [ 'fugitive', 'filename' ]],
       \   'right': [[ 'percent', 'lineinfo' ], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'trailingspace', 'trailingtab' ]]
