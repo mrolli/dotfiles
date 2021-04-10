@@ -24,7 +24,7 @@ set-option -g base-index 1
 set-window-option -g pane-base-index 1
 
 # Do not automatically rename windows and panes
-set-window-option -g automatic-rename on
+set-window-option -g automatic-rename off
 
 # Increase scrollback buffer
 set-option -g history-limit 5000
@@ -57,8 +57,10 @@ bind-key Tab last-window
 bind-key Escape copy-mode
 
 # enable vim like copy/paste
-bind-key -Tcopy-mode-vi 'v' send -X begin-selection
-bind-key -Tcopy-mode-vi 'y' send -X copy-pipe-and-cancel pbcopy
+bind-key -T copy-mode-vi v send -X begin-selection
+bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "pbcopy"
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "pbcopy"
 unbind-key p
 bind-key p paste-buffer
 
