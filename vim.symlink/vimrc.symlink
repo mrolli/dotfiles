@@ -65,6 +65,8 @@ let mapleader = ","
 syntax enable
 "colorscheme bubblegum-256-dark
 set background=dark
+"let g:solarized_termcolors=256
+let g:solarized_termtrans=1
 colorscheme solarized
 
 " always display status line

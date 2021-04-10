@@ -25,7 +25,7 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#001c23</string><!-- base03 -->
+				<string>#002029</string><!-- base03 -->
 				<key>caret</key>
 				<string>#819090</string><!-- (nonstandard) ~base0 -->
 				<key>foreground</key>
