@@ -26,4 +26,3 @@ export DOTF=$HOME/.dotfiles
 
 # GPG env var used by gpg-agent
 export GPG_TTY=$(tty)
-

@@ -127,4 +127,3 @@ set-option -g visual-activity on
 
 # Offload macOS specific stuff
 if-shell 'test "$(uname -s)" = Darwin' 'source ~/.tmux-macos.conf'
-

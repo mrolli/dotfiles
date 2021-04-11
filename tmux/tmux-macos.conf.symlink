@@ -8,4 +8,3 @@ WEATHER='#(curl -s wttr.in/Burgdorf\?format\="%%l:+%%c%%20%%t%%20%%w%%20%%m&peri
 set-option -g  status-right "#(musicplaying) | $WEATHER | %d.%m.%y | %R "
 set-option -g  status-right-style fg=brightblue
 set-option -g  status-right-length 100
-
