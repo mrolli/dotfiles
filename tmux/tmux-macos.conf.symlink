@@ -3,8 +3,9 @@
 set-option -ag status-left "#(tmux-mem-cpu-load -c -p -q -g 0 -m 2 -i 2)"
 set-option -g  status-left-length 60
 
-# add current playing so to right area
-set-option -g  status-right '#(musicplaying) | %d.%m.%y | %R '
+# add current playing song and weather to right area
+WEATHER='#(curl -s wttr.in/Burgdorf\?format\="%%l:+%%c%%20%%t%%20%%w%%20%%m&period=60")'
+set-option -g  status-right "#(musicplaying) | $WEATHER | %d.%m.%y | %R "
 set-option -g  status-right-style fg=brightblue
 set-option -g  status-right-length 100
 
