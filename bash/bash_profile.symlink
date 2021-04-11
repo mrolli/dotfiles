@@ -8,13 +8,6 @@ shopt -s histappend
 # ... and write it down after each command
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
-# Source profile snippets outsourced to their own files
-for file in $DOTF/bash/{exports,aliases,functions,bash_prompt}
-do
-  [ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-unset file;
-
 ### Build PATH variable
 export PATH="/usr/local/sbin":$PATH
 # Add user scripts from dotfiles
@@ -24,6 +17,12 @@ PATH="/usr/local/opt/coreutils/libexec/gnubin":$PATH
 PATH="/usr/local/opt/findutils/libexec/gnubin":$PATH
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin":$PATH
 
+# Source profile snippets outsourced to their own files
+for file in $DOTF/bash/{exports,aliases,functions,bash_prompt}
+do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done
+unset file
 
 ### Application specific initializations
 # Source bash completion installed by homebrew

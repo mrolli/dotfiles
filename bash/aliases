@@ -1,10 +1,43 @@
 #!/usr/bin/env bash
 
-# colored ls output but on stdout only!
-alias ls='ls --color=auto'
+# shortcuts to upper dirs... give it a try
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# Detect which `ls` flavor is in use
+# https://geoff.greer.fm/lscolors/
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+  colorflag="--color=auto"
+  export LS_COLORS='di=1;33:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+else # macOS `ls`
+  colorflag="-G"
+  export LSCOLORS='Dxfxcxdxbxegedabagacad'
+fi
+
+# Colored ls output but on stdout only
+# Additionally make sure not aliasing alias by using command here
+alias ls="command ls ${colorflag}"
+
+# List all files colorized in long format
+alias l="ls -lF ${colorflag}"
+
+# List all files colorized in long format, excluding . and ..
+alias la="ls -lAF ${colorflag}"
+
+# List only directories
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # setup alias vi instead of using /usr/bin/vi due to exit code issues on macOS
 alias vi="vim"
+
+# Always enable colore *grep output
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Get week number
+alias week='date +%V'
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
@@ -12,3 +45,23 @@ alias path='echo -e ${PATH//:/\\n}'
 # brewup onliner to keep things up2date
 alias brewup='brew update && brew upgrade && brew cleanup; brew doctor'
 
+# shorcut to screen locking (= ctrl-cmd q)
+alias afk=$'osascript -e \'tell application "System Events" to key code 12 using {control down, command down}\''
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+
+# Flush Directory Service cache
+alias flush="dscacheutil -flushcache"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Empty the on the main HDD.
+# Also, clear Apple’s System Logs to improve shell startup speed.
+# Finally, clear download history from quarantine. https://mths.be/bum
+alias emptytrash="sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
+
+# unset variables set in this file
+unset colorflag

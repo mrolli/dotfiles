@@ -1,23 +1,29 @@
 # Exported env variables
-# https://geoff.greer.fm/lscolors/
-export LSCOLORS="Dxfxcxdxbxegedabagacad"
-export LS_COLORS="di=1;33:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+
+# Explicitly set terminal mode
 export TERM=xterm-256color
+
+# Set preferred editor
 export EDITOR=vim
 export SVNEDITOR=vim
+
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
+
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md="${yellow}"
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X'
+
 # Keep plenty of history.
 export HISTSIZE=1000000
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
+
 # Shortcut to the dotfiles path
 export DOTF=$HOME/.dotfiles
+
 # GPG env var used by gpg-agent
 export GPG_TTY=$(tty)
 
