@@ -9,8 +9,8 @@
     st  = status
     s   = status -s
     revert = revert -n
-    oneline = log --pretty=tformat:"%Cred%h%Creset%x09%Cgreen%an%Creset%x09%ad%x09%s"  --date=short --graph --decorate
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    l  = log --pretty=oneline -n 20 --graph --abbrev-commit
+    lg = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     ld = log --follow -p --stat --
 [color]
     ui = auto
