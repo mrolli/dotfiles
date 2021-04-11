@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# colored ls output but on stdout only!
+alias ls='ls --color=auto'
+
+# setup alias vi instead of using /usr/bin/vi due to exit code issues on macOS
+alias vi="vim"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+# brewup onliner to keep things up2date
+alias brewup='brew update && brew upgrade && brew cleanup; brew doctor'
+

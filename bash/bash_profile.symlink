@@ -1,133 +1,58 @@
 # .bash_profile
 
-# Exports
-# https://geoff.greer.fm/lscolors/
-export LSCOLORS="Dxfxcxdxbxegedabagacad"
-export LS_COLORS="di=1;33:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
-export TERM=xterm-256color
-export EDITOR=vim
-export SVNEDITOR=vim
-# Prefer US English and use UTF-8.
-export LANG='en_US.UTF-8'
-export LC_ALL='en_US.UTF-8'
-# Highlight section titles in manual pages.
-export LESS_TERMCAP_md="${yellow}"
-# Don’t clear the screen after quitting a manual page.
-export MANPAGER='less -X'
-# Keep plenty of history.
-export HISTSIZE=1000000
-export HISTFILESIZE=${HISTSIZE}
-export HISTCONTROL=ignoreboth
 # Shortcut to the dotfiles path
 export DOTF=$HOME/.dotfiles
-# GPG env var used by gpg-agent
-export GPG_TTY=$(tty)
-
-# Add compleiton for gh
-if type gh >/dev/null 2>&1
-then
-  eval "$(gh completion -s bash)"
-fi
 
 # Always append to history...
 shopt -s histappend
 # ... and write it down after each command
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
-# colored ls output but on stdout only!
-alias ls='ls --color=auto'
-# setup alias vi instead of using /usr/bin/vi due to exit code issues on macOS
-alias vi="vim"
-# brewup onliner to keep things up2date
-alias brewup='brew update && brew upgrade && brew cleanup; brew doctor'
-prepend() { if [ $# -ne 2 ]; then echo "Usage: ${0} FILE PREFIX"; else mv "${1}" "${2}.${1}"; fi }
-append() { if [ $# -ne 2 ]; then echo "Usage: ${0} FILE SUFFIX"; else mv "${1}" "${1}.${2}"; fi }
+# Source profile snippets outsourced to their own files
+for file in $DOTF/bash/{exports,aliases,functions,bash_prompt}
+do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
 
-# source bash completion installed by homebrew if available
+### Build PATH variable
+export PATH="/usr/local/sbin":$PATH
+# Add user scripts from dotfiles
+PATH="${DOTF}/bin":$PATH
+# Add bindirs of brew formula to PATH
+PATH="/usr/local/opt/coreutils/libexec/gnubin":$PATH
+PATH="/usr/local/opt/findutils/libexec/gnubin":$PATH
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin":$PATH
+
+
+### Application specific initializations
+# Source bash completion installed by homebrew
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-# Add bindirs of brew formula ot PATH
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-PATH="/usr/local/sbin:$PATH"
+# Add completion for gh cli
+if type gh >/dev/null 2>&1
+then
+  eval "$(gh completion -s bash)"
+fi
 
-# gopath initialization
+# GOPATH initialization
 if which go >/dev/null 2>&1
 then
    export GOPATH=$HOME/Developer/go
-   export PATH=$GOPATH/bin:$PATH
+   PATH="${GOPATH/bin}":$PATH
 fi
-
-# Some function used
-function manx() { open x-man-page://$@ ; }
-function manp() { man -t $@ | open -f -a "Preview" ; }
 
 # git-achievements
 if [ -d $HOME/.git-achieve ]
 then
   export GIT_ACHIEVEMENTS_HOME=$HOME/.git-achieve
-  export PATH="${PATH}":"${GIT_ACHIEVEMENTS_HOME}"
+  PATH="${PATH}":"${GIT_ACHIEVEMENTS_HOME}"
   alias git="git-achievements"
 fi
 
 # Packer cache directory and Vagrant Cloud token
 export PACKER_CACHE_DIR=$HOME/.packer.d/packer_cache
 [ -f $HOME/.vagrant.d/vcloud_token.sh ] && source $HOME/.vagrant.d/vcloud_token.sh
-
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWUPSTREAM="auto verbose"
-
-# build command prompt
-ps1_prompt() {
-    local ps1_exit=$?
-    local ps1_status="\!"
-    local YELLOW="\[\033[1;33m\]"
-    local GREEN="\[\033[32m\]"
-    local RED="\[\033[31m\]"
-    local LRED="\[\033[1;31m\]"
-    local LBLUE="\[\033[1;34m\]"
-    local BLUE="\[\033[34m\]"
-    local NOCLR="\[\033[0m\]"
-    # see https://misc.flogisoft.com/bash/tip_colors_and_formatting
-
-    # define user/hosts and directory string
-    if [ $UID -eq 0 ]; then
-        local HOSTCOLOR=$RED
-        local PSEND="#"
-    else
-        local HOSTCOLOR=$GREEN
-        local PSEND="\$"
-    fi
-    local ps1_host=" ${HOSTCOLOR}\u@\h${NOCLR}"
-    local ps1_dir=" ${YELLOW}\W${NOCLR}"
-
-    # setup exit status string
-    if [ $ps1_exit -ne 0 ]; then
-        local ps1_status="${RED}\!${NOCLR}"
-    fi
-
-    # setup git repo string
-    ps1_git=""
-    if test "$(type -t __git_ps1)" = "function"; then
-        ps1_git="${RED}"$(__git_ps1)"${NOCLR}"
-    fi
-
-    # setup conda env
-    ps1_conda=""
-    if [ ! -z $CONDA_DEFAULT_ENV ]; then
-      ps1_conda=" ${LBLUE}(${CONDA_DEFAULT_ENV})${NOCLR}"
-    fi
-
-    PS1="${ps1_status}${ps1_conda}${ps1_host}${ps1_dir}${ps1_git} \$ "
-}
-# preserve earlier PROMPT_COMMAND entries
-PROMPT_COMMAND="ps1_prompt;$PROMPT_COMMAND"
-
-# Build path
-export PATH=$DOTF/bin:$PATH
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

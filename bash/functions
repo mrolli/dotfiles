@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Open manpages in terminalapp
+function manx() { open x-man-page://$@ ; }
+# Open mangpages as PDF in preview app
+function manp() { man -t $@ | open -f -a "Preview" ; }
+
+# Prepend a string to a filename
+function prepend() {
+  if [ $# -ne 2 ]
+  then
+    echo "Usage: ${0} FILE PREFIX"
+  else
+    mv "${1}" "${2}${1}"
+  fi
+}
+
+# Append a sring to a filename
+function append() {
+  if [ $# -ne 2 ]
+  then
+    echo "Usage: ${0} FILE SUFFIX"
+  else
+    mv "${1}" "${1}${2}"
+  fi
+}
+
