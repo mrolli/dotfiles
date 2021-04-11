@@ -34,10 +34,6 @@ shopt -s histappend
 # ... and write it down after each command
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
-# Incremental search in history using up/down keys
-bind '"\e[A":history-search-backward'
-bind '"\e[B":history-search-forward'
-
 # colored ls output but on stdout only!
 alias ls='ls --color=auto'
 # setup alias vi instead of using /usr/bin/vi due to exit code issues on macOS
