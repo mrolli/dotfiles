@@ -5,6 +5,10 @@ export DOTF=$HOME/.dotfiles
 
 # Always append to history...
 shopt -s histappend
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
+
 # ... and write it down after each command
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
@@ -18,21 +22,26 @@ PATH="/usr/local/opt/findutils/libexec/gnubin":$PATH
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin":$PATH
 
 # Source profile snippets outsourced to their own files
-for file in $DOTF/bash/{exports,aliases,functions,bash_prompt}
+for file in $DOTF/bash/{exports,aliases,functions,prompt}
 do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
 unset file
 
-### Application specific initializations
 # Source bash completion installed by homebrew
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
+# Add `killall` tab completion for common apps
+complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+
+### Application specific initializations
 # Add completion for gh cli
 if type gh >/dev/null 2>&1
 then
   eval "$(gh completion -s bash)"
 fi
+
 
 # GOPATH initialization
 if which go >/dev/null 2>&1
@@ -40,6 +49,7 @@ then
    export GOPATH=$HOME/Developer/go
    PATH="${GOPATH/bin}":$PATH
 fi
+
 
 # git-achievements
 if [ -d $HOME/.git-achieve ]
@@ -49,9 +59,11 @@ then
   alias git="git-achievements"
 fi
 
+
 # Packer cache directory and Vagrant Cloud token
 export PACKER_CACHE_DIR=$HOME/.packer.d/packer_cache
 [ -f $HOME/.vagrant.d/vcloud_token.sh ] && source $HOME/.vagrant.d/vcloud_token.sh
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
