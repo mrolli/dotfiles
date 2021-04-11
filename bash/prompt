@@ -1,52 +1,110 @@
 #!/usr/bin/env bash
 
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWUPSTREAM="auto verbose"
+function __git_prompt() {
+  # Configure git prompt
+  GIT_PS1_SHOWDIRTYSTATE=true
+  GIT_PS1_SHOWSTASHSTATE=true
+  GIT_PS1_SHOWUNTRACKEDFILES=true
+  GIT_PS1_STATESEPARATOR="$2"
+  GIT_PS1_SHOWUPSTREAM="auto verbose"
 
-# build command prompt
-ps1_prompt() {
-    local ps1_exit=$?
-    local ps1_status="\!"
-    local YELLOW="\[\033[1;33m\]"
-    local GREEN="\[\033[32m\]"
-    local RED="\[\033[31m\]"
-    local LRED="\[\033[1;31m\]"
-    local LBLUE="\[\033[1;34m\]"
-    local BLUE="\[\033[34m\]"
-    local NOCLR="\[\033[0m\]"
-    # see https://misc.flogisoft.com/bash/tip_colors_and_formatting
-
-    # define user/hosts and directory string
-    if [ $UID -eq 0 ]; then
-        local HOSTCOLOR=$RED
-        local PSEND="#"
-    else
-        local HOSTCOLOR=$GREEN
-        local PSEND="\$"
-    fi
-    local ps1_host=" ${HOSTCOLOR}\u@\h${NOCLR}"
-    local ps1_dir=" ${YELLOW}\W${NOCLR}"
-
-    # setup exit status string
-    if [ $ps1_exit -ne 0 ]; then
-        local ps1_status="${RED}\!${NOCLR}"
-    fi
-
-    # setup git repo string
-    ps1_git=""
-    if test "$(type -t __git_ps1)" = "function"; then
-        ps1_git="${RED}"$(__git_ps1)"${NOCLR}"
-    fi
-
-    # setup conda env
-    ps1_conda=""
-    if [ ! -z $CONDA_DEFAULT_ENV ]; then
-      ps1_conda=" ${LBLUE}(${CONDA_DEFAULT_ENV})${NOCLR}"
-    fi
-
-    PS1="${ps1_status}${ps1_conda}${ps1_host}${ps1_dir}${ps1_git} \$ "
+  out=$(__git_ps1 "%s")
+  if [ -n "$out" ]
+  then
+    echo -e "${1}${out}"
+  fi
 }
+
+# build $PS1 and $PS2
+# in a function to encapuslate variables
+# see https://misc.flogisoft.com/bash/tip_colors_and_formatting
+function __ps_prompt() {
+  # Save last command's exit status and history index
+  ps1_status=$?
+  ps1_histidx="\!"
+
+  if tput setaf 1 &> /dev/null
+  then
+    tput sgr0 # reset colors
+    bold=$(tput bold)
+    reset=$(tput sgr0)
+    # Solarized colors, taken from http://git.io/solarized-colors.
+    black=$(tput setaf 0)
+    blue=$(tput setaf 33)
+    cyan=$(tput setaf 37)
+    green=$(tput setaf 64)
+    orange=$(tput setaf 166)
+    purple=$(tput setaf 125)
+    red=$(tput setaf 124)
+    violet=$(tput setaf 61)
+    white=$(tput setaf 15)
+    yellow=$(tput setaf 136)
+  else
+    bold=''
+    reset="\e[0m"
+    black="\e[1;30m"
+    blue="\e[1;34m"
+    cyan="\e[1;36m"
+    green="\e[1;32m"
+    orange="\e[1;33m"
+    purple="\e[1;35m"
+    red="\e[1;31m"
+    violet="\e[1;35m"
+    white="\e[1;37m"
+    yellow="\e[1;33m"
+  fi
+
+  # Highlight the user name when logged in as root.
+  if [[ "${USER}" == "root" ]]
+  then
+    userStyle="${red}"
+    prompt="#"
+  else
+    userStyle="${orange}"
+    prompt="\$"
+  fi
+
+  # Highlight the hostname when connected via SSH.
+  if [[ "${SSH_TTY}" ]]
+  then
+    hostStyle="${bold}${red}"
+  else
+    hostStyle="${yellow}"
+  fi
+
+	# Highlight conda env if activated
+	ps1_conda=""
+	if [ ! -z $CONDA_DEFAULT_ENV ]
+  then
+		ps1_conda="${blue}(${CONDA_DEFAULT_ENV})${reset} "
+	fi
+
+  # Highlight the history index when last cmd failed
+	if [ $ps1_status -ne 0 ]
+  then
+    statusStyle="${red}"
+  else
+    statusStyle="${reset}"
+	fi
+
+  # Set the terminal title and prompt.
+  PS1="\[${bold}\]\n" # newline
+  PS1+="\[${userStyle}\]\u" # username
+  PS1+="\[${white}\] at "
+  PS1+="\[${hostStyle}\]\h" # host
+  PS1+="\[${white}\] in "
+  PS1+="\[${green}\]\w" # working directory full path
+  PS1+="\$(__git_prompt \" ${white}on ${blue}\" \" ${violet}\]\")" # Git repository details
+  PS1+="\n"
+  PS1+="\[${statusStyle}\]$ps1_histidx \[${reset}\]" # index of last cmd
+  PS1+="${ps1_conda}" # conda active end
+  PS1+="\[${white}\]${prompt} \[${reset}\]" # `$` (and reset color)
+  export PS1
+
+  #PS2="\[${yellow}\]→ \[${reset}\]"
+  #export PS2
+}
+
 # preserve earlier PROMPT_COMMAND entries
-PROMPT_COMMAND="ps1_prompt;$PROMPT_COMMAND"
+PROMPT_COMMAND="__ps_prompt; $PROMPT_COMMAND"
 
