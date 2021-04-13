@@ -11,7 +11,7 @@ source $topic_dir/../shell_functions.sh
 
 echo ""
 info "Installing Homebrew..."
-if ! type brew >/dev/null 2>&1
+if ! command -v brew >/dev/null 2>&1
 then
   # Install homebrew
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -20,36 +20,39 @@ else
   success 'Skipping Homebrew, already installed'
 fi
 
-brewfile="${topic_dir}/../Brewfile.$(uname)"
+echo ""
+info "Running brew bundle..."
+brewfile="Brewfile.$(uname)"
 if [ -f "${brewfile}" ]
 then
-  echo ""
-  info "Running brew bundle --file ${brewfile}"
+  info "  - found ${brewfile}"
   brew bundle --file $brewfile
+else
+	info "  - no Brewfile found"
 fi
 
 # Install newer bash on macOS
 if test "$(uname)" = "Darwin"
 then
   # Switch to using brew-installed bash as default shell
-  BREW_PREFIX=$(brew --prefix)
-  if [ -x "${BREW_PREFIX}/bin/bash" ]
+  brew_prefix=$(brew --prefix)
+  if [ -x "${brew_prefix}/bin/bash" ]
   then
     echo ""
-    info "Found Homebrew found, replacing default shell"
+    info "Found newer bash shell, replacing default shell"
     # Add the new bash to /etc/shells
-    if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells
+    if ! fgrep -q "${brew_prefix}/bin/bash" /etc/shells
     then
-      echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
+      echo "${brew_prefix}/bin/bash" | sudo tee -a /etc/shells
     fi
     # Change default shell if needed
     curShell=$(dscl . -read ~/ UserShell | cut -d" " -f 2)
-    if [ "$curShell" != "${BREW_PREFIX}/bin/bash" ]
+    if [ "$curShell" != "${brew_prefix}/bin/bash" ]
     then
-      chsh -s "${BREW_PREFIX}/bin/bash"
-      success "Default shell set to ${BREW_PREFIX}/bin/bash"
+      chsh -s "${brew_prefix}/bin/bash"
+      success "Default shell set to ${brew_prefix}/bin/bash"
     else
-      success "Default shell already set to ${BREW_PREFIX}/bin/bash"
+      success "Default shell already set to ${brew_prefix}/bin/bash"
     fi
   fi
 fi
