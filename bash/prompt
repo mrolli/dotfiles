@@ -72,20 +72,20 @@ function __ps_prompt() {
     hostStyle="${yellow}"
   fi
 
-	# Highlight conda env if activated
-	ps1_conda=""
-	if [ ! -z $CONDA_DEFAULT_ENV ]
+  # Highlight conda env if activated
+  ps1_conda=""
+  if [ ! -z $CONDA_DEFAULT_ENV ]
   then
-		ps1_conda="${blue}(${CONDA_DEFAULT_ENV})${reset} "
-	fi
+    ps1_conda="${blue}(${CONDA_DEFAULT_ENV})${reset} "
+  fi
 
   # Highlight the history index when last cmd failed
-	if [ $ps1_status -ne 0 ]
+  if [ $ps1_status -ne 0 ]
   then
     statusStyle="${red}"
   else
     statusStyle="${reset}"
-	fi
+  fi
 
   # Set the terminal title and prompt.
   PS1="\[${bold}\]\n" # newline
@@ -101,10 +101,56 @@ function __ps_prompt() {
   PS1+="\[${white}\]${prompt} \[${reset}\]" # `$` (and reset color)
   export PS1
 
+  # Restore the original prompt for multiline commands (PS2). This overrides any
+  # system-wide customisations in /etc/profile, for instance.
+  export PS2='> ';
+
+  # Restore the original prompt for select menus. This is unset initially and
+  # seems to default to "#? ".
+  unset PS3;
+
   #PS2="\[${yellow}\]→ \[${reset}\]"
   #export PS2
+  # Include the current file and line number when tracing using "set -x" (PS4).
+  ps4_parts=(
+    # Same as the default: start with a plus sign that gets repeated based on
+    # the current stack depth. (Bash repeats the first character of PS4.)
+    '+ '
+
+    # Make the following extra information stand out less.
+    "${blue}${bold}"
+
+    # Show the name of the current shell function, if any.
+    '${FUNCNAME:-}'
+
+    # Show the basename and line number of the source file or function, if
+    # any. If there was a function name, put an "@" between the function name
+    # and the file/function.
+    '${BASH_SOURCE:+${FUNCNAME:+@}}'
+
+    # Note that LINENO is reset from 1 inside a function body. Sometimes,
+    # $LINENO is a negative number. I could not find any reference to this in
+    # the man page, but it seems to have to happen when returning from another
+    # function. Until I understand this more completely, I wrap it in
+    # parentheses to clarify that it is not a regular line number.
+    '${BASH_SOURCE:+${BASH_SOURCE##*/}:${LINENO/#-*/($LINENO)}}'
+
+    # Use a tab to separate the file/function and line number from the actual
+    # line of code, rather than a space, because this helps legibility. (It
+    # decreases the "jaggedness" caused by differing lengthts of file names
+    # and line numbers.) I prefer this to a newline because it keeps the trace
+    # more compact.
+    $'\t'
+
+    # Reset the colour and style.
+    "${reset}"
+  );
+  printf -v PS4 '%s' "${ps4_parts[@]}";
+  export PS4;
+  unset ps4_parts;
 }
 
+__ps_prompt
 # preserve earlier PROMPT_COMMAND entries
-PROMPT_COMMAND="__ps_prompt; $PROMPT_COMMAND"
+#PROMPT_COMMAND="__ps_prompt; $PROMPT_COMMAND"
 
