@@ -13,13 +13,13 @@ shopt -s cdspell
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 ### Build PATH variable
-export PATH="/usr/local/sbin":$PATH
-# Add user scripts from dotfiles
-PATH="${DOTF}/bin":$PATH
+PATH="/usr/local/sbin":$PATH
+PATH="${HOME}/bin":$PATH
 # Add bindirs of brew formula to PATH
 PATH="/usr/local/opt/coreutils/libexec/gnubin":$PATH
 PATH="/usr/local/opt/findutils/libexec/gnubin":$PATH
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin":$PATH
+export PATH
 
 # Source profile snippets outsourced to their own files
 for file in $DOTF/bash/{exports,aliases,functions,prompt}
