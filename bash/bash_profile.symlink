@@ -3,11 +3,11 @@
 # Shortcut to the dotfiles path
 export DOTF=$HOME/.dotfiles
 
-# Always append to history...
-shopt -s histappend
-
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
+
+# Always append to history...
+shopt -s histappend
 
 # ... and write it down after each command
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
