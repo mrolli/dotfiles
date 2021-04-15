@@ -1,8 +1,5 @@
 # .bash_profile
 
-# Shortcut to the dotfiles path
-export DOTF=$HOME/.dotfiles
-
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
 
@@ -14,7 +11,7 @@ PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 ### Build PATH variable
 PATH="/usr/local/sbin":$PATH
-PATH="${HOME}/bin":$PATH
+PATH="~/bin":$PATH
 # Add bindirs of brew formula to PATH
 PATH="/usr/local/opt/coreutils/libexec/gnubin":$PATH
 PATH="/usr/local/opt/findutils/libexec/gnubin":$PATH
@@ -22,7 +19,7 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin":$PATH
 export PATH
 
 # Source profile snippets outsourced to their own files
-for file in $DOTF/bash/{exports,aliases,functions,prompt}
+for file in ~/.bash_{exports,aliases,functions,prompt}
 do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done

@@ -4,10 +4,10 @@
 # one is found for the architecture.
 #
 # On macOS the script also changes the user's default
-# shell if bash got installed by Homebrew.
+# shell if a newer bash got installed by Homebrew.
 #
-topic_dir=$(dirname $0)
-source $topic_dir/../shell_functions.sh
+topic_dir="$(dirname -- "${0}")"
+source "${topic_dir}/../shell_functions.sh"
 
 echo ""
 info "Installing Homebrew..."
@@ -15,6 +15,11 @@ if ! command -v brew >/dev/null 2>&1
 then
   # Install homebrew
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  if [ $? -ne 0 ]
+  then
+    fail "Error occurred when installing Homebrew, see above"
+    exit 1
+  fi
   success 'Successfully installed Homebrew'.
 else
   success 'Skipping Homebrew, already installed'
@@ -22,13 +27,13 @@ fi
 
 echo ""
 info "Running brew bundle..."
-brewfile="Brewfile.$(uname)"
+brewfile="${topic_dir}/Brewfile.$(uname).symlink"
 if [ -f "${brewfile}" ]
 then
   info "  - found ${brewfile}"
   brew bundle --file $brewfile
 else
-	info "  - no Brewfile found"
+  info "  - no Brewfile found"
 fi
 
 # Install newer bash on macOS
@@ -56,3 +61,4 @@ then
     fi
   fi
 fi
+

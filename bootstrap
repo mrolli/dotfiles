@@ -6,16 +6,12 @@
 
 cd "$(dirname "$0")"
 DOTFILES_ROOT_ABS=$(pwd -P)
-DOTFILES_ROOT_REL=${DOTFILES_ROOT_ABS#$HOME/}
-cd $HOME
-
-FONT_DIR=$HOME/Library/Fonts
 
 set -e
 
 source $DOTFILES_ROOT_ABS/shell_functions.sh
 
-link_file () {
+function link_file() {
   local src=$1 dst=$2
 
   local overwrite= backup= skip=
@@ -77,36 +73,43 @@ link_file () {
   fi
 }
 
-install_dotfiles () {
-  info 'Installing dotfiles...'
+function run_installers() {
+  # Start with Homebrew as installers might depend on brew installed software
+  [ -x "${DOTFILES_ROOT_ABS}/homebrew/install.sh" ] && "${DOTFILES_ROOT_ABS}/homebrew/install.sh"
 
+  # Find all general and platform-specific installers and execute them
+  for installer in ${DOTFILES_ROOT_ABS}/*/install{,.$(uname -s)}.sh
+  do
+    # Skip Homebrew as it's already done
+    [[ "${installer}" =~ homebrew ]] && continue
+    bash -c $installer
+  done
+}
+
+function install_dotfiles() {
+  info "Installing dotfiles..."
+
+  # Declare _all variables here
+  # This is to preserve the answers as these variables
+  # are available in link_file too.
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find -H "$DOTFILES_ROOT_REL" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
+  for src in $(find -H "${DOTFILES_ROOT_ABS}" -maxdepth 2 -name "*.symlink" -not -path "*.git*")
   do
+    src="${src#$HOME/}"
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
 }
 
-echo ''
+echo ""
+run_installers
+
+echo ""
 install_dotfiles
 
-# If we're on a Mac, let's install and setup homebrew.
-if [ "$(uname -s)" == "Darwin" ]
-then
-  echo ''
-  info 'Installing dependencies...'
-  if source "$DOTFILES_ROOT_REL"/bin/dot
-  then
-    success "Dependencies installed"
-  else
-    fail "Error installing dependencies"
-  fi
-fi
-
-echo ''
-echo '  Everything in place, have fun!'
+echo ""
+echo "  Everything in place, have fun!"
 
 exit 0
 

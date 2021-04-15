@@ -1,8 +1,5 @@
 # Exported env variables
 
-# Shortcut to the dotfiles path
-export DOTF=$HOME/.dotfiles
-
 # Explicitly set terminal mode
 export TERM=xterm-256color
 
@@ -29,7 +26,7 @@ export SVNEDITOR=vim
 
 # Configure homebrew bundle behaviour
 export HOMEBREW_BUNDLE_NO_LOCK=1
-export HOMEBREW_BUNDLE_FILE="${DOTF}/homebrew/Brewfile.$(uname)"
+export HOMEBREW_BUNDLE_FILE="~/.Brewfile.$(uname)"
 
 # Make less the default pager, and specify some useful defaults.
 less_options=(
