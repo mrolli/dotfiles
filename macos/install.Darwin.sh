@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
-
 topic_dir="$(dirname -- "${0}")"
 source "${topic_dir}/../shell_functions.sh"
 

@@ -97,13 +97,21 @@ function install_dotfiles() {
   for src in $(find -H "${DOTFILES_ROOT_ABS}" -maxdepth 2 -name "*.symlink" -not -path "*.git*")
   do
     src="${src#$HOME/}"
-    dst="$HOME/.$(basename "${src%.*}")"
+    dst="${HOME}/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
+
+  # additionally link bin to ~/bin
+  link_file "${DOTFILES_ROOT_ABS#$HOM}/bin" "${HOME}/bin"
 }
 
 echo ""
-run_installers
+user "Shall the installers run (y/n)?"
+read -n1 action
+case $action in
+  "y|Y") info "Running installers..."; run_installers;;
+  *) info "Not running installers";;
+esac
 
 echo ""
 install_dotfiles
