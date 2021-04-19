@@ -110,9 +110,9 @@ set-window-option -g window-status-bell-style fg=black,bg=red #base02, red
 #### Additional changes mrolli
 
 # Status bar design
-set-option -g  status-justify centre
-set-option -g  status-interval 2
-set-option -g  status-left "#[fg=green]Session: #S #[fg=yellow]#I #[fg=red]#P  #[default]"
+set-option -g status-justify centre
+set-option -g status-interval 2
+set-option -g status-left "#[fg=green]Session: #S #[fg=yellow]#I #[fg=red]#P  #[default]"
 
 # Window mode and message style
 set-option -g message-style fg=black,bg=yellow
@@ -125,5 +125,20 @@ set-option -g window-status-current-format '#[fg=yellow]| #I:#W#F |#[default]'
 set-option -g monitor-activity on
 set-option -g visual-activity on
 
-# Offload macOS specific stuff
-if-shell 'test "$(uname -s)" = Darwin' 'source ~/.tmux-macos.conf'
+# Additionally decorate status bar
+# add cpu/mem/load to left are
+set-option -ag status-left "#(tmux-mem-cpu-load -c -p -q -g 0 -m 2 -i 2)"
+set-option -g  status-left-length 70
+
+set-option -g  status-right ""
+# add current playing song and the weather locally on my machine
+if-shell '[[ $(hostname -s) = rivendell ]]' {
+  WEATHER='#(curl -s wttr.in/Burgdorf\?format\="%%l:+%%c%%20%%t%%20%%w%%20%%m&period=60")'
+  set-option -ag status-right "#(musicplaying) | $WEATHER | "
+}
+
+# and style the status right area
+set-option -ag status-right "%d.%m.%y | %R "
+set-option -g  status-right-style fg=brightblue
+set-option -g  status-right-length 110
+
