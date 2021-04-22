@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+filter="*"
+numchar=0
+prefix=""
+mvcmd="echo mv"
+
+while getopts hnd:f:p: OPTION
+do
+  case "${OPTION}" in
+    h)
+      echo "Usage: ${0} [filter] [numDigits] [prefix]"
+      exit 1
+      ;;
+    n) mvcmd="mv";;
+    d) numchar=${OPTARG};;
+    f) filter="${OPTARG}";;
+    p) prefix="${OPTARG}";;
+  esac
+done
+
+i=1
+for file in $filter
+do
+  ext=${file#*.}
+  name="${prefix}$(printf "%"$numchar"s" $i | tr " " "0")"
+  $mvcmd $file $name.$ext
+  ((i++))
+done
+
+exit 0
+
