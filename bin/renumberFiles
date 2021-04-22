@@ -29,7 +29,7 @@ do
   name="${prefix}$(printf "%"$numdig"s" $i | tr " " "0")"
   ((i++))
   [ "${file}" == "${name}.${ext}" ] && continue
-  $dryrun mv $file $name.$ext
+  $dryrun mv -i $file $name.$ext
   workdone=1
 done
 
