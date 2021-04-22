@@ -4,8 +4,9 @@ filter="*"
 numdig=2
 prefix=""
 dryrun="echo"
+start=1
 
-while getopts hnd:f:p: OPTION
+while getopts hnd:f:p:s: OPTION
 do
   case "${OPTION}" in
     h)
@@ -16,16 +17,17 @@ do
     d) numdig=${OPTARG};;
     f) filter="${OPTARG}";;
     p) prefix="${OPTARG}";;
+    s) start=${OPTARG};;
   esac
 done
 
-i=0
+i=$start
 workdone=0
 for file in $filter
 do
-  ((i++))
   ext=${file##*.}
   name="${prefix}$(printf "%"$numdig"s" $i | tr " " "0")"
+  ((i++))
   [ "${file}" == "${name}.${ext}" ] && continue
   $dryrun mv $file $name.$ext
   workdone=1
