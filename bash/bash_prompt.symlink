@@ -69,7 +69,7 @@ function __ps_prompt() {
   then
     hostStyle="${bold}${red}"
   else
-    hostStyle="${yellow}"
+    hostStyle="${green}"
   fi
 
   # Highlight conda env if activated
@@ -93,7 +93,7 @@ function __ps_prompt() {
   PS1+="\[${white}\] at "
   PS1+="\[${hostStyle}\]\h" # host
   PS1+="\[${white}\] in "
-  PS1+="\[${green}\]\w" # working directory full path
+  PS1+="\[${yellow}\]\w" # working directory full path
   PS1+="\$(__git_prompt \" ${white}on ${blue}\" \" ${violet}\]\")" # Git repository details
   PS1+="\n"
   PS1+="\[${statusStyle}\]$ps1_histidx \[${reset}\]" # index of last cmd
