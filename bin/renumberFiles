@@ -24,7 +24,7 @@ workdone=0
 for file in $filter
 do
   ((i++))
-  ext=${file#*.}
+  ext=${file##*.}
   name="${prefix}$(printf "%"$numdig"s" $i | tr " " "0")"
   [ "${file}" == "${name}.${ext}" ] && continue
   $dryrun mv $file $name.$ext
