@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 filter="*"
-numchar=0
+numdig=2
 prefix=""
-mvcmd="echo mv"
+dryrun="echo"
 
 while getopts hnd:f:p: OPTION
 do
@@ -12,21 +12,27 @@ do
       echo "Usage: ${0} [filter] [numDigits] [prefix]"
       exit 1
       ;;
-    n) mvcmd="mv";;
-    d) numchar=${OPTARG};;
+    n) dryrun="";;
+    d) numdig=${OPTARG};;
     f) filter="${OPTARG}";;
     p) prefix="${OPTARG}";;
   esac
 done
 
-i=1
+i=0
+workdone=0
 for file in $filter
 do
-  ext=${file#*.}
-  name="${prefix}$(printf "%"$numchar"s" $i | tr " " "0")"
-  $mvcmd $file $name.$ext
   ((i++))
+  ext=${file#*.}
+  name="${prefix}$(printf "%"$numdig"s" $i | tr " " "0")"
+  [ "${file}" == "${name}.${ext}" ] && continue
+  $dryrun mv $file $name.$ext
+  workdone=1
 done
+
+[ $workdone -eq 0 ] && echo "Nothing to do." || \
+  ([ ! -z $dryrun ] && echo -e "\nThis was only a dry-run. Add -n if changes should really take effect.")
 
 exit 0
 
