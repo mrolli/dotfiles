@@ -10,7 +10,7 @@ while getopts hnd:f:p:s: OPTION
 do
   case "${OPTION}" in
     h)
-      echo "Usage: ${0} [filter] [numDigits] [prefix]"
+      echo "Usage: ${0} [-f 'filter'] [-d numDigits] [-p prefix 'string'] [-n]"
       exit 1
       ;;
     n) dryrun="";;
