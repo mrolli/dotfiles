@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
 function __git_prompt() {
+  # Check if __git_ps1 is available
+  if ! command -v __git_ps1 >/dev/null ]
+  then
+    echo ""
+    return
+  fi
+
   # Configure git prompt
   GIT_PS1_SHOWDIRTYSTATE=true
   GIT_PS1_SHOWSTASHSTATE=true
