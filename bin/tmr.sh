@@ -1,20 +1,25 @@
 #!/bin/sh
 
 SESSION_NAME="$(hostname -s)"
-PUP_DIR=$HOME/Developer/ubelix/puppet-installer/controlrepo
 
 tmux has-session -t ${SESSION_NAME} >/dev/null 2>&1
 
 if [ $? != 0 ]
 then
-  # Create the session and implicitly window (0)
-  tmux -2 new-session -n puppet -s ${SESSION_NAME} -d -c $PUP_DIR
-  # Split window (0) in 4 panes
-  tmux split-window -v -c $PUP_DIR
-  tmux split-window -h -c $PUP_DIR
-  tmux split-window -h -c $PUP_DIR
-  tmux select-layout tiled
+  if [[ "${SESSION_NAME}" = "rivendell" ]]
+  then
+    PUP_DIR=$HOME/Developer/ubelix/puppet-installer/controlrepo
+    # Create the session and implicitly window (0)
+    tmux -2 new-session -n puppet -s ${SESSION_NAME} -d -c $PUP_DIR
+    # Split window (0) in 4 panes
+    tmux split-window -v -c $PUP_DIR
+    tmux split-window -h -c $PUP_DIR
+    tmux split-window -h -c $PUP_DIR
+    tmux select-layout tiled
+    return
+  fi
 
+  tmux -2 new-session -s ${SESSION_NAME} -d
   # shell (1)
   #tmux new-window -n bash -t ${SESSION_NAME}
   #tmux send-keys -t ${SESSION_NAME}:1 'git status' C-m
