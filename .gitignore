@@ -4,3 +4,5 @@ vim.symlink/bundle
 vim.symlink/swap/*
 vim.symlink/undofiles/*
 vim.symlink/.netrwhist
+Vagrantfile
+.vagrant
