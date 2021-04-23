@@ -1,0 +1,14 @@
+tap 'homebrew/core'
+tap 'homebrew/bundle'
+
+# Apps from homebrew/core
+brew 'gh'
+brew 'git'
+brew 'glow'
+brew 'go'
+brew 'grip'
+brew 'p7zip'
+brew 'tmux'
+brew 'tmux-mem-cpu-load'
+brew 'vim'
+
