@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 
-if [ $# -ne 2 ]
+if [ $# -lt 3 ]
 then
-  echo "Usage: ${0} fileext targetfilename"
+  echo "Usage: ${0} targetfilename file1 file2 [file3..]"
   exit 1
 fi
 
-type=$1
-outfile="$2"
+outfile="$1"
+shift
+files=$@
 
-for f in ./*$type; do echo "file '$f'" >> .filelist.txt; done
+for file in $files
+do
+  echo "file '${file}'" >> .filelist.txt
+done
 ffmpeg -f concat -safe 0 -i .filelist.txt -c copy "${outfile}"
 rm -f .filelist.txt
