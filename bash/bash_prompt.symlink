@@ -32,7 +32,6 @@ function __ps_prompt() {
 
   if tput setaf 1 &> /dev/null
   then
-    tput sgr0 # reset colors
     bold=$(tput bold)
     reset=$(tput sgr0)
     # Solarized colors, taken from http://git.io/solarized-colors.
