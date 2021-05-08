@@ -15,7 +15,8 @@ $pregReplaceStruct = array(
     '/„/'                => 'ä', # KPT
     '/則/'               => 'ä', # KPT
     '/派/'               => 'ö', # KPT
-    '/�/'                => 'ü' # KPT
+    '/�/'                => 'ü', # KPT
+    '/\.\./'             => '.'
 );
 
 $notest = isset($argv[1]) && $argv[1] == "-n" ? true : false;
