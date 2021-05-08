@@ -1,13 +1,31 @@
-# EditorConfig is awesome: https://EditorConfig.org
+; EditorConfig is awesome: http://EditorConfig.org
 
-# top-most EditorConfig file
 root = true
 
-# Unix-style newlines with a newline ending every file
+; Ruby style as default
+; UTF-8 charset
+; Unix-style newlines with a newline ending every file
+; 2 space indent
+; Trim trailing whitespace
 [*]
-end_of_line = lf
-insert_final_newline = true
 indent_style = space
 indent_size = 2
-trim_trailing_whitespace = true
+end_of_line = lf
 charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+; Markdown
+; 4 space indent
+; Trailing whitespace is potentially meaningful, leave it
+[*.md]
+indent_size = 4
+trim_trailing_whitespace = false
+
+; Python
+; 4 space indent
+[*.py]
+indent_size = 4
+
+[Makefile]
+indent_style = tab
