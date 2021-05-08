@@ -23,12 +23,13 @@ then
     tmux split-window -v -c $target_dir
     tmux split-window -h -c $target_dir
     tmux split-window -h -c $target_dir
+    tmux select-layout tiled
 
     target_dir=$HOME/.dotfiles
     tmux new-window -n dotfiles -t ${session_name} -c $target_dir
     tmux split-window -h -c $target_dir
     tmux split-window -v -c $target_dir
-    tmux select-layout tiled
+    tmux select-layout main-vertical
 
     target_dir=$HOME
     tmux new-window -n Hams -t ${session_name} -c $target_dir
@@ -39,6 +40,12 @@ then
   fi
 
   tmux -2 new-session -s ${session_name} -d
+
+  # clear all panes
+  #tmux set-window-option -t ${session_name} synchronize-panes on
+  #tmux send-keys -t ${session_name} 'clear' C-m
+  #tmux set-window-option -t ${session_name} synchronize-panes off
+
   # shell (1)
   #tmux new-window -n bash -t ${session_name}
   #tmux send-keys -t ${session_name}:1 'git status' C-m
