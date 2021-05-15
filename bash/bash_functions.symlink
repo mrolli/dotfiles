@@ -1,12 +1,25 @@
 #!/usr/bin/env bash
 
+# For the confirmation moments in life
+prompt_confirm() {
+  while true; do
+    printf "\r[ ${yellow}??${reset} ] ${1:-Continue?} [y/n]: "
+    read -r -n 1 REPLY
+    case $REPLY in
+      [yY]) echo ; return 0 ;;
+      [nN]) echo ; return 1 ;;
+      *) printf " ${red} %s \n${reset}" "invalid input"
+    esac
+  done
+}
+
 # Open manpages in terminalapp
-function manx() { open x-man-page://$@ ; }
+function manx { open x-man-page://$@ ; }
 # Open mangpages as PDF in preview app
-function manp() { man -t $@ | open -f -a "Preview" ; }
+function manp { man -t $@ | open -f -a "Preview" ; }
 
 # Prepend a string to a filename
-function prepend() {
+function prepend {
   if [ $# -ne 2 ]
   then
     echo "Usage: ${0} FILE PREFIX"
@@ -16,11 +29,27 @@ function prepend() {
 }
 
 # Append a sring to a filename
-function append() {
+function append {
   if [ $# -ne 2 ]
   then
     echo "Usage: ${0} FILE SUFFIX"
   else
     mv "${1}" "${1}${2}"
   fi
+}
+
+# brewup onliner to keep things up2date
+function brewup {
+  brew update
+  out=$(brew outdated)
+  if [ ! -z "${out}" ]
+  then
+    echo $out
+    if [ $1 = "-f" ] || prompt_confirm "Shall I upgrade all?"
+    then
+      brew upgrade
+      brew cleanup
+    fi
+  fi
+  brew doctor
 }

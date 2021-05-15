@@ -48,9 +48,6 @@ alias week='date +%V'
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-# brewup onliner to keep things up2date
-alias brewup='brew update && brew upgrade && brew cleanup; brew doctor'
-
 # shorcut to screen locking (= ctrl-cmd q)
 alias afk=$'osascript -e \'tell application "System Events" to key code 12 using {control down, command down}\''
 
