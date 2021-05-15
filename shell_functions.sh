@@ -1,32 +1,67 @@
-# Generals funciton used in shell scripts
+# General functions used in shell scripts
+
+# Style variables
+if tput setaf 1 &> /dev/null
+then
+  reset=$(tput sgr0)
+  bold=$(tput bold)
+  underline=$(tput smul)
+  nounderline=$(tput rmul)
+  # Solarized colors, taken from http://git.io/solarized-colors.
+  black=$(tput setaf 0)
+  blue=$(tput setaf 33)
+  cyan=$(tput setaf 37)
+  green=$(tput setaf 64)
+  orange=$(tput setaf 166)
+  purple=$(tput setaf 125)
+  red=$(tput setaf 124)
+  violet=$(tput setaf 61)
+  white=$(tput setaf 15)
+  yellow=$(tput setaf 136)
+else
+  # See https://techstop.github.io/bash-script-colors/
+  reset="\e[0m"
+  bold=''
+  underline=''
+  nounderline=''
+  black="\e[1;30m"
+  blue="\e[1;34m"
+  cyan="\e[1;36m"
+  green="\e[1;32m"
+  orange="\e[1;33m"
+  purple="\e[1;35m"
+  red="\e[1;31m"
+  violet="\e[1;35m"
+  white="\e[1;37m"
+  yellow="\e[1;33m"
+fi
 
 prompt_confirm() {
   while true; do
-    printf "\r  [ \033[0;33m??\033[0m ] ${1:-Continue?} [y/n]: "
+    printf "\r  [ ${yellow}??${reset} ] ${1:-Continue?} [y/n]: "
     read -r -n 1 REPLY
     case $REPLY in
       [yY]) echo ; return 0 ;;
       [nN]) echo ; return 1 ;;
-      *) printf " \033[31m %s \n\033[0m" "invalid input"
+      *) printf " ${red} %s \n${reset}" "invalid input"
     esac
   done
 }
 
-info () {
-  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+function info {
+  printf "\r  [ ${blue}..${reset} ] $1\n"
 }
 
-user () {
-  printf "\r  [ \033[0;33m??\033[0m ] $1"
+function warning {
+  printf "\r  [ ${yellow}??${reset} ] $1"
 }
 
-success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+function success {
+  printf "\r  [ ${green}OK${reset} ] $1\n"
 }
 
-fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+function fail {
+  printf "\r  [${red}FAIL${reset}] $1\n" >&2
   echo ""
   exit
 }
-
