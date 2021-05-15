@@ -14,9 +14,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " General Plugins
 Plugin 'itchyny/lightline.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'w0rp/ale'
+Plugin 'preservim/nerdtree'
+Plugin 'dense-analysis/ale'
 Plugin 'maximbaz/lightline-ale'
 Plugin 'godlygeek/tabular'
 Plugin 'mhinz/vim-signify'
@@ -26,18 +25,19 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
-Plugin 'mzlogin/vim-markdown-toc'
-Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tmhedberg/SimpylFold'
-Plugin 'editorconfig/editorconfig-vim'
 Plugin 'preservim/tagbar'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 " UltiSnips & Co
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-" Work related
+" Coding specific
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'rodjek/vim-puppet'
 Plugin 'fatih/vim-go'
+Plugin 'mzlogin/vim-markdown-toc'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -72,18 +72,19 @@ colorscheme solarized
 " always display status line
 set laststatus=2
 
-source $HOME/.vim/config/lightline.vim
-source $HOME/.vim/config/syntastic.vim
-source $HOME/.vim/config/signify.vim
-source $HOME/.vim/config/nerdtree.vim
-source $HOME/.vim/config/markdown-preview.vim
-source $HOME/.vim/config/ultisnips.vim
+source $HOME/.vim/config/ale.vim
 source $HOME/.vim/config/editorconfig.vim
+source $HOME/.vim/config/lightline.vim
+source $HOME/.vim/config/markdown-preview.vim
+source $HOME/.vim/config/nerdtree.vim
+source $HOME/.vim/config/signify.vim
+source $HOME/.vim/config/ultisnips.vim
 
 set showcmd                    " show incomplete cmds down the bottom
 set noshowmode                 " do not show current mode down the bottom; already shown by lightline
 set showmatch                  " set show matching parenthesis
 set number                     " show line numbers
+set relativenumber             " show relative line numbers by default
 set scrolloff=3                " scroll that many lines if cursor leaves viewport
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set history=1000               " store lots of :cmdline history

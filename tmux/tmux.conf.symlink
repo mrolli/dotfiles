@@ -70,6 +70,9 @@ bind-key P pipe-pane -o "cat >>~/#W.log" \; display "Toggled logging to ~/#W.log
 # Mouse support - set to on if you want to use the mouse
 #set-option -g mouse on
 
+# Turn on focus events for vim-numbertoogle to actually toggle line numbering
+set-option -g focus-events on
+
 ######################
 ### Look and Feel  ###
 ######################
