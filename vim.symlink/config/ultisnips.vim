@@ -9,3 +9,7 @@ let g:UltiSnipsEditSplit="context"
 
 " No python warnings when using vim without python3 support
 let g:UltiSnipsNoPythonWarning = 1
+
+let g:snips_author = "Michael Rolli"
+let g:snips_email  = "michael@rollis.ch"
+let g:snips_github = "https://github.com/mrolli"
