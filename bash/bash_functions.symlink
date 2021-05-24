@@ -45,7 +45,7 @@ function brewup {
   if [ ! -z "${out}" ]
   then
     echo $out
-    if [ $1 = "-f" ] || prompt_confirm "Shall I upgrade all?"
+    if [ "${1}" = "-f" ] || prompt_confirm "Shall I upgrade all?"
     then
       brew upgrade
       brew cleanup
