@@ -141,7 +141,7 @@ if-shell '[[ $(hostname -s) = rivendell ]]' {
 }
 
 # and style the status right area
-set-option -ag status-right "%d.%m.%y | %R "
+set-option -ag status-right "%d.%m.%y KW#(date +%V) | %R "
 set-option -g  status-right-style fg=brightblue
 set-option -g  status-right-length 110
 
