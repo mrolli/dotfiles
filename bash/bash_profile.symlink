@@ -19,7 +19,7 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin":$PATH
 export PATH
 
 # Source profile snippets outsourced to their own files
-for file in ~/.bash_{exports,aliases,functions,prompt}
+for file in ~/.bash_{colors,exports,aliases,functions,prompt}
 do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
