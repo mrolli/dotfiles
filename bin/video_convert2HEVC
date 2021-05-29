@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+# Check if ffmpeg is installed
+command -v ffmpeg >/dev/null || (echo "ffmpeg is required but found" && exit 1)
+
+# Print usage if no input file is given
+[ $# -eq 0 ] && echo "Usage: ${0} FILE [DESTDIR]" && exit 1
+
+# Fail if input file is not available
+[ ! -f $1 ] && echo "Video input file not found ${1}" && exit 1
+
+# Create base directory if not available
+[ ! -d "${basedir}" ] && mkdir -p "${basedir}"
+
+basedir=${2:-$(pwd)}
+realfilepath=$(realpath $1)
+origfilename=$(basename $realfilepath)
+origtitle=$(basename $(dirname $realfilepath))
+newtitle=${origtitle%-*}-FutGH
+newtitle=${newtitle/x264/x265}
+ext=${origfilename##*.}
+
+targetdir=$newtitle
+targetfile=$newtitle.$ext
+
+# Generate target directory
+mkdir -p "${basedir}/${targetdir}"
+echo "${origtitle}" > "${basedir}/${targetdir}/source.nfo"
+
+# Convert
+echo "--- Starting conversion of ${origtitle} ---"
+time ffmpeg -analyzeduration 5000M \
+            -probesize 5000M \
+            -i "${realfilepath}" \
+            -map 0:v \
+            -map 0:a \
+            -map 0:s? \
+            -c:v copy \
+            -c:v:0 libx265 -crf 28 -preset faster \
+            -c:a copy \
+            -c:s copy \
+            -tag:v:0 hvc1 \
+            "${basedir}/${targetdir}/${targetfile}"
+rc=$?
+echo "--- Conversion of ${origtitle} ended ---"
+exit $rc
+
+exit 0
