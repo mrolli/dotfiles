@@ -101,6 +101,7 @@ echo "${origtitle}" > "${basedir}/${targetdir}/source.nfo"
 
 # Convert
 echo "--- Conversion of ${origtitle} started"
+echo "Recoding video using libx265 with crf ${crf} and preset ${preset}"
 time ffmpeg -analyzeduration 5000M \
             -probesize 5000M \
             -i "${realfilepath}" \
