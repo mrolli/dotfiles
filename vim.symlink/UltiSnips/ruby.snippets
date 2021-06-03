@@ -1,0 +1,38 @@
+# rspec-puppet related snippets
+snippet testfile "Test file resource" b
+is_expected.to contain_file('${1:name_or_path}')
+  .with_ensure('${2:file}')
+  .with_path('$1')
+  .with_owner('${4:root}')
+  .with_group('${5:root}')
+  .with_mode('${6:0644}')
+${0}
+endsnippet
+
+snippet testservice "Test service resource" b
+is_expected.to contain_service('${1:name}')
+  .with_ensure('${2:running}')
+  .with_enable('${3:true}')
+  .with_hasstatus('${4:true}')
+  .with_hasrestart('${5:true}')
+${0}
+endsnippet
+
+snippet testfirewall "Test firewall rule"
+is_expected.to contain_firewall('${1:100 allow access to service}')
+  .with_proto('${2:tcp}')
+  .with_dport('${3:123}')
+  .with_action('${4:accept}')
+${0}
+endsnippet
+
+snippet testexec "Test exec resources"
+is_expected.to contain_exec('${1:exec name}')
+  .with_path(%r{${2:path})
+  .with_command('${3:command}')
+  .with_creates('${4:path}')
+  .with_onlyif('${5:expression}')
+  .with_unless('${6:expression}')
+  .with_refreshonly('${7:refresh}')
+${0}
+endsnippet
