@@ -7,11 +7,6 @@ set completion-ignore-case on
 # Immediately add a trailing slash when autocompleting symlinks to directories
 set mark-symlinked-directories on
 
-# Use the text that has already been typed as the prefix for searching through
-# commands (i.e. more intelligent Up/Down behavior)
-"\e[B": history-search-forward
-"\e[A": history-search-backward
-
 # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
 set match-hidden-files off
 
@@ -31,10 +26,21 @@ set visible-stats on
 # Readline used by Bash 4.)
 set skip-completed-text on
 
-# Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
-#set input-meta on
-#set output-meta on
-#set convert-meta off
+# Set editing-mode of readline to vi
+set editing-mode vi
+$if mode=vi
 
-# Use Alt/Meta + Delete to delete the preceding word
-#"\e[3;3~": kill-word
+set keymap vi-command
+# these are for vi-command mode
+"\e[A": history-search-backward            # arrow up
+"\e[B": history-search-forward             # arrow down
+"\ep": yank-last-arg                       # bind to Alt-p
+Control-l: clear-screen
+
+set keymap vi-insert
+# these are for vi-insert mode
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\ep": yank-last-arg
+Control-l: clear-screen
+$endif
