@@ -126,7 +126,6 @@ function __ps_prompt() {
   unset ps4_parts;
 }
 
-__ps_prompt
-# preserve earlier PROMPT_COMMAND entries
-#PROMPT_COMMAND="__ps_prompt; $PROMPT_COMMAND"
+# run __ps_prompt after every command and preserve earlier PROMPT_COMMAND entries
+PROMPT_COMMAND="__ps_prompt; $PROMPT_COMMAND"
 
