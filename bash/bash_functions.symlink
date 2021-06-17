@@ -53,3 +53,14 @@ function brewup {
   fi
   brew doctor
 }
+
+# print week number based on date or now()
+function week {
+  if [ "${1}" = "-h" ]
+  then
+    echo "Usage: week [YYYY-MM-DD]"
+    return
+  fi
+
+  [ -z "${1}" ] && date +%V || date --date="${1}" +%V
+}
