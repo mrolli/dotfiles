@@ -40,10 +40,12 @@ function append {
 
 # brewup onliner to keep things up2date
 function brewup {
+  echo "[ ${blue}..${reset} ] Updating Homebrew"
   brew update
   out=$(brew outdated)
   if [ ! -z "${out}" ]
   then
+    echo "[ ${blue}..${reset} ] The following updates are available:"
     echo $out
     if [ "${1}" = "-f" ] || prompt_confirm "Shall I upgrade all?"
     then
@@ -51,6 +53,7 @@ function brewup {
       brew cleanup
     fi
   fi
+  echo "[ ${blue}..${reset} ] Running brew doctor"
   brew doctor
 }
 
