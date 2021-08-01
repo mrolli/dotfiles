@@ -19,9 +19,24 @@ $pregReplaceStruct = array(
     '/\.\./'             => '.'
 );
 
-$notest = isset($argv[1]) && $argv[1] == "-n" ? true : false;
+$notest=false;
+$ucfirst=false;
+$filter='*';
 
-$filenames = glob('*');
+for ($i=1; $i<count($argv); $i++) {
+    switch ($argv[$i]) {
+      case '-n':
+          $notest = true;
+          break;
+      case '-u':
+          $ucfirst = true;
+          break;
+      default:
+          $filter = $argv[$i];
+    }
+}
+
+$filenames = glob($filter);
 
 foreach ($filenames as $origfilename) {
     if ($origfilename == 'ranking.txt') {
@@ -37,12 +52,14 @@ foreach ($filenames as $origfilename) {
     }
     $filename = preg_replace(array_keys($pregReplaceStruct), array_values($pregReplaceStruct), $filename);
     # DO NOT add strtolower here as it would break acronyms
-    $filename = ucwords($filename, " .,\t\r\n\f\v");
+    $filename = $ucfirst ? ucwords($filename, " .,\t\r\n\f\v") : $filename;
     $newfilename = empty($ext) ? $filename : $filename . '.' . $ext;
     if ($origfilename !== $newfilename) {
         if ($notest) {
             rename($origfilename, $newfilename);
+            echo "renamed to: {$newfilename}\n";
+        } else {
+            echo "{$origfilename} => {$newfilename}\n";
         }
-        echo "renamed to: {$newfilename}\n";
     }
 }
