@@ -32,8 +32,7 @@ let g:lightline = {
       \   'fugitive': 'LightlineFugitive',
       \   'filename': 'LightlineFilename',
       \   'trailingspace': 'StatuslineTrailingSpaceWarning',
-      \   'trailingtab': 'StatuslineTabWarning',
-      \   'mylineinfo': 'MyLineInfo'
+      \   'trailingtab': 'StatuslineTabWarning'
       \ },
       \ 'component_type': {
       \   'linter_checking': 'left',
