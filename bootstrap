@@ -6,6 +6,7 @@
 
 cd "$(dirname "$0")"
 DOTFILES_ROOT_ABS=$(pwd -P)
+DOTFILES_ROOT_REL=${DOTFILES_ROOT_ABS#$HOME/}
 
 set -e
 
@@ -96,13 +97,26 @@ function install_dotfiles() {
 
   for src in $(find -H "${DOTFILES_ROOT_ABS}" -maxdepth 2 -name "*.symlink" -not -path "*.git*")
   do
-    src="${src#$HOME/}"
-    dst="${HOME}/.$(basename "${src%.*}")"
-    link_file "$src" "$dst"
+    # Compute the symlinks path differently if it is for a .config target
+    linktarget="${src#$HOME/}"
+    echo "linktarget: "$linktarget
+    if [[ "${src}" =~ "${DOTFILES_ROOT_ABS}/config" ]]
+    then
+      linktarget=~/"${linktarget}"
+      linkpath="${HOME}/.${src#${DOTFILES_ROOT_ABS}/}"
+      linkpath="${linkpath%.*}"
+      parentdir="${HOME}/.$(dirname ${linkpath})"
+      # Create parent directories if needed
+      mkdir -p "${parentdir}"
+    else
+      linkpath="${HOME}/.$(basename "${src%.*}")"
+    fi
+    echo "linkpath: "$linkpath
+    link_file "$linktarget" "$linkpath"
   done
 
   # additionally link bin to ~/bin
-  link_file "${DOTFILES_ROOT_ABS#$HOM}/bin" "${HOME}/bin"
+  link_file "${DOTFILES_ROOT_ABS#$HOME/}/bin" "${HOME}/bin"
 }
 
 echo ""
