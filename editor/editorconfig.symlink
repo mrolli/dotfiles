@@ -1,12 +1,13 @@
-; EditorConfig is awesome: http://EditorConfig.org
+# EditorConfig is awesome: http://EditorConfig.org
 
+# top-most EditorConfig file
 root = true
 
-; Ruby style as default
-; UTF-8 charset
-; Unix-style newlines with a newline ending every file
-; 2 space indent
-; Trim trailing whitespace
+# Ruby style as default
+# - UTF-8 charset
+# - Unix-style newlines with a newline ending every file
+# - 2 space indent
+# - Trim trailing whitespace
 [*]
 indent_style = space
 indent_size = 2
@@ -15,17 +16,18 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-; Markdown
-; 4 space indent
-; Trailing whitespace is potentially meaningful, leave it
+# Markdown
+# - 4 space indent
+# - Trailing whitespace is potentially meaningful, leave it
 [*.md]
 indent_size = 4
 trim_trailing_whitespace = false
 
-; Python
-; 4 space indent
+# Python
+# - 4 space indent
 [*.py]
 indent_size = 4
 
+# Makefiles are tab based
 [Makefile]
 indent_style = tab
