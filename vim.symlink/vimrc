@@ -30,8 +30,8 @@ Plugin 'preservim/tagbar'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'Yggdroot/indentLine'
 Plugin 'pedrohdz/vim-yaml-folds'
-Plugin 'frazrepo/vim-rainbow'
-" Additional text objects
+Plugin 'luochen1990/rainbow'
+" Additional text objects and motions
 Plugin 'michaeljsmith/vim-indent-object'
 " UltiSnips & Co
 Plugin 'SirVer/ultisnips'
