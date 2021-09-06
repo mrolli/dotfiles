@@ -1,4 +1,14 @@
 # rspec-puppet related snippets
+snippet is "Test expectation" b
+is_expected.to contain_$1($2)
+  .with_ensure($3)$0
+endsnippet
+
+snippet isn "Test expectation" b
+is_expected.not_to contain_$1($2)
+  .with_ensure($3)$0
+endsnippet
+
 snippet testfile "Test file resource" b
 is_expected.to contain_file('${1:name_or_path}')
   .with_ensure('${2:file}')

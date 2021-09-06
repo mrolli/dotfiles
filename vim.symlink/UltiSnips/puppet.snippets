@@ -1,17 +1,17 @@
 snippet dir "Directory resource"
 file { '${1:/path/to/dir}':
-  ensure  => ${2:directory},
-  owner   => '${3:root},
-  group   => '${3},
-  mode    => '${4:0644}',
+  ensure => ${2:directory},
+  owner  => '${3:root}',
+  group  => '${3}',
+  mode   => '${4:0755}',
 }
 endsnippet
 
 snippet file "File resource"
 file { '${1:/path/to/file}':
   ensure  => ${2:present},
-  owner   => '${3:root},
-  group   => '${3},
+  owner   => '${3:root}',
+  group   => '${3}',
   mode    => '${4:0644}',
   content => '${4:content of file}',
   source  => '${5:module/file}',
