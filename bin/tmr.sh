@@ -18,8 +18,8 @@ then
     tmux select-layout tiled
     tmux send-keys -t ${session_name}:1.4 'vagrant up service01 puppet puppetdb01 nfs01 lrms01 submit01 anode001' C-m
 
-    target_dir=$HOME/Developer/ubelix/puppet-installer/controlrepo/modules/puppet-module-slurm
-    tmux new-window -n slurm -t ${session_name} -c $target_dir
+    target_dir=$HOME/Developer/id/myitjournal/
+    tmux new-window -n myitjournal -t ${session_name} -c $target_dir
     tmux split-window -v -c $target_dir
     tmux split-window -h -c $target_dir
     tmux split-window -h -c $target_dir
