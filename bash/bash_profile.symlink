@@ -76,3 +76,9 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Source a platform specific bash profile if available
+[ -f "${HOME}/.bash_profile.$(uname -s)" ] && source "${HOME}/.bash_profile.$(uname -s)"
+
+# Source a local non-versioned bash profile script if available
+[ -f "${HOME}/.bash_profile.local" ] && source "${HOME}/.bash_profile.local"
