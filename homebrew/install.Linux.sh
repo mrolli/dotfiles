@@ -4,6 +4,9 @@ curl_version="7.78.0"
 git_version="v2.33.0"
 my_bash_profile=~/.bash_profile.local
 
+# Do not run this script as user root
+[ $UID -eq 0 ] && echo "Do not run this as root!" && exit 1
+
 # Install required software
 sudo yum -y groupinstall "Development tools"
 sudo yum -y install wget git gcc autoconf expat-devel gettext-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker asciidoc xmlto
