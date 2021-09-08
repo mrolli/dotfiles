@@ -43,7 +43,20 @@ autoconf && ./configure --prefix="${PREFIX}" --with-curl="${PREFIX}" && make && 
 
 # Now install Homebrew using the compiled tools
 /bin/bash -c "CI=true $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Find installed brew command and prepare the environment
+if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]
+then
+  brew_path=/home/linuxbrew/.linuxbrew/bin/brew
+elif [ -x ~/.linuxbrew/bin/brew ]
+then
+  brew_path=~/.linuxbrew/bin/brew
+else
+  echo "Unable to find brew script"
+  exit 1
+fi
+eval "$(${brew_path} shellenv)"
+
 # For HOMEBREW_*_PATH to work, also HOMEBREW_DEVELOPER has to be set
 export HOMEBREW_DEVELOPER=1
 export HOMEBREW_CURL_PATH=~/usr/bin/curl
@@ -60,7 +73,8 @@ unset HOMEBREW_DEVELOPER HOMEBREW_CURL_PATH HOMEBREW_GIT_PATH
 HOMEBREW_FORCE_BREWED_CURL=1 brew config
 
 # update the local bash_profile of current user
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $my_bash_profile
 echo "export HOMEBREW_FORCE_BREWED_CURL=1" >> $my_bash_profile
+echo "export HOMEBREW_NO_AUTO_UPDATE=1" >> $my_bash_profile
+echo 'eval "$('$brew_path' shellenv)"' >> $my_bash_profile
 
 exit 0

@@ -2,6 +2,7 @@ tap 'homebrew/core'
 tap 'homebrew/bundle'
 
 # Apps from homebrew/core
+brew 'curl'
 brew 'gh'
 brew 'git'
 brew 'glow'
