@@ -2,7 +2,7 @@
 
 topic_dir="$(dirname -- "$0")"
 bundle_dir="${topic_dir}/bundle"
-bundles=$(awk '/^Plugin/{print $2}' "${topic_dir}/vimrc.symlink" | sed 's/^.\(.*\).$/\1/' | sort)
+bundles=$(awk '/^Plugin/{print $2}' "${topic_dir}/vimrc" | sed 's/^.\(.*\).$/\1/' | sort)
 
 source "${topic_dir}/../shell_functions.sh"
 for bundle in $bundles
