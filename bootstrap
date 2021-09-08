@@ -76,7 +76,8 @@ function link_file() {
 
 function run_installers() {
   # Start with Homebrew as installers might depend on brew installed software
-  [ -x "${DOTFILES_ROOT_ABS}/homebrew/install.sh" ] && "${DOTFILES_ROOT_ABS}/homebrew/install.sh"
+  homebrew_installer="${DOTFILES_ROOT_ABS}/homebrew/install.$(uname -s).sh"
+  [ -x $homebrew_installer ] && $homebrew_installer
 
   # Find all general and platform-specific installers and execute them
   for installer in ${DOTFILES_ROOT_ABS}/*/install{,.$(uname -s)}.sh
