@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if ! ffmpeg -h &>/dev/null
+then
+  echo "ffmpeg not found."
+  exit 1
+fi
+
 if [ $# -lt 3 ]
 then
   echo "Usage: ${0} targetfilename file1 file2 [file3..]"
@@ -14,5 +20,9 @@ for file in $files
 do
   echo "file '${file}'" >> .filelist.txt
 done
+
+echo "Concatenating the following files in that order:"
+cat .filelist.txt
+
 ffmpeg -f concat -safe 0 -i .filelist.txt -c copy "${outfile}"
 rm -f .filelist.txt
