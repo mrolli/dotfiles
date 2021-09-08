@@ -104,9 +104,8 @@ function install_dotfiles() {
       linktarget=~/"${linktarget}"
       linkpath="${HOME}/.${src#${DOTFILES_ROOT_ABS}/}"
       linkpath="${linkpath%.*}"
-      parentdir="${HOME}/.$(dirname ${linkpath})"
       # Create parent directories if needed
-      mkdir -p "${parentdir}"
+      mkdir -p "$(dirname ${linkpath})"
     else
       linkpath="${HOME}/.$(basename "${src%.*}")"
     fi
