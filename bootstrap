@@ -99,7 +99,6 @@ function install_dotfiles() {
   do
     # Compute the symlinks path differently if it is for a .config target
     linktarget="${src#$HOME/}"
-    echo "linktarget: "$linktarget
     if [[ "${src}" =~ "${DOTFILES_ROOT_ABS}/config" ]]
     then
       linktarget=~/"${linktarget}"
@@ -111,7 +110,6 @@ function install_dotfiles() {
     else
       linkpath="${HOME}/.$(basename "${src%.*}")"
     fi
-    echo "linkpath: "$linkpath
     link_file "$linktarget" "$linkpath"
   done
 
