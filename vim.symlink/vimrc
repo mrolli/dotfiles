@@ -86,6 +86,7 @@ source $HOME/.vim/config/nerdtree.vim
 source $HOME/.vim/config/rainbow.vim
 source $HOME/.vim/config/signify.vim
 source $HOME/.vim/config/ultisnips.vim
+source $HOME/.vim/config/vim-better-whitespace.vim
 
 set showcmd                    " show incomplete cmds down the bottom
 set noshowmode                 " do not show current mode down the bottom; already shown by lightline
