@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+pl=${1:-"Fahrstuhlmusik"}
+
+osascript <<EOD
+  if application "Music" is running then
+    tell application "Music"
+      if player state is not stopped then
+
+        set thePlaylist to "$pl"
+        if not (exists playlist thePlaylist) then
+          set display to "Target playlist not found"
+        else
+          set curTrack to current track
+          set thePlaylist to playlist thePlaylist
+
+          if class of thePlaylist is not user playlist then
+            set display to "Target playlist is not a user playlist"
+          else if smart of thePlaylist is true then
+            set display to "Cannot add track to a smart playlist"
+          else
+            try
+              if not (exists (some track of thePlaylist whose database ID is (get curTrack's database ID))) then
+                duplicate curTrack to thePlaylist
+                set display to "Track added to playlist " & name of thePlaylist
+              else
+                set display to "Track already on playlist " & name of thePlaylist
+              end if
+            end try
+          end if
+        end if
+      end if
+    end tell
+  end if
+EOD
