@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+share=Data
+
+[ -d /Volumes/$share ] && exit 0
+
+open -g smb://gimli@gimli/$share
+
+while ! ls /Volumes/$share &>/dev/null
+do
+  sleep 1
+done
+
+exit 0
