@@ -18,6 +18,9 @@ PATH="/usr/local/opt/findutils/libexec/gnubin":$PATH
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin":$PATH
 export PATH
 
+# Also export HOSTNAME
+export HOSTNAME
+
 # Source profile snippets outsourced to their own files
 for file in ~/.bash_{colors,exports,aliases,functions,prompt}
 do
@@ -82,3 +85,5 @@ unset __conda_setup
 
 # Source a local non-versioned bash profile script if available
 [ -f "${HOME}/.bash_profile.local" ] && source "${HOME}/.bash_profile.local"
+
+true
