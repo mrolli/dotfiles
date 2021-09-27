@@ -74,6 +74,9 @@ let g:solarized_termtrans=1
 colorscheme solarized
 " Make comments italic
 hi Comment cterm=italic
+" Enable and style the cursorline
+set cursorline
+hi Cursorline cterm=none ctermbg=8 ctermfg=none
 
 " always display status line
 set laststatus=2
