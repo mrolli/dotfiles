@@ -68,11 +68,12 @@ let mapleader = ","
 "setup color scheme
 "turn on syntax highlighting
 syntax enable
-"colorscheme bubblegum-256-dark
 set background=dark
 "let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 colorscheme solarized
+" Make comments italic
+hi Comment cterm=italic
 
 " always display status line
 set laststatus=2
