@@ -1,0 +1,23 @@
+session_name: "${HOSTNAME}"
+global_options:
+  automatic-rename: 'off'
+windows:
+- window_name: controlrepo
+  focus: true
+  layout: tiled
+  start_directory: ~/Developer/ubelix/puppet-installer/controlrepo
+  panes:
+  - pane
+  - pane
+  - focus: true
+  - shell_command:
+    - vagrant up service01 puppet puppetdb01 nfs01 lrms01 submit01 anode001
+- window_name: dotfiles
+  options:
+    main-pane-width: 50%
+  layout: main-vertical
+  start_directory: ~/.dotfiles
+  panes:
+  - focus: true
+  - pane
+  - pane

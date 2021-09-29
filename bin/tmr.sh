@@ -2,6 +2,10 @@
 
 session_name="$(hostname -s)"
 
+tmuxp load $session_name
+
+exit 0
+
 tmux has-session -t ${session_name} >/dev/null 2>&1
 
 if [ $? != 0 ]
