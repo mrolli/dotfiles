@@ -38,7 +38,7 @@ function append {
   fi
 }
 
-# brewup onliner to keep things up2date
+# brewup one-liner to keep things up2date
 function brewup {
   echo "[ ${blue}..${reset} ] Updating Homebrew"
   brew update
@@ -66,4 +66,13 @@ function week {
   fi
 
   [ -z "${1}" ] && date +%V || date --date="${1}" +%V
+}
+
+# load a local tmuxp config file in a directory by first changing pwd
+function tmuxpl {
+  [ $# -ne 1 ] && echo "Usage: tmuxpl DIR" && return 1
+  [ ! -d $1 ]  && echo "Error: Provided path is a readable directory path" && return 2
+
+  cd $1
+  tmuxp load .
 }
