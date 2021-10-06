@@ -13,7 +13,7 @@ export LESS_TERMCAP_md="$(tput setaf 136)"
 export MANPAGER='less -X'
 
 # Keep plenty of history.
-export HISTSIZE=1000000
+export HISTSIZE=100000
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
 
