@@ -23,7 +23,7 @@
     old = red
 [core]
     autocrlf = input
-    editor = vim
+    editor = nvim
     excludesfile = ~/.gitignore
 [grep]
     lineNumber = true
@@ -36,6 +36,7 @@
 [commit]
     template = ~/.gitmessage
     gpgSign = true
+    verbose = true
 [fetch]
     prune = true
 [push]
