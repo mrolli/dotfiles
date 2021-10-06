@@ -73,6 +73,5 @@ function tmuxpl {
   [ $# -ne 1 ] && echo "Usage: tmuxpl DIR" && return 1
   [ ! -d $1 ]  && echo "Error: Provided path is a readable directory path" && return 2
 
-  cd $1
-  tmuxp load .
+  (cd $1 && tmuxp load .)
 }
