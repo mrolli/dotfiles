@@ -28,9 +28,6 @@ alias la="ls -lAF ${colorflag}"
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
-# setup alias vi instead of using /usr/bin/vi due to exit code issues on macOS
-alias vi="vim"
-
 # Always enable colore *grep output
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
