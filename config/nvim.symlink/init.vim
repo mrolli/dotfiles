@@ -24,6 +24,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'mhinz/vim-signify'
 Plug 'luochen1990/rainbow'
 Plug 'rhysd/committia.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
@@ -35,7 +36,9 @@ call plug#end()
 let g:nvim_config_root = stdpath('config')
 let g:config_file_list = [
       \ 'ale.vim',
+      \ 'editorconfig.vim',
       \ 'lightline.vim',
+      \ 'rainbow.vim',
       \ 'signify.vim'
       \]
 
