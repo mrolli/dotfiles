@@ -20,8 +20,8 @@
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
-      \   'left': [[ 'mode', 'paste', ], [ 'fugitive', 'filename' ]],
-      \   'right': [[ 'percent', 'lineinfo' ], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'trailingspace', 'trailingtab' ]]
+      \   'left': [[ 'mode', 'paste', ], [ 'fugitive', 'absolutepath' ]],
+      \   'right': [[ 'percent', 'lineinfo' ], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'spell', 'fileformat', 'fileencoding', 'filetype' ], [ 'trailingspace', 'trailingtab' ]]
       \ },
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
