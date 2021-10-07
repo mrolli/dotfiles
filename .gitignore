@@ -6,4 +6,4 @@ vim.symlink/undofiles/*
 vim.symlink/.netrwhist
 Vagrantfile
 .vagrant
-/tmp
+temp/
