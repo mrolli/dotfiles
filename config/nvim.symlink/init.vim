@@ -117,7 +117,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'puppet']
 
 " Jump to last cursor position when opening a file, but dont do it when writing a commit log entry
-autocmd BufReadPost * call SetCursorPosition()
 if !exists('*SetCursorPosition')
   function! SetCursorPosition()
     if &filetype !~ 'svn\|commit\c'
@@ -128,16 +127,7 @@ if !exists('*SetCursorPosition')
     end
   endfunction
 endif
-
-" Reloads vimrc after saving but keep cursor position
-if !exists('*ReloadVimrc')
-  function! ReloadVimrc()
-    let save_cursor = getcurpos()
-    source $MYVIMRC
-    call setpos('.', save_cursor)
-  endfunction
-endif
-autocmd! BufWritePost $MYVIMRC call ReloadVimrc()
+autocmd BufReadPost * call SetCursorPosition()
 
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
