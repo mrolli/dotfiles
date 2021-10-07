@@ -6,7 +6,7 @@ syntax on
 let g:vim_plug_path = stdpath('data') . '/site/autoload/plug.vim'
 if empty(glob(g:vim_plug_path))
   execute 'silent !curl -flo ' . g:vim_plug_path . ' --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
@@ -56,10 +56,10 @@ set cursorline
 hi Cursorline cterm=bold ctermbg=8 ctermfg=none
 
 "if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-"  set t_ut=
+"  disable Background Color Erase (BCE) so that color schemes
+"  render properly when inside 256-color tmux and GNU screen.
+"  see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+" set t_ut=
 "endif
 
 " change the mapleader to something more convenient on a sg keyboard
@@ -87,7 +87,7 @@ set linebreak                  " Wrap lines at convenient points
 set showcmd                    " Show incomplete cmds down the bottom
 set noshowmode                 " Do not show current mode down the bottom; already shown by lightline
 set showmatch                  " Set show matching parenthesis
-set signcolumn=yes             " Always shwo the signcolumn
+set signcolumn=yes             " Always show the signcolumn
 "set colorcolumn=80             " Highlight column 80
 "set wildmode=list:longest      " make cmdline tab completion similar to bash
 "set wildmenu                   " enable ctrl-n and ctrl-p to scroll thru matches
@@ -114,17 +114,18 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Fenced languages in markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'puppet']
 
-"jump to last cursor position when opening a file
-"dont do it when writing a commit log entry
+" Jump to last cursor position when opening a file, but dont do it when writing a commit log entry
 autocmd BufReadPost * call SetCursorPosition()
-function! SetCursorPosition()
+if !exists('*SetCursorPosition')
+  function! SetCursorPosition()
     if &filetype !~ 'svn\|commit\c'
-        if line("'\"") > 0 && line("'\"") <= line("$")
-            exe "normal! g`\""
-            normal! zz
-        endif
+      if line("'\"") > 0 && line("'\"") <= line("$")
+        exe "normal! g`\""
+        normal! zz
+      endif
     end
-endfunction
+  endfunction
+endif
 
 " Reloads vimrc after saving but keep cursor position
 if !exists('*ReloadVimrc')
@@ -147,12 +148,29 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Signify shortcuts
-nnoremap <F2> :SignifyToggle<CR>:set invnu<CR>
-nmap <leader>d :SignifyHunkDiff<CR>
+if !exists('*ToggleUI*')
+  function! ToggleUI()
+    if !exists("b:ui_is_on") || b:ui_is_on
+      :SignifyToggle
+      set nu! rnu! signcolumn=no
+      let b:ui_is_on=0
+    else
+      set nu! rnu! signcolumn=yes
+      :SignifyToggle
+      let b:ui_is_on=1
+    endif
+  endfunction
+endif
 
-" Toggle paste mode
-nnoremap <F3> :set invpaste paste?<CR>
-nnoremap <F4> :buffers<CR>:buffer<Space>
+" Easy show diff
+nmap <leader>d :SignifyHunkDiff<CR>
+" Easy reindent
+nmap <leader>i gg=G<C-o><C-o>
+
+" Funciton keys
+nnoremap <F2> :buffers<CR>:buffer<Space>
+nnoremap <F3> :call ToggleUI()<CR>
+nnoremap <F4> :set invpaste paste?<CR>
 
 " Highlight column of current cursor position
 nnoremap <silent><Leader>mm
