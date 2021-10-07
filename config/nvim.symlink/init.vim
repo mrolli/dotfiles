@@ -2,9 +2,16 @@ set nocompatible
 filetype plugin indent on
 syntax on
 
+" Install vim-pug if not available
+let g:vim_plug_path = stdpath('data') . '/site/autoload/plug.vim'
+if empty(glob(g:vim_plug_path))
+  execute 'silent !curl -flo ' . g:vim_plug_path . ' --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
-
 " Declare the list of plugins.
 Plug 'gruvbox-community/gruvbox'
 Plug 'lifepillar/vim-solarized8'
@@ -20,7 +27,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
-
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
