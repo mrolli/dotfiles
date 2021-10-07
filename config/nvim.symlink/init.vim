@@ -126,8 +126,21 @@ function! SetCursorPosition()
     end
 endfunction
 
+" Reloads vimrc after saving but keep cursor position
+if !exists('*ReloadVimrc')
+  function! ReloadVimrc()
+    let save_cursor = getcurpos()
+    source $MYVIMRC
+    call setpos('.', save_cursor)
+  endfunction
+endif
+autocmd! BufWritePost $MYVIMRC call ReloadVimrc()
+
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" fast edit my vimrc
+nnoremap <Leader>v :e $MYVIMRC<cr>
 
 " Reselect visual block after indent (thanks @twe4ked)
 vnoremap < <gv
