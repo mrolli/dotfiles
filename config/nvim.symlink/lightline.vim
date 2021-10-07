@@ -3,6 +3,11 @@
 " lightline.vim
 " https://github.com/itchyny/lightline.vim
 "
+" AND
+"
+" lightline-bufferline
+" https://github.com/mengelbrecht/lightline-bufferline
+"
 " Below configuration relies on an patched font
 " for powerline. Set the font in respective
 " terminal emulator.
@@ -18,6 +23,10 @@ let g:lightline = {
       \   'left': [[ 'mode', 'paste', ], [ 'fugitive', 'filename' ]],
       \   'right': [[ 'percent', 'lineinfo' ], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'trailingspace', 'trailingtab' ]]
       \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
       \ 'component': {
       \   'percent': '%p%%',
       \   'lineinfo': '%l:%v'
@@ -27,6 +36,7 @@ let g:lightline = {
       \  'linter_warnings': 'lightline#ale#warnings',
       \  'linter_errors': 'lightline#ale#errors',
       \  'linter_ok': 'lightline#ale#ok',
+      \   'buffers': 'lightline#bufferline#buffers'
       \ },
       \ 'component_function': {
       \   'fugitive': 'LightlineFugitive',
@@ -39,6 +49,7 @@ let g:lightline = {
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
       \   'linter_ok': 'left',
+      \   'buffers': 'tabsel'
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '|' }
@@ -119,3 +130,15 @@ function! StatuslineTabWarning()
   return b:statusline_tab_warning
 endfunction
 
+"
+let g:lightline#bufferline#show_number  = 1
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)

@@ -16,6 +16,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
 Plug 'editorconfig/editorconfig-vim'
@@ -70,6 +71,7 @@ set ts=4 sw=4 sts=4 et si ai   " Indentation to 4, expandtab, smartindent and au
 set cindent                    " recommended seting for automatic C-style indentation
 set exrc                       " Automatically source local vimrcs
 set laststatus=2               " Always display the status line
+set showtabline=2              " Always display the tabs line
 set guicursor=                 " Normal cursor, not just a vertical line
 set number                     " Show line numbers
 set relativenumber             " Show relative line numbers by default
