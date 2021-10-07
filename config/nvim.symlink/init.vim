@@ -42,13 +42,12 @@ for f in g:config_file_list
   execute 'source' . g:nvim_config_root . '/' . f
 endfor
 
+if has('termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 set background=dark
-"let g:solarized_termcolors=256
-"let g:solarized_termtrans=1
-"colorscheme solarized
-"set termguicolors
-"colorscheme solarized8
-set termguicolors
 colorscheme gruvbox
 " Make comments italic
 hi Comment cterm=italic
