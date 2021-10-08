@@ -1,8 +1,5 @@
 # Exported env variables
 
-# Explicitly set terminal mode
-export TERM=xterm-256color
-
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
