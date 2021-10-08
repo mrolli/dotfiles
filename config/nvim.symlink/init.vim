@@ -157,11 +157,11 @@ if !exists('*ToggleUI*')
 endif
 
 " Easy show diff
-nmap <leader>d :SignifyHunkDiff<CR>
+nnoremap <Leader>d :SignifyHunkDiff<CR>
 " Easy reindent
-nmap <leader>i gg=G<C-o><C-o>
+nnoremap <Leader>i gg=G<C-o><C-o>
 
-" Funciton keys
+" Function keys
 nnoremap <F2> :buffers<CR>:buffer<Space>
 nnoremap <F3> :call ToggleUI()<CR>
 nnoremap <F4> :set invpaste paste?<CR>
@@ -179,13 +179,13 @@ nnoremap <silent><Leader>mr
       \ 0<cr>
 
 " Quick access to tabs
-nmap <leader>1 <Plug>lightline#bufferline#go(1)
-nmap <leader>2 <Plug>lightline#bufferline#go(2)
-nmap <leader>3 <Plug>lightline#bufferline#go(3)
-nmap <leader>4 <Plug>lightline#bufferline#go(4)
-nmap <leader>5 <Plug>lightline#bufferline#go(5)
-nmap <leader>6 <Plug>lightline#bufferline#go(6)
-nmap <leader>7 <Plug>lightline#bufferline#go(7)
-nmap <leader>8 <Plug>lightline#bufferline#go(8)
-nmap <leader>9 <Plug>lightline#bufferline#go(9)
-nmap <leader>0 <Plug>lightline#bufferline#go(10)
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
