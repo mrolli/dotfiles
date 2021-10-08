@@ -130,8 +130,9 @@ autocmd BufReadPost * call SetCursorPosition()
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" fast edit my vimrc
+" fast edit and reload my vimrc
 nnoremap <Leader>v :e $MYVIMRC<cr>
+nnoremap <Leader>r :so $MYVIMRC<CR>
 
 " Reselect visual block after indent (thanks @twe4ked)
 vnoremap < <gv
