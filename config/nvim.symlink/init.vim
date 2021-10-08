@@ -134,9 +134,12 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 nnoremap <Leader>v :e $MYVIMRC<cr>
 nnoremap <Leader>r :so $MYVIMRC<CR>
 
-" Reselect visual block after indent (thanks @twe4ked)
+" Reselect visual block after indent (thx @twe4ked)
 vnoremap < <gv
 vnoremap > >gv
+" Visually move selcted block around (thx @ThePrimeagen)
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " Signify shortcuts
 if !exists('*ToggleUI*')
