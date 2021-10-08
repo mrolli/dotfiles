@@ -32,20 +32,6 @@ Plug 'tpope/vim-sensible'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-" Source config files for plugins
-let g:nvim_config_root = stdpath('config')
-let g:config_file_list = [
-      \ 'ale.vim',
-      \ 'editorconfig.vim',
-      \ 'lightline.vim',
-      \ 'rainbow.vim',
-      \ 'signify.vim'
-      \]
-
-for f in g:config_file_list
-  execute 'source' . g:nvim_config_root . '/' . f
-endfor
-
 if has('termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
