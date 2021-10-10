@@ -2,7 +2,7 @@ set nocompatible
 filetype plugin indent on
 syntax on
 
-" Install vim-pug if not available
+" Install vim-plug if not available
 let g:vim_plug_path = stdpath('data') . '/site/autoload/plug.vim'
 if empty(glob(g:vim_plug_path))
   execute 'silent !curl -flo ' . g:vim_plug_path . ' --create-dirs
@@ -41,27 +41,7 @@ Plug 'tpope/vim-sensible'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-if has('termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-set background=dark
-colorscheme gruvbox
-" Make comments italic
-hi Comment cterm=italic
-" Enable and style the cursor line
-set cursorline
-hi Cursorline cterm=bold ctermbg=8 ctermfg=none
-
-"if &term =~ '256color'
-"  disable Background Color Erase (BCE) so that color schemes
-"  render properly when inside 256-color tmux and GNU screen.
-"  see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-" set t_ut=
-"endif
-
-" change the mapleader to something more convenient on a sg keyboard
+" Change the mapleader to something more convenient on a sg keyboard
 let mapleader = ","
 
 set encoding=utf-8             " Default encoding
@@ -88,6 +68,7 @@ set showcmd                    " Show incomplete cmds down the bottom
 set noshowmode                 " Do not show current mode down the bottom; already shown by lightline
 set showmatch                  " Set show matching parenthesis
 set signcolumn=yes             " Always show the signcolumn
+set cursorline                 " Display the cursorline
 "set colorcolumn=80             " Highlight column 80
 "set wildmode=list:longest      " make cmdline tab completion similar to bash
 "set wildmenu                   " enable ctrl-n and ctrl-p to scroll thru matches
