@@ -63,7 +63,8 @@ bind-key p paste-buffer
 ######################
 
 #### Terminal configuration
-set-option -sa terminal-overrides ",${TERM}:RGB"
+#set-option -sa terminal-overrides ",${TERM}:RGB"
+set-option -g default-terminal "${TERM}"
 # These two are probably useless
 set-option -sa terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
 set-option -sa terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours
