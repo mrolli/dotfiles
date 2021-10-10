@@ -10,7 +10,10 @@
 #   out of 17 (default + 16 escapes), followed by a
 #   test use of that color on all nine background
 #   colors (default + 8 escapes).
-
+#
+#   Finally test the italic underline and curl effects
+#   and combinations of them.
+#
 T='•••'   # The text for the color test
 
 echo -e "\n         def     40m     41m     42m     43m     44m     45m     46m     47m";
@@ -27,3 +30,9 @@ do FG=${FGs// /}
   echo;
 done
 echo
+
+echo -e "\e[3mitalic\e[0m"
+echo -e "\e[4munderline\e[0m"
+echo -e "\e[4:3mcurl\e[4:0m"
+echo -e "\e[3m\e[4mitalic-underline\e[0m\e[0m"
+echo -e "\e[3m\e[4:3mitalic-curl\e[0m\e[4:0m"
