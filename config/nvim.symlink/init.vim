@@ -113,7 +113,7 @@ autocmd BufReadPost * call SetCursorPosition()
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " fast edit and reload my vimrc
-nnoremap <Leader>v :e $MYVIMRC<cr>
+nnoremap <Leader>e :e $MYVIMRC<cr>
 nnoremap <Leader>r :so $MYVIMRC<CR>
 
 " Reselect visual block after indent (thx @twe4ked)
