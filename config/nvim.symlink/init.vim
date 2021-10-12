@@ -118,6 +118,9 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 nnoremap <Leader>e :e $MYVIMRC<cr>
 nnoremap <Leader>r :so $MYVIMRC<CR>
 
+" Make file in current buffer executable
+nnoremap <leader>x :silent !chmod +x %<CR>
+
 " Reselect visual block after indent (thx @twe4ked)
 vnoremap < <gv
 vnoremap > >gv
@@ -139,6 +142,13 @@ if !exists('*ToggleUI*')
     endif
   endfunction
 endif
+
+" Replace in visual mode
+xnoremap <Leader>p "_dP
+
+" Delete to black hole register to save current register content
+nnoremap <Leader>d "_d
+vnoremap <Leader>d "_d
 
 " Easy show diff
 nnoremap <Leader>d :SignifyHunkDiff<CR>
