@@ -3,15 +3,30 @@
     email = michael@rollis.ch
     signingkey = 4DFE5E3BF4982CAE
 [alias]
+    aliases = config --get-regexp alias
+    branches = branch --all
     ci  = commit -v
     cia = commit -v --amend
     co  = checkout
-    st  = status
-    s   = status -s
-    revert = revert -n
+    # Find branches containing commit
+    fb = "!f() { git branch -a --contains $1; }; f"
+    # Find tags containing commit
+    ft = "!f() { git describe --always --contains $1; }; f"
+    # Find commits by source code
+    fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+    # Find commits by commit message
+    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
     l  = log --pretty=oneline -n 20 --graph --abbrev-commit
-    lg = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     ld = log --follow -p --stat --
+    lg = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    # Interactive rebase with the given number of latest commits.
+	  reb = "!r() { git rebase -i HEAD~$1; }; r"
+	  # Remove the old tag with this name and tag the latest commit with it.
+    retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
+    revert = revert -n
+    s   = status -s
+    st  = status
+    tag = tag -l
 [color]
     ui = auto
     interactive = true
@@ -31,7 +46,9 @@
     threads = 0
 [diff]
     renamelimit = 0
+    renames = copies
 [merge]
+    log = true
     tool = opendiff
 [commit]
     template = ~/.gitmessage
@@ -40,6 +57,7 @@
 [fetch]
     prune = true
 [push]
+    # https://git-scm.com/docs/git-config#git-config-pushdefault
     default = simple
 [achievement]
     upload = true
