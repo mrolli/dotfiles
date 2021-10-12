@@ -119,7 +119,7 @@ nnoremap <Leader>e :e $MYVIMRC<cr>
 nnoremap <Leader>r :so $MYVIMRC<CR>
 
 " Make file in current buffer executable
-nnoremap <leader>x :silent !chmod +x %<CR>
+nnoremap <Leader>x :silent !chmod +x %<CR>
 
 " Reselect visual block after indent (thx @twe4ked)
 vnoremap < <gv
@@ -145,10 +145,14 @@ endif
 
 " Replace in visual mode
 xnoremap <Leader>p "_dP
-
 " Delete to black hole register to save current register content
 nnoremap <Leader>d "_d
 vnoremap <Leader>d "_d
+" easy yank to OS clipboard
+nnoremap <Leader>y "+y
+vnoremap <Leader>y "+y
+" yank whole file
+nnoremap <Leader>Y gg"+yG
 
 " Easy show diff
 nnoremap <Leader>di :SignifyHunkDiff<CR>
