@@ -1,5 +1,3 @@
-" Plugin configuration file:
-"
 " vim-better-whitespace
 " https://github.com/ntpeters/vim-better-whitespace
 

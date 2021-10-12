@@ -1,10 +1,7 @@
-" Plugin configuration file:
-"
 " Rainbow
 " https://github.com/frazrepo/vim-rainbow
 
 let g:rainbow_active = 1
-
 let g:rainbow_conf = {
 \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
 \	'ctermfgs': ['darkblue', 'darkred', 'darkgreen', 'magenta', 'brown', 'darkgray', 'darkcyan', 'darkmagenta', 'gray'],

@@ -1,9 +1,5 @@
-" Plugin configuration file:
-"
 " lightline.vim
 " https://github.com/itchyny/lightline.vim
-"
-" AND
 "
 " lightline-bufferline
 " https://github.com/mengelbrecht/lightline-bufferline
@@ -16,7 +12,7 @@
 " https://github.com/powerline/fonts
 "
 " Recommendations: Menlo for Powerline, Cousine for Powerline
-"
+
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
