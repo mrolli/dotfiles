@@ -151,7 +151,7 @@ nnoremap <Leader>d "_d
 vnoremap <Leader>d "_d
 
 " Easy show diff
-nnoremap <Leader>d :SignifyHunkDiff<CR>
+nnoremap <Leader>di :SignifyHunkDiff<CR>
 " Easy reindent
 nnoremap <Leader>i gg=G<C-o><C-o>
 
