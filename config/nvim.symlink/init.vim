@@ -58,7 +58,7 @@ set number                     " Show line numbers
 set relativenumber             " Show relative line numbers by default
 set scrolloff=8                " Scroll that many lines if cursor leaves viewport
 set sidescrolloff=7            " Dito for horizontal scrolling
-set noerrorbells               "
+set noerrorbells               " No beeps and bleeps please
 set history=1000               " Store lots of :cmdline history
 set hlsearch                   " Highlight searches by default
 set incsearch                  " Find the next match as we type the search
@@ -125,7 +125,7 @@ vnoremap > >gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" Signify shortcuts
+" Toggle UI elements
 if !exists('*ToggleUI*')
   function! ToggleUI()
     if !exists("b:ui_is_on") || b:ui_is_on
@@ -145,7 +145,7 @@ nnoremap <Leader>d :SignifyHunkDiff<CR>
 " Easy reindent
 nnoremap <Leader>i gg=G<C-o><C-o>
 
-" Function keys
+" Map some function keys
 nnoremap <F2> :buffers<CR>:buffer<Space>
 nnoremap <F3> :call ToggleUI()<CR>
 nnoremap <F4> :set invpaste paste?<CR>
