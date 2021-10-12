@@ -1,5 +1,9 @@
-let g:mrolli_colorscheme = "gruvbox"
 fun! ColorMyPencils()
+  colorscheme gruvbox
+  set background=dark
+  let g:gruvbox_contrast_dark = 'medium'
+  let g:gruvbox_invert_section = '0'
+
   "let g:gruvbox_contrast_dark = 'medium'
   if exists('+termguicolors')
     "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -10,11 +14,6 @@ fun! ColorMyPencils()
     "let &t_Ce = "\e[4:0m"
     set termguicolors
   endif
-
-  set background=dark
-  colorscheme gruvbox
-  let g:gruvbox_contrast_dark = 'medium'
-  let g:gruvbox_invert_section = '0'
 
   "if &term =~ '256color'
   "  disable Background Color Erase (BCE) so that color schemes
