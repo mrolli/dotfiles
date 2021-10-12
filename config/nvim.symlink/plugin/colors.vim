@@ -24,6 +24,8 @@ fun! ColorMyPencils()
   highlight Comment cterm=italic gui=italic
   highlight ColorColumn ctermbg=0 guibg=grey
   highlight Cursorline cterm=bold ctermbg=238 gui=bold guibg=#3c3836
+  " Colorize unprintable chars, i.e. tabs!
+  highlight SpecialKey ctermfg=white ctermbg=9 guibg=#FF0000
 endfun
 call ColorMyPencils()
 

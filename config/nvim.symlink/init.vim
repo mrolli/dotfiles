@@ -67,6 +67,7 @@ set smartcase                  " but do case senstiive search when I use capital
 set hidden                     " Keep buffers hidden when not displayed instead off abandon them
 "set nowrap                    " Do not wrap long lines, this forces me to think about long lines
 set linebreak                  " Wrap lines at convenient points
+set listchars=tab:▶\           " show a symbol for tabs and set colors on next line
 set showcmd                    " Show incomplete cmds down the bottom
 set noshowmode                 " Do not show current mode down the bottom; already shown by lightline
 set showmatch                  " Set show matching parenthesis
@@ -84,10 +85,6 @@ if has('nvim')
 else
   set undodir=~/.vim/undofiles
 endif
-
-" Make tabs visible
-set listchars=tab:▶\  " show a symbol for tabs and set colors on next line
-highlight SpecialKey ctermfg=white ctermbg=9 guibg=#FF0000
 
 " Indentation settings for certain filetypes
 " https://www.arthurkoziel.com/setting-up-vim-for-yaml/
