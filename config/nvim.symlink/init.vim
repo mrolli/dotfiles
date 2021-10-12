@@ -5,8 +5,9 @@ syntax on
 " Declare the mapleader early to avoid surprises
 let mapleader = " "
 
-" Install vim-plug if not available
-let g:vim_plug_path = stdpath('data') . '/site/autoload/plug.vim'
+" Install vim-plug if it's not yet available
+let g:vim_plug_path = has('nvim') ? stdpath('data') . '/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
+" Install vim-plug if not yet available
 if empty(glob(g:vim_plug_path))
   execute 'silent !curl -flo ' . g:vim_plug_path . ' --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
