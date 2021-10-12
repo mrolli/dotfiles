@@ -2,6 +2,9 @@ set nocompatible
 filetype plugin indent on
 syntax on
 
+" Declare the mapleader early to avoid surprises
+let mapleader = " "
+
 " Install vim-plug if not available
 let g:vim_plug_path = stdpath('data') . '/site/autoload/plug.vim'
 if empty(glob(g:vim_plug_path))
@@ -42,8 +45,6 @@ Plug 'tpope/vim-sensible'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-" Change the mapleader to something more convenient on a sg keyboard
-let mapleader = ","
 
 set encoding=utf-8             " Default encoding
 set ts=4 sw=4 sts=4 et si ai   " Indentation to 4, expandtab, smartindent and autoindent
