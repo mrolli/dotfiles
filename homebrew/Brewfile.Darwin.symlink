@@ -1,8 +1,8 @@
-cask_args appdir: "/Applications"
 tap 'homebrew/core'
 tap 'homebrew/bundle'
-tap 'homebrew/homebrew-cask'
+tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
+tap 'buo/cask-upgrade'
 tap 'puppetlabs/puppet'
 
 # Apps from homebrew/core
