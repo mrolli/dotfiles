@@ -25,7 +25,7 @@ fun! ColorMyPencils()
   "highlight LineNr ctermfg=109 guifg=#40ffff
   highlight netrwDir ctermfg=109 guifg=#40ffff
   highlight Comment cterm=italic gui=italic
-  highlight ColorColumn ctermbg=0 guibg=grey
+  highlight ColorColumn ctermbg=0 guibg=#638578
   highlight Cursorline cterm=bold ctermbg=238 gui=bold guibg=#3c3836
   " Keep this though it does not work correctly
   highlight SpellBad gui=undercurl guisp=red term=undercurl cterm=undercurl

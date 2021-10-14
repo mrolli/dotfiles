@@ -73,7 +73,7 @@ set noshowmode                 " Do not show current mode down the bottom; alrea
 set showmatch                  " Set show matching parenthesis
 set signcolumn=yes             " Always show the signcolumn
 set cursorline                 " Display the cursorline
-"set colorcolumn=80             " Highlight column 80
+set colorcolumn=120            " Highlight column 80
 "set wildmode=list:longest      " make cmdline tab completion similar to bash
 "set wildmenu                   " enable ctrl-n and ctrl-p to scroll thru matches
 "set wildignore=*.o,*.obj,*~    " stuff to ignore when tab completing
