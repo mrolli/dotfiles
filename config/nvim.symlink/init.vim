@@ -65,7 +65,7 @@ set incsearch                  " Find the next match as we type the search
 set ignorecase                 " Make search case insensitive
 set smartcase                  " but do case senstiive search when I use capital letters in seach word
 set hidden                     " Keep buffers hidden when not displayed instead off abandon them
-"set nowrap                    " Do not wrap long lines, this forces me to think about long lines
+set nowrap                     " Do not wrap long lines, this forces me to think about long lines
 set linebreak                  " Wrap lines at convenient points
 set listchars=tab:▶\           " show a symbol for tabs and set colors on next line
 set showcmd                    " Show incomplete cmds down the bottom
