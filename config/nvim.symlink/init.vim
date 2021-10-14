@@ -143,6 +143,19 @@ if !exists('*ToggleUI*')
   endfunction
 endif
 
+" Toggle the colorcolumn
+if !exists('*ToggleColorcolumn*')
+  function! ToggleColorcolumn()
+    if !exists("b:cc_vis") || b:cc_vis
+      set colorcolumn=""
+      let b:cc_vis=0
+    else
+      set colorcolumn=120
+      let b:cc_vis=1
+    endif
+  endfunction
+endif
+
 " Replace in visual mode
 xnoremap <Leader>p "_dP
 " Delete to black hole register to save current register content
@@ -160,9 +173,10 @@ nnoremap <Leader>di :SignifyHunkDiff<CR>
 nnoremap <Leader>i gg=G<C-o><C-o>
 
 " Map some function keys
-nnoremap <F2> :buffers<CR>:buffer<Space>
-nnoremap <F3> :call ToggleUI()<CR>
-nnoremap <F4> :set invpaste paste?<CR>
+nnoremap <F2> :call ToggleUI()<CR>
+nnoremap <F3> :set invpaste paste?<CR>
+nnoremap <F4> :call ToggleColorcolumn()<CR>
+nnoremap <F5> :Limelight!!<CR>
 
 " Highlight column of current cursor position
 nnoremap <silent><Leader>mm
