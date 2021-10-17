@@ -31,13 +31,12 @@ require('telescope').setup {
 
 require('telescope').load_extension('fzf')
 
---local M = {}
---M.search_dotfiles = function()
---  require("telescope.builtin").find_files({
---    prompt_title = "< VimRC >",
---    cwd = "~/.dotfiles/config/nvim",
---  })
---end
+local M = {}
+M.search_dotfiles = function()
+  require("telescope.builtin").find_files({
+    prompt_title = "< VimRC >",
+    cwd = "~/.dotfiles/config/nvim.symlink", --vim.env.DOTFILES,
+  })
+end
 
 return M
---.load_extension('fzy_native')
