@@ -64,6 +64,8 @@ set showtabline=2              " Always display the tabs line
 set guicursor=                 " Normal cursor, not just a vertical line
 set number                     " Show line numbers
 set relativenumber             " Show relative line numbers by default
+set splitright                 " Change to split right by default
+set splitbelow                 " Change to split below by default
 set scrolloff=8                " Scroll that many lines if cursor leaves viewport
 set sidescrolloff=7            " Dito for horizontal scrolling
 set noerrorbells               " No beeps and bleeps please
