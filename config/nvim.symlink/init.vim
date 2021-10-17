@@ -87,6 +87,10 @@ set colorcolumn=120            " Highlight column 80
 "set wildmode=list:longest      " make cmdline tab completion similar to bash
 "set wildmenu                   " enable ctrl-n and ctrl-p to scroll thru matches
 "set wildignore=*.o,*.obj,*~    " stuff to ignore when tab completing
+set nofoldenable               "dont fold by default
+set foldmethod=indent          "fold based on indent
+set foldlevel=99               "open all folds
+set foldnestmax=3              "deepest fold is 3 levels
 set nobackup                   " No backup files
 set noswapfile                 " No swap files
 set undofile                   " Write undo history
