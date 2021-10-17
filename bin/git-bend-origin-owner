@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [ $# -ne 2 ]
+then
+  printf "Usage: ${0} OLD_OWNER NEW_OWNER"
+  exit 1
+fi
+
+old_owner=$1
+new_owner=$2
+
+git remote set-url origin $(git remote get-url origin \
+    | sed 's/'$old_owner'/'$new_owner'/')
+git push -u origin master
