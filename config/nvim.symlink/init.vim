@@ -39,6 +39,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'rodjek/vim-puppet'
 Plug 'hpc-unibe-ch/vim-markdown-preview', { 'branch': 'temp_delay_option' }
 Plug 'mzlogin/vim-markdown-toc'
@@ -52,6 +53,7 @@ Plug 'tpope/vim-sensible'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+lua require('rollisch')
 
 set encoding=utf-8             " Default encoding
 set ts=4 sw=4 sts=4 et si ai   " Indentation to 4, expandtab, smartindent and autoindent
