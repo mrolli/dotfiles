@@ -126,12 +126,17 @@ nnoremap <Leader>r :so $MYVIMRC<CR>
 " Make file in current buffer executable
 nnoremap <Leader>x :silent !chmod +x %<CR>
 
+" Toggle code fold with space
+nnoremap <space> za
+
 " Reselect visual block after indent (thx @twe4ked)
 vnoremap < <gv
 vnoremap > >gv
 " Visually move selcted block around (thx @ThePrimeagen)
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+" Exit to normal mode in terminal emulator for non us key layouts
+tnoremap <Esc> <C-\><C-n>
 
 " Toggle UI elements
 if !exists('*ToggleUI*')
