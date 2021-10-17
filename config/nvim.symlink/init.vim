@@ -145,7 +145,7 @@ vnoremap > >gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 " Exit to normal mode in terminal emulator for non us key layouts
-tnoremap <Esc> <C-\><C-n>
+tnoremap <Leader><Esc> <C-\><C-n>
 
 " Toggle UI elements
 if !exists('*ToggleUI*')
