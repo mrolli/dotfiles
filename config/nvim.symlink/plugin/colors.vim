@@ -10,8 +10,8 @@ fun! ColorMyPencils()
     "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     " These are the correct escape sequences for the $TERM
     " see ~/bin/termtester
-    "let &t_Cs = "\e[4:3m"
-    "let &t_Ce = "\e[4:0m"
+    let &t_Cs = "\e[4:3m"
+    let &t_Ce = "\e[4:0m"
     set termguicolors
   endif
 
