@@ -43,12 +43,11 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'rodjek/vim-puppet'
 Plug 'hpc-unibe-ch/vim-markdown-preview', { 'branch': 'temp_delay_option' }
 Plug 'mzlogin/vim-markdown-toc'
-Plug 'kyazdani43/nvim-web-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-sensible'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -84,9 +83,9 @@ set showmatch                  " Set show matching parenthesis
 set signcolumn=yes             " Always show the signcolumn
 set cursorline                 " Display the cursorline
 set colorcolumn=120            " Highlight column 80
-"set wildmode=list:longest      " make cmdline tab completion similar to bash
-"set wildmenu                   " enable ctrl-n and ctrl-p to scroll thru matches
-"set wildignore=*.o,*.obj,*~    " stuff to ignore when tab completing
+set wildmenu                   " enable ctrl-n and ctrl-p to scroll thru matches
+set wildmode=full              " make cmdline tab completion similar to bash
+set wildignore=*.o,*.obj,*~    " stuff to ignore when tab completing
 set nofoldenable               "dont fold by default
 set foldmethod=indent          "fold based on indent
 set foldlevel=99               "open all folds
