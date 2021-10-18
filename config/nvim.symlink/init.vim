@@ -35,20 +35,21 @@ Plug 'luochen1990/rainbow'
 Plug 'rhysd/committia.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'junegunn/limelight.vim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
 " Treesitter and Telescope
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+" Specific languages related plugins
 Plug 'rodjek/vim-puppet'
-Plug 'hpc-unibe-ch/vim-markdown-preview', { 'branch': 'temp_delay_option' }
-Plug 'mzlogin/vim-markdown-toc'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
+Plug 'hpc-unibe-ch/vim-markdown-preview', { 'for': 'markdown', 'branch': 'temp_delay_option' }
+Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' }
 Plug 'tpope/vim-sensible'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
