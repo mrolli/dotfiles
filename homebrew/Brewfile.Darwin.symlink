@@ -50,7 +50,7 @@ brew 'packer-completion'
 brew 'vagrant-completion'
 
 # Font from homebrew/cask-fonts
-cask 'font-menlo-for-powerline'
+cask 'font-meslo-lg-nerd-font'
 
 # Apps from homebrew/cask
 cask '1password-cli'
