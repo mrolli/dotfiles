@@ -60,12 +60,10 @@ lua require('rollisch')
 " https://www.arthurkoziel.com/setting-up-vim-for-yaml/
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-" Force markdown for all files with md extension
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Fenced languages in markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'puppet']
 
-" Jump to last cursor position when opening a file, but dont do it when writing a commit log entry
+" Jump to last cursor position when opening a file, but don't do it when writing a commit log entry
 if !exists('*SetCursorPosition')
   function! SetCursorPosition()
     if &filetype !~ 'svn\|commit\c'
