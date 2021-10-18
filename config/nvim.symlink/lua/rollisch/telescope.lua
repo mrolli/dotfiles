@@ -32,11 +32,20 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 
 local M = {}
+
+-- only search in the context of the vim configuration files
 M.search_dotfiles = function()
   require("telescope.builtin").find_files({
     prompt_title = "< VimRC >",
     cwd = "~/.dotfiles/config/nvim.symlink", --vim.env.DOTFILES,
   })
+end
+
+-- fallback to find_files() if we are not in a git project folder
+M.project_files = function()
+  local opts = {} -- define here if you want to define something
+  local ok = pcall(require'telescope.builtin'.git_files, opts)
+  if not ok then require'telescope.builtin'.find_files(opts) end
 end
 
 return M
