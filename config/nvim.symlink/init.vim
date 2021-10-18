@@ -43,12 +43,12 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'rodjek/vim-puppet'
 Plug 'hpc-unibe-ch/vim-markdown-preview', { 'branch': 'temp_delay_option' }
 Plug 'mzlogin/vim-markdown-toc'
+Plug 'kyazdani43/nvim-web-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'tpope/vim-sensible'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
