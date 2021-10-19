@@ -98,6 +98,11 @@ vnoremap K :m '<-2<CR>gv=gv
 " Exit to normal mode in terminal emulator for non us key layouts
 tnoremap <Leader><Esc> <C-\><C-n>
 
+" Window resizing
+nnoremap <Leader>+ :resize +5<CR>
+nnoremap <Leader>- :resize -5<CR>
+nnoremap <Leader>rp :resize 100<CR>
+
 " Toggle UI elements
 if !exists('*ToggleUI*')
   function! ToggleUI()
