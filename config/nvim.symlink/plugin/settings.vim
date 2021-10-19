@@ -3,7 +3,7 @@ set ts=4 sw=4 sts=4 et si ai   " Indentation to 4, expandtab, smartindent and au
 set cindent                    " recommended seting for automatic C-style indentation
 set exrc                       " Automatically source local vimrcs
 set laststatus=2               " Always display the status line
-set showtabline=1              " Always display the tabs line
+set showtabline=2              " Always display the tab line
 set guicursor=                 " Normal cursor, not just a vertical line
 set number                     " Show line numbers
 set relativenumber             " Show relative line numbers by default
