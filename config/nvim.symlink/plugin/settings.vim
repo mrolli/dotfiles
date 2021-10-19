@@ -28,6 +28,9 @@ set signcolumn=yes             " Always show the signcolumn
 set cursorline                 " Display the cursorline
 set colorcolumn=80             " Highlight column 80
 
+" Completion menu options
+set completeopt=menu,menuone,noselect
+
 " Enable enhanced mode of command line completion
 set wildmenu
 set wildmode=full
