@@ -19,20 +19,24 @@ $pregReplaceStruct = array(
     '/\.\./'             => '.'
 );
 
-$notest=false;
-$ucfirst=false;
-$filter='*';
+$notest  = false;
+$ucfirst = false;
+$tolower = false;
+$filter  = '*';
 
 for ($i=1; $i<count($argv); $i++) {
     switch ($argv[$i]) {
       case '-n':
-          $notest = true;
-          break;
+        $notest = true;
+        break;
       case '-u':
-          $ucfirst = true;
-          break;
+        $ucfirst = true;
+        break;
+      case '-l':
+        $tolower = true;
+        break;
       default:
-          $filter = $argv[$i];
+        $filter = $argv[$i];
     }
 }
 
@@ -52,6 +56,7 @@ foreach ($filenames as $origfilename) {
     }
     $filename = preg_replace(array_keys($pregReplaceStruct), array_values($pregReplaceStruct), $filename);
     # DO NOT add strtolower here as it would break acronyms
+    $filename = $tolower ? strtolower($filename) : $filename;
     $filename = $ucfirst ? ucwords($filename, " .,\t\r\n\f\v") : $filename;
     $newfilename = empty($ext) ? $filename : $filename . '.' . $ext;
     if ($origfilename !== $newfilename) {
