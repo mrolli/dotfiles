@@ -5,6 +5,10 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+# Alias vi to nvim as Homebrew manages vi to be a symlink to
+# vim as long vim is still installed
+alias vi='nvim'
+
 # Detect which `ls` flavor is in use
 # https://geoff.greer.fm/lscolors/
 if ls --color > /dev/null 2>&1; then # GNU `ls`
