@@ -1,8 +1,11 @@
 fun! ColorMyPencils()
-  colorscheme gruvbox
+  " See https://github.com/gruvbox-community/gruvbox/wiki/Configuration
+  let g:gruvbox_contrast_dark = 'soft'
+  let g:gruvbox_invert_signs = 0
+  let g:gruvbox_improved_strings = 0
+
   set background=dark
-  let g:gruvbox_contrast_dark = 'medium'
-  let g:gruvbox_invert_section = '0'
+  colorscheme gruvbox
 
   "let g:gruvbox_contrast_dark = 'medium'
   if exists('+termguicolors')
