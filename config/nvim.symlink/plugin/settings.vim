@@ -32,8 +32,9 @@ set colorcolumn=80             " Highlight column 80
 set completeopt=menu,menuone,noselect
 
 " Enable enhanced mode of command line completion
+set wildmode=longest,full
 set wildmenu
-set wildmode=full
+" Ignore files
 set wildignore+=*.o
 set wildignore+=*.obj
 set wildignore+=*~
