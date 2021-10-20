@@ -19,6 +19,7 @@ endif
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'gruvbox-community/gruvbox'
+Plug 'mbbill/undotree'
 Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
 Plug 'shinchu/lightline-gruvbox.vim'
@@ -142,6 +143,8 @@ vnoremap <Leader>y "+y
 " yank whole file
 nnoremap <Leader>Y gg"+yG
 
+" Display the undotree panel
+nnoremap <leader>u :UndotreeShow<CR>
 " Easy show diff
 nnoremap <Leader>di :SignifyHunkDiff<CR>
 " Easy reindent
