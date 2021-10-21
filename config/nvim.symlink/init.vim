@@ -19,11 +19,11 @@ endif
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'gruvbox-community/gruvbox'
-Plug 'mbbill/undotree'
 Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'mbbill/undotree'
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
 Plug 'editorconfig/editorconfig-vim'
