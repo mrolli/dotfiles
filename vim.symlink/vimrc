@@ -13,6 +13,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " General Plugins
+Plugin 'lifepillar/vim-solarized8'
 Plugin 'itchyny/lightline.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'dense-analysis/ale'
@@ -71,12 +72,7 @@ syntax enable
 set background=dark
 "let g:solarized_termcolors=256
 let g:solarized_termtrans=1
-colorscheme solarized
-" Make comments italic
-hi Comment cterm=italic
-" Enable and style the cursorline
-set cursorline
-hi Cursorline cterm=bold ctermbg=8 ctermfg=none
+colorscheme solarized8
 
 " always display status line
 set laststatus=2
