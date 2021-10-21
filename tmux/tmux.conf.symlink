@@ -159,7 +159,7 @@ set-option -g @plugin 'wfxr/tmux-fzf-url'
 
 # Clone tmux plugin manager if not yet available
 if "test ! -d $TMUX_PLUGIN_MANAGER_PATH/tpm" \
-   "run 'git clone https://github.com/tmux-plugins/tpm $TMUX_PLUGIN_MANAGER_PATHtpm'"
+   "run 'git clone https://github.com/tmux-plugins/tpm $TMUX_PLUGIN_MANAGER_PATH/tpm'"
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.local/share/tmux/plugins/tpm/tpm'
