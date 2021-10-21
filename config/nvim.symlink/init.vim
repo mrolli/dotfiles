@@ -145,8 +145,6 @@ nnoremap <Leader>Y gg"+yG
 
 " Display the undotree panel
 nnoremap <leader>u :UndotreeShow<CR>
-" Easy show diff
-nnoremap <Leader>di :SignifyHunkDiff<CR>
 " Easy reindent
 nnoremap <Leader>i gg=G<C-o><C-o>
 
