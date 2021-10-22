@@ -16,8 +16,12 @@
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
-      \   'left': [[ 'mode', 'paste', ], [ 'fugitive', 'absolutepath' ]],
-      \   'right': [[ 'percent', 'lineinfo' ], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'spell', 'fileformat', 'fileencoding', 'filetype' ], [ 'trailingspace', 'trailingtab' ]]
+      \   'left': [ [ 'mode', 'paste', ], [ 'fugitive', 'absolutepath' ] ],
+      \   'right': [ [ 'percent', 'lineinfo' ],
+      \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+      \              [ 'spell', 'fileformat', 'fileencoding', 'filetype' ],
+      \              [ 'trailingspace', 'trailingtab' ]
+      \            ]
       \ },
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
@@ -29,6 +33,7 @@ let g:lightline = {
       \ },
       \ 'component_expand': {
       \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_infos': 'lightline#ale#infos',
       \  'linter_warnings': 'lightline#ale#warnings',
       \  'linter_errors': 'lightline#ale#errors',
       \  'linter_ok': 'lightline#ale#ok',
@@ -41,10 +46,11 @@ let g:lightline = {
       \   'trailingtab': 'StatuslineTabWarning'
       \ },
       \ 'component_type': {
-      \   'linter_checking': 'left',
+      \   'linter_checking': 'right',
+      \   'linter_infos': 'right',
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
-      \   'linter_ok': 'left',
+      \   'linter_ok': 'ok',
       \   'buffers': 'tabsel'
       \ },
       \ 'separator': { 'left': '', 'right': '' },
@@ -53,6 +59,11 @@ let g:lightline = {
 
 " Add Shortcuts to the tabs using the leader
 let g:lightline#bufferline#show_number = 2
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_infos = "\uf129 "
+let g:lightline#ale#indicator_warnings = "\uf071 "
+let g:lightline#ale#indicator_errors = "\uf05e "
+let g:lightline#ale#indicator_ok = "\uf00c"
 
 function! LightlineModified()
   if &filetype == "help"
