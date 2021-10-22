@@ -1,0 +1,3 @@
+; https://asciinema.org/docs/config
+[record]
+idle_time_limit = 2
