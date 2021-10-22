@@ -6,6 +6,7 @@ tap 'buo/cask-upgrade'
 tap 'puppetlabs/puppet'
 
 # Apps from homebrew/core
+brew 'asciinema'
 brew 'bash'
 brew 'bat'
 brew 'coreutils'
@@ -65,6 +66,7 @@ cask 'keycastr'
 cask 'miniconda'
 cask 'native-access'
 cask 'pdk'
+cask 'puppet-agent'  # for validating in nvim
 cask 'rar'
 #cask 'slack'
 cask 'spotify'
