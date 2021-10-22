@@ -27,6 +27,7 @@ set showmatch                      " Set show matching parenthesis
 set signcolumn=yes                 " Always show the signcolumn
 set cursorline                     " Display the cursorline
 set colorcolumn=80                 " Highlight column 80
+set cmdheight=1                    " Height of the command line
 
 " Completion menu options
 set completeopt=menu,menuone,noselect
