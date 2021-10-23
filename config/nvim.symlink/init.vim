@@ -4,7 +4,7 @@ filetype plugin indent on
 syntax on
 
 " Declare the mapleader early to avoid surprises
-let mapleader = ","
+let mapleader = " "
 
 " Install vim-plug if it's not yet available
 let g:vim_plug_path = has('nvim') ? stdpath('data') . '/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
