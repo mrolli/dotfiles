@@ -146,7 +146,7 @@ nnoremap <Leader>Y gg"+yG
 " Display the undotree panel
 nnoremap <leader>u :UndotreeShow<CR>
 " Easy reindent
-nnoremap <Leader>i gg=G<C-o><C-o>
+nnoremap <Leader>i gg=G<C-o>
 
 " Map some function keys
 nnoremap <F2> :call ToggleUI()<CR>
