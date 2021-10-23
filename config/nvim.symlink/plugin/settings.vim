@@ -20,7 +20,8 @@ set smartcase                      " but do case senstiive search when I use cap
 set hidden                         " Keep buffers hidden when not displayed instead off abandon them
 set nowrap                         " Do not wrap long lines, this forces me to think about long lines
 set linebreak                      " Wrap lines at convenient points
-set listchars=tab:▶\               " show a symbol for tabs and set colors on next line
+set listchars+=tab:»\              " Show a symbol for tabs and set colors on next line
+set listchars+=eol:↲               " Show the end of a line
 set showcmd                        " Show incomplete cmds down the bottom
 set noshowmode                     " Do not show current mode down the bottom; already shown by lightline
 set showmatch                      " Set show matching parenthesis

@@ -34,6 +34,9 @@ fun! ColorMyPencils()
   highlight SpellBad gui=undercurl guisp=red term=undercurl cterm=undercurl
   " Colorize unprintable chars, i.e. tabs!
   highlight SpecialKey ctermfg=white ctermbg=9 guibg=#FF0000
+  " Colorize indentation stripes
+  highlight IndentBlanklineIndent1 guibg=#32302f gui=nocombine
+  highlight IndentBlanklineIndent2 guibg=#3c3836 gui=nocombine
 endfun
 call ColorMyPencils()
 
