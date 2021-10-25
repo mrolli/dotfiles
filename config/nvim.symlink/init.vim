@@ -83,6 +83,12 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 map ä ]
 map é \
 
+" additional undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
 " reload my vimrc
 nnoremap <Leader>r :so $MYVIMRC<CR>
 
