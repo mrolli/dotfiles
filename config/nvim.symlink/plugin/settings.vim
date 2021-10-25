@@ -1,6 +1,6 @@
 set encoding=utf-8                 " Default encoding
 set ts=4 sw=4 sts=4 et sta si ai   " Indentation to 4, expandtab, smarttab,smartindent and autoindent
-set cindent                        " recommended seting for automatic C-style indentation
+"set cindent                        " recommended seting for automatic C-style indentation
 set exrc                           " Automatically source local vimrcs
 set laststatus=2                   " Always display the status line
 set showtabline=2                  " Always display the tab line
@@ -31,7 +31,7 @@ set colorcolumn=80                 " Highlight column 80
 set cmdheight=1                    " Height of the command line
 
 " Completion menu options
-set completeopt=menu,menuone,noselect
+set completeopt=menu,menuone,noinsert,noselect
 
 " Enable enhanced mode of command line completion
 set wildmode=longest,full
