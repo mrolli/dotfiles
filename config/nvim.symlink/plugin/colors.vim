@@ -9,8 +9,8 @@ fun! ColorMyPencils()
 
   "let g:gruvbox_contrast_dark = 'medium'
   if exists('+termguicolors')
-    "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     " These are the correct escape sequences for the $TERM
     " see ~/bin/termtester
     let &t_Cs = "\e[4:3m"
