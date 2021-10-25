@@ -1,3 +1,6 @@
+-- Setup telescope plugin
+-- see https://github.com/nvim-telescope/telescope.nvim
+
 local actions = require('telescope.actions')
 
 require('telescope').setup {
@@ -10,10 +13,12 @@ require('telescope').setup {
     grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
     qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
 
+    -- for defaults see telescope/mappings.lua
     mappings = {
       i = {
-        --["<C-x>"] = false,
-        ["<C-q>"] = actions.send_to_qflist,
+        ["<C-k>"] = actions.preview_scrolling_up,
+        ["<C-j>"] = actions.preview_scrolling_down,
+        --["<C-q>"] = actions.send_to_qflist,
         ["<esc>"] = actions.close,
       },
     }
