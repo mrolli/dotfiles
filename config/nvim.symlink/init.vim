@@ -79,15 +79,15 @@ autocmd BufReadPost * call SetCursorPosition()
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" fast edit and reload my vimrc
-nnoremap <Leader>e :e $MYVIMRC<cr>
+" map some specials to unused keys
+map ä ]
+map é \
+
+" reload my vimrc
 nnoremap <Leader>r :so $MYVIMRC<CR>
 
 " Make file in current buffer executable
 nnoremap <Leader>x :silent !chmod +x %<CR>
-
-" Toggle code fold with space
-nnoremap <space> za
 
 " Reselect visual block after indent (thx @twe4ked)
 vnoremap < <gv
@@ -151,7 +151,6 @@ nnoremap <Leader>i gg=G<C-o>
 nnoremap <F2> :call ToggleUI()<CR>
 nnoremap <F3> :set invpaste paste?<CR>
 nnoremap <F4> :call ToggleColorcolumn()<CR>
-nnoremap <F5> :Limelight!!<CR>
 
 " Highlight column of current cursor position
 nnoremap <silent><Leader>mm
