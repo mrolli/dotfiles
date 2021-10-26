@@ -1,6 +1,7 @@
 -- treesitter plugin configuration {{{
 -- see https://github.com/nvim-treesitter/nvim-treesitter
 --     https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+--     https://github.com/nvim-treesitter/playground
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = "maintained",
@@ -28,6 +29,15 @@ require('nvim-treesitter.configs').setup {
   },
   indent = {
     enable = true
+  },
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Wether the query persist accross vim sessions
+    keymaps = {
+      open = 'gtd' -- Opens the playground for current buffer (if applicable)
+    },
   },
   textobjects = {
     select = {
