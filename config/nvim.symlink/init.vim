@@ -82,6 +82,7 @@ autocmd BufReadPost * call SetCursorPosition()
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " map some specials to unused keys
+map ö [
 map ä ]
 map é \
 
