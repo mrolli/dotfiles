@@ -43,7 +43,7 @@ set wildignore+=*~
 
 " Folding related settings
 set nofoldenable               " Don't fold by default
-set foldmethod=indent          " Fold based on indent
+"set foldmethod=indent          " Fold based on indent
 set foldlevel=99               " Open all folds
 set foldnestmax=3              " Deepest fold is 3 levels
 

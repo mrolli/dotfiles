@@ -1,17 +1,5 @@
 " lightline.vim
 " https://github.com/itchyny/lightline.vim
-"
-" lightline-bufferline
-" https://github.com/mengelbrecht/lightline-bufferline
-"
-" Below configuration relies on an patched font
-" for powerline. Set the font in respective
-" terminal emulator.
-"
-" Fonts can be found here:
-" https://github.com/powerline/fonts
-"
-" Recommendations: Menlo for Powerline, Cousine for Powerline
 
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
@@ -57,8 +45,7 @@ let g:lightline = {
       \ 'subseparator': { 'left': '', 'right': '|' }
       \ }
 
-" Add Shortcuts to the tabs using the leader
-let g:lightline#bufferline#show_number = 2
+" lightline-ale config
 let g:lightline#ale#indicator_checking = "\uf110"
 let g:lightline#ale#indicator_infos = "\uf129 "
 let g:lightline#ale#indicator_warnings = "\uf071 "
