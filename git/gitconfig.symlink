@@ -20,8 +20,8 @@
     ld = log --follow -p --stat --
     lg = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     # Interactive rebase with the given number of latest commits.
-	  reb = "!r() { git rebase -i HEAD~$1; }; r"
-	  # Remove the old tag with this name and tag the latest commit with it.
+    reb = "!r() { git rebase -i HEAD~$1; }; r"
+    # Remove the old tag with this name and tag the latest commit with it.
     retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
     revert = revert -n
     s   = status -s
