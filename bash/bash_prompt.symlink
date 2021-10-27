@@ -1,131 +1,127 @@
 #!/usr/bin/env bash
 
-function __git_prompt() {
-  # Check if __git_ps1 is available
-  if ! command -v __git_ps1 >/dev/null ]
-  then
-    echo ""
-    return
-  fi
+function __prompt {
 
-  # Configure git prompt
-  GIT_PS1_SHOWDIRTYSTATE=true
-  GIT_PS1_SHOWSTASHSTATE=true
-  GIT_PS1_SHOWUNTRACKEDFILES=true
-  GIT_PS1_STATESEPARATOR="$2"
-  GIT_PS1_SHOWUPSTREAM="auto verbose"
+  function git_prompt {
+    # Check if __git_ps1 is available
+    command -v __git_ps1 >/dev/null || return
 
-  out=$(__git_ps1 "%s")
-  if [ -n "$out" ]
-  then
-    echo -e "${1}${out}"
-  fi
+    # Configure git prompt
+    GIT_PS1_SHOWDIRTYSTATE=true
+    GIT_PS1_SHOWSTASHSTATE=true
+    GIT_PS1_SHOWUNTRACKEDFILES=true
+    GIT_PS1_STATESEPARATOR=" ${purple}\002"
+    GIT_PS1_SHOWUPSTREAM="auto verbose name"
+    GIT_PS1_SHOWCOLORHINTS=true
+
+    out=$(__git_ps1 "%s")
+    if [ -n "$out" ]
+    then
+      echo -e " ${fg}on ${blue}${out}${reset}"
+    fi
+  }
+
+  function status_prefix {
+    # Check the exit code of the previous command and display different
+    # colors in the prompt accordingly.
+    if (( exit_code == 0 )); then
+      printf '\001%s\002%s\001%s\002 ' "${fg}" "\$" "${reset}"
+    else
+      printf '\001%s\002[%s]%s\001%s\002 ' \
+        "${red}" "${exit_code}" "!" "${reset}"
+    fi
+  }
+
+  # build $PS1 and $PS2
+  # in a function to encapuslate variables
+  # see https://misc.flogisoft.com/bash/tip_colors_and_formatting
+  function init_prompt {
+    # Save last command's exit status
+    exit_code="${?}"
+
+    # Highlight the user name when logged in as root.
+    if [ $UID -eq 0 ]
+    then
+      userStyle="${red}"
+    else
+      userStyle="${orange}"
+    fi
+
+    # Highlight the hostname when connected via SSH.
+    if [ -z "${SSH_TTY}" ]
+    then
+      hostStyle="${green}"
+    else
+      hostStyle="${bold}${red}"
+    fi
+
+    # Highlight conda env if activated
+    ps1_conda=""
+    if [ ! -z $CONDA_DEFAULT_ENV ]
+    then
+      ps1_conda="${blue}(${CONDA_DEFAULT_ENV})${reset} "
+    fi
+
+    # Set the terminal title and prompt.
+    # Explain magic of \001 and \002 http://mywiki.wooledge.org/BashFAQ/053
+    PS1="\001${bold}\002\n" # newline
+    PS1+="\001${userStyle}\002\u" # username
+    PS1+="\001${fg}\002 at "
+    PS1+="\001${hostStyle}\002\h" # host
+    PS1+="\001${fg}\002 in "
+    PS1+="\001${yellow}\002\w" # working directory full path
+    PS1+="\$(git_prompt)" # Git repository details
+    PS1+="\n"
+    PS1+="${ps1_conda}" # conda active environment
+    PS1+="\$(status_prefix)" # prompt depending on exit status of last command
+
+    # Restore the original prompt for multiline commands (PS2). This overrides any
+    # system-wide customisations in /etc/profile, for instance.
+    PS2='    ';
+
+    # Restore the original prompt for select menus. This is unset initially and
+    # seems to default to "#? ".
+    unset PS3;
+
+    # Include the current file and line number when tracing using "set -x" (PS4).
+    ps4_parts=(
+      # Same as the default: start with a plus sign that gets repeated based on
+      # the current stack depth. (Bash repeats the first character of PS4.)
+      '+ '
+
+      # Make the following extra information stand out less.
+      "${blue}${bold}"
+
+      # Show the name of the current shell function, if any.
+      '${FUNCNAME:-}'
+
+      # Show the basename and line number of the source file or function, if
+      # any. If there was a function name, put an "@" between the function name
+      # and the file/function.
+      '${BASH_SOURCE:+${FUNCNAME:+@}}'
+
+      # Note that LINENO is reset from 1 inside a function body. Sometimes,
+      # $LINENO is a negative number. I could not find any reference to this in
+      # the man page, but it seems to have to happen when returning from another
+      # function. Until I understand this more completely, I wrap it in
+      # parentheses to clarify that it is not a regular line number.
+      '${BASH_SOURCE:+${BASH_SOURCE##*/}:${LINENO/#-*/($LINENO)}}'
+
+      # Use a tab to separate the file/function and line number from the actual
+      # line of code, rather than a space, because this helps legibility. (It
+      # decreases the "jaggedness" caused by differing lengthts of file names
+      # and line numbers.) I prefer this to a newline because it keeps the trace
+      # more compact.
+      $'\t'
+
+      # Reset the colour and style.
+      "${reset}"
+    );
+    printf -v PS4 '%s' "${ps4_parts[@]}";
+  }
+
+  PROMPT_COMMAND=init_prompt
 }
 
-# build $PS1 and $PS2
-# in a function to encapuslate variables
-# see https://misc.flogisoft.com/bash/tip_colors_and_formatting
-function __ps_prompt() {
-  # Save last command's exit status and history index
-  ps1_status=$?
-  ps1_histidx="\!"
-
-  # Highlight the user name when logged in as root.
-  if [[ "${USER}" == "root" ]]
-  then
-    userStyle="${red}"
-    prompt="#"
-  else
-    userStyle="${orange}"
-    prompt="\$"
-  fi
-
-  # Highlight the hostname when connected via SSH.
-  if [[ "${SSH_TTY}" ]]
-  then
-    hostStyle="${bold}${red}"
-  else
-    hostStyle="${green}"
-  fi
-
-  # Highlight conda env if activated
-  ps1_conda=""
-  if [ ! -z $CONDA_DEFAULT_ENV ]
-  then
-    ps1_conda="${blue}(${CONDA_DEFAULT_ENV})${reset} "
-  fi
-
-  # Highlight the history index when last cmd failed
-  if [ $ps1_status -ne 0 ]
-  then
-    statusStyle="${red}"
-  else
-    statusStyle="${reset}"
-  fi
-
-  # Set the terminal title and prompt.
-  PS1="\[${bold}\]\n" # newline
-  PS1+="\[${userStyle}\]\u" # username
-  PS1+="\[${fg}\] at "
-  PS1+="\[${hostStyle}\]\h" # host
-  PS1+="\[${fg}\] in "
-  PS1+="\[${yellow}\]\w" # working directory full path
-  PS1+="\$(__git_prompt \" ${fg}on ${blue}\" \" ${purple}\]\")" # Git repository details
-  PS1+="\n"
-  PS1+="\[${statusStyle}\]$ps1_histidx \[${reset}\]" # index of last cmd
-  PS1+="${ps1_conda}" # conda active end
-  PS1+="\[${fg}\]${prompt} \[${reset}\]" # `$` (and reset color)
-  export PS1
-
-  # Restore the original prompt for multiline commands (PS2). This overrides any
-  # system-wide customisations in /etc/profile, for instance.
-  export PS2='> ';
-
-  # Restore the original prompt for select menus. This is unset initially and
-  # seems to default to "#? ".
-  unset PS3;
-
-  #PS2="\[${yellow}\]→ \[${reset}\]"
-  #export PS2
-  # Include the current file and line number when tracing using "set -x" (PS4).
-  ps4_parts=(
-    # Same as the default: start with a plus sign that gets repeated based on
-    # the current stack depth. (Bash repeats the first character of PS4.)
-    '+ '
-
-    # Make the following extra information stand out less.
-    "${blue}${bold}"
-
-    # Show the name of the current shell function, if any.
-    '${FUNCNAME:-}'
-
-    # Show the basename and line number of the source file or function, if
-    # any. If there was a function name, put an "@" between the function name
-    # and the file/function.
-    '${BASH_SOURCE:+${FUNCNAME:+@}}'
-
-    # Note that LINENO is reset from 1 inside a function body. Sometimes,
-    # $LINENO is a negative number. I could not find any reference to this in
-    # the man page, but it seems to have to happen when returning from another
-    # function. Until I understand this more completely, I wrap it in
-    # parentheses to clarify that it is not a regular line number.
-    '${BASH_SOURCE:+${BASH_SOURCE##*/}:${LINENO/#-*/($LINENO)}}'
-
-    # Use a tab to separate the file/function and line number from the actual
-    # line of code, rather than a space, because this helps legibility. (It
-    # decreases the "jaggedness" caused by differing lengthts of file names
-    # and line numbers.) I prefer this to a newline because it keeps the trace
-    # more compact.
-    $'\t'
-
-    # Reset the colour and style.
-    "${reset}"
-  );
-  printf -v PS4 '%s' "${ps4_parts[@]}";
-  export PS4;
-  unset ps4_parts;
-}
-
-# run __ps_prompt after every command and preserve earlier PROMPT_COMMAND entries
-PROMPT_COMMAND="__ps_prompt; $PROMPT_COMMAND"
-
+__prompt
+unset __prompt
