@@ -13,11 +13,10 @@ windows:
   - shell_command:
     - vagrant up service01 puppet puppetdb01 nfs01 lrms01 submit01 anode001
 - window_name: dotfiles
+  focus: true
   options:
     main-pane-width: 50%
   layout: main-vertical
   start_directory: ~/.dotfiles
   panes:
   - focus: true
-  - pane
-  - pane
