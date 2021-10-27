@@ -7,9 +7,8 @@ shopt -s cdspell
 shopt -s histappend
 
 ### Build PATH variable
-PATH="/usr/local/sbin":$PATH
-PATH="~/bin":$PATH
-export PATH
+PATH=/usr/local/sbin:$PATH
+PATH=~/bin:$PATH
 
 # Also export HOSTNAME
 export HOSTNAME
@@ -23,20 +22,6 @@ unset file
 
 # ... and write it down after each command
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'} history -a; history -c; history -r"
-
-# Source bash completion installed by homebrew
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
-# Add `killall` tab completion for common apps
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
-
-
-### Application specific initializations
-# Add completion for gh cli
-if type gh >/dev/null 2>&1
-then
-  eval "$(gh completion -s bash)"
-fi
 
 
 # GOPATH initialization
@@ -56,26 +41,6 @@ then
 fi
 
 
-# Packer cache directory and Vagrant Cloud token
-export PACKER_CACHE_DIR=$HOME/.packer.d/packer_cache
-[ -f $HOME/.vagrant.d/vcloud_token.sh ] && source $HOME/.vagrant.d/vcloud_token.sh
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 # Source a platform specific bash profile if available
 [ -f "${HOME}/.bash_profile.$(uname -s)" ] && source "${HOME}/.bash_profile.$(uname -s)"
 
@@ -83,5 +48,4 @@ unset __conda_setup
 [ -f "${HOME}/.bash_profile.local" ] && source "${HOME}/.bash_profile.local"
 
 true
-
 # vim: set ft=bash:
