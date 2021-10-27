@@ -66,15 +66,15 @@ function __ps_prompt() {
   # Set the terminal title and prompt.
   PS1="\[${bold}\]\n" # newline
   PS1+="\[${userStyle}\]\u" # username
-  PS1+="\[${white}\] at "
+  PS1+="\[${fg}\] at "
   PS1+="\[${hostStyle}\]\h" # host
-  PS1+="\[${white}\] in "
+  PS1+="\[${fg}\] in "
   PS1+="\[${yellow}\]\w" # working directory full path
-  PS1+="\$(__git_prompt \" ${white}on ${blue}\" \" ${violet}\]\")" # Git repository details
+  PS1+="\$(__git_prompt \" ${fg}on ${blue}\" \" ${purple}\]\")" # Git repository details
   PS1+="\n"
   PS1+="\[${statusStyle}\]$ps1_histidx \[${reset}\]" # index of last cmd
   PS1+="${ps1_conda}" # conda active end
-  PS1+="\[${white}\]${prompt} \[${reset}\]" # `$` (and reset color)
+  PS1+="\[${fg}\]${prompt} \[${reset}\]" # `$` (and reset color)
   export PS1
 
   # Restore the original prompt for multiline commands (PS2). This overrides any
