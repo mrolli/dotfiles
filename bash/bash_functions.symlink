@@ -86,3 +86,5 @@ function tmuxpl {
      echo "Error: Provided path is not a readable directory path" && return 2
   fi
 }
+
+# vim: set ft=bash:

@@ -72,3 +72,5 @@ alias wetter_bern2='curl http://v2.wttr\.in/bern'
 
 # unset variables set in this file
 unset colorflag
+
+# vim: set ft=bash:

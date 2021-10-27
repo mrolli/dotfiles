@@ -83,3 +83,5 @@ unset __conda_setup
 [ -f "${HOME}/.bash_profile.local" ] && source "${HOME}/.bash_profile.local"
 
 true
+
+# vim: set ft=bash:

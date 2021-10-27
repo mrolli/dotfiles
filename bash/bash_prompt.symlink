@@ -125,3 +125,5 @@ function __prompt {
 
 __prompt
 unset __prompt
+
+# vim: set ft=bash:

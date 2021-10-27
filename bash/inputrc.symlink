@@ -30,3 +30,5 @@ set visible-stats on
 # ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
 # Readline used by Bash 4.)
 set skip-completed-text on
+
+# vim: set ft=bash:
