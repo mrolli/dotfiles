@@ -21,7 +21,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
-Plug 'mrolli/lightline-gruvbox.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mbbill/undotree'
 Plug 'editorconfig/editorconfig-vim'
