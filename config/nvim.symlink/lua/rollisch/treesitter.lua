@@ -4,7 +4,23 @@
 --     https://github.com/nvim-treesitter/playground
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = "maintained",
+  ensure_installed = {
+    "bash",
+    "comment",
+    "css",
+    "dockerfile",
+    "go",
+    "html",
+    "java",
+    "javascript",
+    "lua",
+    "php",
+    "python",
+    "regex",
+    "ruby",
+    "vim",
+    "yaml",
+  },
   highlight = {
     enable = true,
     custom_captures = {
