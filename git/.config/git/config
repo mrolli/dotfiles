@@ -39,7 +39,7 @@
 [core]
     autocrlf = input
     editor = nvim
-    excludesfile = ~/.gitignore
+    excludesfile = ~/.config/git/global-ignore
 [grep]
     lineNumber = true
 [pack]
@@ -51,7 +51,7 @@
     log = true
     tool = opendiff
 [commit]
-    template = ~/.gitmessage
+    template = ~/.config/git/message-template
     gpgSign = true
     verbose = true
 [fetch]

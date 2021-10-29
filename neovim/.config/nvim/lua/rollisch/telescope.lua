@@ -42,7 +42,7 @@ local M = {}
 M.search_dotfiles = function()
   require("telescope.builtin").find_files({
     prompt_title = "< VimRC >",
-    cwd = "~/.dotfiles/config/nvim.symlink", --vim.env.DOTFILES,
+    cwd = "~/.dotfiles/nvim/.config/nvim", --vim.env.DOTFILES,
   })
 end
 

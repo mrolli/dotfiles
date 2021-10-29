@@ -1,9 +1,9 @@
-git/github-token
-vim.symlink/autoload
-vim.symlink/bundle
-vim.symlink/swap/*
-vim.symlink/undofiles/*
-vim.symlink/.netrwhist
+github-token
+vim/.vim/autoload
+vim/.vim/bundle
+vim/.vim/swap/*
+vim/.vim/undofiles/*
+vim/.vim/.netrwhist
 Vagrantfile
 .vagrant
 temp/

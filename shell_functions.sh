@@ -62,6 +62,4 @@ function success {
 
 function fail {
   printf "\r  [${red}FAIL${reset}] $1\n" >&2
-  echo ""
-  exit
 }
