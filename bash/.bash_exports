@@ -23,7 +23,7 @@ export SVNEDITOR=nvim
 
 # Configure homebrew bundle behaviour
 export HOMEBREW_BUNDLE_NO_LOCK=1
-export HOMEBREW_BUNDLE_FILE="~/.Brewfile.$(uname)"
+export HOMEBREW_BUNDLE_FILE="~/.config/Homebrew/Brewfile.$(uname)"
 
 # Set XDG defaults for those apps honoring these settings but having no defaults
 export XDG_CONFIG_HOME=~/.config

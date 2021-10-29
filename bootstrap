@@ -4,6 +4,21 @@
 # runs every installer found..
 #
 
+stowables="
+  asciinema
+  bash
+  bat
+  editorconfig
+  git
+  homebrew
+  neovim
+  scripts
+  tmux
+  vim
+  wget
+  yamllint
+"
+
 cd "$(dirname "$0")"
 DOTFILES_ROOT_ABS=$(pwd -P)
 DOTFILES_ROOT_REL=${DOTFILES_ROOT_ABS#$HOME/}
@@ -12,66 +27,17 @@ set -e
 
 source $DOTFILES_ROOT_ABS/shell_functions.sh
 
-function link_file() {
-  local src=$1 dst=$2
+function check_requirements {
+  local err=0
 
-  local overwrite= backup= skip=
-  local action=
-
-  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]; then
-    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]; then
-
-      local currentSrc="$(readlink $dst)"
-
-      if [ "$currentSrc" == "$src" ]; then
-        skip=true;
-      else
-        warning "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
-        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all? "
-        read -n 1 action
-
-        case "$action" in
-          o )
-            overwrite=true;;
-          O )
-            overwrite_all=true;;
-          b )
-            backup=true;;
-          B )
-            backup_all=true;;
-          s )
-            skip=true;;
-          S )
-            skip_all=true;;
-          * )
-            ;;
-        esac
-      fi
-    fi
-
-    overwrite=${overwrite:-$overwrite_all}
-    backup=${backup:-$backup_all}
-    skip=${skip:-$skip_all}
-
-    if [ "$overwrite" == "true" ]; then
-      rm -rf "$dst"
-      success "Successfully removed $dst"
-    fi
-
-    if [ "$backup" == "true" ]; then
-      mv "$dst" "${dst}.backup"
-      success "Successfully moved $dst to ${dst}.bak"
-    fi
-
-    if [ "$skip" == "true" ]; then
-      success "Skipped $src"
-    fi
+  if ! stow -V &>/dev/null
+  then
+    fail "GNU stow not found in PATH"
+    err=1
   fi
 
-  if [ "$skip" != "true" ]; then  # "false" or empty
-    ln -s "$1" "$2"
-    success "Successfully symlinked $1 to $2"
-  fi
+  [ $err -ne 0 ] && exit 1
+  return 0
 }
 
 function run_installers() {
@@ -88,41 +54,16 @@ function run_installers() {
   done
 }
 
-function install_dotfiles() {
-  info "Installing dotfiles..."
+check_requirements
 
-  # Declare _all variables here
-  # This is to preserve the answers as these variables
-  # are available in link_file too.
-  local overwrite_all=false backup_all=false skip_all=false
-
-  for src in $(find -H "${DOTFILES_ROOT_ABS}" -maxdepth 2 -name "*.symlink" -not -path "*.git*")
-  do
-    # Compute the symlinks path differently if it is for a .config target
-    linktarget="${src#$HOME/}"
-    if [[ "${src}" =~ "${DOTFILES_ROOT_ABS}/config" ]]
-    then
-      linktarget=~/"${linktarget}"
-      linkpath="${HOME}/.${src#${DOTFILES_ROOT_ABS}/}"
-      linkpath="${linkpath%.*}"
-      # Create parent directories if needed
-      mkdir -p "$(dirname ${linkpath})"
-    else
-      linkpath="${HOME}/.$(basename "${src%.*}")"
-    fi
-    link_file "$linktarget" "$linkpath"
-  done
-
-  # additionally link bin to ~/bin
-  link_file "${DOTFILES_ROOT_ABS#$HOME/}/bin" "${HOME}/bin"
-}
-
-echo ""
 prompt_confirm "Shall the installers run (y/n)?" && (info "Running installers..." ; run_installers)
 
-
 echo ""
-install_dotfiles
+info "Installing dotfiles..."
+for stowable in $stowables
+do
+  stow -R --ignore install.*sh $stowable && success $stowable || warning $stowable
+done
 
 echo ""
 echo "  Everything in place, have fun!"

@@ -8,7 +8,7 @@ shopt -s histappend
 
 ### Build PATH variable
 PATH=/usr/local/sbin:$PATH
-PATH=~/bin:$PATH
+PATH=~/.bin:$PATH
 
 # Also export HOSTNAME
 export HOSTNAME
@@ -43,7 +43,6 @@ fi
 
 # Source fzf related shell configuration and completion
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
-
 
 # Source a platform specific bash profile if available
 [ -f "${HOME}/.bash_profile.$(uname -s)" ] && source "${HOME}/.bash_profile.$(uname -s)"
