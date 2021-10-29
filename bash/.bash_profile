@@ -21,7 +21,7 @@ done
 unset file
 
 # ... and write it down after each command
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'} history -a; history -c; history -r"
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'} history -a"
 
 
 # GOPATH initialization
