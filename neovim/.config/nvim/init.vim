@@ -48,9 +48,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Specific languages related plugins
-Plug 'rodjek/vim-puppet'
-Plug 'hpc-unibe-ch/vim-markdown-preview', { 'for': 'markdown', 'branch': 'temp_delay_option' }
-Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' }
+Plug 'rodjek/vim-puppet', { 'for': ['puppet'] }
+Plug 'mrolli/vim-markdown-preview', { 'for': ['markdown'], 'branch': 'temp_delay_option' }
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['markdown'] }
 Plug 'tpope/vim-sensible'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -62,7 +62,7 @@ lua require('rollisch')
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Fenced languages in markdown
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'puppet']
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby']
 
 " Jump to last cursor position when opening a file, but don't do it when writing a commit log entry
 if !exists('*SetCursorPosition')
