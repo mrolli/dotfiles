@@ -25,7 +25,6 @@ require('telescope').setup {
       i = {
         ["<C-k>"] = actions.preview_scrolling_up,
         ["<C-j>"] = actions.preview_scrolling_down,
-        --["<C-q>"] = actions.send_to_qflist,
         ["<esc>"] = actions.close,
       },
     }
