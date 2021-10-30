@@ -2,18 +2,25 @@
 -- see https://github.com/nvim-telescope/telescope.nvim
 
 local actions = require('telescope.actions')
+local conf = require("telescope.config").values
+
+function joinTables(t1, t2)
+   for k,v in ipairs(t2) do table.insert(t1, v) end return t1
+end
 
 require('telescope').setup {
+  -- for defaults see telescope/config.lua
   defaults = {
     file_sorter = require('telescope.sorters').get_fzy_sorter,
     prompt_prefix = ' > ',
     color_devicons = true,
+    vimgrep_arguments = joinTables(conf.vimgrep_arguments, { "--hidden", "--iglob", "!.git" }),
 
     file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
     grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
     qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
 
-    -- for defaults see telescope/mappings.lua
+    -- for default mappings see telescope/mappings.lua
     mappings = {
       i = {
         ["<C-k>"] = actions.preview_scrolling_up,
