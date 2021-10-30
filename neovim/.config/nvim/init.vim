@@ -92,7 +92,7 @@ inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
 " reload my vimrc
-nnoremap <Leader>r :so $MYVIMRC<CR>
+nnoremap <Leader>r :so $MYVIMRC<CR>:call ColorMyPencils()<CR>
 
 " Make file in current buffer executable
 nnoremap <Leader>x :silent !chmod +x %<CR>
