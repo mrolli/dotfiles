@@ -73,7 +73,7 @@ function tmuxpl {
   # Show usage if no argument is provided
   [ $# -ne 1 ] && echo "Usage: tmuxpl DIR" && return 1
   # If there's a named config, load it
-  if [ -f ~/.tmuxp/$1.y*ml ]
+  if [ -f ~/.config/tmuxp/$1.y*ml ]
   then
     tmuxp load $1
     return 0
