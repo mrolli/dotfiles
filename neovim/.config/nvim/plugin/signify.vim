@@ -4,5 +4,10 @@
 " git only
 let g:signify_vcs_list = [ 'git' ]
 
-" Easy show diff
-nnoremap <Leader>di :SignifyHunkDiff<CR>
+" easy show diff
+nnoremap <Leader>gd :SignifyDiff<CR>
+nnoremap <Leader>gdh :SignifyHunkDiff<CR>
+nnoremap <leader>gu :SignifyHunkUndo<cr>
+" hunk jumping
+nmap <leader>gj <plug>(signify-next-hunk)
+nmap <leader>gk <plug>(signify-prev-hunk)
