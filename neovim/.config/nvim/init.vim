@@ -6,9 +6,8 @@ syntax on
 " Declare the mapleader early to avoid surprises
 let mapleader = " "
 
-" Install vim-plug if it's not yet available
-let g:vim_plug_path = has('nvim') ? stdpath('data') . '/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
 " Install vim-plug if not yet available
+let g:vim_plug_path = has('nvim') ? stdpath('data') . '/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
 if empty(glob(g:vim_plug_path))
   execute 'silent !curl -flo ' . g:vim_plug_path . ' --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -39,10 +38,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
-" Treesitter and Telescope
+" Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+" Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
