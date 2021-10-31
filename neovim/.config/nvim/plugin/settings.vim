@@ -1,14 +1,11 @@
 set encoding=utf-8                 " Default encoding
 set ts=4 sw=4 sts=4 et sta si ai   " Indentation to 4, expandtab, smarttab,smartindent and autoindent
-"set cindent                        " recommended seting for automatic C-style indentation
 set exrc                           " Automatically source local vimrcs
 set laststatus=2                   " Always display the status line
 set showtabline=2                  " Always display the tab line
 set guicursor=                     " Normal cursor, not just a vertical line
 set number                         " Show line numbers
 set relativenumber                 " Show relative line numbers by default
-set splitright                     " Change to split right by default
-set splitbelow                     " Change to split below by default
 set scrolloff=8                    " Scroll that many lines if cursor leaves viewport
 set sidescrolloff=7                " Dito for horizontal scrolling
 set noerrorbells                   " No beeps and bleeps please
