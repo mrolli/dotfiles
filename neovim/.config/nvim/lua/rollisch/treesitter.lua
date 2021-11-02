@@ -3,6 +3,7 @@
 --     https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 --     https://github.com/nvim-treesitter/playground
 
+require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
     "bash",
