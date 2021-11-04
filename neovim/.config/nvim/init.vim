@@ -17,6 +17,7 @@ endif
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 " Declare the list of plugins.
+Plug 'tjdevries/astronauta.nvim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
@@ -48,8 +49,10 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'onsails/lspkind-nvim'
 Plug 'hrsh7th/vim-vsnip'
 " LSP, autocompletion, snippets
-"Plug 'neovim/nvim-lspconfig'
-"Plug 'williamboman/nvim-lsp-installer'
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'nvim-lua/lsp-status.nvim'
+Plug 'folke/lsp-colors.nvim'
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/playground'
@@ -68,6 +71,10 @@ Plug 'tpope/vim-sensible'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+" Make Lua Keymap DSL available before anything doing lua keymappings
+runtime plugin/astronauta.vim
+
+" Now load lua stuff
 lua require('rollisch')
 
 " Fenced languages in markdown

@@ -1,4 +1,4 @@
--- Setup telescope plugin
+-- telescope plugin configuration {{{
 -- see https://github.com/nvim-telescope/telescope.nvim
 
 local actions = require('telescope.actions')
@@ -26,6 +26,7 @@ require('telescope').setup {
         ["<C-k>"] = actions.preview_scrolling_up,
         ["<C-j>"] = actions.preview_scrolling_down,
         ["<esc>"] = actions.close,
+        ["<C-q>"] = actions.send_to_qflist,
       },
     }
   },
@@ -69,3 +70,5 @@ M.project_files = function()
 end
 
 return M
+
+-- }}}

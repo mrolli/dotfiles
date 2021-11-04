@@ -6,7 +6,7 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste', ], [ 'fugitive', 'absolutepath' ] ],
       \   'right': [ [ 'percent', 'lineinfo' ],
-      \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+      \              [ 'lspstatus', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
       \              [ 'spell', 'fileformat', 'fileencoding', 'filetype' ],
       \              [ 'trailingspace', 'trailingtab' ]
       \            ]
@@ -31,7 +31,8 @@ let g:lightline = {
       \   'fugitive': 'LightlineFugitive',
       \   'filename': 'LightlineFilename',
       \   'trailingspace': 'StatuslineTrailingSpaceWarning',
-      \   'trailingtab': 'StatuslineTabWarning'
+      \   'trailingtab': 'StatuslineTabWarning',
+      \   'lspstatus': 'LspStatus'
       \ },
       \ 'component_type': {
       \   'linter_checking': 'right',
@@ -125,4 +126,14 @@ function! StatuslineTabWarning()
     endif
   endif
   return b:statusline_tab_warning
+endfunction
+
+" return lsp status string if buffer got an lsp client
+" return an empty string if not
+function! LspStatus() abort
+  if luaeval('#vim.lsp.buf_get_clients() > 0')
+    return luaeval("require('lsp-status').status()")
+  endif
+
+  return ''
 endfunction
