@@ -30,6 +30,7 @@ set cmdheight=1                    " Height of the command line
 
 " Completion menu options
 set completeopt=menu,menuone,noinsert,noselect
+set shortmess+=c
 
 " Enable enhanced mode of command line completion
 set wildmode=longest,full
