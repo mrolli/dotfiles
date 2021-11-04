@@ -1,6 +1,6 @@
 github-token
 vim/.vim/autoload
-vim/.vim/bundle
+vim/.vim/plugged
 vim/.vim/swap/*
 vim/.vim/undofiles/*
 vim/.vim/.netrwhist

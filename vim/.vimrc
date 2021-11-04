@@ -1,67 +1,61 @@
 " be iMproved
-" This must be first, because it changes other options as a side effect.
-set nocompatible              " required by Vundle
-filetype off                  " required by Vundle
+set nocompatible
+set path+=*
+filetype plugin indent on
+syntax on
 
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Install vim-plug if not yet available
+let g:vim_plug_path = has('nvim') ? stdpath('data') . '/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
+if empty(glob(g:vim_plug_path))
+  execute 'silent !curl -flo ' . g:vim_plug_path . ' --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
+" Plugins will be downloaded under the specified directory.
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+" Declare the list of plugins.
 " General Plugins
-Plugin 'lifepillar/vim-solarized8'
-Plugin 'itchyny/lightline.vim'
-Plugin 'preservim/nerdtree'
-Plugin 'dense-analysis/ale'
-Plugin 'maximbaz/lightline-ale'
-Plugin 'godlygeek/tabular'
-Plugin 'mhinz/vim-signify'
-Plugin 'ervandew/supertab'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-surround'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'preservim/tagbar'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'Yggdroot/indentLine'
-Plugin 'pedrohdz/vim-yaml-folds'
-Plugin 'luochen1990/rainbow'
+Plug 'lifepillar/vim-solarized8'
+Plug 'itchyny/lightline.vim'
+Plug 'preservim/nerdtree'
+Plug 'dense-analysis/ale'
+Plug 'maximbaz/lightline-ale'
+Plug 'godlygeek/tabular'
+Plug 'mhinz/vim-signify'
+Plug 'ervandew/supertab'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tmhedberg/SimpylFold'
+Plug 'preservim/tagbar'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'Yggdroot/indentLine'
+Plug 'pedrohdz/vim-yaml-folds'
+Plug 'luochen1990/rainbow'
 " Additional text objects and motions
-Plugin 'michaeljsmith/vim-indent-object'
+Plug 'michaeljsmith/vim-indent-object'
 " UltiSnips & Co
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " Coding specific
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'rodjek/vim-puppet'
-Plugin 'fatih/vim-go'
-Plugin 'mzlogin/vim-markdown-toc'
-Plugin 'JamshedVesuna/vim-markdown-preview'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'rodjek/vim-puppet'
+Plug 'fatih/vim-go'
+Plug 'mzlogin/vim-markdown-toc'
+Plug 'JamshedVesuna/vim-markdown-preview'
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
 
-" All of your Plugins must be added before the following line
-call vundle#end()
-filetype plugin indent on    " required by Vundle
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
 "
 " Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
+" :PlugInstall      - installs plugins
+" :PluginUpdate     - update the available plugins
+" :PluginClean      - confirms removal of unused plugins
 "
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
 "change leader to something more
 "convenient on a sg keyboard
 let mapleader = ","
