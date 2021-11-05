@@ -11,7 +11,13 @@
 # out and print hint about the old branches
 set -e
 
-newbranch="${1?}"
+if [ $# -eq 0 ]
+then
+  echo "Usage: $(basename $0) <branchname> [<remote>]"
+  exit 1
+fi
+
+newbranch="${1}"
 remote="${2:-origin}"
 
 git fetch "$remote" master
