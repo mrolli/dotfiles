@@ -14,7 +14,7 @@ PATH=~/.bin:$PATH
 export HOSTNAME
 
 # Source profile snippets outsourced to their own files
-for file in ~/.bash_{colors,exports,aliases,functions,prompt}
+for file in ~/.bash_{colors,exports,aliases,functions}
 do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
@@ -40,6 +40,12 @@ then
   alias git="git-achievements"
 fi
 
+
+# Prompt
+posh_theme=gruvbox
+oh-my-posh --version &>/dev/null \
+  && eval "$(oh-my-posh --init --shell bash --config ~/.config/oh-my-posh/$posh_theme.omp.json)" \
+  || . ~/.bash_prompt
 
 # Source fzf related shell configuration and completion
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
