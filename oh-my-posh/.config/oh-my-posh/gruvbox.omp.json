@@ -8,7 +8,7 @@
     {
       "type": "prompt",
       "alignment": "left",
-      "vertical_offset": 1,
+      "newline": true,
       "segments": [
         {
           "type": "os",
@@ -102,6 +102,19 @@
       "newline": true,
       "segments": [
         {
+          "type": "envvar",
+          "style": "diamond",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B4",
+          "foreground": "#d5c4a1",
+          "background": "#458588",
+          "properties": {
+            "var_name": "CONDA_DEFAULT_ENV",
+            "prefix": "",
+            "postfix": ""
+          }
+        },
+        {
           "type": "root",
           "style": "plain",
           "foreground": "#fabd2f",
@@ -122,7 +135,8 @@
             "always_enabled": false,
             "color_background": false,
             "error_color": "#d5c4a1",
-            "prefix": "\uE23A "
+            "prefix": "\uE23A ",
+            "postfix": ""
           }
         },
         {
@@ -130,7 +144,7 @@
           "style": "plain",
           "foreground": "#d5c4a1",
           "properties": {
-            "prefix": "",
+            "prefix": " ",
             "text": "{{if .Root}}#{{else}}${{end}}",
             "postfix": ""
           }
