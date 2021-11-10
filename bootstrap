@@ -12,6 +12,7 @@ stowables="
   git
   homebrew
   neovim
+  oh-my-posh
   scripts
   tmux
   vim
