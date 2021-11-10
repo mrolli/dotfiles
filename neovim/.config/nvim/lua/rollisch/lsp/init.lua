@@ -108,6 +108,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 local servers = {
   bashls = true,
   jsonls = true,
+  vimls = true,
   yamlls = true,
 
   gopls = {
