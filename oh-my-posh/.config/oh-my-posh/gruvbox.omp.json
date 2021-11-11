@@ -11,20 +11,9 @@
       "newline": true,
       "segments": [
         {
-          "type": "os",
-          "style": "diamond",
-          "leading_diamond": "\uE0B6",
-          "trailing_diamond": "",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#d5c4a1",
-          "background": "#d65d0e",
-          "properties": {
-            "prefix": ""
-          }
-        },
-        {
           "type": "session",
           "style": "diamond",
+          "leading_diamond": "\uE0B6",
           "foreground": "#d5c4a1",
           "background": "#d65d0e",
           "background_templates": [
@@ -32,11 +21,25 @@
           ],
           "properties": {
             "display_host": false,
-            "ssh_icon":  ""
+            "ssh_icon":  "",
+            "prefix": ""
           }
         },
         {
           "type": "session",
+          "style": "diamond",
+          "foreground": "#d5c4a1",
+          "background": "#98971a",
+          "background_templates": [
+            "{{if .SSHSession }}#cc241d{{end}}"
+          ],
+          "properties": {
+            "display_user": false,
+            "prefix": " "
+          }
+        },
+        {
+          "type": "os",
           "style": "diamond",
           "trailing_diamond": "\uE0B4",
           "foreground": "#d5c4a1",
@@ -45,7 +48,7 @@
             "{{if .SSHSession }}#cc241d{{end}}"
           ],
           "properties": {
-            "display_user": false
+            "prefix": ""
           }
         },
         {
@@ -90,7 +93,7 @@
           "trailing_diamond": "\uE0B4",
           "properties": {
             "always_enabled": true,
-            "prefix": " \ufa1e ",
+            "prefix": " \ufa1e",
             "postfix": "\u2800"
           }
         }
