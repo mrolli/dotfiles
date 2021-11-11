@@ -28,19 +28,6 @@
         {
           "type": "session",
           "style": "diamond",
-          "foreground": "#d5c4a1",
-          "background": "#98971a",
-          "background_templates": [
-            "{{if .SSHSession }}#cc241d{{end}}"
-          ],
-          "properties": {
-            "display_user": false,
-            "prefix": " "
-          }
-        },
-        {
-          "type": "os",
-          "style": "diamond",
           "trailing_diamond": "\uE0B4",
           "foreground": "#d5c4a1",
           "background": "#98971a",
@@ -48,7 +35,7 @@
             "{{if .SSHSession }}#cc241d{{end}}"
           ],
           "properties": {
-            "prefix": ""
+            "display_user": false
           }
         },
         {
