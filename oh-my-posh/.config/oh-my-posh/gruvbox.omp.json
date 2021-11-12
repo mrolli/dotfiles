@@ -14,7 +14,7 @@
           "type": "session",
           "style": "diamond",
           "leading_diamond": "\uE0B6",
-          "foreground": "#d5c4a1",
+          "foreground": "#ebdbb2",
           "background": "#d65d0e",
           "background_templates": [
             "{{if contains \"root\" .UserName}}#cc241d{{ end }}"
@@ -29,7 +29,7 @@
           "type": "session",
           "style": "diamond",
           "trailing_diamond": "\uE0B4",
-          "foreground": "#d5c4a1",
+          "foreground": "#ebdbb2",
           "background": "#98971a",
           "background_templates": [
             "{{if .SSHSession }}#cc241d{{end}}"
@@ -44,7 +44,7 @@
           "leading_diamond": "\uE0B6",
           "trailing_diamond": "\uE0B4",
           "powerline_symbol": "\uE0B0",
-          "foreground": "#d5c4a1",
+          "foreground": "#ebdbb2",
           "background": "#d79921",
           "properties": {
             "prefix": " \uE5FF ",
@@ -58,7 +58,7 @@
           "leading_diamond": "\uE0B6",
           "trailing_diamond": "\uE0B4",
           "powerline_symbol": "",
-          "foreground": "#d5c4a1",
+          "foreground": "#ebdbb2",
           "background": "#458588",
           "background_templates": [
             "{{ if gt .Repo.Ahead 0 }}#689d6a{{ end }}",
@@ -74,7 +74,7 @@
         {
           "type": "executiontime",
           "style": "diamond",
-          "foreground": "#d5c4a1",
+          "foreground": "#ebdbb2",
           "background": "#b16286",
           "leading_diamond": "\uE0B6",
           "trailing_diamond": "\uE0B4",
@@ -96,7 +96,7 @@
           "style": "diamond",
           "leading_diamond": "\uE0B6",
           "trailing_diamond": "\uE0B4",
-          "foreground": "#d5c4a1",
+          "foreground": "#ebdbb2",
           "background": "#458588",
           "properties": {
             "var_name": "CONDA_DEFAULT_ENV",
@@ -124,7 +124,7 @@
             "display_exit_code": true,
             "always_enabled": false,
             "color_background": false,
-            "error_color": "#d5c4a1",
+            "error_color": "#ebdbb2",
             "prefix": "\uE23A ",
             "postfix": ""
           }
@@ -132,7 +132,7 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "#d5c4a1",
+          "foreground": "#ebdbb2",
           "properties": {
             "prefix": " ",
             "text": "{{if .Root}}#{{else}}${{end}}",
