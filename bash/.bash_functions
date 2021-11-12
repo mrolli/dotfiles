@@ -50,6 +50,7 @@ function brewup {
     if [ "${1}" = "-f" ] || prompt_confirm "Shall I upgrade all?"
     then
       brew upgrade
+      echo "[ ${blue}..${reset} ] Running brew cleanup"
       brew cleanup
     fi
   fi
