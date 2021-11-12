@@ -66,7 +66,11 @@ function week {
     return
   fi
 
-  [ -z "${1}" ] && date +%V || date --date="${1}" +%V
+  # date on macOS does not have the --date option; install coreutils
+  # using Homebrew there
+  type gdate &>/dev/null && datecmd="gdate" || datecmd="date"
+
+  [ -z "${1}" ] && $datecmd +%V || $datecmd --date="${1}" +%V
 }
 
 # load a local tmuxp config file in a directory by first changing pwd
