@@ -41,12 +41,6 @@ then
 fi
 
 
-# Prompt
-posh_theme=gruvbox
-oh-my-posh --version &>/dev/null \
-  && eval "$(oh-my-posh --init --shell bash --config ~/.config/oh-my-posh/$posh_theme.omp.json)" \
-  || . ~/.bash_prompt
-
 # Source fzf related shell configuration and completion
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
 
@@ -55,6 +49,14 @@ oh-my-posh --version &>/dev/null \
 
 # Source a local non-versioned bash profile script if available
 [ -f "${HOME}/.bash_profile.local" ] && source "${HOME}/.bash_profile.local"
+
+
+# Finally the prompt now that Homebrew has been added on all platforms
+posh_theme=gruvbox
+oh-my-posh --version &>/dev/null \
+  && eval "$(oh-my-posh --init --shell bash --config ~/.config/oh-my-posh/$posh_theme.omp.json)" \
+  || . ~/.bash_prompt
+
 
 true
 # vim: set ft=bash:
