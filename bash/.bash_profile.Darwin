@@ -1,8 +1,12 @@
 # This file contains stuff that is specific for macOS
 
 
+# On amd64 Homebrew is now installed at /opt and not automatically available!
+type brew &>/dev/null || PATH=/opt/homebrew/bin:$PATH
+brew_prefix=$(brew --prefix)
+
 # Source bash completion installed by Homebrew formula bashcompletion@2
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+[[ -r "${brew_prefix}/etc/profile.d/bash_completion.sh" ]] && . "${brew_prefix}/etc/profile.d/bash_completion.sh"
 
 
 # Vagrant/Packer specific
@@ -11,15 +15,14 @@ export PACKER_CACHE_DIR=$HOME/.local/cache/packer_cache
 
 
 # >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('${brew_prefix}/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    if [ -f "${brew_prefix}/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "${brew_prefix}/Caskroom/miniconda/base/etc/profile.d/conda.sh"
     else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+        export PATH="${brew_prefix}/Caskroom/miniconda/base/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -27,5 +30,8 @@ unset __conda_setup
 
 # Add `killall` tab completion for common apps on macOS
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+
+unset $brew_prefix
 
 # vim: set ft=bash:
