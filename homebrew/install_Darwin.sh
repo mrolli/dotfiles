@@ -27,7 +27,7 @@ fi
 
 echo ""
 info "Running brew bundle..."
-brewfile="${topic_dir}/Brewfile.$(uname).symlink"
+brewfile="${topic_dir}/.config/Homebrew/Brewfile.$(uname)"
 if [ -f "${brewfile}" ]
 then
   info "  - found ${brewfile}"
