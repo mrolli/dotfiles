@@ -10,7 +10,7 @@ chhostname=1
 prompt_confirm "Do you want me to change the hostname of this machine?" || chhostname=0
 if [ $chhostname -eq 1 ]
 then
-  user "Which short hostname should I set? "
+  warning "Which short hostname should I set? "
   read -r myhostname
   sudo scutil --set ComputerName "${myhostname}"
   sudo scutil --set HostName "${myhostname}"
