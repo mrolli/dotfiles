@@ -106,6 +106,15 @@ set undodir=~/.vim/undofiles//
 set undofile
 set noswapfile
 
+" Make sure these directories exist
+if isdirectory(expand('~/.vim/swap')) == 0
+  :silent !mkdir /.vim/swap
+endif
+
+if isdirectory(expand('~/.vim/undofiles')) == 0
+  :silent !mkdir ~/.vim/undofiles
+endif
+
 " Default to Unicode/UTF-8 rather than latin1
 set encoding=utf-8
 
