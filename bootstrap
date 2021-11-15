@@ -15,6 +15,7 @@ stowables="
   oh-my-posh
   scripts
   tmux
+  vbox
   vim
   wget
   yamllint
