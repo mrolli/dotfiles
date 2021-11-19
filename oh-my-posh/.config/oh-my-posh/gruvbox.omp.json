@@ -48,7 +48,8 @@
           "background": "#d79921",
           "properties": {
             "prefix": " \uE5FF ",
-            "style": "full",
+            "style": "agnoster_short",
+            "max_depth": 3,
             "folder_separator_icon": "/"
           }
         },
