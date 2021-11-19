@@ -4,7 +4,7 @@ share=Data
 
 [ -d /Volumes/$share ] && exit 0
 
-open -g smb://gimli@gimli/$share
+open -g smb://$USER@gimli/$share
 
 while ! ls /Volumes/$share &>/dev/null
 do
