@@ -77,8 +77,8 @@ function week {
 function tmuxpl {
   # Show usage if no argument is provided
   [ $# -ne 1 ] && echo "Usage: tmuxpl DIR" && return 1
-  # If there's a named config, load it
-  if [ -f ~/.config/tmuxp/$1.y*ml ]
+  # Is it a filepath or a named config to a configuration already? Load it!
+  if [ -f $1 -o -f ~/.config/tmuxp/$1.y*ml ]
   then
     tmuxp load $1
     return 0
