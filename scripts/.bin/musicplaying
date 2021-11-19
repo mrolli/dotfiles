@@ -11,9 +11,9 @@ on run
         set seconds_played to player position
         set state to ""
         if player state is paused then
-            set state to "♊"
+            set state to " "
         else
-            set state to "▶ "
+            set state to "契"
         end if
 
         set display to state & track_artist & " - " & track_name & " - " & (round ((seconds_played / track_duration) * 100)) & "%"
@@ -30,9 +30,9 @@ on run
         set seconds_played to player position
         set state to ""
         if player state is paused then
-            set state to "♊"
+            set state to " "
         else
-            set state to "▶ "
+            set state to "契"
         end if
 
         set display to state & track_artist & " - " & track_name
@@ -54,9 +54,9 @@ on run
           set seconds_played to player position
           set state to ""
           if player state is paused then
-              set state to "♊"
+              set state to " "
           else
-              set state to "▶ "
+              set state to "契"
           end if
 
           set display to state & track_artist & " - " & track_name
@@ -73,9 +73,9 @@ on run
           set seconds_played to player position
           set state to ""
           if player state is paused then
-              set state to "♊"
+              set state to " "
           else
-              set state to "▶ "
+              set state to "契"
           end if
 
           set display to state & track_artist & " - " & track_name & " - " & (round ((seconds_played / track_duration) * 100)) & "%"
