@@ -12,78 +12,58 @@
       "segments": [
         {
           "type": "session",
-          "style": "plain",
-          "foreground": "#d65d0e",
-          "foreground_templates": [
+          "style": "diamond",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B4",
+          "foreground": "#ebdbb2",
+          "background": "#d65d0e",
+          "background_templates": [
             "{{if contains \"root\" .UserName}}#cc241d{{ end }}"
           ],
           "properties": {
             "display_host": false,
             "ssh_icon":  "",
-            "prefix": "",
-            "postfix": ""
-          }
-        },
-        {
-          "type": "text",
-          "style": "plain",
-          "foreground": "#ebdbb2",
-          "properties": {
-            "prefix": " ",
-            "text": "at",
-            "postfix": " "
+            "prefix": ""
           }
         },
         {
           "type": "session",
-          "style": "plain",
-          "foreground": "#98971a",
-          "foreground_templates": [
+          "style": "diamond",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B4",
+          "foreground": "#ebdbb2",
+          "background": "#98971a",
+          "background_templates": [
             "{{if .SSHSession }}#cc241d{{end}}"
           ],
           "properties": {
-            "display_user": false,
-            "prefix": "",
-            "postfix": ""
-          }
-        },
-        {
-          "type": "text",
-          "style": "plain",
-          "foreground": "#ebdbb2",
-          "properties": {
-            "prefix": " ",
-            "text": "in",
-            "postfix": " "
+            "display_user": false
           }
         },
         {
           "type": "path",
-          "style": "plain",
-          "foreground": "#d79921",
+          "style": "diamond",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B4",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#ebdbb2",
+          "background": "#d79921",
           "properties": {
+            "prefix": " \uE5FF ",
             "style": "agnoster_short",
             "max_depth": 3,
-            "folder_separator_icon": "/",
-            "prefix": "\uE5FF ",
-            "postfix": ""
-          }
-        },
-        {
-          "type": "text",
-          "style": "plain",
-          "foreground": "#ebdbb2",
-          "properties": {
-            "prefix": " ",
-            "text": "on",
-            "postfix": " "
+            "folder_separator_icon": "/"
           }
         },
         {
           "type": "git",
-          "style": "plain",
-          "foreground": "#458588",
-          "foreground_templates": [
+          "style": "diamond",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B4",
+          "powerline_symbol": "",
+          "foreground": "#ebdbb2",
+          "background": "#458588",
+          "background_templates": [
             "{{ if gt .Repo.Ahead 0 }}#689d6a{{ end }}",
             "{{ if gt .Repo.Behind 0 }}#cc241d{{ end }}"
           ],
@@ -91,18 +71,19 @@
             "display_upstream_icon": true,
             "display_status": true,
             "display_stash_count": true,
-            "stash_count_icon": "\uF692 ",
-            "prefix": "",
-            "postfix": " "
+            "stash_count_icon": "\uF692 "
           }
         },
         {
           "type": "executiontime",
-          "style": "plain",
-          "foreground": "#b16286",
+          "style": "diamond",
+          "foreground": "#ebdbb2",
+          "background": "#b16286",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B4",
           "properties": {
             "always_enabled": true,
-            "prefix": "\ufa1e",
+            "prefix": " \ufa1e",
             "postfix": "\u2800"
           }
         }
@@ -115,12 +96,15 @@
       "segments": [
         {
           "type": "envvar",
-          "style": "plain",
-          "foreground": "#458588",
+          "style": "diamond",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B4",
+          "foreground": "#ebdbb2",
+          "background": "#458588",
           "properties": {
             "var_name": "CONDA_DEFAULT_ENV",
-            "prefix": "(",
-            "postfix": ") "
+            "prefix": "",
+            "postfix": ""
           }
         },
         {
@@ -130,19 +114,22 @@
           "properties": {
             "prefix": "",
             "root_icon": "⚡",
-            "postfix": " "
+            "postfix": ""
           }
         },
         {
           "type": "exit",
-          "style": "plain",
-          "foreground": "#ebdbb2",
+          "style": "diamond",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B4",
+          "background": "#cc241d",
           "properties": {
             "display_exit_code": true,
             "always_enabled": false,
-            "error_color": "#fb4934",
+            "color_background": false,
+            "error_color": "#ebdbb2",
             "prefix": "\uE23A ",
-            "postfix": " "
+            "postfix": ""
           }
         },
         {
@@ -150,7 +137,7 @@
           "style": "plain",
           "foreground": "#ebdbb2",
           "properties": {
-            "prefix": "",
+            "prefix": " ",
             "text": "{{if .Root}}#{{else}}${{end}}",
             "postfix": ""
           }
