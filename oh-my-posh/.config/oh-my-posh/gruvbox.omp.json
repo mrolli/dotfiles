@@ -116,7 +116,7 @@
         {
           "type": "envvar",
           "style": "plain",
-          "foreground": "#458588",
+          "foreground": "#689d6a",
           "properties": {
             "var_name": "CONDA_DEFAULT_ENV",
             "prefix": "(",
@@ -140,7 +140,7 @@
           "properties": {
             "display_exit_code": true,
             "always_enabled": false,
-            "error_color": "#fb4934",
+            "error_color": "#cc241d",
             "prefix": "\uE23A ",
             "postfix": " "
           }
