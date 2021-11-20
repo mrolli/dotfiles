@@ -100,7 +100,7 @@ mkdir -p "${basedir}/${targetdir}"
 echo "${origtitle}" > "${basedir}/${targetdir}/source.nfo"
 
 # Convert
-echo "--- Conversion of ${origtitle} started"
+echo "--- Conversion of ${origtitle} started - $(date)"
 echo "Recoding video using libx265 with crf ${crf} and preset ${preset}"
 time ffmpeg -analyzeduration 5000M \
             -probesize 5000M \
@@ -115,7 +115,7 @@ time ffmpeg -analyzeduration 5000M \
             -tag:v:0 hvc1 \
             "${basedir}/${targetdir}/${targetfile}"
 rc=$?
-echo "--- Conversion of ${origtitle} ended"
+echo "--- Conversion of ${origtitle} ended - $(date)"
 exit $rc
 
 exit 0
