@@ -66,16 +66,6 @@
             "max_depth": 3,
             "folder_separator_icon": "/",
             "prefix": "\uE5FF ",
-            "postfix": ""
-          }
-        },
-        {
-          "type": "text",
-          "style": "plain",
-          "foreground": "#ebdbb2",
-          "properties": {
-            "prefix": " ",
-            "text": "on",
             "postfix": " "
           }
         },
@@ -92,7 +82,7 @@
             "display_status": true,
             "display_stash_count": true,
             "stash_count_icon": "\uF692 ",
-            "prefix": "",
+            "prefix": "<#ebdbb2>on</> ",
             "postfix": " "
           }
         },
@@ -116,7 +106,7 @@
         {
           "type": "envvar",
           "style": "plain",
-          "foreground": "#689d6a",
+          "foreground": "#458588",
           "properties": {
             "var_name": "CONDA_DEFAULT_ENV",
             "prefix": "(",
@@ -140,7 +130,7 @@
           "properties": {
             "display_exit_code": true,
             "always_enabled": false,
-            "error_color": "#cc241d",
+            "error_color": "#fb4934",
             "prefix": "\uE23A ",
             "postfix": " "
           }
