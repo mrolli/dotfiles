@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Dock                                                                        #
+# Dock & Menu Bar                                                                       #
 ###############################################################################
+
+# Automatically hide and show the Menu Bar
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
-# Remove the auto-hiding Dock delay
-#defaults write com.apple.dock autohide-delay -float 0
+
+# Increase auto-hiding Dock delay to not accidently unhide dock
+defaults write com.apple.dock autohide-delay -float 2
+
 # Speedup the animation when hiding/showing the Dock
-defaults write com.apple.dock autohide-time-modifier -float 0.5
+defaults write com.apple.dock autohide-time-modifier -float 0.2
 
 # Put the dock in the middle of the screen
 # Default: "bottom"

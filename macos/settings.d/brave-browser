@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+###############################################################################
+# Brave Browser
+###############################################################################
+
+# Disable the all too sensitive backswipe on trackpads
+#defaults write com.brave.Browser AppleEnableSwipeNavigateWithScrolls -bool false
+
+# Disable the all too sensitive backswipe on Magic Mouse
+#defaults write com.brave.Browser AppleEnableMouseSwipeNavigateWithScrolls -bool false
+
+# Use the system-native print preview dialog
+defaults write com.brave.Browser DisablePrintPreview -bool true
+
+# Expand the print dialog by default
+defaults write com.brave.Browser PMPrintingExpandedStateForPrint2 -bool true
+

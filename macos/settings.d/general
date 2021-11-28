@@ -23,17 +23,17 @@ sudo pmset -a standbydelay 10800
 #  "/System/Library/CoreServices/Menu Extras/Volume.menu" \
 #  "/System/Library/CoreServices/Menu Extras/VPN.menu" \
 # Menu bar: hide some icons
-defaults write com.apple.systemuiserver dontAutoLoad -array \
-  "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-  "/System/Library/CoreServices/Menu Extras/User.menu"
+#defaults write com.apple.systemuiserver dontAutoLoad -array \
+#  "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+#  "/System/Library/CoreServices/Menu Extras/User.menu"
 # Menu bar: show some icons
-defaults write com.apple.systemuiserver menuExtras -array \
-  "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-  "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-  "/System/Library/CoreServices/Menu Extras/Battery.menu" \
-  "/System/Library/CoreServices/Menu Extras/Clock.menu" \
-  "/System/Library/CoreServices/Menu Extras/Displays.menu" \
-  "/System/Library/CoreServices/Menu Extras/VPN.menu"
+#defaults write com.apple.systemuiserver menuExtras -array \
+#  "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+#  "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+#  "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+#  "/System/Library/CoreServices/Menu Extras/Clock.menu" \
+#  "/System/Library/CoreServices/Menu Extras/Displays.menu"
+#  "/System/Library/CoreServices/Menu Extras/VPN.menu"
 
 # Show percentage in battery menu bar
 defaults write com.apple.menuextra.battery ShowPercent -bool true
@@ -47,7 +47,7 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
 # Expand print panel by default
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -book true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 # Save to disk (not to iCloud) by default
 #defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false

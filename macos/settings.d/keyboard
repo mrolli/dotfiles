@@ -15,9 +15,9 @@ defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Set a faster keyboard repeat rate
 # Default: 30
-defaults write NSGlobalDomain KeyRepeat -int 6
+defaults write NSGlobalDomain KeyRepeat -int 2
 # Default: 68
-defaults write NSGlobalDomain InitialKeyRepeat -int 25
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Use fn to invoke itunes controls/mission control
 # Default: flase
@@ -30,7 +30,7 @@ defaults write NSGlobalDomain com.apple.keyboard.fnState  -bool true
 #-defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "Europe/Zurich" > /dev/null
+sudo systemsetup -settimezone Europe/Zurich &> /dev/null
 
 # Disable a lot auto-correction stuff; default: absent
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
