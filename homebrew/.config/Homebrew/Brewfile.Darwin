@@ -2,6 +2,7 @@ tap 'homebrew/core'
 tap 'homebrew/bundle'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
 tap 'buo/cask-upgrade'
 tap 'puppetlabs/puppet'
 tap 'jandedobbeleer/oh-my-posh'
@@ -60,10 +61,13 @@ brew 'vagrant-completion'
 cask 'font-meslo-lg-nerd-font'
 
 # Apps from homebrew/cask
+#cask 'alacritty'
 cask '1password-cli'
+cask 'ableton-live-suite10'
 cask 'alfred'
 cask 'appcleaner'
 cask 'brave-browser'
+cask 'gitup'
 #cask 'guitar-pro'
 cask 'horos'
 cask 'iina'
@@ -72,6 +76,7 @@ cask 'karabiner-elements'
 cask 'keycastr'
 cask 'miniconda'
 cask 'native-access'
+cask 'omnigraffle'
 cask 'pdk'
 cask 'puppet-agent'  # for validating in nvim
 cask 'rar'
@@ -83,6 +88,8 @@ cask 'vagrant'
 cask 'vcv-rack'
 cask 'virtualbox'
 cask 'virtualbox-extension-pack'
+cask 'webex-meetings'
+cask 'zoom'
 
 # Apps from AppStore
 mas '1Password 7 - Password Manager', id: 1333542190
@@ -95,7 +102,9 @@ mas 'iFinance 4', id: 992362138
 mas 'Logic Pro X', id: 634148309
 mas 'Mactracker', id: 430255202
 mas 'Microsoft Remote Desktop 10', id: 1295203466
+#mas 'Model 15', id: 1041465860
 mas 'OneDrive', id: 823766827
 mas 'Brother P-touch Editor', id: 1453365242
 mas 'Purple Tree', id: 764936294
+#mas 'Recipe Keeper', id: 1315583175
 mas 'Remote Desktop', id: 409907375
