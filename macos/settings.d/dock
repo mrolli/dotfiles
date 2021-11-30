@@ -5,7 +5,7 @@
 ###############################################################################
 
 # Automatically hide and show the Menu Bar
-defaults write NSGlobalDomain _HIHideMenuBar -bool true
+#defaults write NSGlobalDomain _HIHideMenuBar -bool true
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
