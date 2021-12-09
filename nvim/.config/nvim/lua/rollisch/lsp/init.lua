@@ -49,9 +49,9 @@ local custom_attach = function(client)
   buf_nnoremap { "<leader>vrn", vim.lsp.buf.rename }
   buf_nnoremap { "<leader>vh", vim.lsp.buf.hover }
   buf_nnoremap { "<leader>vca", vim.lsp.buf.code_action }
-  buf_nnoremap { "<leader>vsd", vim.lsp.diagnostic.show_line_diagnostics }
-  buf_nnoremap { "<leader>vn", vim.lsp.diagnostic.goto_next }
-  buf_nnoremap { "<leader>vll", vim.lsp.diagnostic.set_loclist } --{ open_loclist = false } }
+  buf_nnoremap { "<leader>vsd", vim.diagnostic.open_float }
+  buf_nnoremap { "<leader>vn", vim.diagnostic.goto_next }
+  buf_nnoremap { "<leader>vll", vim.diagnostic.setloclist } --{ open_loclist = false } }
 
   --telescope_mapper("gr", "lsp_references", nil, true)
   --telescope_mapper("gI", "lsp_implementations", nil, true)
@@ -107,9 +107,11 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 local servers = {
   bashls = true,
+  intelephense = true,
   jsonls = true,
   vimls = true,
   yamlls = true,
+  puppet = true,
 
   gopls = {
     root_dir = function(fname)
