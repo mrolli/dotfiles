@@ -12,7 +12,7 @@ stowables="
   git
   homebrew
   karabiner
-  neovim
+  nvim
   oh-my-posh
   scripts
   tmux
