@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Some tools that are used under the hood
-brew install fd ripgrep
+brew install fd npm ripgrep
 
 # Python 2
 target=/tmp/get-pip.py
