@@ -6,6 +6,7 @@ numdig=2
 prefix=""
 dryrun="echo"
 start=1
+save_ext=true
 
 print_usage() {
   echo -n >&2 "Usage: ${scriptname} [-f 'filter'] [-d numDigits] [-p prefix 'string'] [-s startInt] [-n]
@@ -23,10 +24,12 @@ Options:
   -n            By default the renaming is carried out as a dry-run to illustrate
                 what would happen. Add the flag -n to really rename the files.
   -p            Prefix to prepend to the number part, also privde the delimiter; defauls to \"$prefix\"
+  -x            Do not take extension into account; by default extension is split off before renaming
+                and finally readded again. This flag turns this behaviour off.
 "
 }
 
-while getopts hnd:f:p:s: OPTION
+while getopts hnd:f:p:s:x OPTION
 do
   case "${OPTION}" in
     h)
@@ -38,6 +41,7 @@ do
     f) filter="${OPTARG}";;
     p) prefix="${OPTARG}";;
     s) start=${OPTARG};;
+    x) save_ext=false;;
   esac
 done
 
@@ -45,11 +49,12 @@ i=$start
 workdone=0
 for file in $filter
 do
-  ext=${file##*.}
+  exit=""
+  $save_ext && ext=".${file##*.}"
   name="${prefix}$(printf "%"$numdig"s" $i | tr " " "0")"
   ((i++))
-  [ "${file}" == "${name}.${ext}" ] && continue
-  $dryrun mv -i $file $name.$ext
+  [ "${file}" == "${name}${ext}" ] && continue
+  $dryrun mv -i $file $name$ext
   workdone=1
 done
 
