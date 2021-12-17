@@ -1,17 +1,37 @@
 #!/usr/bin/env bash
 
+scriptname=$(basename "$0")
 filter="*"
 numdig=2
 prefix=""
 dryrun="echo"
 start=1
 
+print_usage() {
+  echo -n >&2 "Usage: ${scriptname} [-f 'filter'] [-d numDigits] [-p prefix 'string'] [-s startInt] [-n]
+
+Renumber a bunch of files sequentially start at $start by default with an increment of 1 and the number parl
+padded to $numdig digits. The filter can be used to select only a subset of all files in the current
+working dir or to fix numeric sort, i.e. when normal globbing would sort 10 between 1 and 2 and thus the
+previous file 10 would become file 02. This can be fixed with a filter like this:
+
+  ${scriptname} -f '*.?.jpg *.??.jpg'
+
+Options:
+  -d            Number of the digits to pad the number part to, defaults to $numdig
+  -f            Glob pattern to select the files for the action, defaults to $filter
+  -n            By default the renaming is carried out as a dry-run to illustrate
+                what would happen. Add the flag -n to really rename the files.
+  -p            Prefix to prepend to the number part, also privde the delimiter; defauls to \"$prefix\"
+"
+}
+
 while getopts hnd:f:p:s: OPTION
 do
   case "${OPTION}" in
     h)
-      echo "Usage: ${0} [-f 'filter'] [-d numDigits] [-p prefix 'string'] [-n]"
-      exit 1
+      print_usage
+      exit 0
       ;;
     n) dryrun="";;
     d) numdig=${OPTARG};;
