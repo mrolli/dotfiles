@@ -56,6 +56,11 @@ function brewup {
   fi
   echo "[ ${blue}..${reset} ] Running brew doctor"
   brew doctor
+  if [ "${1}" = "-f" ] || prompt_confirm "Shall I upgrade AppStore apps?"
+  then
+    echo "[ ${blue}..${reset} ] Running mas upgrade"
+    mas upgrade
+  fi
 }
 
 # print week number based on date or now()
