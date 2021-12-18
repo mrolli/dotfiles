@@ -1,4 +1,4 @@
-session_name: "${HOSTNAME}"
+session_name: "work"
 global_options:
   automatic-rename: 'off'
 windows:
@@ -12,11 +12,10 @@ windows:
   - focus: true
   - shell_command:
     - vagrant up service01 puppet puppetdb01 nfs01 lrms01 submit01 anode001
-- window_name: dotfiles
-  focus: true
+- window_name: modules
   options:
     main-pane-width: 50%
   layout: main-vertical
-  start_directory: ~/.dotfiles
+  start_directory: ~/Developer/ubelix/puppet-installer/controlrepo/modules
   panes:
   - focus: true
