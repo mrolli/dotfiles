@@ -139,7 +139,6 @@ local servers = {
   },
 
   sumneko_lua = {
-    --cmd = {sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua"};
     settings = {
       Lua = {
         runtime = {

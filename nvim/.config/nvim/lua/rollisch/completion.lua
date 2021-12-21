@@ -20,12 +20,15 @@ cmp.setup({
 --    format = lspkind.cmp_format({with_text = true, maxwidth = 50})
 --  },
   mapping = {
-    ['<C-k>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-j>'] = cmp.mapping.scroll_docs(4),
-    ['<C-c>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-k>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-j>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-c>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+    -- ['<C-y>'] = cmp.config.disable, -- if you want to remove the mapping
     ['<CR>'] = cmp.mapping.confirm({
-    --['<C-y>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
@@ -45,7 +48,7 @@ cmp.setup({
 
     -- for ultisnips users
     -- { name = 'ultisnips' },
-
+  }, {
     { name = 'buffer', keyword_length = 5 },
   }),
   snippet = {
@@ -78,6 +81,15 @@ cmp.setup({
   },
 })
 
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+-- cmp.setup.cmdline(':', {
+--   sources = cmp.config.sources({
+--     { name = 'path' }
+--   }, {
+--     { name = 'cmdline' }
+--   })
+-- })
+
 --[[
 " Setup buffer configuration (nvim-lua source only enables in Lua filetype).
 " This will override the global setup.
@@ -98,7 +110,7 @@ vim.cmd [[
 ]]
 
 --[[
-" Disable cmp for a buffer
+" Disable cmp for a telescope buffer
 autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
 --]]
 
