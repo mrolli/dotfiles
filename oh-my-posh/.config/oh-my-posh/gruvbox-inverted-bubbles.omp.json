@@ -64,8 +64,8 @@
           "foreground": "#ebdbb2",
           "background": "#458588",
           "background_templates": [
-            "{{ if gt .Repo.Ahead 0 }}#689d6a{{ end }}",
-            "{{ if gt .Repo.Behind 0 }}#cc241d{{ end }}"
+            "{{ if gt .Ahead 0 }}#689d6a{{ end }}",
+            "{{ if gt .Behind 0 }}#cc241d{{ end }}"
           ],
           "properties": {
             "display_upstream_icon": true,
