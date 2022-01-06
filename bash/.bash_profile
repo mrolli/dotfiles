@@ -8,7 +8,7 @@ shopt -s histappend
 
 ### Build PATH variable
 PATH=/usr/local/sbin:$PATH
-PATH=~/.bin:$PATH
+PATH=~/.local/bin:$PATH
 
 # Also export HOSTNAME
 export HOSTNAME
