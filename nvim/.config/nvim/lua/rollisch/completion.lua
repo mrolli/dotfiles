@@ -33,7 +33,14 @@ cmp.setup({
       select = true,
     }),
   },
-  -- other options to add:
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  },
+  -- documentation = {
+  --   border = 'rounded',
+  -- },
+  -- other options t add:
   --   keyword_lenth
   --   priority (though order already gives priority
   --   max_item_count
@@ -49,6 +56,7 @@ cmp.setup({
     -- for ultisnips users
     -- { name = 'ultisnips' },
   }, {
+    { name = 'path' },
     { name = 'buffer', keyword_length = 5 },
   }),
   snippet = {
@@ -65,12 +73,12 @@ cmp.setup({
     format = lspkind.cmp_format {
       with_text = true,
       menu = {
-        buffer = "[buf]",
+        buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         nvim_lua = "[API]",
-        path = "[path]",
-        vsnip = "[snip]",
-        gh_issues = "[issues]",
+        path = "[Path]",
+        vsnip = "[Snippet]",
+        gh_issues = "[Issue]",
         tn = "[TabNine]",
       },
     },
