@@ -42,6 +42,7 @@ function append {
 function brewup {
   echo "[ ${blue}..${reset} ] Updating Homebrew"
   brew update
+
   out=$(brew outdated)
   if [ ! -z "${out}" ]
   then
@@ -54,8 +55,16 @@ function brewup {
       brew cleanup
     fi
   fi
+
+  if [ "${1}" = "-f" ] || prompt_confirm "Shall I upgrade casks interactively?"
+  then
+    echo "[ ${blue}..${reset} ] Running brew cu"
+    brew cu --interactive --all
+  fi
+
   echo "[ ${blue}..${reset} ] Running brew doctor"
   brew doctor
+
   if [ "${1}" = "-f" ] || prompt_confirm "Shall I upgrade AppStore apps?"
   then
     echo "[ ${blue}..${reset} ] Running mas upgrade"
