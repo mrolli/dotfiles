@@ -100,6 +100,14 @@ require('nvim-treesitter.configs').setup {
         ["[]"] = "@class.outer",
       },
     },
+    lsp_interop = {
+      enable = true,
+      border = 'none',
+      peek_definition_code = {
+        ["<leader>df"] = "@function.outer",
+        ["<leader>dF"] = "@class.outer",
+      },
+    },
   },
   rainbow = {
     enable = true,
