@@ -33,9 +33,9 @@ fi
 
 
 # git-achievements
-if [ -d $HOME/.git-achieve ]
+if [ -d $HOME/.config/git-achieve ]
 then
-  export GIT_ACHIEVEMENTS_HOME=$HOME/.git-achieve
+  export GIT_ACHIEVEMENTS_HOME=$HOME/.config/git-achieve
   PATH="${PATH}":"${GIT_ACHIEVEMENTS_HOME}"
   alias git="git-achievements"
 fi

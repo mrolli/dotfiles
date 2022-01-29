@@ -60,6 +60,10 @@ do
   stow -R --ignore install.*sh $stowable && success $stowable || warning $stowable
 done
 
+[ ! -d ~/.config/git-achieve ] \
+  && echo -e "\n  Cloning git-achievements.git" \
+  && git clone https://github.com/mrolli/git-achievements.git ~/.config/git-achieve
+
 echo ""
 echo "  Everything in place, have fun!"
 
