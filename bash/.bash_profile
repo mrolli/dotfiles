@@ -6,6 +6,9 @@ shopt -s cdspell
 # Always append to history instead of overwriting
 shopt -s histappend
 
+# Write down history after every command
+export PROMPT_COMMAND="history -a;"
+
 ### Build PATH variable
 PATH=/usr/local/sbin:$PATH
 PATH=~/.local/bin:$PATH
@@ -19,10 +22,6 @@ do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
 unset file
-
-# ... and write it down after each command
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'} history -a"
-
 
 # GOPATH initialization
 if which go >/dev/null 2>&1
