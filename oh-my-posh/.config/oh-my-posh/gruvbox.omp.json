@@ -1,151 +1,137 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "final_space": true,
-  "console_title": true,
-  "console_title_style": "template",
-  "console_title_template": "{{if .Root}} root :: {{end}}{{ .Folder }}",
   "blocks": [
     {
-      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
         {
-          "type": "session",
-          "style": "plain",
           "foreground": "#d65d0e",
           "foreground_templates": [
             "{{if contains \"root\" .UserName}}#cc241d{{ end }}"
           ],
           "properties": {
             "display_host": false,
-            "ssh_icon":  "",
-            "prefix": "",
-            "postfix": ""
-          }
+            "template": "{{ if .SSHSession }}{{ end }}{{ .UserName }}"
+          },
+          "style": "plain",
+          "type": "session"
         },
         {
-          "type": "text",
-          "style": "plain",
           "foreground": "#ebdbb2",
           "properties": {
-            "prefix": " ",
-            "text": "at",
-            "postfix": " "
-          }
+            "template": " at "
+          },
+          "style": "plain",
+          "type": "text"
         },
         {
-          "type": "session",
-          "style": "plain",
           "foreground": "#98971a",
           "foreground_templates": [
             "{{if .SSHSession }}#cc241d{{end}}"
           ],
           "properties": {
             "display_user": false,
-            "prefix": "",
-            "postfix": ""
-          }
+            "template": "{{ if .SSHSession }}\uf817 {{ end }}{{ .HostName }}"
+          },
+          "style": "plain",
+          "type": "session"
         },
         {
-          "type": "text",
-          "style": "plain",
           "foreground": "#ebdbb2",
           "properties": {
-            "prefix": " ",
-            "text": "in",
-            "postfix": " "
-          }
+            "template": " in "
+          },
+          "style": "plain",
+          "type": "text"
         },
         {
-          "type": "path",
-          "style": "plain",
           "foreground": "#d79921",
           "properties": {
-            "style": "agnoster_short",
-            "max_depth": 3,
             "folder_separator_icon": "/",
-            "prefix": "\uE5FF ",
-            "postfix": " "
-          }
+            "max_depth": 3,
+            "style": "agnoster_short",
+            "template": "\ue5ff {{ .Path }} "
+          },
+          "style": "plain",
+          "type": "path"
         },
         {
-          "type": "git",
-          "style": "plain",
           "foreground": "#458588",
           "foreground_templates": [
             "{{ if gt .Ahead 0 }}#689d6a{{ end }}",
             "{{ if gt .Behind 0 }}#cc241d{{ end }}"
           ],
           "properties": {
-            "fetch_status": true,
             "fetch_stash_count": true,
+            "fetch_status": true,
             "fetch_upstream_icon": true,
-            "prefix": "<#ebdbb2>on</> ",
-            "postfix": " ",
-            "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }}"
-          }
+            "template": "<#ebdbb2>on</> {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} "
+          },
+          "style": "plain",
+          "type": "git"
         },
         {
-          "type": "executiontime",
-          "style": "plain",
           "foreground": "#b16286",
           "properties": {
             "always_enabled": true,
-            "prefix": "\ufa1e",
-            "postfix": "\u2800"
-          }
+            "template": "\ufa1e{{ .FormattedMs }}\u2800"
+          },
+          "style": "plain",
+          "type": "executiontime"
         }
-      ]
+      ],
+      "type": "prompt"
     },
     {
-      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
         {
-          "type": "envvar",
-          "style": "plain",
           "foreground": "#458588",
           "properties": {
-            "var_name": "CONDA_DEFAULT_ENV",
-            "prefix": "(",
-            "postfix": ") "
-          }
+            "template": "{{ .Env.CONDA_PROMPT_MODIFIER }}"
+          },
+          "style": "plain",
+          "type": "text"
         },
         {
-          "type": "root",
-          "style": "plain",
           "foreground": "#fabd2f",
           "properties": {
-            "prefix": "",
-            "root_icon": "⚡",
-            "postfix": " "
-          }
+            "root_icon": "\u26a1",
+            "template": "\uf0e7 "
+          },
+          "style": "plain",
+          "type": "root"
         },
         {
-          "type": "exit",
-          "style": "plain",
           "foreground": "#ebdbb2",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#fb4934{{ end }}"
+          ],
           "properties": {
-            "display_exit_code": true,
             "always_enabled": false,
-            "error_color": "#fb4934",
-            "prefix": "\uE23A ",
-            "postfix": " "
-          }
+            "display_exit_code": true,
+            "template": "\ue23a {{ if gt .Code 0 }}\uf00d {{ .Meaning }}{{ else }}\uf42e{{ end }} "
+          },
+          "style": "plain",
+          "type": "exit"
         },
         {
-          "type": "text",
-          "style": "plain",
           "foreground": "#ebdbb2",
           "properties": {
-            "prefix": "",
-            "text": "{{if .Root}}#{{else}}${{end}}",
-            "postfix": ""
-          }
+            "template": "{{if .Root}}#{{else}}${{end}}"
+          },
+          "style": "plain",
+          "type": "text"
         }
-      ]
+      ],
+      "type": "prompt"
     }
-  ]
+  ],
+  "console_title": true,
+  "console_title_style": "template",
+  "console_title_template": "{{if .Root}} root :: {{end}}{{ .Folder }}",
+  "final_space": true,
+  "version": 1
 }

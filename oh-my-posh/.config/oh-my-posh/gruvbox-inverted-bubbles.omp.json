@@ -95,14 +95,14 @@
       "newline": true,
       "segments": [
         {
-          "type": "envvar",
+          "type": "text",
           "style": "diamond",
           "leading_diamond": "\uE0B6",
           "trailing_diamond": "\uE0B4",
           "foreground": "#ebdbb2",
           "background": "#458588",
           "properties": {
-            "var_name": "CONDA_DEFAULT_ENV",
+            "template": "{{ .Env.CONDA_PROMPT_MODIFIER }}",
             "prefix": "",
             "postfix": ""
           }
