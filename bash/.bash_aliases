@@ -70,6 +70,9 @@ alias wetter_bern='curl http://wttr\.in/bern'
 alias wetter_burgdorf2='curl http://v2.wttr\.in/burgdorf'
 alias wetter_bern2='curl http://v2.wttr\.in/bern'
 
+# To easyily use brave from the CLI
+alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
+
 # unset variables set in this file
 unset colorflag
 
