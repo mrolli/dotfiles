@@ -102,7 +102,7 @@
           "foreground": "#ebdbb2",
           "background": "#458588",
           "properties": {
-            "template": "{{ .Env.CONDA_PROMPT_MODIFIER }}",
+            "template": "{{ if ne .Env.CONDA_PROMPT_MODIFIER \"false\" }}{{ .Env.CONDA_PROMPT_MODIFIER }}{{ end }}",
             "prefix": "",
             "postfix": ""
           }

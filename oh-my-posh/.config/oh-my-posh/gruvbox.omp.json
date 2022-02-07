@@ -90,7 +90,7 @@
         {
           "foreground": "#458588",
           "properties": {
-            "template": "{{ .Env.CONDA_PROMPT_MODIFIER }}"
+            "template": "{{ if ne .Env.CONDA_PROMPT_MODIFIER \"false\" }}{{ .Env.CONDA_PROMPT_MODIFIER }}{{ end }}"
           },
           "style": "plain",
           "type": "text"
