@@ -43,6 +43,13 @@ function brewup {
   echo "[ ${blue}..${reset} ] Updating Homebrew"
   brew update
 
+  if [ "${1}" = "-f" ] || prompt_confirm "Shall I first upgrade casks interactively?"
+  then
+    echo "[ ${blue}..${reset} ] Running brew cu"
+    brew cu --all
+  fi
+
+
   out=$(brew outdated)
   if [ ! -z "${out}" ]
   then
@@ -56,13 +63,7 @@ function brewup {
     fi
   fi
 
-  if [ "${1}" = "-f" ] || prompt_confirm "Shall I upgrade casks interactively?"
-  then
-    echo "[ ${blue}..${reset} ] Running brew cu"
-    brew cu --interactive --all
-  fi
-
-  echo "[ ${blue}..${reset} ] Running brew doctor"
+    echo "[ ${blue}..${reset} ] Running brew doctor"
   brew doctor
 
   if [ "${1}" = "-f" ] || prompt_confirm "Shall I upgrade AppStore apps?"
