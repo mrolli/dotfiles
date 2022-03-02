@@ -7,10 +7,15 @@ windows:
   layout: tiled
   start_directory: ~/Developer/ubelix/puppet-installer/controlrepo
   panes:
-  - pane
-  - pane
-  - focus: true
-  - pane
+    - pane
+    - shell_command:
+      - sudo su -
+      - clear
+    - pane
+    - shell_command:
+      - sudo su -
+      - clear
+      focus: true
 - window_name: ems11
   options:
     main-pane-width: 50%
@@ -18,9 +23,11 @@ windows:
   start_directory: ~/
   panes:
     - shell_command:
-      - ssh ems11-adm "watch -n 5 'mmgetstate -N gss_ppc64,cesnodes'"
+      - ssh ems11-adm
+      - watch -n 5 "mmgetstate -N gss_ppc64,cesnodes"
     - shell_command:
-      - ssh ems11-adm "mmsdsh -N gss_ppc64,cesnodes uptime"
+      - ssh ems11-adm
+      - watch -n 5 "mmdsh -N gss_ppc64,cesnodes uptime | sort"
     - shell_command:
       - ssh ems11-adm
       focus: true
