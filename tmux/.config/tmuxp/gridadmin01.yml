@@ -1,0 +1,26 @@
+session_name: "gridadmin"
+global_options:
+  automatic-rename: 'off'
+windows:
+- window_name: shells
+  focus: true
+  layout: tiled
+  start_directory: ~/Developer/ubelix/puppet-installer/controlrepo
+  panes:
+  - pane
+  - pane
+  - focus: true
+  - pane
+- window_name: ems11
+  options:
+    main-pane-width: 50%
+  layout: tiled
+  start_directory: ~/
+  panes:
+    - shell_command:
+      - ssh ems11-adm "watch -n 5 'mmgetstate -N gss_ppc64,cesnodes'"
+    - shell_command:
+      - ssh ems11-adm "mmsdsh -N gss_ppc64,cesnodes uptime"
+    - shell_command:
+      - ssh ems11-adm
+      focus: true
