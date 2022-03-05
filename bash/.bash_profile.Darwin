@@ -4,6 +4,7 @@
 # On amd64 Homebrew is now installed in /opt and not automatically available!
 if ! type brew &>/dev/null && [ -x /opt/homebrew/bin/brew ]
 then
+    export PATH="/opt/homebrew/bin:$PATH"
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
