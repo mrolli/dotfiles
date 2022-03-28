@@ -106,6 +106,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local servers = {
+  ansiblels = true,
   bashls = true,
   intelephense = true,
   jsonls = true,
