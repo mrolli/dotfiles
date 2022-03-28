@@ -1,70 +1,58 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "version": 1,
-  "final_space": true,
-  "console_title": true,
-  "console_title_style": "template",
-  "console_title_template": "{{if .Root}} root :: {{end}}{{ .Folder }}",
   "blocks": [
     {
-      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
         {
-          "type": "session",
-          "style": "plain",
           "foreground": "#d65d0e",
           "foreground_templates": [
             "{{if contains \"root\" .UserName}}#cc241d{{ end }}"
           ],
           "properties": {
-            "display_host": false,
-            "template": "{{ .UserName }}"
-          }
+            "display_host": false
+          },
+          "style": "plain",
+          "template": "{{ .UserName }}",
+          "type": "session"
         },
         {
-          "type": "text",
-          "style": "plain",
           "foreground": "#ebdbb2",
-          "properties": {
-            "template": " at "
-          }
+          "style": "plain",
+          "template": " at ",
+          "type": "text"
         },
         {
-          "type": "session",
-          "style": "plain",
           "foreground": "#98971a",
           "foreground_templates": [
             "{{if .SSHSession }}#cc241d{{end}}"
           ],
           "properties": {
-            "display_user": false,
-            "template": "{{ if .SSHSession }}\uf817 {{ end }}{{ .HostName }}"
-          }
+            "display_user": false
+          },
+          "style": "plain",
+          "template": "{{ if .SSHSession }}\uf817 {{ end }}{{ .HostName }}",
+          "type": "session"
         },
         {
-          "type": "text",
-          "style": "plain",
           "foreground": "#ebdbb2",
-          "properties": {
-            "template": " in "
-          }
+          "style": "plain",
+          "template": " in ",
+          "type": "text"
         },
         {
-          "type": "path",
-          "style": "plain",
           "foreground": "#d79921",
           "properties": {
-            "template": "\ue5ff {{ .Path }} ",
-            "style": "agnoster_short",
+            "folder_separator_icon": "/",
             "max_depth": 3,
-            "folder_separator_icon": "/"
-          }
+            "style": "agnoster_short"
+          },
+          "style": "plain",
+          "template": "\ue5ff {{ .Path }} ",
+          "type": "path"
         },
         {
-          "type": "git",
-          "style": "plain",
           "foreground": "#458588",
           "foreground_templates": [
             "{{ if gt .Ahead 0 }}#689d6a{{ end }}",
@@ -73,65 +61,67 @@
           "properties": {
             "fetch_stash_count": true,
             "fetch_status": true,
-            "fetch_upstream_icon": true,
-            "template": "<#ebdbb2>on</> {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} "
-          }
+            "fetch_upstream_icon": true
+          },
+          "style": "plain",
+          "template": "<#ebdbb2>on</> {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
+          "type": "git"
         },
         {
-          "type": "executiontime",
-          "style": "plain",
           "foreground": "#b16286",
           "properties": {
-            "always_enabled": true,
-            "template": "\ufa1e{{ .FormattedMs }}\u2800"
-          }
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "\ufa1e{{ .FormattedMs }}\u2800",
+          "type": "executiontime"
         }
-      ]
+      ],
+      "type": "prompt"
     },
     {
-      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
         {
-          "type": "text",
-          "style": "plain",
           "foreground": "#458588",
-          "properties": {
-            "template": "{{ if ne .Env.CONDA_PROMPT_MODIFIER \"false\" }}{{ .Env.CONDA_PROMPT_MODIFIER }}{{ end }}"
-          }
+          "style": "plain",
+          "template": "{{ if ne .Env.CONDA_PROMPT_MODIFIER \"false\" }}{{ .Env.CONDA_PROMPT_MODIFIER }}{{ end }}",
+          "type": "text"
         },
         {
-          "type": "root",
-          "style": "plain",
           "foreground": "#fabd2f",
           "properties": {
-            "root_icon": "\u26a1",
-            "template": "\uf0e7 "
-          }
+            "root_icon": "\u26a1"
+          },
+          "style": "plain",
+          "template": "\uf0e7 ",
+          "type": "root"
         },
         {
-          "type": "exit",
-          "style": "plain",
           "foreground": "#ebdbb2",
           "foreground_templates": [
             "{{ if gt .Code 0 }}#fb4934{{ end }}"
           ],
           "properties": {
             "always_enabled": false,
-            "display_exit_code": true,
-            "template": "\ue23a {{ if gt .Code 0 }}\uf00d {{ .Meaning }}{{ else }}\uf42e{{ end }} "
-          }
+            "display_exit_code": true
+          },
+          "style": "plain",
+          "template": "\ue23a {{ if gt .Code 0 }}\uf00d {{ .Meaning }}{{ else }}\uf42e{{ end }} ",
+          "type": "exit"
         },
         {
-          "type": "text",
-          "style": "plain",
           "foreground": "#ebdbb2",
-          "properties": {
-            "template": "{{if .Root}}#{{else}}${{end}}"
-          }
+          "style": "plain",
+          "template": "{{if .Root}}#{{else}}${{end}}",
+          "type": "text"
         }
-      ]
+      ],
+      "type": "prompt"
     }
-  ]
+  ],
+  "console_title_template": "{{if .Root}} root :: {{end}}{{ .Folder }}",
+  "final_space": true,
+  "version": 2
 }
