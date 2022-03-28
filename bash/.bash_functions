@@ -46,7 +46,7 @@ function brewup {
   if [ "${1}" = "-f" ] || prompt_confirm "Shall I first upgrade casks interactively?"
   then
     echo "[ ${blue}..${reset} ] Running brew cu"
-    brew cu --all
+    brew cu
   fi
 
 
