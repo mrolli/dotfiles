@@ -40,7 +40,7 @@
     old = red
 [core]
     autocrlf = input
-    editor = nvim
+    editor = lvim
     excludesfile = ~/.config/git/global-ignore
 [grep]
     lineNumber = true
