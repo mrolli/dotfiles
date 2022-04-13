@@ -56,7 +56,7 @@ brew 'yarn'
 brew 'youtube-dl'
 
 # Completions
-brew 'bash-completion2'
+brew 'bash-completion@2'
 brew 'packer-completion'
 brew 'vagrant-completion'
 
