@@ -32,7 +32,7 @@ source $DOTFILES_ROOT_ABS/shell_functions.sh
 
 function run_installers() {
   # Start with Homebrew as installers might depend on brew installed software
-  homebrew_installer="${DOTFILES_ROOT_ABS}/homebrew/install.$(uname -s).sh"
+  homebrew_installer="${DOTFILES_ROOT_ABS}/homebrew/install_$(uname -s).sh"
   [ -x $homebrew_installer ] && $homebrew_installer
 
   # Find all general and platform-specific installers and execute them
