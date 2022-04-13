@@ -12,11 +12,15 @@ an executable
 lvim.log.level = "warn"
 lvim.format_on_save = false
 vim.opt.relativenumber = true
+-- no mouse support
 vim.opt.mouse = ""
+-- no lins crossing usng cursor and h,l aka classic vim defaults
+vim.opt.whichwrap = "b,s"
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- lvim.colorscheme = "onedarker"
 lvim.colorscheme = "gruvbox-material"
+-- vim.g.gruvbox_material_palette = "mix"
 vim.g.gruvbox_material_background = "soft"
 vim.g.gruvbox_material_better_performance = 1
 vim.g.gruvbox_material_enable_italics = 1
