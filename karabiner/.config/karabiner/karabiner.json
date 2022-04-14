@@ -492,7 +492,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "play_or_pause"
+                                        "shell_command": "osascript -e 'tell application \"Music\" to playpause'"
                                     }
                                 ],
                                 "type": "basic"
