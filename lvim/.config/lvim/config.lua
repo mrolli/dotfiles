@@ -28,6 +28,9 @@ lvim.builtin.lualine.style = "lvim"
 -- include vimscript for altering theme related stuff
 vim.cmd 'source ~/.config/lvim/theme.vim'
 
+-- The same list as the default except markown is removed to show whitepace in markdown files
+vim.g.better_whitespace_filetypes_blacklist = { 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'fugitive' }
+
 -- add your own keymapping
 -- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- unmap a default keymapping
@@ -164,10 +167,13 @@ lvim.plugins = {
   {"tpope/vim-fugitive"},
   {"tpope/vim-surround"},
   {"rodjek/vim-puppet"},
-  {"godlygeek/tabular"}
+  {"godlygeek/tabular"},
+  {"ntpeters/vim-better-whitespace"}
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- lvim.autocommands.custom_groups = {
+lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
--- }
+  -- do not automatically strip whitespace from markdown files
+  { "FileType", "markdown", ":DisableStripWhitespaceOnSave" },
+}
