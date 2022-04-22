@@ -18,6 +18,7 @@ vim.opt.mouse = ""
 vim.opt.whichwrap = "b,s"
 -- highlight column 80
 vim.opt.colorcolumn = "80"
+vim.opt.cindent = true
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- lvim.colorscheme = "onedarker"
