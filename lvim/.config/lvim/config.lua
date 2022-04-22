@@ -167,6 +167,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.plugins = {
   { "sainnhe/gruvbox-material" },
   { "editorconfig/editorconfig-vim" },
+  { "jeffkreeftmeijer/vim-numbertoggle" }, -- automatically toggle relativenumber for active buffer
   { "tpope/vim-fugitive" },
   {
     "tpope/vim-surround",
