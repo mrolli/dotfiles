@@ -171,6 +171,27 @@ lvim.plugins = {
   { "editorconfig/editorconfig-vim" },
   { "jeffkreeftmeijer/vim-numbertoggle" }, -- automatically toggle relativenumber for active buffer
   { "lukas-reineke/indent-blankline.nvim" }, -- visual indentation markers
+  {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        window = {
+          options = {
+            number = true,
+            relativenumber = false,
+          }
+        }
+      }
+    end
+  },
+  {
+    "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup {
+        context = 12,
+      }
+    end
+  },
   { "tpope/vim-fugitive" },
   {
     "tpope/vim-surround",
