@@ -168,6 +168,7 @@ lvim.plugins = {
   { "sainnhe/gruvbox-material" },
   { "editorconfig/editorconfig-vim" },
   { "jeffkreeftmeijer/vim-numbertoggle" }, -- automatically toggle relativenumber for active buffer
+  { "lukas-reineke/indent-blankline.nvim" }, -- visual indentation markers
   { "tpope/vim-fugitive" },
   {
     "tpope/vim-surround",
