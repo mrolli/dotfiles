@@ -21,10 +21,15 @@ vim.opt.colorcolumn = "80"
 vim.opt.cindent = true
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
--- lvim.colorscheme = "onedarker"
-lvim.colorscheme = "gruvbox-material"
-lvim.builtin.lualine.theme = "gruvbox-material"
-lvim.builtin.lualine.style = "lvim"
+
+-- Colorscheme setttings
+lvim.colorscheme = "tokyonight"
+lvim.builtin.lualine.theme = "tokyonight"
+vim.g.tokyonight_style = "night"
+vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+-- Change the "hint" color to the "orange" color, and make the "error" color bright red
+vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
 
 -- include vimscript for altering theme related stuff
 vim.cmd 'source ~/.config/lvim/theme.vim'
@@ -171,10 +176,10 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- }
 
 lvim.plugins = {
-  { "sainnhe/gruvbox-material" },
   { "editorconfig/editorconfig-vim" },
   { "jeffkreeftmeijer/vim-numbertoggle" }, -- automatically toggle relativenumber for active buffer
   { "lukas-reineke/indent-blankline.nvim" }, -- visual indentation markers
+  { "folke/tokyonight.nvim" },
   {
     "folke/zen-mode.nvim",
     config = function()
