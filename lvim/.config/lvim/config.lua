@@ -31,6 +31,7 @@ vim.cmd 'source ~/.config/lvim/theme.vim'
 
 -- The same list as the default except markown is removed to show whitepace in markdown files
 vim.g.better_whitespace_filetypes_blacklist = { 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'fugitive' }
+vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*' }
 
 -- add your own keymapping
 -- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
@@ -165,6 +166,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 lvim.plugins = {
   { "sainnhe/gruvbox-material" },
+  { "editorconfig/editorconfig-vim" },
   { "tpope/vim-fugitive" },
   {
     "tpope/vim-surround",
