@@ -164,12 +164,15 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- }
 
 lvim.plugins = {
-  {"sainnhe/gruvbox-material"},
-  {"tpope/vim-fugitive"},
-  {"tpope/vim-surround"},
-  {"rodjek/vim-puppet"},
-  {"godlygeek/tabular"},
-  {"ntpeters/vim-better-whitespace"}
+  { "sainnhe/gruvbox-material" },
+  { "tpope/vim-fugitive" },
+  {
+    "tpope/vim-surround",
+    keys = {"c", "d", "y"}
+  },
+  { "rodjek/vim-puppet" },
+  { "godlygeek/tabular" },
+  { "ntpeters/vim-better-whitespace" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
