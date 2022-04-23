@@ -208,8 +208,11 @@ lvim.plugins = {
   },
   { "rodjek/vim-puppet" },
   { "godlygeek/tabular" },
-  { "ntpeters/vim-better-whitespace" }
+  { "ntpeters/vim-better-whitespace" },
+  { "vim-scripts/loremipsum" },
 }
+-- candidate plugins:
+-- - iamcco/markdown-preview.nvim
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
