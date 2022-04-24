@@ -44,6 +44,10 @@ vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*' }
 -- lvim.keys.normal_mode["<C-Up>"] = false
 -- edit a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+lvim.keys.insert_mode["∆"] = "<Esc>:m .+1<CR>==gi"
+lvim.keys.insert_mode["˚"] = "<Esc>:m .-2<CR>==gi"
+lvim.keys.normal_mode["∆"] = ":m .+1<CR>=="
+lvim.keys.normal_mode["˚"] = ":m .-2<CR>=="
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
