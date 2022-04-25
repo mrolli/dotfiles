@@ -48,13 +48,9 @@ lvim.keys.insert_mode["∆"] = "<Esc>:m .+1<CR>==gi"
 lvim.keys.insert_mode["˚"] = "<Esc>:m .-2<CR>==gi"
 lvim.keys.normal_mode["∆"] = ":m .+1<CR>=="
 lvim.keys.normal_mode["˚"] = ":m .-2<CR>=="
-
+lvim.keys.normal_mode["<C-w>t"] = "<cmd>Twilight<cr>"
+lvim.keys.normal_mode["<C-w>z"] = "<cmd>ZenMode<cr>"
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["r"] = {
-  name = "+Rollisch",
-  t = { "<cmd>Twilight<cr>", "Toggle Twilight" },
-  z = { "<cmd>ZenMode<cr>", "Toggle ZenMode" },
-}
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
