@@ -206,10 +206,7 @@ lvim.plugins = {
     end
   },
   { "tpope/vim-fugitive" },
-  {
-    "tpope/vim-surround",
-    keys = {"c", "d", "y"}
-  },
+  { "tpope/vim-surround" },
   { "rodjek/vim-puppet" },
   { "godlygeek/tabular" },
   { "ntpeters/vim-better-whitespace" },
