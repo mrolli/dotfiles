@@ -25,6 +25,11 @@ lvim.leader = "space"
 -- Colorscheme setttings
 lvim.colorscheme = "tokyonight"
 lvim.builtin.lualine.theme = "tokyonight"
+lvim.builtin.lualine.sections.lualine_y = { "spaces", {
+  "fileformat",
+  icons_enabled = false
+}, "encoding", "filetype" }
+lvim.builtin.lualine.sections.lualine_z = { "progress", "location" }
 vim.g.tokyonight_style = "night"
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
