@@ -14,10 +14,10 @@ lvim.format_on_save = false
 vim.opt.relativenumber = true
 -- no mouse support
 vim.opt.mouse = ""
--- no lins crossing usng cursor and h,l aka classic vim defaults
+-- no lines crossing usng cursor and h,l aka classic vim defaults
 vim.opt.whichwrap = "b,s"
 -- highlight column 80
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 vim.opt.cindent = true
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
