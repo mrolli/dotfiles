@@ -8,3 +8,4 @@ Vagrantfile
 .vagrant
 temp/
 automatic_backups/
+*.spl
