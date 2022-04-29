@@ -8,5 +8,5 @@ windows:
   panes:
   - focus: true
     shell_command:
-    - nvim
+    - lvim
   - pane
