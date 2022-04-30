@@ -253,7 +253,12 @@ require("which-key").register({
 lvim.plugins = {
   { "editorconfig/editorconfig-vim" },
   { "jeffkreeftmeijer/vim-numbertoggle" }, -- automatically toggle relativenumber for active buffer
-  { "lukas-reineke/indent-blankline.nvim" }, -- visual indentation markers
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("rollisch.indent_blankline").config()
+    end
+  }, -- visual indentation markers
   { "folke/tokyonight.nvim" },
   {
     "folke/zen-mode.nvim",
