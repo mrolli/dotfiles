@@ -49,6 +49,9 @@ vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*' }
 -- lvim.keys.normal_mode["<C-Up>"] = false
 -- edit a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+lvim.keys.insert_mode["jj"] = false
+lvim.keys.insert_mode["k"] = false
+lvim.keys.insert_mode["jk"] = false
 lvim.keys.insert_mode["∆"] = "<Esc>:m .+1<CR>==gi"
 lvim.keys.insert_mode["˚"] = "<Esc>:m .-2<CR>==gi"
 lvim.keys.normal_mode["∆"] = ":m .+1<CR>=="
