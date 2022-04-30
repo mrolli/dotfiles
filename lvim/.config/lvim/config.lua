@@ -14,6 +14,8 @@ lvim.format_on_save = false
 vim.opt.relativenumber = true
 -- no mouse support
 vim.opt.mouse = ""
+-- no automatic system clipboard usage
+vim.opt.clipboard = ""
 -- no lines crossing usng cursor and h,l aka classic vim defaults
 vim.opt.whichwrap = "b,s"
 -- highlight column 80
