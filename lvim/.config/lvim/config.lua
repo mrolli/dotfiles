@@ -18,7 +18,7 @@ vim.opt.mouse = ""
 vim.opt.clipboard = ""
 -- no lines crossing usng cursor and h,l aka classic vim defaults
 vim.opt.whichwrap = "b,s"
--- highlight column 80
+-- add a highlighted column
 vim.opt.colorcolumn = "120"
 vim.opt.cindent = true
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -166,15 +166,8 @@ lvim.builtin.treesitter.textobjects = {
       ["[]"] = "@class.outer",
     },
   },
-  lsp_interop = {
-    enable = true,
-    border = 'none',
-    peek_definition_code = {
-      ["<leader>df"] = "@function.outer",
-      ["<leader>dF"] = "@class.outer",
-    },
-  },
 }
+
 -- Add lables to the textobjects keybindings
 require("which-key").register({
   ["[["] = { "Previous class start"},
