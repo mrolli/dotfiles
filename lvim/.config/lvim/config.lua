@@ -295,6 +295,12 @@ lvim.plugins = {
   { "godlygeek/tabular" },
   { "ntpeters/vim-better-whitespace" },
   { "vim-scripts/loremipsum" },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("rollisch.colorizer").config()
+    end,
+  },
 }
 -- candidate plugins:
 -- - iamcco/markdown-preview.nvim
