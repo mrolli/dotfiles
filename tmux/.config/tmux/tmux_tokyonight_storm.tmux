@@ -25,15 +25,25 @@ set -g status-right-style NONE
 set -g status-left "#[fg=#1D202F,bg=#7aa2f7,bold] #S #[fg=#7aa2f7,bg=#1f2335,nobold,nounderscore,noitalics]"
 
 set -g status-right "#[fg=#1f2335,bg=#1f2335,nobold,nounderscore,noitalics]#[fg=#7aa2f7,bg=#1f2335]"
-if-shell '[[ $(hostname -s) = rivendell ]]' {
-  # add current playing song and the weather locally on my machine
+# Only on my macOS
+if-shell '[[ $(uname -s) = "Darwin" ]]' {
+  # Add current playing song
   set -ag status-right "#(musicplaying) "
-  # add the weather
+  # Add the weather
   WEATHER='#(curl -m 1 -s wttr.in/Burgdorf\?format\="%%l:+%%c%%20%%t%%20%%w%%20%%m&period=60")'
   set -ag status-right "#[fg=#3b4261,bg=#1f2335,nobold,nounderscore,noitalics]#[fg=#7aa2f7,bg=#3b4261] $WEATHER "
+  set -ag status-right "#[fg=#7aa2f7,bg=#3b4261,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#7aa2f7]"
 }
-set -ag status-right "#[fg=#7aa2f7,bg=#3b4261,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#7aa2f7] KW#(date +%V) | %d.%m.%y"
-set -ag status-right "  %R #[fg=#ff9e74,bg=#7aa2f7,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#ff9e74,bold]"
+
+# All other machines
+if-shell '[[ $(uname -s) != "Darwin" ]]' {
+  set -ag status-right "#[fg=#7aa2f7,bg=#1f2335,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#7aa2f7]"
+}
+# Add week number and date
+set -ag status-right " KW#(date +%V) | %d.%m.%y  %R "
+# new section
+set -ag status-right "#[fg=#ff9e74,bg=#7aa2f7,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#ff9e74,bold]"
+# Add the hostname
 set -ag status-right " #h "
 
 setw -g window-status-activity-style "underscore,fg=#a9b1d6,bg=#1f2335"
