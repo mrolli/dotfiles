@@ -23,16 +23,17 @@ set -g status-left-style NONE
 set -g status-right-style NONE
 
 set -g status-left "#[fg=#1D202F,bg=#7aa2f7,bold] #S #[fg=#7aa2f7,bg=#1f2335,nobold,nounderscore,noitalics]"
+
 set -g status-right "#[fg=#1f2335,bg=#1f2335,nobold,nounderscore,noitalics]#[fg=#7aa2f7,bg=#1f2335]"
 if-shell '[[ $(hostname -s) = rivendell ]]' {
   # add current playing song and the weather locally on my machine
-  set -ag status-right "#(musicplaying) | "
+  set -ag status-right "#(musicplaying) "
   # add the weather
   WEATHER='#(curl -m 1 -s wttr.in/Burgdorf\?format\="%%l:+%%c%%20%%t%%20%%w%%20%%m&period=60")'
-  set-option -ag status-right "$WEATHER | "
+  set -ag status-right "#[fg=#3b4261,bg=#1f2335,nobold,nounderscore,noitalics]#[fg=#7aa2f7,bg=#3b4261] $WEATHER "
 }
-set -ag status-right "#[fg=#3b4261,bg=#1f2335,nobold,nounderscore,noitalics]#[fg=#7aa2f7,bg=#3b4261] KW#(date +%V) | %d.%m.%y"
-set -ag status-right "  %R #[fg=#7aa2f7,bg=#3b4261,nobold,nounderscore,noitalics]#[fg=#1D202F,bg=#7aa2f7,bold]"
+set -ag status-right "#[fg=#7aa2f7,bg=#3b4261,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#7aa2f7] KW#(date +%V) | %d.%m.%y"
+set -ag status-right "  %R #[fg=#ff9e74,bg=#7aa2f7,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#ff9e74,bold]"
 set -ag status-right " #h "
 
 setw -g window-status-activity-style "underscore,fg=#a9b1d6,bg=#1f2335"
