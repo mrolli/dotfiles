@@ -42,7 +42,7 @@ if-shell '[[ $(uname -s) != "Darwin" ]]' {
 # Add week number and date
 set -ag status-right " KW#(date +%V) | %d.%m.%y  %R "
 # new section
-set -ag status-right "#[fg=#ff9e74,bg=#7aa2f7,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#ff9e74,bold]"
+set -ag status-right "#[fg=#e0af68,bg=#7aa2f7,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#e0af68]"
 # Add the hostname
 set -ag status-right " #h "
 
