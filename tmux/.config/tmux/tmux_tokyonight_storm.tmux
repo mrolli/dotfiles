@@ -17,7 +17,7 @@ set -g status-justify "left"
 set -g status-style "fg=#7aa2f7,bg=#1f2335"
 
 set -g status-left-length "100"
-set -g status-right-length "140"
+set -g status-right-length "160"
 
 set -g status-left-style NONE
 set -g status-right-style NONE
