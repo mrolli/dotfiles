@@ -2,64 +2,53 @@
 
 # Gruvbox dark colors for Tmux
 
-# default statusbar colors
-set-option -g status-style fg=yellow,bg=black #yellow and base02
+set -g mode-style "fg=#ebdbb2,bg=#3c3836"
 
-# default window title colors
-set-option -g window-status-style fg=colour7,bg=default
+set -g message-style "fg=#ebdbb2,bg=#3c3836"
+set -g message-command-style "fg=#ebdbb2,bg=#3c3836"
 
-# active window title colors
-set-window-option -g window-status-current-style fg=brightred,bg=default,bright #orange and default
+set -g pane-border-style "fg=#3c3836"
+set -g pane-active-border-style "fg=#ebdbb2"
 
-# pane border of active pane
-set-option -g pane-border-style fg=black
-set-option -g pane-active-border-style fg=colour7
+set -g status "on"
+set -g status-interval 2
+set -g status-justify "left"
 
-# message text
-set-option -g message-style fg=brightred,bg=black #orange and base01
+set -g status-style "fg=#ebdbb2,bg=#3c3836"
 
-# pane number display
-set-option -g display-panes-active-colour brightred
-set-option -g display-panes-colour  white
+set -g status-left-length "100"
+set -g status-right-length "160"
 
-# clock
-set-option -g clock-mode-colour brightred
+set -g status-left-style NONE
+set -g status-right-style NONE
 
-# activity and bell style
-set-option -g window-status-activity-style fg=black,bg=colour7
-set-option -g window-status-bell-style fg=black,bg=colour7
+set -g status-left "#[fg=#3c3836,bg=#d79921,bold] #S #[fg=#d79921,bg=#3c3836,nobold,nounderscore,noitalics]"
 
-#### Status bar contents
-# Status bar design
-set-option -g status-justify centre
-set-option -g status-interval 2
-set-option -g status-left "#[fg=green] #S #[default]"
-
-# Window mode and message style
-set-option -g message-style fg=black,bg=yellow
-
-# Window status design
-set-option -g window-status-current-format '#[fg=yellow]| #I:#W#F |#[default]'
-
-# enable activity alerts
-set-option -g monitor-activity on
-set-option -g activity-action other
-set-option -g visual-activity off
-
-# Additionally decorate status bar
-# add cpu/mem/load to left are
-set-option -ag status-left "#(tmux-mem-cpu-load -c -p -q -g 0 -m 2 -i 2)"
-set-option -g  status-left-length 70
-
-set-option -g  status-right ""
-# add current playing song and the weather locally on my machine
-if-shell '[[ $(hostname -s) = rivendell ]]' {
-  set-option -ag status-right "#(musicplaying) | "
+set -g status-right "#[fg=#3c3836,bg=#3c3836,nobold,nounderscore,noitalics]#[fg=#bdae93,bg=#3c3836]"
+# Only on my macOS
+if-shell '[[ $(uname -s) = "Darwin" ]]' {
+  # Add current playing song
+  set -ag status-right " #(musicplaying) "
+  # Add the weather
+  WEATHER='#(curl -m 1 -s wttr.in/Burgdorf\?format\="%%l:+%%c%%20%%t%%20%%w%%20%%m&period=60")'
+  set -ag status-right "#[fg=#504945,bg=#3c3836,nobold,nounderscore,noitalics]#[fg=#ebdbb2,bg=#504945] $WEATHER "
+  set -ag status-right "#[fg=#d79921,bg=#504945,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#d79921]"
 }
-# add the weather
-WEATHER='#(curl -m 1 -s wttr.in/Burgdorf\?format\="%%l:+%%c%%20%%t%%20%%w%%20%%m&period=60")'
-set-option -ag status-right "$WEATHER | "
-# and style the status right area
-set-option -ag status-right "%d.%m.%y KW#(date +%V) | %R "
-set-option -g  status-right-style fg=colour7
-set-option -g  status-right-length 110
+
+# All other machines
+if-shell '[[ $(uname -s) != "Darwin" ]]' {
+  set -ag status-right "#[fg=#d79921,bg=#3c3836,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#d79921]"
+}
+# Add week number and date
+set -ag status-right " KW#(date +%V)  %d.%m.%y  %R "
+# new section
+set -ag status-right "#[fg=#fe8019,bg=#d79921,nobold,nounderscore,noitalics]#[fg=#1D202f,bg=#fe8019]"
+# Add the hostname
+set -ag status-right " #h "
+
+setw -g window-status-activity-style "underscore,fg=#3c3837,bg=#3c3836"
+setw -g window-status-separator ""
+setw -g window-status-style "NONE,fg=#bdae93,bg=#3c3836"
+setw -g window-status-format "#[fg=#3c3836,bg=#3c3836,nobold,nounderscore,noitalics]#[default] #I  #W #F #[fg=#3c3836,bg=#3c3836,nobold,nounderscore,noitalics]"
+setw -g window-status-current-format "#[fg=#3c3836,bg=#665c54,nobold,nounderscore,noitalics]#[fg=#ebdbb2,bg=#665c54,bold] #I  #W #F #[fg=#665c54,bg=#3c3836,nobold,nounderscore,noitalics]"
+
