@@ -84,5 +84,4 @@ function __music_vol {
   esac
 }
 
-# compdef _music music itunes
 complete -o nospace -F __music_complection music
