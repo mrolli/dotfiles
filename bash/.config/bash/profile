@@ -44,7 +44,11 @@ fi
 
 
 # Source our own completion files for our scripts
-[ -d "${XDG_CONFIG_HOME:-$HOME/.config}"/bash/completion.d ] && source  "${XDG_CONFIG_HOME:-$HOME/.config}"/bash/completion.d/*
+[ -d "${XDG_CONFIG_HOME:-$HOME/.config}"/bash/completion.d ] &&
+  for comp_file in "${XDG_CONFIG_HOME:-$HOME/.config}"/bash/completion.d/*
+  do
+    [ -r $comp_file ] && source $comp_file
+  done
 
 # Source fzf related shell configuration and completion
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
