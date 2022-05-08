@@ -27,7 +27,7 @@ colorseq="\e]1337;SetColors=preset=$theme\a"
 if [ -z $TMUX ]
 then
   # No tmux session running
-  echo -e "$colorseq"
+  printf "$colorseq"
 else
   # We are in a tmux session
   printf "\ePtmux;\e$colorseq\e\\"
