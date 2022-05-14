@@ -1,12 +1,11 @@
-session_name: "dotfiles"
+session_name: dotfiles
+global_options:
+  automatic-rename: 'off'
 start_directory: ~/.dotfiles
 windows:
 - window_name: dotfiles
-  layout: main-vertical
-  options:
-    main-pane-width: 70%
+  layout: even-vertical
+  focus: true
   panes:
   - focus: true
-    shell_command:
-    - lvim
   - pane
