@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# Bash completion support for music shell theme
+
+# Generates completion reply, appending a space to possible completion words,
+# if necessary.
+# It accepts 2 arguments though the second is optional:
+# 1: List of possible completion words.
+# 2: Generate possible completion matches for this word (optional).
+function __switch_theme_comp {
+  local cur_="${2-$cur}"
+
+  case "$cur_" in
+    *)
+      local c i=0 IFS=$' \t\n'
+      for c in $1; do
+        if [[ $c == "$cur_"* ]]; then
+          case $c in
+            -*=*|*.) ;;
+            *) c="$c " ;;
+          esac
+          COMPREPLY[i++]="$c"
+        fi
+      done
+      ;;
+  esac
+}
+
+# Searches for a theme in $COMP_WORDS. If one is found
+# the appropriate function from above is called, if not
+# completion for global options is done.
+function __switch_theme_completion {
+  cur=${COMP_WORDS[COMP_CWORD]}
+  # Words containing an equal sign get split into tokens in bash > 4, which
+  # doesn't come in handy here.
+  # This is handled here. bash < 4 does not split.
+  declare -f _get_comp_words_by_ref >/dev/null && _get_comp_words_by_ref -n = cur
+
+  COMPREPLY=()
+  local i c=1 theme
+
+  while [ $c -lt $COMP_CWORD ]; do
+    i="${COMP_WORDS[c]}"
+    case "$i" in
+      -*) ;;
+      *) theme="$i"; break ;;
+    esac
+    ((c++))
+  done
+
+  if [ -z $theme ]; then
+    case "$cur" in
+      *)
+        __switch_theme_comp "gruvbox-material tokyonight-storm"
+        ;;
+    esac
+    return
+  fi
+
+  # local completion_func="__music_${theme}"
+  # declare -f $completion_func >/dev/null && $completion_func
+}
+
+complete -o nospace -F __switch_theme_completion switch_theme
