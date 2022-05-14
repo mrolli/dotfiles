@@ -1,6 +1,10 @@
 # This file contains stuff that is specific for macOS
 
 
+# Make user installed python packages avallabel in PATH
+export PATH="$HOME/Library/Python/3.8/bin:$PATH"
+
+
 # On amd64 Homebrew is now installed in /opt and not automatically available!
 if ! type brew &>/dev/null && [ -x /opt/homebrew/bin/brew ]
 then
