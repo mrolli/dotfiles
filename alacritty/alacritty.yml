@@ -38,7 +38,3 @@ cursor:
   vi_mode_style: Underline
   blink_interval: 500
 
-shell:
-  program: /usr/local/bin/bash
-  args:
-    - --login
