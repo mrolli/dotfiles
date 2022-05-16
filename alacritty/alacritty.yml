@@ -1,7 +1,11 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 import:
-  - ~/.config/alacritty/theme.gruvbox.yml
+  # - ~/.config/alacritty/themes/catppuccin.yml
+  - ~/.config/alacritty/themes/gruvbox-dark.yml
+  # - ~/.config/alacritty/themes/rose-pine-moon.yml
+  # - ~/.config/alacritty/themes/rose-pine.yml
+  # - ~/.config/alacritty/themes/tokyonight-storm.yml
 
 window:
   padding:
@@ -35,6 +39,6 @@ cursor:
   blink_interval: 500
 
 shell:
-  program: /bin/bash
+  program: /usr/local/bin/bash
   args:
     - --login
