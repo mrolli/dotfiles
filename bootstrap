@@ -5,6 +5,7 @@
 #
 
 stowables="
+  alacritty
   asciinema
   bash
   bat
@@ -12,7 +13,6 @@ stowables="
   git
   homebrew
   karabiner
-  nvim
   oh-my-posh
   scripts
   tmux
