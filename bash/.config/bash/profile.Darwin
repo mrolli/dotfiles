@@ -1,5 +1,7 @@
 # This file contains stuff that is specific for macOS
 
+# Add direnv bash hook
+eval "$(direnv hook bash)"
 
 # Make user installed python packages avallabel in PATH
 export PATH="$HOME/Library/Python/3.8/bin:$PATH"
