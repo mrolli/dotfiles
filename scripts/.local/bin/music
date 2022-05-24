@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Sources:
+# https://alvinalexander.com/apple/itunes-applescript-examples-scripts-mac-reference/
+
 function music() {
   local APP_NAME=Music
   local opt=$1
@@ -36,20 +39,23 @@ function music() {
       ;;
     playlist)
       # Inspired by: https://gist.github.com/nakajijapan/ac8b45371064ae98ea7f
-      if [[ -n "$playlist" ]]; then
-        osascript 2>/dev/null <<EOF
-          tell application "$APP_NAME"
-            set new_playlist to "$playlist" as string
-            play playlist new_playlist
-          end tell
+      # If no plalist ist
+      if [[ -z "$playlist" ]]; then
+        playlist=$(osascript -e 'tell application "Music" to get name of every playlist' | sed 's/, /\n/g' | sort | fzf)
+      fi
+
+      [[ -z "$playlist" ]] && exit 0
+
+      osascript 2>/dev/null <<EOF
+        tell application "$APP_NAME"
+          set new_playlist to "$playlist" as string
+          play playlist new_playlist
+        end tell
 EOF
-        if [[ $? -eq 0 ]]; then
-          opt="play"
-        else
-          opt="stop"
-        fi
+      if [[ $? -eq 0 ]]; then
+        opt="play"
       else
-        opt="set allPlaylists to (get name of every playlist)"
+        opt="stop"
       fi
       ;;
     playing|status)
@@ -168,5 +174,4 @@ function _music_complection() {
   return 0
 }
 
-# compdef _music music itunes
 music $1 $2
