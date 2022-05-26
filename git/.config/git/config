@@ -60,7 +60,7 @@
     prune = true
 [push]
     # https://git-scm.com/docs/git-config#git-config-pushdefault
-    default = simple
+    default = current
 [achievement]
     upload = true
 [filter "lfs"]
