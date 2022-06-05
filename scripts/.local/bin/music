@@ -122,12 +122,12 @@ Controls Music app by invoking commands, see list below.
 
 Available commands:
   launch|play|pause|stop|rewind|resume|quit
-  mute|unmute       Mute or unmute $APP_NAME
-  next|previous     Play next or previous track
-  shuf|shuffle      [on|off|toggle] Set shuffled playback. Default: toggle. Note: toggle doesn't support the MiniPlayer.
-  vol               [0-100|up|down] Get or set the volume. 0 to 100 sets the volume. 'up' / 'down' increases / decreases by 10 points. No argument displays current volume.
-  playing|status    Show what song is currently playing in Music.
-  playlist          [playlist name] Play specific playlist
+  mute|unmute                      Mute or unmute $APP_NAME
+  next|previous                    Play next or previous track
+  shuf|shuffle    [on|off|toggle]  Set shuffled playback. Default: toggle. Note: toggle doesn't support the MiniPlayer.
+  vol             [0-100|up|down]  Get or set the volume. 0 to 100 sets the volume. 'up' / 'down' increases / decreases by 10 points. No argument displays current volume.
+  playing|status                   Show what song is currently playing in Music.
+  playlist        [playlist name]  Play specific playlist
 
 Options:
   -h|--help      Show this message and exit
