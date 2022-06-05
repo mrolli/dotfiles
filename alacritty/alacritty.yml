@@ -33,7 +33,7 @@ font:
 
 cursor:
   style:
-    shape: Block
+    shape: Underline
     blinking: On
   vi_mode_style: Underline
   blink_interval: 500
