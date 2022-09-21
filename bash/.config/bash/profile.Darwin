@@ -1,8 +1,5 @@
 # This file contains stuff that is specific for macOS
 
-# Add direnv bash hook
-eval "$(direnv hook bash)"
-
 # Make user installed python packages avallabel in PATH
 export PATH="$HOME/Library/Python/3.8/bin:$PATH"
 
@@ -16,6 +13,9 @@ fi
 
 # safe brew prefix
 brew_prefix=$(brew --prefix)
+
+# Add direnv bash hook
+eval "$(direnv hook bash)"
 
 # Source bash completion installed by Homebrew formula bashcompletion@2
 [[ -r "${brew_prefix}/etc/profile.d/bash_completion.sh" ]] && . "${brew_prefix}/etc/profile.d/bash_completion.sh"
