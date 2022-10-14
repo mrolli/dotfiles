@@ -26,7 +26,7 @@ done
 
 
 function write_out() {
-    sed -rn -e '/^={20}\s*'$1'/,/={20}/p' $0 |
+    sed -rn -e '/^={20}[[:space:]]*'"$1"'/,/={20}/p' $0 |
     sed -r -e 1d -e '$d' \
 	>$1
 
