@@ -58,7 +58,7 @@ call plug#end()
 "
 "change leader to something more
 "convenient on a sg keyboard
-let mapleader = ","
+let mapleader = " "
 
 "setup color scheme
 "turn on syntax highlighting
@@ -144,7 +144,7 @@ set foldlevel=99        "open all folds
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 " toggle code fold with space
-nnoremap <space> za
+"nnoremap <space> za
 
 "vertical/horizontal scroll off settings
 set scrolloff=3
