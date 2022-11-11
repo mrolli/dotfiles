@@ -30,7 +30,7 @@ then
   printf "$colorseq"
 else
   # We are in a tmux session
-  printf "\ePtmux;\e$colorseq\e\\"
+  printf "\<Esc>Ptmux;\<Esc>$colorseq\<Esc>\\"
 
   # Change tmux theme
   tmux_theme="${XDG_CONFIG_HOME:-$HOME/.config}"/tmux/$theme.tmux
