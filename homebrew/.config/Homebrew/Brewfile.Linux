@@ -1,6 +1,5 @@
 tap 'homebrew/core'
 tap 'homebrew/bundle'
-tap 'jandedobbeleer/oh-my-posh'
 
 # Apps from homebrew/core
 brew 'curl'
@@ -10,7 +9,7 @@ brew 'glow'
 brew 'go'
 brew 'grip'
 brew 'p7zip'
-brew 'oh-my-posh'
+brew 'starship'
 brew 'tmux'
 brew 'tmux-mem-cpu-load'
 brew 'vim'

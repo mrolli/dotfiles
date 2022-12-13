@@ -13,8 +13,8 @@ stowables="
   git
   homebrew
   karabiner
-  oh-my-posh
   scripts
+  starship
   tmux
   vbox
   vim
