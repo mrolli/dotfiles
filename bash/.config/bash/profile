@@ -61,10 +61,13 @@ fi
 
 
 # Finally the prompt now that Homebrew has been added on all platforms
-posh_theme=gruvbox
-oh-my-posh --version &>/dev/null \
-  && eval "$(oh-my-posh --init --shell bash --config ~/.config/oh-my-posh/$posh_theme.omp.json)" \
-  || . ~/.bash_prompt
+# posh_theme=gruvbox
+# oh-my-posh --version &>/dev/null \
+#   && eval "$(oh-my-posh --init --shell bash --config ~/.config/oh-my-posh/$posh_theme.omp.json)" \
+#   || . ~/.bash_prompt
+starship --version &>/dev/null \
+  && eval "$(starship init bash)" \
+  || source ~/.bash_prompt
 
 
 true
