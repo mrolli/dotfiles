@@ -3,6 +3,12 @@
 
 palette = "gruvbox-dark"
 
+# [custom.foo]
+# command = 'echo foo' # shows output of command
+# detect_files = ['foo'] # can specify filters but wildcards are not supported
+# when = ''' test "$HOME" = "$PWD" '''
+# format = ' transcending [$output]($style)'
+
 [character] # The name of the module we are configuring is "character"
 success_symbol = "[➜](bold green)"
 
