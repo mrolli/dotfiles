@@ -12,6 +12,7 @@ stowables="
   editorconfig
   git
   karabiner
+  macos
   scripts
   starship
   tmux
