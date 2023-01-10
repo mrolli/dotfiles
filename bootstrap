@@ -33,7 +33,7 @@ fi
 
 for stowable in $stowables
 do
-  if stow -R "$stowable"; then
+  if stow -t ~ -R "$stowable"; then
     printf '  Succesfully setup %s\n' "$stowable"
   else
     printf '  Failed to setup %s\n' "$stowable" >&2
