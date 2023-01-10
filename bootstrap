@@ -2,6 +2,8 @@
 #
 # bootstrap installs dotfiles
 
+set -e
+
 stowables="
   alacritty
   asciinema
@@ -21,31 +23,24 @@ stowables="
 "
 
 cd "$(dirname "$0")"
-DOTFILES_ROOT_ABS=$(pwd -P)
 
-set -e
-
-source "$DOTFILES_ROOT_ABS"/shell_functions.sh
-
-echo ""
-info "Installing dotfiles..."
+printf 'Installing dotfiles...\n'
 
 if ! stow -V &>/dev/null
 then
-  fail "GNU stow not found in PATH"
+  printf 'GNU stow not found in PATH\n'
   exit 1
 fi
 
 for stowable in $stowables
 do
   if stow -R "$stowable"; then
-    success "$stowable"
+    printf '  Succesfully setup %s\n' "$stowable"
   else
-    warning "$stowable"
+    printf '  Failed to setup %s\n' "$stowable" >&2
   fi
 done
 
-echo ""
-echo "  Everything in place, have fun!"
+printf 'Everything in place, have fun!'
 
 exit 0
