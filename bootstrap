@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 #
-# bootstrap installs dotfiles and
-# runs every installer found..
-#
+# bootstrap installs dotfiles
 
 stowables="
   alacritty
@@ -24,27 +22,10 @@ stowables="
 
 cd "$(dirname "$0")"
 DOTFILES_ROOT_ABS=$(pwd -P)
-DOTFILES_ROOT_REL=${DOTFILES_ROOT_ABS#$HOME/}
 
 set -e
 
-source $DOTFILES_ROOT_ABS/shell_functions.sh
-
-function run_installers() {
-  # Start with Homebrew as installers might depend on brew installed software
-  homebrew_installer="${DOTFILES_ROOT_ABS}/homebrew/install_$(uname -s).sh"
-  [ -x $homebrew_installer ] && $homebrew_installer
-
-  # Find all general and platform-specific installers and execute them
-  for installer in ${DOTFILES_ROOT_ABS}/*/install{,.$(uname -s)}.sh
-  do
-    # Skip Homebrew as it's already done
-    [[ "${installer}" =~ homebrew ]] && continue
-    bash -c $installer
-  done
-}
-
-prompt_confirm "Shall the installers run (y/n)?" && (info "Running installers..." ; run_installers)
+source "$DOTFILES_ROOT_ABS"/shell_functions.sh
 
 echo ""
 info "Installing dotfiles..."
@@ -57,11 +38,14 @@ fi
 
 for stowable in $stowables
 do
-  stow -R --ignore install.*sh $stowable && success $stowable || warning $stowable
+  if stow -R "$stowable"; then
+    success "$stowable"
+  else
+    warning "$stowable"
+  fi
 done
 
 echo ""
 echo "  Everything in place, have fun!"
 
 exit 0
-
