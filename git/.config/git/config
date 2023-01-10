@@ -70,6 +70,12 @@
     process = git-lfs filter-process
 [credential]
     helper = osxkeychain
+[credential "https://github.com"]
+    helper = 
+    helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+    helper = 
+    helper = !gh auth git-credential
 [tag]
     gpgSign = true
 [init]
