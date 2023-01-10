@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
-# bootstrap installs dotfiles and
-# runs every installer found..
-#
+# bootstrap installs dotfiles
+
+set -e
 
 stowables="
   alacritty
@@ -11,7 +11,6 @@ stowables="
   bat
   editorconfig
   git
-  homebrew
   karabiner
   scripts
   starship
@@ -23,45 +22,24 @@ stowables="
 "
 
 cd "$(dirname "$0")"
-DOTFILES_ROOT_ABS=$(pwd -P)
-DOTFILES_ROOT_REL=${DOTFILES_ROOT_ABS#$HOME/}
 
-set -e
-
-source $DOTFILES_ROOT_ABS/shell_functions.sh
-
-function run_installers() {
-  # Start with Homebrew as installers might depend on brew installed software
-  homebrew_installer="${DOTFILES_ROOT_ABS}/homebrew/install_$(uname -s).sh"
-  [ -x $homebrew_installer ] && $homebrew_installer
-
-  # Find all general and platform-specific installers and execute them
-  for installer in ${DOTFILES_ROOT_ABS}/*/install{,.$(uname -s)}.sh
-  do
-    # Skip Homebrew as it's already done
-    [[ "${installer}" =~ homebrew ]] && continue
-    bash -c $installer
-  done
-}
-
-prompt_confirm "Shall the installers run (y/n)?" && (info "Running installers..." ; run_installers)
-
-echo ""
-info "Installing dotfiles..."
+printf 'Installing dotfiles...\n'
 
 if ! stow -V &>/dev/null
 then
-  fail "GNU stow not found in PATH"
+  printf 'GNU stow not found in PATH\n'
   exit 1
 fi
 
 for stowable in $stowables
 do
-  stow -R --ignore install.*sh $stowable && success $stowable || warning $stowable
+  if stow -t ~ -R "$stowable"; then
+    printf '  Succesfully setup %s\n' "$stowable"
+  else
+    printf '  Failed to setup %s\n' "$stowable" >&2
+  fi
 done
 
-echo ""
-echo "  Everything in place, have fun!"
+printf 'Everything in place, have fun!'
 
 exit 0
-
