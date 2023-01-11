@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Mac OS X configuration
+# macOS configuration
 #
 # This configuration applies to the latest version of macOS (currently 13.1),
 # and sets up preferences and configurations for all the built-in services and
@@ -30,9 +30,12 @@ if [[ $EUID -ne 0 ]]; then
   printf "Certain commands will not be run without sudo privileges. To run as root, run the same command prepended with 'sudo', for example: $ sudo $0\n\n" | fold -s -w 80
 else
   RUN_AS_ROOT=true
-  # Update existing `sudo` timestamp until `.osx` has finished
+  # Update existing `sudo` timestamp until `.macos` has finished
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 fi
+
+# Close any open System Preferences panes, to prevent them from overriding settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
 
 ###############################################################################
 # General UI/UX                                                               #
