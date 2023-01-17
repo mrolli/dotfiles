@@ -12,6 +12,7 @@ then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 autoload -U compinit && compinit
+zstyle ':completion:*' menu select
 
 # build the PATH variable
 PATH=~/Library/Python/3.9/bin/:$PATH
