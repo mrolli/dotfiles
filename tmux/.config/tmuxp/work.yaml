@@ -10,8 +10,7 @@ windows:
   - pane
   - pane
   - focus: true
-  - shell_command:
-    - vagrant up service01 puppet puppetdb01 nfs01 lrms01 submit01 anode001
+  - pane
 - window_name: modules
   options:
     main-pane-width: 50%
