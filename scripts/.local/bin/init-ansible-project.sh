@@ -67,7 +67,7 @@ ansible_managed = "Managed by ansible, don't make changes here!"
 pipelining = true
 ==================== .envrc ====================
 export ANSIBLE_CONFIG=$(expand_path ansible.cfg)
-export ANSIBLE_FORCE_COLOR: '1'
+export ANSIBLE_FORCE_COLOR=1
 export PY_COLORS=1
 ==================== inventory ====================
 [all:vars]
