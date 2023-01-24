@@ -21,7 +21,7 @@
 # @see: https://github.com/herrbischoff/awesome-macos-command-line
 #
 # @author Michael Rolli
-#   based on the very same file of Jeff Geerling. Kudos 
+#   based on the very same file of Jeff Geerling. Kudos
 
 
 # Warn that some commands will not be run if the script is not run as root.
@@ -246,6 +246,9 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+# Open applicaiton links in new tab
+defaults write com.apple.Safari TargetedClicksCreateTabs -bool true
 
 ###############################################################################
 # Mail                                                                        #
