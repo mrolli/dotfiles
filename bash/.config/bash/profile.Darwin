@@ -3,6 +3,8 @@
 # Make user installed python packages avallable in PATH
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 
+# Add newer ruby to the path if available
+[ -x /usr/local/opt/ruby@2.7/bin/ruby ] && export PATH="/usr/local/opt/ruby@2.7/bin:$PATH"
 
 # On amd64 Homebrew is now installed in /opt and not automatically available!
 if ! type brew &>/dev/null && [ -x /opt/homebrew/bin/brew ]
