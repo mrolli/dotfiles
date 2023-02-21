@@ -2,19 +2,24 @@ session_name: "work"
 global_options:
   automatic-rename: 'off'
 windows:
-- window_name: controlrepo
+- window_name: idsys.ansible
   focus: true
   layout: tiled
-  start_directory: ~/Developer/ubelix/puppet-installer/controlrepo
+  start_directory: ~/Developer/ansible/idsys.ansible/
   panes:
   - pane
-  - pane
-  - focus: true
-  - pane
-- window_name: modules
-  options:
-    main-pane-width: 50%
-  layout: main-vertical
-  start_directory: ~/Developer/ubelix/puppet-installer/controlrepo/modules
+  - shell_command:
+      - cd ../rolesidunibern.ansible
+  - shell_command:
+      - pipenv shell
+    focus: true
+- window_name: idilub.ansible
+  layout: tiled
+  start_directory: ~/Developer/ansible/idilub.ansible/
   panes:
-  - focus: true
+  - pane
+  - shell_command:
+      - cd ../rolesidunibern.ansible
+  - shell_command:
+      - pipenv shell
+    focus: true
