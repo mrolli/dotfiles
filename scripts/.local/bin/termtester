@@ -31,11 +31,19 @@ do FG=${FGs// /}
 done
 echo
 
-echo -e "\e[3mitalic\e[0m"
+echo -e "Normal"
+echo -e "\033[1mBold\033[22m"
+echo -e "\033[3mItalic\033[23m"
+echo -e "\033[3;1mBold Italic\033[0m"
+echo -e "\033[4mUnderline\033[24m"
 echo -e "\e[4munderline\e[0m"
 echo -e "\e[4:3mcurl\e[4:0m"
 echo -e "\e[3m\e[4mitalic-underline\e[0m\e[0m"
 echo -e "\e[3m\e[4:3mitalic-curl\e[0m\e[4:0m"
+
+echo -e "\nFont test:"
+echo "== === !== >= <= =>"
+echo "契          勒 鈴 "
 
 echo -e "\nTrue color test:"
 
