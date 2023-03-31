@@ -19,6 +19,7 @@ PATH=~/Library/Python/3.9/bin/:$PATH
 PATH=~/.local/bin:/opt/homebrew/bin:$PATH
 
 # bindings
+bindkey -v
 bindkey "^R" history-incremental-search-backward
 bindkey "\e[A" history-beginning-search-backward
 bindkey "\e[B" history-beginning-search-forward
