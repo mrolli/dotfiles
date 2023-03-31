@@ -25,6 +25,7 @@ bindkey "\e[A" history-beginning-search-backward
 bindkey "\e[B" history-beginning-search-forward
 
 # set exports
+export LANG=en_US.UTF-8
 export PATH
 export GPG_TTY=$(tty)
 export EDITOR=nvim
