@@ -26,10 +26,10 @@ bindkey "\e[B" history-beginning-search-forward
 # set exports
 export PATH
 export GPG_TTY=$(tty)
-export EDITOR=lvim
+export EDITOR=nvim
 
 # setup aliases
-alias vi="lvim"
+alias vi="nvim"
 
 eval "$(starship init zsh)"
 
