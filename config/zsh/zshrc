@@ -22,8 +22,10 @@ unsetopt BEEP
 # unsetopt LIST_BEEP
 
 source "$ZDOTDIR/macos.zsh"
-source "$ZDOTDIR/aliases.zsh"
+source "$ZDOTDIR/colors.zsh"
 source "$ZDOTDIR/completion.zsh"
+source "$ZDOTDIR/aliases.zsh"
+source "$ZDOTDIR/functions.zsh"
 
 # build the PATH variable
 # Add python binaries installed in system python package path
