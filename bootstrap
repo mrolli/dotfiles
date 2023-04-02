@@ -20,21 +20,18 @@ stowables="
   vim
   wget
   yamllint
-  zsh
 "
 
 cd "$(dirname "$0")"
 
 printf 'Installing dotfiles...\n'
 
-if ! stow -V &>/dev/null
-then
+if ! stow -V &>/dev/null; then
   printf 'GNU stow not found in PATH\n'
   exit 1
 fi
 
-for stowable in $stowables
-do
+for stowable in $stowables; do
   if stow -t ~ -R "$stowable"; then
     printf '  Succesfully setup %s\n' "$stowable"
   else
