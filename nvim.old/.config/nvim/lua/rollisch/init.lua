@@ -1,6 +1,0 @@
-require('rollisch.nvim-web-devicons')
-require('rollisch.indent_blankline')
-require('rollisch.treesitter')
-require('rollisch.telescope')
-require('rollisch.completion')
-require('rollisch.lsp')
