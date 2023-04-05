@@ -26,6 +26,10 @@ source "$ZDOTDIR/colors.zsh"
 source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/functions.zsh"
+if [ ! -d "$ZDOTDIR/plugins/zsh-vi-mode" ]; then
+  git clone https://github.com/jeffreytse/zsh-vi-mode.git "$ZDOTDIR/plugins/zsh-vi-mode"
+fi
+source "$ZDOTDIR/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
 # build the PATH variable
 # Add python binaries installed in system python package path
@@ -46,5 +50,4 @@ command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 
 # build prompt
 eval "$(starship init zsh)"
-
 
