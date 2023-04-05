@@ -9,6 +9,7 @@ then
 fi
 
 autoload -U compinit && compinit
+_comp_options+=(globdots) # with hidden files
 zstyle ':completion:*' completer _extensions _complete
 #zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' menu select
