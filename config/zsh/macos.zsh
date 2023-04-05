@@ -12,5 +12,5 @@ then
 fi
 
 # Vagrant/Packer specific
-export PACKER_CACHE_DIR=$HOME/.cache/packer_cache
-[ -f $HOME/.vagrant.d/vcloud_token.sh ] && source $HOME/.vagrant.d/vcloud_token.sh
+export PACKER_CACHE_DIR="$HOME/.cache/packer_cache"
+[ -f "$HOME/.vagrant.d/vcloud_token.sh" ] && source "$HOME/.vagrant.d/vcloud_token.sh"
