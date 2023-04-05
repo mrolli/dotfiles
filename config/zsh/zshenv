@@ -10,10 +10,6 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # Zsh config dir
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-# Keep plenty of history
-HISTFILE=${ZDOTDIR:-$HOME}/.zhistory
-HISTSIZE=100000
-SAVEHIST=100000
 
 # Highlight section titles in manual pages in yellow.
 export LESS_TERMCAP_md="$(tput setaf 136)"
