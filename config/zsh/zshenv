@@ -9,7 +9,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 # Zsh config dir
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 
 # Highlight section titles in manual pages in yellow.
 export LESS_TERMCAP_md="$(tput setaf 136)"
