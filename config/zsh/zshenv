@@ -51,3 +51,6 @@ less_options=(
 export LESS="${less_options[*]}";
 unset less_options;
 export PAGER='less';
+
+# Vagrant/Packer specific
+export PACKER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.config}/packer"
