@@ -50,6 +50,3 @@ alias wetter_burgdorf='curl http://wttr\.in/burgdorf'
 alias wetter_bern='curl http://wttr\.in/bern'
 alias wetter_burgdorf2='curl http://v2.wttr\.in/burgdorf'
 alias wetter_bern2='curl http://v2.wttr\.in/bern'
-
-# unset variables set in this file
-unset colorflag
