@@ -4,28 +4,14 @@
 # vim as long vim is still installed
 alias vi="\$EDITOR"
 
-# Detect which `ls` flavor is in use
-# https://geoff.greer.fm/lscolors/
-if ls --color > /dev/null 2>&1; then # GNU `ls`
-  colorflag="--color=auto"
-  export LS_COLORS='di=1;33:ln=36:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43:or=40;31;07'
-else # macOS `ls`
-  colorflag="-G"
-  export LSCOLORS='Dxfxcxdxbxegedabagacad'
-fi
-
-# Colored ls output but on stdout only
-# Additionally make sure not aliasing alias by using command here
-alias ls="command ls ${colorflag}"
-
 # List all files colorized in long format
-alias l="ls -lF ${colorflag}"
+alias l="ls -lF"
 
 # List all files colorized in long format, excluding . and ..
-alias la="ls -lAF ${colorflag}"
+alias la="ls -lAF"
 
 # List only directories
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+alias lsd="ls -lF | grep --color=never '^d'"
 
 # Always enable colore *grep output
 alias grep='grep --color=auto'
