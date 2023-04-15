@@ -1,0 +1,81 @@
+---
+- name: Create different directories
+  file:
+    path: "{{ item }}"
+    mode: 0700
+    state: directory
+  loop:
+    - ~/.config
+    - ~/.local
+    - ~/.ssh/
+
+- name: Find .config files
+  find:
+    paths: ~/.dotfiles/config/
+    recurse: no
+    file_type: any
+    hidden: yes
+  register: dot_config
+
+- name: ~/.config/
+  file:
+    src: "{{item.path}}"
+    dest: "~/.config/{{item.path | basename}}"
+    state: link
+  loop: "{{ dot_config.files }}"
+  loop_control:
+    label: "~/.config/{{item.path | basename}}"
+
+- name: .bashrc
+  file:
+    src: ~/.config/bash/bashrc
+    dest: ~/.bashrc
+    state: link
+
+- name: .bash_profile
+  file:
+    src: ~/.config/bash/profile
+    dest: ~/.bash_profile
+    state: link
+
+- name: .editorconfig
+  file:
+    src: ~/.dotfiles/editorconfig/editorconfig
+    dest: ~/.editorconfig
+    state: link
+
+
+- name: .zshenv
+  file:
+    src: ~/.config/zsh/zshenv
+    dest: ~/.zshenv
+    state: link
+
+# - name: nvim
+#   file:
+#     src: ~/dot/nvim
+#     dest: ~/.config/nvim
+#     state: link
+
+- name: scripts
+  file:
+    src: ~/.dotfiles/scripts
+    dest: ~/.local/bin
+    state: link
+
+# - name: .ssh/config
+#   copy:
+#     src: ~/.config/.ssh.config
+#     dest: ~/.ssh/config
+#     mode: u=rw,o=,g=
+
+# - name: .ssh/config/control
+#   file:
+#     path: ~/.ssh/control
+#     state: directory
+#     mode: u=rwx,o=,g=
+
+# - name: gpg-agent.conf
+#   copy:
+#     dest: ~/.gnupg/gpg-agent.conf
+#     content: "pinentry-program /bin/pinentry"
