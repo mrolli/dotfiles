@@ -1,11 +1,6 @@
-github-token
-vim/.vim/autoload
-vim/.vim/plugged
-vim/.vim/swap/*
-vim/.vim/undofiles/*
-vim/.vim/.netrwhist
-Vagrantfile
-.vagrant
-temp/
-automatic_backups/
+vim/vim/autoload
+vim/vim/plugged
+vim/vim/swap/*
+vim/vim/undofiles/*
+vim/vim/.netrwhist
 *.spl

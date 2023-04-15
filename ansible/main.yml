@@ -1,0 +1,9 @@
+- name: Setup dotfiles repo
+  hosts: local
+  gather_facts: false
+  become: false
+
+  tasks:
+    - name:
+      import_tasks: tasks/dotfiles.yml
+      tags: ['dotfwles']
