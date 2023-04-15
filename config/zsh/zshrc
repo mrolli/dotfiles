@@ -5,7 +5,6 @@ fpath=($ZDOTDIR/plugins $fpath)
 # Colors
 unset LSCOLORS
 export CLICOLOR=1
-export CLICOLOR_FORCE=1
 
 # History Management - keep plenty of history
 HISTFILE=${ZDOTDIR:-$HOME}/.zhistory
