@@ -9,8 +9,13 @@ windows:
   panes:
   - focus: true
   - pane
+- window_name: nvim
+  layout: even-vertical
+  start_directory: ~/.config/nvim/
+  panes:
+    - nvim
 - window_name: lvim
   layout: even-vertical
   start_directory: ~/.config/lvim/
   panes:
-    - lvim
+    - focus: true
