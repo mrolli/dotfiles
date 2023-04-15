@@ -44,9 +44,6 @@ source "$ZDOTDIR/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 PATH=~/Library/Python/3.9/bin/:$PATH
 PATH=~/.local/bin:/opt/homebrew/bin:$PATH
 
-# setup aliases
-alias vi="nvim"
-
 # Add direnv hook
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 
