@@ -3,12 +3,10 @@
 These dotfiles are highly oppinionated and shamelessly copied from others and eventually
 adjusted to my needs and foremost to my taste.
 
-Feel free to use them, use parts of it or... whateever, see `COPYING`. But use
-at your own risk!
-
 ## Installation
 
-To install, make sure ansible is available and run
+To install/update, make sure ansible is installed and then run the `main.yml`
+playbook:
 
  `ansible-playbook -i ansible/hosts ansible/main.yml`
 
