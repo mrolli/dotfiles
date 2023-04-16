@@ -32,7 +32,10 @@ config.show_update_window = false
 config.audible_bell = "Disabled"
 config.window_decorations = "RESIZE"
 config.color_scheme = 'Gruvbox dark, soft (base16)'
-config.font = wezterm.font("JetBrains Mono")
+config.font = wezterm.font_with_fallback({
+  "JetBrains Mono",
+  { family = "Symbols Nerd Font Mono", scale = 0.8 }
+})
 config.font_size = 15
 config.use_cap_height_to_scale_fallback_fonts = true
 config.hide_tab_bar_if_only_one_tab = true
