@@ -108,7 +108,7 @@ set noswapfile
 
 " Make sure these directories exist
 if isdirectory(expand('~/.vim/swap')) == 0
-  :silent !mkdir /.vim/swap
+  :silent !mkdir ~/.vim/swap
 endif
 
 if isdirectory(expand('~/.vim/undofiles')) == 0
