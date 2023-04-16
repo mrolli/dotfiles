@@ -29,6 +29,7 @@ table.insert(config.hyperlink_rules, {
 })
 
 config.show_update_window = false
+config.audible_bell = "Disabled"
 config.window_decorations = "RESIZE"
 config.color_scheme = 'Gruvbox dark, soft (base16)'
 config.font = wezterm.font("JetBrains Mono")
