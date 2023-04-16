@@ -1,11 +1,19 @@
 
 
-# 50-character subject line
+# <type>[(<scope>)]: <subject> 50
 #
-# 72-character wrapped longer description. This should answer:
+# [optional body] 72
+#
+# [optional footer(s)]
+#
+# 50-character subject line
+# 72-character wrapped longer body. This should answer:
 #
 # * Why was this change necessary?
 # * How does it address the problem?
 # * Are there any side effects?
 #
-# Include a link to the ticket, if any.
+# Allowed <type> values: build, ci, docs, feat, fix, refactor, style, test
+#
+# See https://www.conventionalcommits.org/en/v1.0.0/
+# and https://medium.com/@mas-al/git-understanding-semantic-commit-messages-af62d7144c51
