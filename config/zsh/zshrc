@@ -6,6 +6,9 @@ fpath=($ZDOTDIR/plugins $fpath)
 unset LSCOLORS
 export CLICOLOR=1
 
+# Explicitly set vi mode for key bindings
+bindkey -v
+
 # History Management - keep plenty of history
 HISTFILE=${ZDOTDIR:-$HOME}/.zhistory
 HISTSIZE=100000
@@ -20,6 +23,13 @@ setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
 setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+
+# search history with up/down arrows based on what's typed in the prompt
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^\e[A" history-beginning-search-backward-end
+bindkey "^\e[B" history-beginning-search-forward-end
 
 # Go to folder path without using cd
 setopt AUTO_CD
