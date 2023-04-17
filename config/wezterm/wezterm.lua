@@ -36,7 +36,7 @@ config.font = wezterm.font_with_fallback({
   "JetBrains Mono",
   { family = "Symbols Nerd Font Mono", scale = 0.8 }
 })
-config.font_size = 15
+config.font_size = 16.0
 config.use_cap_height_to_scale_fallback_fonts = true
 config.hide_tab_bar_if_only_one_tab = true
 config.scrollback_lines = 10000
