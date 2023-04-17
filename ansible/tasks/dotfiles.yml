@@ -22,46 +22,18 @@
     src: "{{item.path}}"
     dest: "~/.config/{{item.path | basename}}"
     state: link
+    force: true
   loop: "{{ dot_config.files }}"
   loop_control:
     label: "~/.config/{{item.path | basename}}"
 
-- name: .bashrc
+- name: Setup additional symlinks
   file:
-    src: ~/.config/bash/bashrc
-    dest: ~/.bashrc
+    path: "{{ item.path }}"
+    src:  "{{ item.src }}"
     state: link
-
-- name: .bash_profile
-  file:
-    src: ~/.config/bash/profile
-    dest: ~/.bash_profile
-    state: link
-
-- name: .editorconfig
-  file:
-    src: ~/.dotfiles/editorconfig/editorconfig
-    dest: ~/.editorconfig
-    state: link
-
-
-- name: .zshenv
-  file:
-    src: ~/.config/zsh/zshenv
-    dest: ~/.zshenv
-    state: link
-
-# - name: nvim
-#   file:
-#     src: ~/dot/nvim
-#     dest: ~/.config/nvim
-#     state: link
-
-- name: scripts
-  file:
-    src: ~/.dotfiles/scripts
-    dest: ~/.local/bin
-    state: link
+    force: true
+  loop: "{{ dotfiles_additional_symlinks }}"
 
 # - name: .ssh/config
 #   copy:
@@ -79,9 +51,3 @@
 #   copy:
 #     dest: ~/.gnupg/gpg-agent.conf
 #     content: "pinentry-program /bin/pinentry"
-
-- name: vim
-  file:
-    src: ~/.dotfiles/vim
-    dest: ~/.vim
-    state: link
