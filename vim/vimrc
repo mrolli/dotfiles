@@ -33,7 +33,7 @@ endif
 call plug#begin(g:vim_stdpath . '/plugins')
 " Declare the list of plugins.
 " General Plugins
-Plug 'lifepillar/vim-solarized8'
+Plug 'sainnhe/gruvbox-material'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
 Plug 'dense-analysis/ale'
@@ -78,12 +78,15 @@ call plug#end()
 let mapleader = " "
 
 "setup color scheme
-"turn on syntax highlighting
-syntax enable
+if has('termguicolors')
+  set termguicolors
+endif
+
 set background=dark
-"let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-colorscheme solarized
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:gruvbox_material_background = 'soft'
+let g:gruvbox_material_better_performance = 1
+colorscheme gruvbox-material
 
 " always display status line
 set laststatus=2
