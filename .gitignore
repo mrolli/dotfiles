@@ -1,2 +1,4 @@
+config/asciinema/install-id
+config/karabiner/automatic_backups/
 vim/autoload
 *.spl
