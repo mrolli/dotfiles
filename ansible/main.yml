@@ -6,4 +6,4 @@
   tasks:
     - name:
       import_tasks: tasks/dotfiles.yml
-      tags: ['dotfwles']
+      tags: ['dotfiles']
