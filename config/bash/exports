@@ -21,8 +21,8 @@ export HISTCONTROL=ignoreboth
 export GPG_TTY=$(tty)
 
 # Set preferred editor
-export EDITOR=lvim
-export SVNEDITOR=lvim
+export EDITOR=nvim
+export SVNEDITOR=nvim
 
 # Configure homebrew bundle behaviour
 export HOMEBREW_BUNDLE_NO_LOCK=1
