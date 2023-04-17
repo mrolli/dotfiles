@@ -39,7 +39,6 @@ config.font = wezterm.font_with_fallback({
 })
 config.font_size = 16.0
 config.use_cap_height_to_scale_fallback_fonts = true
-config.hide_tab_bar_if_only_one_tab = true
 config.scrollback_lines = 10000
 
 -- key bindings - https://wezfurlong.org/wezterm/config/keys.html
