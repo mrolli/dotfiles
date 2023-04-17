@@ -31,6 +31,7 @@ table.insert(config.hyperlink_rules, {
 config.show_update_window = false
 config.audible_bell = "Disabled"
 config.window_decorations = "RESIZE"
+config.tab_bar_at_bottom = true
 config.color_scheme = 'Gruvbox dark, soft (base16)'
 config.font = wezterm.font_with_fallback({
   "JetBrains Mono",
@@ -54,5 +55,111 @@ config.keys = {
     action = wezterm.action.ActivateTabRelative(-1),
   },
 }
+
+function trim(s)
+   return (s:gsub("^%s*(.-)%s*$", "%1"))
+end
+
+function update_trackinfo()
+  -- local stdout = "blupp"
+  local success, stdout, _ = wezterm.run_child_process({ "/Users/mrolli/.local/bin/musicplaying" })
+  if not success or not stdout then
+    wezterm.GLOBAL.current_trackinfo = ""
+  end
+  wezterm.GLOBAL.current_trackinfo = trim(stdout)
+end
+
+function update_weather()
+	local success, stdout, _ = wezterm.run_child_process({
+		"curl",
+		"--silent",
+    "wttr.in/Burgdorf?format=%l:+%c%20%t%20%20%w%20%20%m",
+	})
+	if not success or not stdout then
+    wezterm.GLOBAL.current_weather = ""
+	end
+	wezterm.GLOBAL.current_weather = stdout
+end
+
+wezterm.on('update-status', function(window)
+	local tcnt = wezterm.GLOBAL.trackinfo_loop_counter or 0
+	if tcnt % (3) == 0 then
+	  update_trackinfo()
+	end
+	wezterm.GLOBAL.trackinfo_loop_counter = tcnt + 1
+
+  local wcnt = wezterm.GLOBAL.weather_loop_counter or 0
+  if wcnt % (10) == 0 then -- every 10 mins
+    update_weather()
+	end
+	wezterm.GLOBAL.weather_loop_counter = wcnt + 1
+
+  -- The powerline < symbol
+  local LEFT_ARROW = " " .. utf8.char(0xe0b3) .. " "
+
+  -- The filled in variant of the < symbol
+  local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
+
+  -- Each element holds the text for a cell in a "powerline" style << fade
+  local cells = {}
+
+  -- current music playing
+  table.insert(cells, wezterm.GLOBAL.current_trackinfo)
+
+  -- current weather data
+  table.insert(cells, wezterm.GLOBAL.current_weather)
+
+  -- Week, date and time
+  local datetime = " KW" .. wezterm.strftime '%V' ..
+                   LEFT_ARROW .. wezterm.strftime ' %d.%m.%y ' ..
+                   LEFT_ARROW .. wezterm.nerdfonts.mdi_clock .. " " .. wezterm.strftime '%R'
+  table.insert(cells, datetime)
+
+  -- finally add the hostname of current system
+  table.insert(cells, wezterm.hostname())
+
+  -- Color palette for the backgrounds of each cell
+  local colors_bg = {
+    '#3c3836',
+    '#504945',
+    '#d79921',
+    '#fe8019',
+  }
+
+  -- Foreground color for the text across the fade
+  local colors_fg = {
+    '#ebdbb2',
+    '#ebdbb2',
+    '#3c3836',
+    '#3c3836',
+  }
+
+  -- The elements to be formatted
+  local elements = {}
+
+  -- How many cells have been formatted
+  local num_cells = 0
+
+  -- Translate a cell into elements
+  function push(text, is_last)
+    local cell_no = num_cells + 1
+    table.insert(elements, { Foreground = { Color = colors_fg[cell_no] } })
+    table.insert(elements, { Background = { Color = colors_bg[cell_no] } })
+    table.insert(elements, { Text = ' ' .. text .. ' ' })
+    if not is_last then
+      table.insert(elements, { Foreground = { Color = colors_bg[cell_no + 1] } })
+      table.insert(elements, { Text = SOLID_LEFT_ARROW })
+    end
+    num_cells = num_cells + 1
+  end
+
+  while #cells > 0 do
+    local cell = table.remove(cells, 1)
+    push(cell, #cells == 0)
+  end
+
+  window:set_right_status(wezterm.format(elements))
+end)
+
 -- and finally, return the configuration to wezterm
 return config
