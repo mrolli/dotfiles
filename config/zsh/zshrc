@@ -44,6 +44,7 @@ source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/functions.zsh"
 if [ ! -d "$ZDOTDIR/plugins/zsh-vi-mode" ]; then
+  # See https://github.com/jeffreytse/zsh-vi-mode
   git clone https://github.com/jeffreytse/zsh-vi-mode.git "$ZDOTDIR/plugins/zsh-vi-mode"
 fi
 source "$ZDOTDIR/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
