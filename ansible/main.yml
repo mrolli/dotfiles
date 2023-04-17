@@ -5,10 +5,10 @@
 
   vars:
     dotfiles_additional_symlinks:
-      - { src: ~/.dotfiles/editorconfig/editorconfig, path: ~/.editorconfig }
       - { src: ~/.dotfiles/scripts, path: ~/.local/bin }
       - { src: ~/.dotfiles/vim, path: ~/.vim }
       - { src: ~/.config/bash/bashrc, path: ~/.bashrc }
+      - { src: ~/.config/editorconfig, path: ~/.editorconfig }
       - { src: ~/.config/bash/profile, path: ~/.bash_profile }
       - { src: ~/.config/zsh/zshenv, path: ~/.zshenv }
 
