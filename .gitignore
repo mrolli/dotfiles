@@ -1,6 +1,2 @@
 vim/autoload
-vim/plugged
-vim/swap/*
-vim/undofiles/*
-vim/.netrwhist
 *.spl

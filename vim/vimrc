@@ -4,8 +4,25 @@ set path+=*
 filetype plugin indent on
 syntax on
 
+" Create a stdpath equivalent and some more dirs
+let g:vim_stdpath = expand('~/.local/vim')
+let g:vim_undodir = g:vim_stdpath . '/undofiles'
+let g:vim_swapdir = g:vim_stdpath . '/swap'
+
+if isdirectory(g:vim_stdpath) == 0
+  execute '!mkdir ' . g:vim_stdpath
+endif
+
+if isdirectory(g:vim_undodir) == 0
+  execute '!mkdir ' . g:vim_undodir
+endif
+
+if isdirectory(g:vim_swapdir) == 0
+  execute '!mkdir ' . g:vim_swapdir
+endif
+
 " Install vim-plug if not yet available
-let g:vim_plug_path = has('nvim') ? stdpath('data') . '/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
+let g:vim_plug_path = '~/.vim/autoload/plug.vim'
 if empty(glob(g:vim_plug_path))
   execute 'silent !curl -flo ' . g:vim_plug_path . ' --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -13,7 +30,7 @@ if empty(glob(g:vim_plug_path))
 endif
 
 " Plugins will be downloaded under the specified directory.
-call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+call plug#begin(g:vim_stdpath . '/plugins')
 " Declare the list of plugins.
 " General Plugins
 Plug 'lifepillar/vim-solarized8'
@@ -66,7 +83,7 @@ syntax enable
 set background=dark
 "let g:solarized_termcolors=256
 let g:solarized_termtrans=1
-colorscheme solarized8
+colorscheme solarized
 
 " always display status line
 set laststatus=2
@@ -100,20 +117,11 @@ set wildmenu                   " enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~    " stuff to ignore when tab completing
 
 " Swap files in a central location, no swap files amongst project.
-set backupdir=~/.vim/swap//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undofiles//
+let &backupdir=g:vim_swapdir
+let &directory=g:vim_swapdir
+let &undodir=g:vim_undodir
 set undofile
 set noswapfile
-
-" Make sure these directories exist
-if isdirectory(expand('~/.vim/swap')) == 0
-  :silent !mkdir ~/.vim/swap
-endif
-
-if isdirectory(expand('~/.vim/undofiles')) == 0
-  :silent !mkdir ~/.vim/undofiles
-endif
 
 " Default to Unicode/UTF-8 rather than latin1
 set encoding=utf-8
