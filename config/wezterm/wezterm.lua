@@ -72,7 +72,7 @@ function update_weather()
 	local success, stdout, _ = wezterm.run_child_process({
 		"curl",
 		"--silent",
-    "wttr.in/Burgdorf?format=%l:+%c%t%20%20%w%20%20%m%20",
+    "wttr.in/Burgdorf?format=%l:+%c%t%20%20%w%20%20%m",
 	})
 	if not success or not stdout then
     wezterm.GLOBAL.current_weather = ""
@@ -94,7 +94,7 @@ wezterm.on('update-status', function(window, pane)
 	wezterm.GLOBAL.weather_loop_counter = wcnt + 1
 
   -- The powerline < symbol
-  local LEFT_ARROW = " " .. utf8.char(0xe0b3) .. " "
+  local LEFT_ARROW = " " .. utf8.char(0xe0b3)
 
   -- The filled in variant of the < symbol
   local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
@@ -109,7 +109,7 @@ wezterm.on('update-status', function(window, pane)
   table.insert(cells, wezterm.GLOBAL.current_weather)
 
   -- Week, date and time
-  local datetime = " KW" .. wezterm.strftime '%V ' ..
+  local datetime = "KW" .. wezterm.strftime '%V ' ..
                    LEFT_ARROW .. wezterm.strftime '%d.%m.%y ' ..
                    LEFT_ARROW .. wezterm.nerdfonts.mdi_clock .. " " .. wezterm.strftime '%R'
   table.insert(cells, datetime)
@@ -130,7 +130,7 @@ wezterm.on('update-status', function(window, pane)
         hostname = hostname:sub(1, dot - 1)
       end
 
-      table.insert(cells, hostname .. " ")
+      table.insert(cells, hostname)
     end
   else
     table.insert(cells, "Where am I? ")
@@ -163,7 +163,7 @@ wezterm.on('update-status', function(window, pane)
     local cell_no = num_cells + 1
     table.insert(elements, { Foreground = { Color = colors_fg[cell_no] } })
     table.insert(elements, { Background = { Color = colors_bg[cell_no] } })
-    table.insert(elements, { Text = ' ' .. text .. ' ' })
+    table.insert(elements, { Text = ' ' .. text .. '  ' })
     if not is_last then
       table.insert(elements, { Foreground = { Color = colors_bg[cell_no + 1] } })
       table.insert(elements, { Text = SOLID_LEFT_ARROW })
