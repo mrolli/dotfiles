@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
-fpath=($ZDOTDIR/plugins $fpath)
+mkdir -p "$ZDATADIR"/{,plugins} "$ZCACHEDIR"
+
+fpath=($ZDATADIR/plugins $fpath)
 
 # Colors
 unset LSCOLORS
@@ -10,7 +12,7 @@ export CLICOLOR=1
 bindkey -v
 
 # History Management - keep plenty of history
-HISTFILE=${ZDOTDIR:-$HOME}/.zhistory
+HISTFILE=$ZDATADIR/zhistory
 HISTSIZE=100000
 SAVEHIST=100000
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
@@ -43,12 +45,19 @@ source "$ZDOTDIR/colors.zsh"
 source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/functions.zsh"
-if [ ! -d "$ZDOTDIR/plugins/zsh-vi-mode" ]; then
-  # See https://github.com/jeffreytse/zsh-vi-mode
-  git clone https://github.com/jeffreytse/zsh-vi-mode.git "$ZDOTDIR/plugins/zsh-vi-mode"
+# See https://github.com/jeffreytse/zsh-vi-mode
+if [ ! -d "$ZDATADIR/plugins/zsh-vi-mode" ]; then
+  git clone https://github.com/jeffreytse/zsh-vi-mode.git "$ZDATADIR/plugins/zsh-vi-mode" &>/dev/null
 fi
-source "$ZDOTDIR/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-source "$ZDOTDIR/plugins/wezterm.sh"
+source "$ZDATADIR/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+# See https://wezfurlong.org/wezterm/shell-integration.html
+if [ ! -f "$ZDATADIR/plugins/wezterm.sh" ]; then
+  curl -flo "$ZDATADIR/plugins/wezterm.sh" \
+    "https://raw.githubusercontent.com/wez/wezterm/main/assets/shell-integration/wezterm.sh" \
+    &>/dev/null
+fi
+source "$ZDATADIR/plugins/wezterm.sh"
+
 
 # build the PATH variable
 # Add python binaries installed in system python package path

@@ -10,6 +10,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # Zsh config dir
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+export ZDATADIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
+export ZCACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 
 # Highlight section titles in manual pages in yellow.
 export LESS_TERMCAP_md="$(tput setaf 136)"
@@ -53,4 +55,4 @@ unset less_options;
 export PAGER='less';
 
 # Vagrant/Packer specific
-export PACKER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.config}/packer"
+export PACKER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/packer"
