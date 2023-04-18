@@ -72,7 +72,7 @@ function update_weather()
 	local success, stdout, _ = wezterm.run_child_process({
 		"curl",
 		"--silent",
-    "wttr.in/Burgdorf?format=%l:+%c%20%t%20%20%w%20%20%m",
+    "wttr.in/Burgdorf?format=%l:+%c%t%20%20%w%20%20%m%20",
 	})
 	if not success or not stdout then
     wezterm.GLOBAL.current_weather = ""
@@ -109,8 +109,8 @@ wezterm.on('update-status', function(window)
   table.insert(cells, wezterm.GLOBAL.current_weather)
 
   -- Week, date and time
-  local datetime = " KW" .. wezterm.strftime '%V' ..
-                   LEFT_ARROW .. wezterm.strftime ' %d.%m.%y ' ..
+  local datetime = " KW" .. wezterm.strftime '%V ' ..
+                   LEFT_ARROW .. wezterm.strftime '%d.%m.%y ' ..
                    LEFT_ARROW .. wezterm.nerdfonts.mdi_clock .. " " .. wezterm.strftime '%R'
   table.insert(cells, datetime)
 
