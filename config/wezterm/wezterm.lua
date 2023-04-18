@@ -37,9 +37,31 @@ config.font = wezterm.font_with_fallback({
   "JetBrains Mono",
   { family = "Symbols Nerd Font Mono", scale = 0.8 }
 })
-config.font_size = 16.0
+config.font_size = 15.0
 config.use_cap_height_to_scale_fallback_fonts = true
 config.scrollback_lines = 10000
+
+-- tab bar styling
+-- https://wezfurlong.org/wezterm/config/appearance.html#native-fancy-tab-bar-appearance
+config.window_frame = {
+  font = wezterm.font({ family = 'Roboto', weight = 'Regular' }),
+  font_size = 14.0,
+  active_titlebar_bg = '#3c3836',
+  inactive_titlebar_bg = '#3c3836',
+}
+
+config.colors = {
+  tab_bar = {
+    active_tab = {
+      bg_color = '#d79921',
+      fg_color = '#3c3836',
+    },
+    inactive_tab = {
+      bg_color = '#504945',
+      fg_color = '#ebdbb2',
+    },
+  },
+}
 
 -- key bindings - https://wezfurlong.org/wezterm/config/keys.html
 config.keys = {
