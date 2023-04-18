@@ -23,6 +23,7 @@
     dest: "~/.config/{{item.path | basename}}"
     state: link
     force: true
+  when: item.path | basename not in dotfiles_omit_configs
   loop: "{{ dot_config.files }}"
   loop_control:
     label: "~/.config/{{item.path | basename}}"
