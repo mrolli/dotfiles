@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+[[ -v $ZDATADIR ]] || source ~/.zshenv
+
 mkdir -p "$ZDATADIR"/{,plugins} "$ZCACHEDIR"
 
 fpath=($ZDATADIR/plugins $fpath)
