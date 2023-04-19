@@ -1,5 +1,6 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
+local keybindings = require 'keybindings'
 
 -- Automatically start wezterm in full-screen mode
 local mux = wezterm.mux
@@ -40,7 +41,7 @@ config.font = wezterm.font_with_fallback({
   "JetBrains Mono",
   { family = "Symbols Nerd Font Mono", scale = 0.8 }
 })
-config.font_size = 15.0
+config.font_size = 16.0
 config.use_cap_height_to_scale_fallback_fonts = true
 config.scrollback_lines = 10000
 
@@ -67,18 +68,10 @@ config.colors = {
 }
 
 -- key bindings - https://wezfurlong.org/wezterm/config/keys.html
-config.keys = {
-  {
-    key = 'RightArrow',
-    mods = 'SUPER',
-    action = wezterm.action.ActivateTabRelative(1),
-  },
-  {
-    key = 'LeftArrow',
-    mods = 'SUPER',
-    action = wezterm.action.ActivateTabRelative(-1),
-  },
-}
+config.disable_default_key_bindings = true
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
+config.keys = keybindings.keys
+config.key_tables = keybindings.key_tables
 
 function trim(s)
    return (s:gsub("^%s*(.-)%s*$", "%1"))
