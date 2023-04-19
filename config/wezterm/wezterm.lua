@@ -17,7 +17,6 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
---
 -- Make username/project paths clickable. this implies paths like the following are for github.
 -- ( "nvim-treesitter/nvim-treesitter" | wbthomason/packer.nvim | wez/wezterm | "wez/wezterm.git" )
 -- as long as a full url hyperlink regex exists above this it should not match a full url to
@@ -26,6 +25,10 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 table.insert(config.hyperlink_rules, {
   regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
   format = 'https://github.com/$1/$3',
+})
+table.insert(config.hyperlink_rules, {
+			regex = "\\b\\w+@[\\w-]+(\\.[\\w-]+)+\\b",
+			format = "mailto:$0",
 })
 
 config.show_update_window = false
