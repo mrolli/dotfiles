@@ -64,7 +64,10 @@ source "$ZDATADIR/plugins/wezterm.sh"
 # build the PATH variable
 # Add python binaries installed in system python package path
 PATH=~/Library/Python/3.9/bin/:$PATH
-PATH=~/.local/bin:/opt/homebrew/bin:$PATH
+PATH=~/.local/bin:$PATH
+
+# Initialize hoembew
+eval "$(brew shellenv)"
 
 # Add direnv hook
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
