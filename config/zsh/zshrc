@@ -62,8 +62,6 @@ source "$ZDATADIR/plugins/wezterm.sh"
 
 
 # build the PATH variable
-# Add python binaries installed in system python package path
-PATH=~/Library/Python/3.9/bin/:$PATH
 PATH=~/.local/bin:$PATH
 
 # Initialize hoembew
