@@ -124,6 +124,12 @@ wezterm.on('update-status', function(window, pane)
   -- The filled in variant of the < symbol
   local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 
+  -- The powerline < symbol
+  local RIGHT_ARROW = " " .. utf8.char(0xe0b1)
+
+  -- The filled in variant of the < symbol
+  local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
+
   -- Each element holds the text for a cell in a "powerline" style << fade
   local cells = {}
 
@@ -202,6 +208,19 @@ wezterm.on('update-status', function(window, pane)
   end
 
   window:set_right_status(wezterm.format(elements))
+
+  local leftElements = {}
+  local keyTableName = window:active_key_table()
+  if keyTableName then
+    table.insert(leftElements, { Foreground = { Color = colors_fg[4] } })
+    table.insert(leftElements, { Background = { Color = colors_bg[4] } })
+    table.insert(leftElements, { Text = ' TABLE: ' .. keyTableName .. ' ' })
+  end
+  table.insert(leftElements, { Foreground = { Color = colors_bg[4] } })
+  table.insert(leftElements, { Background = { Color = colors_bg[1] } })
+  table.insert(leftElements, { Text = SOLID_RIGHT_ARROW .. ' ' })
+
+  window:set_left_status(wezterm.format(leftElements))
 end)
 
 -- and finally, return the configuration to wezterm
