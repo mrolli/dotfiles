@@ -1,6 +1,6 @@
 ---
 - name: Create different directories
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     mode: 0700
     state: directory
@@ -10,7 +10,7 @@
     - ~/.ssh/
 
 - name: Find .config files
-  find:
+  ansible.builtin.find:
     paths: ~/.dotfiles/config/
     recurse: no
     file_type: any
@@ -18,20 +18,21 @@
   register: dot_config
 
 - name: ~/.config/
-  file:
-    src: "{{item.path}}"
-    dest: "~/.config/{{item.path | basename}}"
+  ansible.builtin.file:
+    src: "{{ item.path }}"
+    dest: "~/.config/{{ item.path | basename }}"
+    mode: 0755
     state: link
     force: true
   when: item.path | basename not in dotfiles_omit_configs
   loop: "{{ dot_config.files }}"
   loop_control:
-    label: "~/.config/{{item.path | basename}}"
+    label: "~/.config/{{ item.path | basename }}"
 
 - name: Setup additional symlinks
-  file:
+  ansible.builtin.file:
     path: "{{ item.path }}"
-    src:  "{{ item.src }}"
+    src: "{{ item.src }}"
     state: link
     force: true
   loop: "{{ dotfiles_additional_symlinks }}"

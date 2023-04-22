@@ -19,6 +19,6 @@
       - kitty
 
   tasks:
-    - name:
-      import_tasks: tasks/dotfiles.yml
+    - name: "Symlink dotfiles"
+      ansible.builtin.import_tasks: tasks/dotfiles.yml
       tags: ['dotfiles']
