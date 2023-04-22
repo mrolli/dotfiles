@@ -25,3 +25,12 @@ vim.opt.wildignore = {
   "*pycache*",
 }
 vim.opt.pumblend = 10 -- make pop-up menu slightly transparent
+
+ -- Custom filetypes
+vim.filetype.add({
+  pattern = {
+    ['.*/ansible.*/.*%.ya?ml'] = 'yaml.ansible',
+    ['.*/playbooks/.*%.ya?ml'] = 'yaml.ansible',
+    ['.*/roles/.*%.ya?ml'] = 'yaml.ansible',
+  },
+})
