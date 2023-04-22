@@ -2,3 +2,10 @@ config/asciinema/install-id
 config/karabiner/automatic_backups/
 vim/autoload
 *.spl
+
+# Files installed by pip installed packages
+ghp-import
+markdown_py
+mkdocs
+rename_termtab
+watchmedo
