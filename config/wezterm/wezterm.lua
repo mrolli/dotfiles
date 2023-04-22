@@ -112,16 +112,17 @@ wezterm.on('update-status', function(window, pane)
 	wezterm.GLOBAL.weather_loop_counter = wcnt + 1
 
   -- The powerline < symbol
-  local LEFT_ARROW = " " .. utf8.char(0xe0b3)
+  local LEFT_ARROW = '  ' .. wezterm.nerdfonts.pl_right_soft_divider
 
   -- The filled in variant of the < symbol
-  local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
+  local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 
   -- The powerline < symbol
-  local RIGHT_ARROW = " " .. utf8.char(0xe0b1)
+  local RIGHT_ARROW = wezterm.nerdfonts.pl_left_soft_divider .. ' '
 
   -- The filled in variant of the < symbol
-  local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
+  -- local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
+  local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
   -- Each element holds the text for a cell in a "powerline" style << fade
   local cells = {}
@@ -133,8 +134,8 @@ wezterm.on('update-status', function(window, pane)
   table.insert(cells, wezterm.GLOBAL.current_weather)
 
   -- Week, date and time
-  local datetime = "KW" .. wezterm.strftime '%V ' ..
-                   LEFT_ARROW .. wezterm.strftime '%d.%m.%y ' ..
+  local datetime = "KW" .. wezterm.strftime '%V' ..
+                   LEFT_ARROW .. wezterm.strftime '%d.%m.%y' ..
                    LEFT_ARROW .. wezterm.nerdfonts.mdi_clock .. " " .. wezterm.strftime '%R'
   table.insert(cells, datetime)
 
