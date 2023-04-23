@@ -2,7 +2,7 @@
 
 # Initialize and configure autocompletion
 # Guide about style: https://thevaluable.dev/zsh-completion-guide-examples/
-if type brew &>/dev/null
+if command -v brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   FPATH="$(brew --prefix)/share/zsh-completions:${FPATH}"
@@ -25,3 +25,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' complete-options true
 zstyle ':completion:*' special-dirs true
+
+if command -v op &>/dev/null; then
+  eval "$(op completion zsh)"; compdef _op op
+fi
