@@ -32,6 +32,8 @@ return {
     { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down' },
     { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up' },
     { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right' },
+    { key = '{', mods = 'LEADER', action = act.RotatePanes 'CounterClockwise', },
+    { key = '}', mods = 'LEADER', action = act.RotatePanes 'Clockwise' },
     { key = 'Enter', mods = 'LEADER', action = act.ToggleFullScreen },
 
     -- Window handling
