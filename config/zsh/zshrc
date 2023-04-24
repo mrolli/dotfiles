@@ -42,8 +42,12 @@ unsetopt BEEP
 # Turn off autocomplete beeps
 # unsetopt LIST_BEEP
 
+# Use colors functions to have color at hand
+# See https://github.com/zsh-users/zsh/blob/master/Functions/Misc/colors
+autoload -Uz colors && colors
+
+# Source my config files
 source "$ZDOTDIR/macos.zsh"
-source "$ZDOTDIR/colors.zsh"
 source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/functions.zsh"
