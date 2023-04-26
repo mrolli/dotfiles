@@ -68,8 +68,8 @@ source "$ZDATADIR/plugins/wezterm.sh"
 # build the PATH variable
 PATH=~/.local/bin:$PATH
 
-# Initialize hoembew
-eval "$(brew shellenv)"
+# Initialize homebrew
+command -v brew &>/dev/null && eval "$(brew shellenv)"
 
 # Add direnv hook
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
