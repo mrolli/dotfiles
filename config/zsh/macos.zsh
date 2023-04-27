@@ -15,4 +15,8 @@ fi
 # Initialize Homebrew for all platforms here
 command -v brew &>/dev/null && eval "$(brew shellenv)"
 
+# Add newer ruby to the PATH if installed
+[ -d "$HOMEBREW_PREFIX/opt/ruby@2.7/bin" ] && \
+  export PATH="$HOMEBREW_PREFIX/opt/ruby@2.7/bin:$PATH"
+
 [ -f "$HOME/.vagrant.d/vcloud_token.sh" ] && source "$HOME/.vagrant.d/vcloud_token.sh"
