@@ -24,7 +24,6 @@ zstyle ':completion:*:*:-command-:*:*' group-order alias builtins functions comm
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' complete-options true
-zstyle ':completion:*' special-dirs true
 
 if command -v op &>/dev/null; then
   eval "$(op completion zsh)"; compdef _op op
