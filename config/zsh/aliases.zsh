@@ -26,6 +26,7 @@ alias sudo='sudo ';
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+alias fpath='echo -e ${FPATH//:/\\n}'
 
 # shorcut to screen locking (= ctrl-cmd q)
 alias afk=$'osascript -e \'tell application "System Events" to key code 12 using {control down, command down}\''
