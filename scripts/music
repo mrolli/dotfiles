@@ -39,7 +39,8 @@ function music() {
       ;;
     playlist)
       # Inspired by: https://gist.github.com/nakajijapan/ac8b45371064ae98ea7f
-      # If no plalist ist
+      # If no playlist is provided, let the user choose from all available playlists
+      # by presenting them via fzf
       if [[ -z "$playlist" ]]; then
         playlist=$(osascript -e 'tell application "Music" to get name of every playlist' | sed 's/, /\n/g' | sort | fzf)
       fi
