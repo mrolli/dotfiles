@@ -6,6 +6,7 @@ if command -v brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   FPATH="$(brew --prefix)/share/zsh-completions:${FPATH}"
+  FPATH="$ZDOTDIR/zsh-completions:${FPATH}"
 fi
 
 autoload -U compinit && compinit -d $ZCACHEDIR/zcompdump
