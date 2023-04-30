@@ -135,4 +135,4 @@ Options:
 "
 }
 
-music $1 $2
+music "$1" "$2"
