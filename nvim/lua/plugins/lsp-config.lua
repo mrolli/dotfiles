@@ -21,7 +21,7 @@ return {
     },
   },
 
-  -- Tools like language server, debug adapters, linters and formatters
+  -- Automatically intall addditional language server, debug adapters, linters and formatters
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
@@ -29,14 +29,18 @@ return {
         -- language servers
         "ansible-language-server",
         "bash-language-server",
+        "css-lsp",
+        "intelephense",
         "lua-language-server",
         "pyright",
+        "solargraph",
         "yaml-language-server",
         -- debug adapters
         -- linters
         "ansible-lint",
         "flake8",
         "markdownlint",
+        "rubocop",
         "selene",
         "shellcheck",
         -- formatters
@@ -47,7 +51,7 @@ return {
     end,
   },
 
-  -- configuration changes on LSP servers
+  -- Configure changes to LSP servers
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -72,11 +76,11 @@ return {
             },
           },
         },
-      }
-    }
+      },
+    },
   },
 
-  -- null-ls
+  -- Activate additional builtin sources
   {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function(_, opts)
