@@ -51,6 +51,8 @@ source "$ZDOTDIR/macos.zsh"
 source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/functions.zsh"
+
+# App 3rd-party plugins
 # See https://github.com/jeffreytse/zsh-vi-mode
 if [ ! -d "$ZDATADIR/plugins/zsh-vi-mode" ]; then
   git clone https://github.com/jeffreytse/zsh-vi-mode.git "$ZDATADIR/plugins/zsh-vi-mode" &>/dev/null
