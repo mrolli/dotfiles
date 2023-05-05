@@ -10,7 +10,7 @@ root = true
 # - Trim trailing whitespace
 [*]
 indent_style = space
-indent_size = 2
+indent_size = 4
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
@@ -23,9 +23,16 @@ insert_final_newline = true
 indent_size = 4
 trim_trailing_whitespace = false
 
+# Me likes this for many file types
+# - 2 space indent
+[*.{yml,yaml,sh,zsh,bash}]
+indent_style = space
+indent_size = 2
+
 # Python
 # - 4 space indent
 [*.py]
+indent_style = space
 indent_size = 4
 
 # Makefiles are tab based
