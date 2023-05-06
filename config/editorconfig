@@ -3,10 +3,10 @@
 # top-most EditorConfig file
 root = true
 
-# Ruby style as default
+# Set conservative standards
 # - UTF-8 charset
 # - Unix-style newlines with a newline ending every file
-# - 2 space indent
+# - 4 space indent
 # - Trim trailing whitespace
 [*]
 indent_style = space
@@ -16,18 +16,18 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
+# But me likes less indent for many file types
+# - 2 space indent
+[*.{bash,lua,sh,yml,yaml,zsh}]
+indent_style = space
+indent_size = 2
+
 # Markdown
 # - 4 space indent
 # - Trailing whitespace is potentially meaningful, leave it
 [*.md]
 indent_size = 4
 trim_trailing_whitespace = false
-
-# Me likes this for many file types
-# - 2 space indent
-[*.{yml,yaml,sh,zsh,bash}]
-indent_style = space
-indent_size = 2
 
 # Python
 # - 4 space indent
