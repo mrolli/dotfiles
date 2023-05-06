@@ -14,7 +14,7 @@ return {
     "neovim/nvim-lspconfig",
     enabled = true,
     opts = {
-      autoformat = false,
+      autoformat = true,
       virtual_text = {
         format = diag_format,
       },
