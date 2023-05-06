@@ -64,7 +64,7 @@ return {
           settings = {
             Lua = {
               diagnostics = {
-                disable = { "lowercase-global" }
+                disable = { "lowercase-global" },
               },
             },
           },
@@ -106,6 +106,7 @@ return {
         nls.builtins.formatting.isort,
         nls.builtins.formatting.black,
         nls.builtins.diagnostics.flake8,
+        nls.builtins.code_actions.shellcheck,
       })
     end,
   },
