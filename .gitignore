@@ -1,5 +1,6 @@
 config/asciinema/install-id
 config/karabiner/automatic_backups/
+config/zsh/.zsh_sessions/
 vim/autoload
 *.spl
 
