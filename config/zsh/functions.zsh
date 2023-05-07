@@ -1,18 +1,5 @@
 #!/usr/bin/env bash
 
-# For the confirmation moments in life
-prompt_confirm() {
-  while true; do
-    quest=$(printf "\r[ ${fg[yellow]}??${reset_color} ] ${1:-Continue?} [y/n]: ")
-    read "reply?$quest"
-    case $reply in
-      [yY]) echo ; return 0 ;;
-      [nN]) echo ; return 1 ;;
-      *) printf " ${fg[red]} %s \n${reset_color}" "invalid input"
-    esac
-  done
-}
-
 # Open manpages in terminalapp
 function manx { open x-man-page://$@ ; }
 # Open mangpages as PDF in preview app
@@ -35,36 +22,6 @@ function append {
     echo "Usage: ${0} FILE SUFFIX"
   else
     mv "${1}" "${1}${2}"
-  fi
-}
-
-# brewup one-liner to keep things up2date
-function brewup {
-  echo "[ ${fg[blue]}..${reset_color} ] Updating Homebrew"
-  brew update
-
-  for type in formulae casks; do
-    out=$(brew outdated --$type)
-    if [ -n "${out}" ]
-    then
-      echo "[ ${fg_no_bold[blue]}..${reset_color} ] The following $type are outdated:"
-      echo $out
-      if [ "${1}" = "-f" ] || prompt_confirm "Shall I upgrade all of them?"
-      then
-        brew upgrade --$type
-        echo "[ ${fg[blue]}..${reset_color} ] Running brew cleanup"
-        brew cleanup
-      fi
-    fi
-  done
-
-  echo "[ ${fg[blue]}..${reset_color} ] Running brew doctor"
-  brew doctor
-
-  if [ "${1}" = "-f" ] || prompt_confirm "Shall I upgrade AppStore apps?"
-  then
-    echo "[ ${fg[blue]}..${reset_color} ] Running mas upgrade"
-    mas upgrade
   fi
 }
 
