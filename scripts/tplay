@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-pl=${1:-"Fahrstuhlmusik"}
-
-osascript <<EOD
-  tell application "Music" to play playlist named "$pl"
-EOD
