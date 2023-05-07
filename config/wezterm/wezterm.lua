@@ -79,8 +79,10 @@ function trim(s)
 end
 
 function update_trackinfo()
-  -- local stdout = "blupp"
-  local success, stdout, _ = wezterm.run_child_process({ "/Users/mrolli/.local/bin/musicplaying" })
+  local success, stdout, _ = wezterm.run_child_process({
+    "zsh",
+    "/Users/mrolli/.local/share/zsh/plugins/zsh-macos-goodies/functions/musicplaying",
+  })
   if not success or not stdout then
     wezterm.GLOBAL.current_trackinfo = ""
   end
