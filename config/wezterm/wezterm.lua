@@ -1,11 +1,11 @@
 -- Pull in the wezterm API
-local wezterm = require 'wezterm'
-local keybindings = require 'keybindings'
+local wezterm = require("wezterm")
+local keybindings = require("keybindings")
 
 -- Automatically start wezterm in full-screen mode
 local mux = wezterm.mux
 wezterm.on("gui-startup", function()
-  local _, _, window = mux.spawn_window{}
+  local _, _, window = mux.spawn_window({})
   window:gui_window():maximize()
 end)
 
@@ -29,18 +29,18 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 -- })
 -- Make email addresses clickable
 table.insert(config.hyperlink_rules, {
-			regex = "\\b\\w+@[\\w-]+(\\.[\\w-]+)+\\b",
-			format = "mailto:$0",
+  regex = "\\b\\w+@[\\w-]+(\\.[\\w-]+)+\\b",
+  format = "mailto:$0",
 })
 
 config.show_update_window = false
 config.audible_bell = "Disabled"
 config.window_decorations = "RESIZE"
 config.tab_bar_at_bottom = true
-config.color_scheme = 'Gruvbox dark, soft (base16)'
+config.color_scheme = "Gruvbox dark, soft (base16)"
 config.font = wezterm.font_with_fallback({
   "JetBrains Mono",
-  { family = "Symbols Nerd Font Mono", scale = 0.8 }
+  { family = "Symbols Nerd Font Mono", scale = 0.8 },
 })
 config.font_size = 16.0
 config.use_cap_height_to_scale_fallback_fonts = true
@@ -49,21 +49,21 @@ config.scrollback_lines = 10000
 -- tab bar styling
 -- https://wezfurlong.org/wezterm/config/appearance.html#native-fancy-tab-bar-appearance
 config.window_frame = {
-  font = wezterm.font({ family = 'Roboto', weight = 'Regular' }),
+  font = wezterm.font({ family = "Roboto", weight = "Regular" }),
   font_size = 14.0,
-  active_titlebar_bg = '#3c3836',
-  inactive_titlebar_bg = '#3c3836',
+  active_titlebar_bg = "#3c3836",
+  inactive_titlebar_bg = "#3c3836",
 }
 
 config.colors = {
   tab_bar = {
     active_tab = {
-      bg_color = '#d79921',
-      fg_color = '#3c3836',
+      bg_color = "#d79921",
+      fg_color = "#3c3836",
     },
     inactive_tab = {
-      bg_color = '#504945',
-      fg_color = '#ebdbb2',
+      bg_color = "#504945",
+      fg_color = "#ebdbb2",
     },
   },
 }
@@ -75,7 +75,7 @@ config.keys = keybindings.keys
 config.key_tables = keybindings.key_tables
 
 function trim(s)
-   return (s:gsub("^%s*(.-)%s*$", "%1"))
+  return (s:gsub("^%s*(.-)%s*$", "%1"))
 end
 
 function update_trackinfo()
@@ -88,38 +88,38 @@ function update_trackinfo()
 end
 
 function update_weather()
-	local success, stdout, _ = wezterm.run_child_process({
-		"curl",
-		"--silent",
+  local success, stdout, _ = wezterm.run_child_process({
+    "curl",
+    "--silent",
     "wttr.in/Burgdorf?format=%l:+%c%t%20%20%w%20%20%m",
-	})
-	if not success or not stdout then
+  })
+  if not success or not stdout then
     wezterm.GLOBAL.current_weather = ""
-	end
-	wezterm.GLOBAL.current_weather = stdout
+  end
+  wezterm.GLOBAL.current_weather = stdout
 end
 
-wezterm.on('update-status', function(window, pane)
-	local tcnt = wezterm.GLOBAL.trackinfo_loop_counter or 0
-	if tcnt % (3) == 0 then
-	  update_trackinfo()
-	end
-	wezterm.GLOBAL.trackinfo_loop_counter = tcnt + 1
+wezterm.on("update-status", function(window, pane)
+  local tcnt = wezterm.GLOBAL.trackinfo_loop_counter or 0
+  if tcnt % 3 == 0 then
+    update_trackinfo()
+  end
+  wezterm.GLOBAL.trackinfo_loop_counter = tcnt + 1
 
   local wcnt = wezterm.GLOBAL.weather_loop_counter or 0
-  if wcnt % (10) == 0 then -- every 10 mins
+  if wcnt % 10 == 0 then -- every 10 mins
     update_weather()
-	end
-	wezterm.GLOBAL.weather_loop_counter = wcnt + 1
+  end
+  wezterm.GLOBAL.weather_loop_counter = wcnt + 1
 
   -- The powerline < symbol
-  local LEFT_ARROW = '  ' .. wezterm.nerdfonts.pl_right_soft_divider
+  local LEFT_ARROW = "  " .. wezterm.nerdfonts.pl_right_soft_divider
 
   -- The filled in variant of the < symbol
   local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 
   -- The powerline < symbol
-  local RIGHT_ARROW = wezterm.nerdfonts.pl_left_soft_divider .. ' '
+  local RIGHT_ARROW = wezterm.nerdfonts.pl_left_soft_divider .. " "
 
   -- The filled in variant of the < symbol
   -- local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
@@ -135,9 +135,14 @@ wezterm.on('update-status', function(window, pane)
   table.insert(cells, wezterm.GLOBAL.current_weather)
 
   -- Week, date and time
-  local datetime = "KW" .. wezterm.strftime '%V' ..
-                   LEFT_ARROW .. wezterm.strftime '%d.%m.%y' ..
-                   LEFT_ARROW .. wezterm.nerdfonts.mdi_clock .. " " .. wezterm.strftime '%R'
+  local datetime = "KW"
+    .. wezterm.strftime("%V")
+    .. LEFT_ARROW
+    .. wezterm.strftime("%d.%m.%y")
+    .. LEFT_ARROW
+    .. wezterm.nerdfonts.mdi_clock
+    .. " "
+    .. wezterm.strftime("%R")
   table.insert(cells, datetime)
 
   -- Figure out the cwd and host of the current pane.
@@ -146,12 +151,12 @@ wezterm.on('update-status', function(window, pane)
   local cwd_uri = pane:get_current_working_dir()
   if cwd_uri then
     cwd_uri = cwd_uri:sub(8)
-    local slash = cwd_uri:find '/'
-    local hostname = ''
+    local slash = cwd_uri:find("/")
+    local hostname = ""
     if slash then
       hostname = cwd_uri:sub(1, slash - 1)
       -- Remove the domain name portion of the hostname
-      local dot = hostname:find '[.]'
+      local dot = hostname:find("[.]")
       if dot then
         hostname = hostname:sub(1, dot - 1)
       end
@@ -164,18 +169,18 @@ wezterm.on('update-status', function(window, pane)
 
   -- Color palette for the backgrounds of each cell
   local colors_bg = {
-    '#3c3836',
-    '#504945',
-    '#d79921',
-    '#fe8019',
+    "#3c3836",
+    "#504945",
+    "#d79921",
+    "#fe8019",
   }
 
   -- Foreground color for the text across the fade
   local colors_fg = {
-    '#ebdbb2',
-    '#ebdbb2',
-    '#3c3836',
-    '#3c3836',
+    "#ebdbb2",
+    "#ebdbb2",
+    "#3c3836",
+    "#3c3836",
   }
 
   -- The elements to be formatted
@@ -189,7 +194,7 @@ wezterm.on('update-status', function(window, pane)
     local cell_no = num_cells + 1
     table.insert(elements, { Foreground = { Color = colors_fg[cell_no] } })
     table.insert(elements, { Background = { Color = colors_bg[cell_no] } })
-    table.insert(elements, { Text = ' ' .. text .. '  ' })
+    table.insert(elements, { Text = " " .. text .. "  " })
     if not is_last then
       table.insert(elements, { Foreground = { Color = colors_bg[cell_no + 1] } })
       table.insert(elements, { Text = SOLID_LEFT_ARROW })
@@ -209,11 +214,11 @@ wezterm.on('update-status', function(window, pane)
   if keyTableName then
     table.insert(leftElements, { Foreground = { Color = colors_fg[4] } })
     table.insert(leftElements, { Background = { Color = colors_bg[4] } })
-    table.insert(leftElements, { Text = ' TABLE: ' .. keyTableName .. ' ' })
+    table.insert(leftElements, { Text = " TABLE: " .. keyTableName .. " " })
   end
   table.insert(leftElements, { Foreground = { Color = colors_bg[4] } })
   table.insert(leftElements, { Background = { Color = colors_bg[1] } })
-  table.insert(leftElements, { Text = SOLID_RIGHT_ARROW .. ' ' })
+  table.insert(leftElements, { Text = SOLID_RIGHT_ARROW .. " " })
 
   window:set_left_status(wezterm.format(leftElements))
 end)
