@@ -35,17 +35,6 @@ alias afk=$'osascript -e \'tell application "System Events" to key code 12 using
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 
-# Flush Directory Service cache
-alias flush="dscacheutil -flushcache"
-
-# Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
-# Empty the on the main HDD.
-# Also, clear Apple’s System Logs to improve shell startup speed.
-# Finally, clear download history from quarantine. https://mths.be/bum
-alias emptytrash="sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
-
 # Some weather forecast aliases, because fun
 alias wetter_burgdorf='curl http://wttr\.in/burgdorf'
 alias wetter_bern='curl http://wttr\.in/bern'
