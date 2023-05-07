@@ -52,6 +52,12 @@ source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/functions.zsh"
 
+# On a MacOS machine I want my macos-goodies
+if [ "$(uname -s)" = "Darwin" ] && [ ! -d "$ZDATADIR/plugins/zsh-macos-goodies" ]; then
+  git clone https://github.com/mrolli/zsh-macos-goodies.git "$ZDATADIR/plugins/zsh-macos-goodies" &>/dev/null
+fi
+source "$ZDATADIR/plugins/zsh-macos-goodies/macos-goodies.plugin.zsh"
+
 # App 3rd-party plugins
 # See https://github.com/jeffreytse/zsh-vi-mode
 if [ ! -d "$ZDATADIR/plugins/zsh-vi-mode" ]; then
