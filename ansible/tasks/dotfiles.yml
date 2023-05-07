@@ -21,7 +21,6 @@
   ansible.builtin.file:
     src: "{{ item.path }}"
     dest: "~/.config/{{ item.path | basename }}"
-    mode: 0755
     state: link
     force: true
   when: item.path | basename not in dotfiles_omit_configs
@@ -36,7 +35,6 @@
     state: link
     force: true
   loop: "{{ dotfiles_additional_symlinks }}"
-
 # - name: .ssh/config
 #   copy:
 #     src: ~/.config/.ssh.config
