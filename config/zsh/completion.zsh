@@ -26,6 +26,10 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' complete-options true
 
-if command -v op &>/dev/null; then
+if command -v op &>/dev/null 2>&1; then
   eval "$(op completion zsh)"; compdef _op op
+fi
+
+if command -v wezterm &>/dev/null 2>&1; then
+  eval "$(wezterm shell-completion --shell zsh)"
 fi
