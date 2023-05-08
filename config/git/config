@@ -32,6 +32,9 @@
     s   = status -s
     st  = status
     tag = tag -l
+    # Checkout previous and next commit
+    cop = checkout HEAD^1
+    con = "!f() { git log --reverse --pretty=%H main | grep -A 1 $(git rev-parse HEAD) | tail -n1 | xargs git checkout; }; f"
 [color]
     ui = auto
     interactive = true
