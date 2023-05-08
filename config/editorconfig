@@ -10,17 +10,11 @@ root = true
 # - Trim trailing whitespace
 [*]
 indent_style = space
-indent_size = 4
+indent_size = 2
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
-
-# But me likes less indent for many file types
-# - 2 space indent
-[*.{bash,lua,sh,yml,yaml,zsh}]
-indent_style = space
-indent_size = 2
 
 # Markdown
 # - 4 space indent
