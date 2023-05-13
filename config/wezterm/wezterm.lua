@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local keybindings = require("keybindings")
+_, wezterm.GLOBAL.platform, _ = wezterm.run_child_process({ "uname", "-s" }):gsub("%s+", "")
 
 -- Automatically start wezterm in full-screen mode
 local mux = wezterm.mux
@@ -80,12 +81,14 @@ end
 
 function update_trackinfo()
   -- local stdout = "blupp"
-  local trackinfo_script = wezterm.config_dir .. "/musicplaying"
-  local success, stdout, _ = wezterm.run_child_process({ trackinfo_script })
-  if not success or not stdout then
-    wezterm.GLOBAL.current_trackinfo = ""
+  wezterm.GLOBAL.current_trackinfo = wezterm.GLOBAL.platform
+  if wezterm.GLOBAL.platform == "Darwin" then
+    local trackinfo_script = wezterm.config_dir .. "/musicplaying"
+    local success, stdout, _ = wezterm.run_child_process({ trackinfo_script })
+    if success then
+      wezterm.GLOBAL.current_trackinfo = trim(stdout)
+    end
   end
-  wezterm.GLOBAL.current_trackinfo = trim(stdout)
 end
 
 function update_weather()
