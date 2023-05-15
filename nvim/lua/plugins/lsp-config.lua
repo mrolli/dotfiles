@@ -22,7 +22,10 @@ return {
         -- debug adapters
         -- linters
         "shellcheck",
-        -- formatters
+        -- writing
+        "proselint",
+        "write-good",
+        "alex",
       })
     end,
   },
