@@ -24,7 +24,10 @@ return {
         -- linters
         "ansible-lint",
         "shellcheck",
-        -- formatters
+        -- writing
+        "proselint",
+        "write-good",
+        "alex",
       })
     end,
   },
