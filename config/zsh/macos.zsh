@@ -17,6 +17,6 @@ command -v brew &>/dev/null && eval "$(brew shellenv)"
 
 # Make the lateest ruby version installed with brew the default
 [ -d "$HOMEBREW_PREFIX/opt/ruby/bin" ] && \
-  export PATH="/usr/local/opt/ruby/bin:$PATH"
+  export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
 
 [ -f "$HOME/.vagrant.d/vcloud_token.sh" ] && source "$HOME/.vagrant.d/vcloud_token.sh"
