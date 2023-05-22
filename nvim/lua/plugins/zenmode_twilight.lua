@@ -7,7 +7,7 @@ return {
     "folke/zen-mode.nvim",
     enabled = true,
     keys = {
-      { "<leader>wz", "<cmd>ZenMode<cr>", desc = "Toggle ZenMode" },
+      { "<leader>uz", "<cmd>ZenMode<cr>", desc = "Toggle ZenMode" },
     },
     opts = {
       window = {
@@ -22,7 +22,7 @@ return {
     "folke/twilight.nvim",
     enabled = true,
     keys = {
-      { "<leader>wt", "<cmd>Twilight<cr>", desc = "Toggle Twilight" },
+      { "<leader>ut", "<cmd>Twilight<cr>", desc = "Toggle Twilight" },
     },
     opts = { context = 12 },
   },
