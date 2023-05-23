@@ -49,3 +49,6 @@ map("v", "<leader>d", '"_d', { desc = "Delete to black hole" })
 
 -- Make file in current buffer executable
 map("n", "<leader>fx", "<cmd>silent !chmod +x %<CR>", { desc = "Make % executable" })
+
+-- Show all known snippets for the current filetype
+map("n", "<leader>cs", ":lua require('luasnip.extras.snippet_list').open()<CR>", { desc = "Show Snippet List" })
