@@ -24,6 +24,6 @@ return {
     keys = {
       { "<leader>ut", "<cmd>Twilight<cr>", desc = "Toggle Twilight" },
     },
-    opts = { context = 12 },
+    opts = { context = 6 },
   },
 }
