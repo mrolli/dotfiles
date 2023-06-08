@@ -43,3 +43,6 @@ alias wetter_bern2='curl http://v2.wttr\.in/bern'
 
 # All tldr pages with fzf preview
 alias tldrf='tldr --list | fzf --preview "tldr {1}" --preview-window=right,60% | xargs tldr'
+
+# Quicliy conect to a VM
+alias vssh='vagrant ssh'
