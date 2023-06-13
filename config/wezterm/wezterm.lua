@@ -151,7 +151,7 @@ wezterm.on("update-status", function(window, pane)
     .. LEFT_ARROW
     .. wezterm.strftime("%d.%m.%y")
     .. LEFT_ARROW
-    .. wezterm.nerdfonts.mdi_clock
+    .. wezterm.nerdfonts.md_clock
     .. " "
     .. wezterm.strftime("%R")
   table.insert(cells, datetime)
