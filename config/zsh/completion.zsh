@@ -33,3 +33,8 @@ fi
 if command -v wezterm &>/dev/null 2>&1; then
   eval "$(wezterm shell-completion --shell zsh)"
 fi
+
+if command -v az &>/dev/null 2>&1; then
+  autoload bashcompinit && bashcompinit
+  source $(brew --prefix)/etc/bash_completion.d/az
+fi
