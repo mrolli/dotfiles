@@ -103,6 +103,7 @@ end
 function update_weather()
   local success, stdout, _ = wezterm.run_child_process({
     "curl",
+    "-m 2",
     "--silent",
     "wttr.in/Burgdorf?format=%l:+%c%t%20%20%w%20%20%m",
   })
