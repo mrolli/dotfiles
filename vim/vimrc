@@ -4,13 +4,18 @@ set path+=*
 filetype plugin indent on
 syntax on
 
-" Create a stdpath equivalent and some more dirs
-let g:vim_stdpath = expand('~/.local/vim')
-let g:vim_undodir = g:vim_stdpath . '/undofiles'
-let g:vim_swapdir = g:vim_stdpath . '/swap'
+" Create a share and state dir equivalent and some more dirs
+let g:vim_sharepath = expand('~/.local/share/vim')
+let g:vim_statepath = expand('~/.local/state/vim')
+let g:vim_undodir = g:vim_statepath . '/undofiles'
+let g:vim_swapdir = g:vim_statepath . '/swap'
 
-if isdirectory(g:vim_stdpath) == 0
-  execute '!mkdir ' . g:vim_stdpath
+if isdirectory(g:vim_sharepath) == 0
+  execute '!mkdir ' . g:vim_sharepath
+endif
+
+if isdirectory(g:vim_statepath) == 0
+  execute '!mkdir ' . g:vim_statepath
 endif
 
 if isdirectory(g:vim_undodir) == 0
@@ -30,7 +35,7 @@ if empty(glob(g:vim_plug_path))
 endif
 
 " Plugins will be downloaded under the specified directory.
-call plug#begin(g:vim_stdpath . '/plugins')
+call plug#begin(g:vim_sharepath . '/plugins')
 " Declare the list of plugins.
 " General Plugins
 Plug 'sainnhe/gruvbox-material'
