@@ -1,4 +1,5 @@
 config/asciinema/install-id
+config/gh/hosts.yml
 config/karabiner/automatic_backups/
 config/zsh/.zsh_sessions/
 vim/autoload
