@@ -38,3 +38,7 @@ if command -v az &>/dev/null 2>&1; then
   autoload bashcompinit && bashcompinit
   source $(brew --prefix)/etc/bash_completion.d/az
 fi
+
+if command -v terraform &>/dev/null 2>&1; then
+  complete -C /usr/local/bin/terraform terraform
+fi
