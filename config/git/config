@@ -8,6 +8,7 @@
     ci  = commit -v
     cia = commit -v --amend
     co  = checkout
+    contribs = shortlog --summary --numbered --email
     # Diff current HEAD to common ancestor of current HEAD and main
     dam = "!f() { git diff $(git merge-base main HEAD)..HEAD; }; f"
     # Find branches containing commit
