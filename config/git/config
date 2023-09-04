@@ -8,6 +8,7 @@
     ci  = commit -v
     cia = commit -v --amend
     co  = checkout
+    # Show contributors on current branch with number of commits
     contribs = shortlog --summary --numbered --email
     # Diff current HEAD to common ancestor of current HEAD and main
     dam = "!f() { git diff $(git merge-base main HEAD)..HEAD; }; f"
@@ -20,9 +21,12 @@
     fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
     # Find commits by commit message
     fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+    # Show 20 commits on current branch on one line with commit graph
     l  = log --pretty=oneline -n 20 --graph --abbrev-commit
-    ld = log --follow -p --stat --
+    # Same as above but with more infos like date and contributor
     lg = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    # Show commits with diff the given file was involved in
+    ld = log --follow -p --stat --
     # Print current worktree's top-level directory
     r = "!f() { local tl=$(git rev-parse --show-toplevel); echo ${tl##*/}; }; f"
     # Interactive rebase with the given number of latest commits.
@@ -33,8 +37,9 @@
     s   = status -s
     st  = status
     tag = tag -l
-    # Checkout previous and next commit
+    # Checkout previous commit on current branch
     cop = checkout HEAD^1
+    # Checkout next commit on current branch
     con = "!f() { git log --reverse --pretty=%H main | grep -A 1 $(git rev-parse HEAD) | tail -n1 | xargs git checkout; }; f"
 [color]
     ui = auto
