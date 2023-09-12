@@ -27,7 +27,7 @@ return {
     { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
     { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "w", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
-    { key = "x", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
+    { key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
     { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
     { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
     { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
