@@ -82,20 +82,20 @@ return {
 
   -- Activate additional builtin sources
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     opts = function(_, opts)
       -- Make gqq work again, see https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
       require("lazyvim.util").on_attach(function(client, buf)
-        if client.name == "null-ls" then
+        if client.name == "none-ls" then
           if
-            not require("null-ls.generators").can_run(vim.bo[buf].filetype, require("null-ls.methods").lsp.FORMATTING)
+            not require("none-ls.generators").can_run(vim.bo[buf].filetype, require("none-ls.methods").lsp.FORMATTING)
           then
             vim.bo[buf].formatexpr = nil
           end
         end
       end)
 
-      local nls = require("null-ls")
+      local nls = require("none-ls")
       vim.list_extend(opts.sources, {
         nls.builtins.diagnostics.markdownlint,
         nls.builtins.diagnostics.selene.with({
