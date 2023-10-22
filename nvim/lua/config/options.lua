@@ -7,6 +7,8 @@
 vim.opt.clipboard = ""
 -- add a highlighted column
 vim.opt.colorcolumn = "80"
+-- turn off formatting on save
+vim.g.autoformat = false
 
 -- configure folding for Treesitter usage
 vim.opt.foldmethod = "expr"
@@ -26,11 +28,11 @@ vim.opt.wildignore = {
 }
 vim.opt.pumblend = 10 -- make pop-up menu slightly transparent
 
- -- Custom filetypes
+-- Custom filetypes
 vim.filetype.add({
   pattern = {
-    ['.*/ansible.*/.*%.ya?ml'] = 'yaml.ansible',
-    ['.*/playbooks/.*%.ya?ml'] = 'yaml.ansible',
-    ['.*/roles/.*%.ya?ml'] = 'yaml.ansible',
+    [".*/ansible.*/.*%.ya?ml"] = "yaml.ansible",
+    [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*%.ya?ml"] = "yaml.ansible",
   },
 })
