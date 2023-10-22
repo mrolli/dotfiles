@@ -64,3 +64,5 @@ MD5
 ProxyCommand
 ProxyJump
 OpenSSH
+Nginx
+TrueNAS
