@@ -76,6 +76,9 @@ source "$ZDATADIR/plugins/wezterm.sh"
 # build the PATH variable
 PATH=~/.local/bin:$PATH
 
+# Add Go binary path
+[ -d "$HOME/go/bin" ] && PATH="$HOME/go/bin:$PATH"
+
 # Add direnv hook
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 
