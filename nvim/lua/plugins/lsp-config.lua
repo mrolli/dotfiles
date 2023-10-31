@@ -68,6 +68,8 @@ return {
             },
           },
         },
+        terraformls = {},
+        tflint = {},
         yamlls = {
           settings = {
             yaml = {
@@ -78,4 +80,17 @@ return {
       },
     },
   },
+
+  -- additional options for terraform
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        terraform = { "terraform_fmt" },
+        tf = { "terraform_fmt" },
+        ["terraform-vars"] = { "terraform_fmt" },
+      },
+    },
+  }
 }
