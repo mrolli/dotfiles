@@ -22,6 +22,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   command = "set tw=80",
 })
 
+-- Empty formatexpr for markdwon files to make gqq and gqap work again
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "markdown" },
+  command = "set formatexpr="
+})
+
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
   pattern = "*",
   command = 'if &nu && mode() != "i" | set rnu   | endif',
