@@ -27,6 +27,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "markdown" },
   command = "set formatexpr="
 })
+-- Empty formatexpr for LSP buffers to make gqq and gqap work again
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   callback = function(args)
+--     vim.bo[args.buf].formatexpr = nil
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
   pattern = "*",
