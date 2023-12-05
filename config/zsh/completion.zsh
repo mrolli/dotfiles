@@ -40,5 +40,5 @@ if command -v az &>/dev/null 2>&1; then
 fi
 
 if command -v terraform &>/dev/null 2>&1; then
-  complete -C /usr/local/bin/terraform terraform
+  complete -C $(command -v terraform) terraform
 fi
