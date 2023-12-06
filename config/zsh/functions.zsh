@@ -40,6 +40,17 @@ function week {
   [ -z "${1}" ] && $datecmd +%V || $datecmd --date="${1}" +%V
 }
 
+# print SSL certificate of remote website
+function https-cert {
+  if [ $# -ne 1 ]
+  then
+    echo "Usage: https-cert HOST"
+    return
+  fi
+
+  openssl s_client -showcerts -servername "${1}" -connect "${1}":443 < /dev/null 2>/dev/null | openssl x509 -inform pem -noout -text
+}
+
 # load a local tmuxp config file in a directory by first changing pwd
 function tmuxpl {
   # Show usage if no argument is provided
