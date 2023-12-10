@@ -24,12 +24,12 @@ map("n", "N", "Nzzzv")
 map("n", "gd", "gdzzzv")
 
 -- Move Lines
--- map("n", "∆", "<cmd>m .+1<cr>==", { desc = "Move down" })
--- map("n", "˚", "<cmd>m .-2<cr>==", { desc = "Move up" })
--- map("i", "∆", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
--- map("i", "˚", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
--- map("v", "∆", ":m '>+1<cr>gv=gv", { desc = "Move down" })
--- map("v", "˚", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+map("n", "∆", "<cmd>m .+1<cr>==", { desc = "Move down" })
+map("n", "˚", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("i", "∆", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+map("i", "˚", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+map("v", "∆", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+map("v", "˚", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 --[[
   Using leader + y/Y to yank to unnameplus or paste from unnamedplus register.
