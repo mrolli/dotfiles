@@ -4,7 +4,7 @@
 
 -- no automatic system clipboard usage
 -- see also keybindings regarding yanking
--- vim.opt.clipboard = ""
+vim.opt.clipboard = ""
 -- add a highlighted column
 vim.opt.colorcolumn = "80"
 -- turn off formatting on save
