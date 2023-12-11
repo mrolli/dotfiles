@@ -54,6 +54,7 @@
     autocrlf = input
     editor = nvim
     excludesfile = ~/.config/git/global-ignore
+    pager = delta
 [grep]
     lineNumber = true
 [pack]
@@ -61,9 +62,9 @@
 [diff]
     renamelimit = 0
     renames = copies
+    colorMoved = default
 [merge]
-    log = true
-    tool = opendiff
+    conflictstyle = diff3
 [commit]
     template = ~/.config/git/message-template
     gpgSign = true
@@ -97,3 +98,11 @@
     defaultBranch = main
 [pull]
     ff = only
+[delta]
+    navigate = true
+    line-numbers = true
+    syntax-theme = gruvbox-dark
+    side-by-side = false
+    file-modified-label = modified:
+[interactive]
+    diffFilter = delta --color-only
