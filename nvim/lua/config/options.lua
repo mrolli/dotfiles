@@ -9,6 +9,8 @@ vim.opt.clipboard = ""
 vim.opt.colorcolumn = "80"
 -- turn off formatting on save
 -- vim.g.autoformat = false
+-- configure spellcheck to use both english and german
+vim.opt.spelllang = { "en", "de" }
 
 -- configure wildmenu related options
 -- vim.opt.wildmode = "full"
