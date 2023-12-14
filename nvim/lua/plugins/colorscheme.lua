@@ -1,10 +1,6 @@
 -- Setup gruvbox-material colorscheme by sainnhe
 -- see https://github.com/sainnhe/gruvbox-material
 
-if true then
-  return {}
-end
-
 return {
   -- use gruvbox-material
   {
