@@ -96,15 +96,19 @@
 [pull]
     ff = only
 [interactive]
-    diffFilter = delta --diff-so-fancy --features=chamaeleon
+    diffFilter = delta --diff-highlight --features=interactive
 [delta]
+    features = mychama
+[delta "interactive"]
+    keep-plus-minus-markers = false
+[delta "mychama"]
     # Based on theme chamaleon with little changes
     dark = true
     navigate = true
     line-numbers = true
     side-by-side = false
     keep-plus-minus-markers = false
-    syntax-theme = Nord
+    syntax-theme = gruvbox-dark
     file-style = bright-yellow bold
     file-decoration-style = bright-yellow ul
     file-added-label = [+]
@@ -126,7 +130,7 @@
     plus-style = bold green
     plus-emph-style = bold "#202020" "#50FA7B"
     plus-non-emph-style = bold
-    zero-style = syntax
+    zero-style = "#434C5E" italic
     blame-code-style = syntax
     blame-format = "{author:<18} ({commit:>9}) {timestamp:^16}"
     blame-palette = "#2E3440" "#3B4252" "#434C5E" "#4C566A"
