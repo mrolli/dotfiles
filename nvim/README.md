@@ -14,6 +14,7 @@ The following LazyVim Extras are activated in `nvim/lua/config/lazy.lua`:
 * lazyvim.plugins.extras.lang.markdown
 * lazyvim.plugins.extras.lang.terraform
 * lazyvim.plugins.extras.lang.yaml
+* lazyvim.plugins.extras.util.project
 
 ## Additional plugins
 
