@@ -20,7 +20,6 @@ return {
         "bash-language-server",
         "intelephense",
         "lua-language-server",
-        "yaml-language-server",
         -- debug adapters
         -- linters
         "ansible-lint",
@@ -46,13 +45,6 @@ return {
               diagnostics = {
                 disable = { "lowercase-global" },
               },
-            },
-          },
-        },
-        yamlls = {
-          settings = {
-            yaml = {
-              keyOrdering = false,
             },
           },
         },

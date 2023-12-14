@@ -10,7 +10,10 @@ see `lua/plugins/*.lua`.
 
 The following LazyVim Extras are activated in `nvim/lua/config/lazy.lua`:
 
+* lazyvim.plugins.extras.editor.navic
 * lazyvim.plugins.extras.lang.markdown
+* lazyvim.plugins.extras.lang.terraform
+* lazyvim.plugins.extras.lang.yaml
 
 ## Additional plugins
 
