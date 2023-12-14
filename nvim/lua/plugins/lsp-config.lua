@@ -18,6 +18,7 @@ return {
         -- language servers
         "ansible-language-server",
         "bash-language-server",
+        "intelephense",
         "lua-language-server",
         "yaml-language-server",
         -- debug adapters
