@@ -4,9 +4,15 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-      build = ":Copilot auth",
-      opts = {
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        panel = {
+          enabled = false,
+        },
+        enabled = false,
         suggestion = {
           enabled = true,
           auto_trigger = true,
@@ -18,7 +24,6 @@ return {
             dismiss = "<C-d",
           },
         },
-        panel = { enabled = false },
         filetypes = {
           yaml = true,
           markdown = false,
@@ -27,6 +32,7 @@ return {
           gitrebase = false,
           ["."] = false,
         },
-      },
-  }
+      })
+    end,
+  },
 }

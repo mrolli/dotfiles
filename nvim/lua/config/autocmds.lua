@@ -1,7 +1,6 @@
 -- Autocmds are automatically loaded on the VeryLazy event
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
--- See https://neovim.io/doc/user/autocmd.html
 
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = { "*.json", "*.jsonc" },
@@ -25,8 +24,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 -- Empty formatexpr for markdwon files to make gqq and gqap work again
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "markdown" },
-  command = "set formatexpr="
+  command = "set formatexpr=",
 })
+
 -- Empty formatexpr for LSP buffers to make gqq and gqap work again
 -- vim.api.nvim_create_autocmd('LspAttach', {
 --   callback = function(args)
@@ -34,11 +34,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 --   end,
 -- })
 
+-- Set relative line numbers when not in insert mode
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
   pattern = "*",
   command = 'if &nu && mode() != "i" | set rnu   | endif',
 })
 
+-- Set absolute line numbers when in insert mode
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
   pattern = "*",
   command = "if &nu | set nornu | endif",

@@ -9,18 +9,8 @@ local diag_format = function(d)
 end
 
 return {
-  -- Show error code in virtual text output
-  {
-    "neovim/nvim-lspconfig",
-    enabled = true,
-    opts = {
-      virtual_text = {
-        format = diag_format,
-      },
-    },
-  },
-
-  -- Automatically intall addditional language server, debug adapters, linters and formatters
+  -- Automatically intall addditional language server,
+  -- debug adapters, linters and formatters
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
@@ -28,24 +18,13 @@ return {
         -- language servers
         "ansible-language-server",
         "bash-language-server",
-        "css-lsp",
-        "intelephense",
         "lua-language-server",
-        "pyright",
-        "solargraph",
         "yaml-language-server",
         -- debug adapters
         -- linters
         "ansible-lint",
-        "flake8",
-        "markdownlint",
-        "rubocop",
-        "selene",
         "shellcheck",
         -- formatters
-        "isort",
-        "stylua",
-        "shfmt",
       })
     end,
   },
@@ -54,11 +33,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      -- ---@type lspconfig.options
+      -- -@type lspconfig.options
+      -- Show error code in virtual text output
+      virtual_text = {
+        format = diag_format,
+      },
       servers = {
-        ansiblels = {},
-        bashls = {},
-        pyright = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -68,8 +48,6 @@ return {
             },
           },
         },
-        terraformls = {},
-        tflint = {},
         yamlls = {
           settings = {
             yaml = {
@@ -80,17 +58,4 @@ return {
       },
     },
   },
-
-  -- additional options for terraform
-  {
-    "stevearc/conform.nvim",
-    optional = true,
-    opts = {
-      formatters_by_ft = {
-        terraform = { "terraform_fmt" },
-        tf = { "terraform_fmt" },
-        ["terraform-vars"] = { "terraform_fmt" },
-      },
-    },
-  }
 }

@@ -1,3 +1,6 @@
+-- Setup gruvbox-material colorscheme by sainnhe
+-- see https://github.com/sainnhe/gruvbox-material
+
 return {
   -- use gruvbox-material
   {
@@ -9,7 +12,7 @@ return {
       vim.g.gruvbox_material_background = "soft"
       vim.g.gruvbox_material_enable_bold = 1
       vim.g.gruvbox_material_enable_itablic = 1
-      -- vim.g.gruvbox_material_visual = 'blue background'
+      -- vim.g.gruvbox_material_visual = "blue background"
       vim.g.gruvbox_material_spell_foreground = "colored"
       vim.g.gruvbox_material_ui_contrast = "low"
       vim.g.gruvbox_material_diagnostic_text_highlight = 1

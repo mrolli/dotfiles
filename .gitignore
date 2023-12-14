@@ -3,8 +3,6 @@ config/gh/hosts.yml
 config/karabiner/automatic_backups/
 config/zsh/.zsh_sessions/
 vim/autoload
-*.spl
-*.sug
 
 # Files installed by pip installed packages
 ghp-import

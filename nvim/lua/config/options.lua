@@ -8,24 +8,21 @@ vim.opt.clipboard = ""
 -- add a highlighted column
 vim.opt.colorcolumn = "80"
 -- turn off formatting on save
-vim.g.autoformat = false
-
--- configure folding for Treesitter usage
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 7
+-- vim.g.autoformat = false
+-- configure spellcheck to use both english and german
+vim.opt.spelllang = { "en", "de" }
 
 -- configure wildmenu related options
-vim.opt.wildmode = "full"
-vim.opt.wildoptions = "pum"
-vim.opt.wildignore = {
-  "*~",
-  "**/.git/*",
-  "**/.vagrant/*",
-  "*.o",
-  "*.pyc",
-  "*pycache*",
-}
+-- vim.opt.wildmode = "full"
+-- vim.opt.wildoptions = "pum"
+-- vim.opt.wildignore = {
+--   "*~",
+--   "**/.git/*",
+--   "**/.vagrant/*",
+--   "*.o",
+--   "*.pyc",
+--   "*pycache*",
+-- }
 vim.opt.pumblend = 10 -- make pop-up menu slightly transparent
 
 -- Custom filetypes

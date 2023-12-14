@@ -23,7 +23,6 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("n", "gd", "gdzzzv")
 
--- Move Lines
 map("n", "∆", "<cmd>m .+1<cr>==", { desc = "Move down" })
 map("n", "˚", "<cmd>m .-2<cr>==", { desc = "Move up" })
 map("i", "∆", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
@@ -34,9 +33,9 @@ map("v", "˚", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 --[[
   Using leader + y/Y to yank to unnameplus or paste from unnamedplus register.
   The register unnamedplus is the system's clipboard and is the default
-  clipboard register in lvim, but I don't like that.
-  Therefore clipboard is changed to unnamed (see lua/user/neovim.lua) and these
-  additional mappings using the leader key are in place to yank to and paste
+  clipboard register in LazyVim, but I don't like that.
+  Therefore clipboard is changed to empty value (see lua/config/options.lua) and these
+  additional mappings below using the leader key are in place to yank to and paste
   from the unnamedplus register.
   Found at https://github.com/LunarVim/LunarVim/issues/930#issuecomment-890597260
   ]]
