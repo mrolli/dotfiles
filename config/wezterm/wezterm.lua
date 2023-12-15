@@ -87,7 +87,7 @@ config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = keybindings.keys
 config.key_tables = keybindings.key_tables
 -- option key behaviour - https://wezfurlong.org/wezterm/config/keyboard-concepts.html#macos-left-and-right-option-key
-config.send_composed_key_when_left_alt_is_pressed = true
+-- config.send_composed_key_when_left_alt_is_pressed = true
 
 function update_trackinfo()
   wezterm.GLOBAL.current_trackinfo = wezterm.GLOBAL.platform
