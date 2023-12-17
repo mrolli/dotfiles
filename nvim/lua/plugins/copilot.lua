@@ -1,6 +1,10 @@
 -- Setup Github Copilot plugin
 -- see https://github.com/zbirenbaum/copilot.lua
 
+if true then
+  return {}
+end
+
 return {
   {
     "zbirenbaum/copilot.lua",
