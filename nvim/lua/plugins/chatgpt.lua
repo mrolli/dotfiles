@@ -1,6 +1,10 @@
 -- Setup ChatGPT.vim plugin
 -- see https://github.com/jackMort/ChatGPT.nvim
 
+if true then
+  return {}
+end
+
 return {
   {
     "jackMort/ChatGPT.nvim",
