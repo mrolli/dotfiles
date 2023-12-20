@@ -43,6 +43,9 @@ map("n", "<M-Right>", "<cmd>vertical resize -2<cr>", { desc = "Increase window w
 map("n", "+", "<C-a>", { desc = "Increment" })
 map("n", "-", "<C-x>", { desc = "Decrement" })
 
+-- Select all text in buffer
+map("n", "<C-a>", "ggVG", { desc = "Select all" })
+
 -- Yank to system clipboard
 map("n", "<leader>y", '"+y', { desc = "Yank to clipboard" })
 map("n", "<leader>yy", '"+yy', { desc = "Yank line to clipboard" })
