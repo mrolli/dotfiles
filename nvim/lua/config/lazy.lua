@@ -9,9 +9,17 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = {
-      colorscheme = "gruvbox-material",
-    } },
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+      opts = {
+        colorscheme = "gruvbox-material",
+        news = {
+          lazyvim = true,
+          neovim = true,
+        },
+      },
+    },
     -- import any extras modules here
     { import = "lazyvim.plugins.extras.editor.navic" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
