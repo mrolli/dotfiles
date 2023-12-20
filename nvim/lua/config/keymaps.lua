@@ -39,6 +39,10 @@ map("n", "<M-Right>", "<cmd>vertical resize -2<cr>", { desc = "Increase window w
   Found at https://github.com/LunarVim/LunarVim/issues/930#issuecomment-890597260
   ]]
 
+-- Increment/decrement
+map("n", "+", "<C-a>", { desc = "Increment" })
+map("n", "-", "<C-x>", { desc = "Decrement" })
+
 -- Yank to system clipboard
 map("n", "<leader>y", '"+y', { desc = "Yank to clipboard" })
 map("n", "<leader>yy", '"+yy', { desc = "Yank line to clipboard" })
