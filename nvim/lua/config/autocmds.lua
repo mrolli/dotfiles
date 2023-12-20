@@ -27,6 +27,15 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   command = "set formatexpr=",
 })
 
+-- Disable the concealing in some file formats
+-- The default conceallevel is 3 in LazyVim
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "json", "jsonc" },
+  callback = function()
+    vim.opt.conceallevel = 0
+  end,
+})
+
 -- Empty formatexpr for LSP buffers to make gqq and gqap work again
 -- vim.api.nvim_create_autocmd('LspAttach', {
 --   callback = function(args)
