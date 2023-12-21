@@ -27,7 +27,7 @@ unset file
 INPUTRC=${XDG_CONFIG_HOME:-$HOME/.config}"/bash/inputrc"
 
 # GOPATH initialization
-if which go >/dev/null 2>&1
+if which go $>/dev/null
 then
    export GOPATH=$HOME/Developer/go
    PATH="${GOPATH/bin}":$PATH
@@ -35,11 +35,16 @@ fi
 
 
 # Activate terraform autocompletion if avaialble
-if command -v terraform >/dev/null 2>&1
+if command -v terraform $>/dev/null
 then
   complete -C "$(command -v terraform)" terraform
 fi
 
+# Activate packer autocompletion if avaialble
+if command -v packer &>/dev/null
+then
+  complete -C "$(command -v packer)" packer
+fi
 
 # git-achievements
 if [ -d $HOME/.config/git-achieve ]
