@@ -26,19 +26,28 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' complete-options true
 
-if command -v op &>/dev/null 2>&1; then
+# Activate 1password autocompletion if 1password is avaialble
+if command -v op &>/dev/null; then
   eval "$(op completion zsh)"; compdef _op op
 fi
 
-if command -v wezterm &>/dev/null 2>&1; then
+# Activate wezterm autocompletion if wezterm is avaialble
+if command -v wezterm &>/dev/null; then
   eval "$(wezterm shell-completion --shell zsh)"
 fi
 
-if command -v az &>/dev/null 2>&1; then
+# Activate azure autocompletion if az is avaialble
+if command -v az &>/dev/null; then
   autoload bashcompinit && bashcompinit
   source $(brew --prefix)/etc/bash_completion.d/az
 fi
 
-if command -v terraform &>/dev/null 2>&1; then
-  complete -C $(command -v terraform) terraform
+# Activate terraform autocompletion if terraform is avaialble
+if command -v terraform &>/dev/null; then
+  complete -C "$(command -v terraform)" terraform
+fi
+
+# Activate packer autocompletion if packer is avaialble
+if command -v packer &>/dev/null; then
+  complete -C "$(command -v packer)" packer
 fi
