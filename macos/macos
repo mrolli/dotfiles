@@ -23,7 +23,6 @@
 # @author Michael Rolli
 #   based on the very same file of Jeff Geerling. Kudos
 
-
 # Warn that some commands will not be run if the script is not run as root.
 if [[ $EUID -ne 0 ]]; then
   RUN_AS_ROOT=false
@@ -31,7 +30,11 @@ if [[ $EUID -ne 0 ]]; then
 else
   RUN_AS_ROOT=true
   # Update existing `sudo` timestamp until `.macos` has finished
-  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+  while true; do
+    sudo -n true
+    sleep 60
+    kill -0 "$$" || exit
+  done 2>/dev/null &
 fi
 
 # Close any open System Preferences panes, to prevent them from overriding settings we’re about to change
@@ -189,6 +192,7 @@ defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 # Show the ~/Library folder
 chflags nohidden ~/Library
 exit
+
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
@@ -268,7 +272,7 @@ if [[ "$RUN_AS_ROOT" = true ]]; then
   sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 
   # Restart spotlight
-  killall mds > /dev/null 2>&1
+  killall mds >/dev/null 2>&1
 fi
 
 ###############################################################################
@@ -292,13 +296,41 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 ###############################################################################
+# Time Machine                                                                #
+###############################################################################
+
+# Prevent Time Machine from prompting to use new hard drives as backup volume
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+# Ignore certain paths from Time Machine backupss
+defaults write /Library/Preferences/com.apple.TimeMachine SkipPaths
+
+defaults write com.apple.TimeMachine SkipPaths -array \
+  "~mrolli/.ansible" \
+  "~mrolli/.ansible_async" \
+  "~mrolli/.cache" \
+  "~mrolli/.cargo" \
+  "~mrolli/.conda" \
+  "~mrolli/.docker" \
+  "~mrolli/.local" \
+  "~mrolli/.npm" \
+  "~mrolli/.packer.d" \
+  "~mrolli/.vagrant" \
+  "~mrolli/.vagrant.d" \
+  "~mrolli/Downloads/NoBackup" \
+  "~mrolli/VirtualBox VMs"
+
+# Disable local Time Machine backups
+#hash tmutil &> /dev/null && sudo tmutil disablelocal
+
+###############################################################################
 # Kill/restart affected applications                                          #
 ###############################################################################
 
 # Restart affected applications if `--no-restart` flag is not present.
 if [[ ! ($* == *--no-restart*) ]]; then
   for app in "cfprefsd" "Dock" "Finder" "Mail" "SystemUIServer" "Terminal"; do
-    killall "${app}" > /dev/null 2>&1
+    killall "${app}" >/dev/null 2>&1
   done
 fi
 
