@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- Empty formatexpr for markdwon files to make gqq and gqap work again
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "markdown" },
+  pattern = { "markdown", "gitcommit" },
   command = "set formatexpr=",
 })
 
