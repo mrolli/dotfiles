@@ -191,7 +191,6 @@ defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
-exit
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -206,16 +205,13 @@ defaults write com.apple.dock "autohide-time-modifier" -float "0"
 defaults write com.apple.dock "autohide-delay" -float "0"
 
 # Set the icon size of Dock items
-defaults write com.apple.dock tilesize -int 30
+defaults write com.apple.dock tilesize -int 36
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.15
 
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
-
-# Enable the 'reduce transparency' option. Save GPU cycles.
-defaults write com.apple.universalaccess reduceTransparency -bool true
 
 # Hot corners
 # Possible values:
@@ -238,28 +234,6 @@ defaults write com.apple.universalaccess reduceTransparency -bool true
 # Bottom left screen corner → Desktop
 #defaults write com.apple.dock wvous-bl-corner -int 4
 #defaults write com.apple.dock wvous-bl-modifier -int 0
-
-###############################################################################
-# Safari & WebKit                                                             #
-###############################################################################
-
-# Enable the Develop menu and the Web Inspector in Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-
-# Add a context menu item for showing the Web Inspector in web views
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-# Open applicaiton links in new tab
-defaults write com.apple.Safari TargetedClicksCreateTabs -bool true
-
-###############################################################################
-# Mail                                                                        #
-###############################################################################
-
-# Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
-defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 ###############################################################################
 # Spotlight                                                                   #
@@ -303,8 +277,6 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Ignore certain paths from Time Machine backupss
-defaults write /Library/Preferences/com.apple.TimeMachine SkipPaths
-
 defaults write com.apple.TimeMachine SkipPaths -array \
   "~mrolli/.ansible" \
   "~mrolli/.ansible_async" \
