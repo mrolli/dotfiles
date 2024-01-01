@@ -286,6 +286,7 @@ defaults write com.apple.TimeMachine SkipPaths -array \
   "~mrolli/.docker" \
   "~mrolli/.local" \
   "~mrolli/.npm" \
+  "~mrolli/.ollama/models" \
   "~mrolli/.packer.d" \
   "~mrolli/.vagrant" \
   "~mrolli/.vagrant.d" \
