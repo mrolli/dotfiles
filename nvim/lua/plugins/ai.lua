@@ -12,18 +12,19 @@ return {
     keys = {
       { "<leader>ap", ":Gen<CR>", mode = { "n", "v" }, desc = "Select Gen command" },
     },
-    opts = {
-      model = "mistral",
-      -- The display mode can be "float" or "split"
-      display_mode = "split",
-      show_prompt = false,
-    },
     config = function()
-      require("gen").prompts["Ask the DevOps Engineer"] = {
+      local gen = require("gen")
+      gen.setup({
+        model = "mistral",
+        -- The display mode can be "float" or "split"
+        display_mode = "split",
+        show_prompt = false,
+      })
+      gen.prompts["Ask the DevOps Engineer"] = {
         prompt = "You are a senior devops engineer, acting as an assistant. You offer help with cloud technologies like: Terraform, Packer, Azure, Ansible, Bash, Python, HCL. You answer with code examples when possible. $input:\n$text",
         replace = true,
       }
-      require("gen").prompts["Make_Style"] = {
+      gen.prompts["Make_Style"] = {
         prompt = "Transform the following text into the styole of $input:\n$text",
         replace = true,
       }
