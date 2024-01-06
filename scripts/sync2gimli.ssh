@@ -10,19 +10,17 @@ print_usage() {
 verbosity="-q"
 dryrun=""
 
-while getopts hnv option
-do
+while getopts hnv option; do
   case "${option}" in
-    h) print_usage;;
-    n) dryrun="-n";;
-    v) verbosity="--progress --stats";;
-    ?) print_usage;;
+  h) print_usage ;;
+  n) dryrun="-n" ;;
+  v) verbosity="--progress --stats" ;;
+  ?) print_usage ;;
   esac
 done
 
-rsync_cmd="$(brew --prefix)/bin/rsync -av --delete --rsync-path=/opt/homebrew/bin/rsync --iconv=utf8-mac ${verbosity} ${dryrun}"
-if [ "$verbosity" != "-q" ]
-then
+rsync_cmd="$(brew --prefix)/bin/rsync -av --delete --rsync-path=/opt/homebrew/bin/rsync ${verbosity} ${dryrun}"
+if [ "$verbosity" != "-q" ]; then
   echo "Backup destination host: ${backup_host}"
   echo "Using Rsync command: ${rsync_cmd}"
 fi
