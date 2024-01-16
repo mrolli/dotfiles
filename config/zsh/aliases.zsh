@@ -51,7 +51,7 @@ alias vssh='vagrant ssh'
 # extension installed
 if command -v gh &> /dev/null
 then
-  if gh extension list | grep -q "github/copilot"; then
+  if ! gh extension list | grep -q "github/gh-copilot"; then
     gh extension install github/gh-copilot
   fi
   alias \?\?="gh copilot suggest -t shell"
