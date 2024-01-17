@@ -44,6 +44,9 @@ osascript -e 'tell application "System Preferences" to quit'
 # General UI/UX                                                               #
 ###############################################################################
 
+# Set system appearance theme to dark mode
+defaults write -g AppleInterfaceStyle "Dark"
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
