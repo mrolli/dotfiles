@@ -47,8 +47,7 @@ alias tldrf='tldr --list | fzf --preview "tldr {1}" --preview-window=right,60% |
 # Quicliy conect to a VM
 alias vssh='vagrant ssh'
 
-# Some GitHub copilot aliases; make sure to have the GitHub CLI and the Copilot
-# extension installed
+# Some GitHub copilot aliases if gh is available
 if command -v gh &> /dev/null
 then
   if ! gh extension list | grep -q "github/gh-copilot"; then
@@ -57,4 +56,5 @@ then
   alias \?\?="gh copilot suggest -t shell"
   alias git\?="gh copilot suggest -t git"
   alias gh\?="gh copilot suggest -t gh"
+  alias ghe="GH_HOST=github.unibe.ch gh"
 fi
