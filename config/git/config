@@ -130,7 +130,7 @@
     plus-style = bold green
     plus-emph-style = bold "#202020" "#50FA7B"
     plus-non-emph-style = bold
-    zero-style = "#434C5E" italic
+    zero-style = "#a89984" italic
     blame-code-style = syntax
     blame-format = "{author:<18} ({commit:>9}) {timestamp:^16}"
     blame-palette = "#2E3440" "#3B4252" "#434C5E" "#4C566A"
