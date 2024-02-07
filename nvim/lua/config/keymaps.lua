@@ -65,3 +65,6 @@ map("n", "<leader>fx", "<cmd>silent !chmod +x %<CR>", { desc = "Make % executabl
 
 -- Show all known snippets for the current filetype
 map("n", "<leader>cs", ":lua require('luasnip.extras.snippet_list').open()<CR>", { desc = "Show Snippet List" })
+
+-- Align markdown tables using pa'doc
+map("v", "<leader>ct", "!pandoc -t markdown-simple_tables<CR>", { desc = "Align selected md table using pandoc" })
