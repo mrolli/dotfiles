@@ -27,6 +27,8 @@
     lg = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     # Show commits with diff the given file was involved in
     ld = log --follow -p --stat --
+    # Make sure to not overwrite new remote changes
+    fpush = push --force-with-lease --force-if-includes
     # Print current worktree's top-level directory
     r = "!f() { local tl=$(git rev-parse --show-toplevel); echo ${tl##*/}; }; f"
     # Interactive rebase with the given number of latest commits.
