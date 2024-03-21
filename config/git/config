@@ -64,6 +64,8 @@
     colorMoved = default
 [merge]
     conflictstyle = diff3
+[rebase]
+    autostash = true
 [commit]
     template = ~/.config/git/message-template
     gpgSign = true
