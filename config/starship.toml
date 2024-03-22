@@ -45,6 +45,9 @@ ssh_only = false
 ssh_symbol = " "
 style = "green"
 
+[terraform]
+format = 'via [$symbol$version \($workspace\)]($style) '
+
 [username]
 format = "[$user]($style) at "
 show_always = true
