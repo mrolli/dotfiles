@@ -11,7 +11,7 @@ palette = "gruvbox-dark"
 
 [azure]
 disabled = false
-format = 'on [$symbol$subscription]($style) as [$symbol$username]($style) '
+format = 'on [$symbol$subscription]($style) '
 
 [character] # The name of the module we are configuring is "character"
 success_symbol = "[➜](bold green)"
