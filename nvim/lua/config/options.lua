@@ -13,17 +13,17 @@ vim.opt.colorcolumn = "80"
 vim.opt.spelllang = { "en", "de" }
 
 -- configure wildmenu related options
--- vim.opt.wildmode = "full"
+vim.opt.wildmode = "full"
 -- vim.opt.wildoptions = "pum"
--- vim.opt.wildignore = {
---   "*~",
---   "**/.git/*",
---   "**/.vagrant/*",
---   "*.o",
---   "*.pyc",
---   "*pycache*",
--- }
-vim.opt.pumblend = 10 -- make pop-up menu slightly transparent
+vim.opt.wildignore = {
+  "*~",
+  "**/.git/*",
+  "**/.vagrant/*",
+  "*.o",
+  "*.pyc",
+  "*pycache*",
+}
+-- vim.opt.pumblend = 10 -- make pop-up menu slightly transparent
 
 -- Custom filetypes
 vim.filetype.add({
