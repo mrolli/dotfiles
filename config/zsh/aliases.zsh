@@ -53,8 +53,9 @@ then
   if ! gh extension list | grep -q "github/gh-copilot"; then
     gh extension install github/gh-copilot
   fi
-  alias \?\?="gh copilot suggest -t shell"
-  alias git\?="gh copilot suggest -t git"
-  alias gh\?="gh copilot suggest -t gh"
+  eval "$(gh copilot alias -- zsh)"
+  alias \?\?="ghcs -t shell"
+  alias git\?="ghcs -t git"
+  alias gh\?="ghcs -t gh"
   alias ghe="GH_HOST=github.unibe.ch gh"
 fi
