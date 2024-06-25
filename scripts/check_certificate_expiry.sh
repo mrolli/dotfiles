@@ -27,6 +27,6 @@ else
   color=$red
 fi
 enddate=$(echo "$cert" | openssl x509 -enddate -noout 2>/dev/null | cut -d= -f 2)
-echo "${color}Certificate for $domain) will expire on $enddate${reset}"
+echo "${color}Certificate for $domain will expire on $enddate${reset}"
 
 exit 0
