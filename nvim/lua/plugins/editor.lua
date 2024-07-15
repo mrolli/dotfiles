@@ -3,9 +3,9 @@ return {
   {
     "folke/which-key.nvim",
     opts = {
-      defaults = {
+      spec = {
         mode = { "n", "v" },
-        ["<leader>a"] = { name = "+ai tools" },
+        { "<leader>a", group = "ai tools", mode = { "n", "v" } },
       },
     },
   },
