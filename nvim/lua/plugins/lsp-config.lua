@@ -16,13 +16,11 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         -- language servers
-        "ansible-language-server",
         "bash-language-server",
         "intelephense",
         "lua-language-server",
         -- debug adapters
         -- linters
-        "ansible-lint",
         "shellcheck",
         -- formatters
       })
