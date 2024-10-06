@@ -11,12 +11,13 @@ source "$ZINIT_HOME/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+zinit light jeffreytse/zsh-vi-mode
 
 
 # fpath=($ZDATADIR/plugins $fpath)
 
 # Explicitly set vi mode for key bindings
-# bindkey -v
+bindkey -v
 
 # History Management - keep plenty of history
 HISTFILE=$ZDATADIR/zhistory
