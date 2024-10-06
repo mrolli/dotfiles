@@ -4,9 +4,9 @@
 # Guide about style: https://thevaluable.dev/zsh-completion-guide-examples/
 
 # Load Homebrew featured completions if available
-if command -v brew &>/dev/null
+if [ -d "$HOMEBREW_PREFIX/share/zsh/site-functions" ]
 then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
 fi
 
 autoload -U compinit && compinit -d $ZCACHEDIR/zcompdump
@@ -40,7 +40,7 @@ fi
 # Activate azure autocompletion if az is avaialble
 if command -v az &>/dev/null; then
   autoload bashcompinit && bashcompinit
-  source $(brew --prefix)/etc/bash_completion.d/az
+  source $HOMEBREW_PREFIX/etc/bash_completion.d/az
 fi
 
 # Activate terraform autocompletion if terraform is avaialble

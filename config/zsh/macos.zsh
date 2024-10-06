@@ -19,4 +19,7 @@ command -v brew &>/dev/null && eval "$(brew shellenv)"
 [ -d "$HOMEBREW_PREFIX/opt/ruby/bin" ] && \
   export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
 
+# Add binary path of libpq if available
+[ -d "$HOMEBREW_PREFIX/opt/libpq/bin" ] && PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
+
 [ -f "$HOME/.vagrant.d/vcloud_token.sh" ] && source "$HOME/.vagrant.d/vcloud_token.sh"

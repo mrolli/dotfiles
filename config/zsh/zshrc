@@ -13,8 +13,16 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light jeffreytse/zsh-vi-mode
 
+# Add direnv and its hook, see https://zdharma-continuum.github.io/zinit/wiki/Direnv-explanation/
+zinit from"gh-r" as"program" mv"direnv* -> direnv" \
+    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    pick"direnv" src="zhook.zsh" for \
+        direnv/direnv
 
-# fpath=($ZDATADIR/plugins $fpath)
+# On a MacOS machine I want my macos-goodies
+if [ "$(uname -s)" = "Darwin" ]; then
+  zinit light mrolli/zsh-macos-goodies
+fi
 
 # Explicitly set vi mode for key bindings
 bindkey -v
@@ -44,56 +52,42 @@ bindkey "^\e[A" history-beginning-search-backward-end
 bindkey "^\e[B" history-beginning-search-forward-end
 
 # Go to folder path without using cd
-# setopt AUTO_CD
+setopt AUTO_CD
 # Turn off all beeps
-# unsetopt BEEP
+unsetopt BEEP
 # Turn off autocomplete beeps
-# unsetopt LIST_BEEP
+unsetopt LIST_BEEP
 
 # Use colors functions to have color at hand
 # See https://github.com/zsh-users/zsh/blob/master/Functions/Misc/colors
-# autoload -Uz colors && colors
+autoload -Uz colors && colors
 
 # Source my config files
-# source "$ZDOTDIR/macos.zsh"
+if [ "$(uname -s)" = "Darwin" ]; then
+  source "$ZDOTDIR/macos.zsh"
+fi
 source "$ZDOTDIR/completion.zsh"
-# source "$ZDOTDIR/aliases.zsh"
-# source "$ZDOTDIR/functions.zsh"
+source "$ZDOTDIR/aliases.zsh"
+source "$ZDOTDIR/functions.zsh"
 
-# On a MacOS machine I want my macos-goodies
-# if [ "$(uname -s)" = "Darwin" ] && [ ! -d "$ZDATADIR/plugins/zsh-macos-goodies" ]; then
-#   git clone https://github.com/mrolli/zsh-macos-goodies.git "$ZDATADIR/plugins/zsh-macos-goodies" &>/dev/null
-# fi
-# source "$ZDATADIR/plugins/zsh-macos-goodies/macos-goodies.plugin.zsh"
-
-# App 3rd-party plugins
-# See https://github.com/jeffreytse/zsh-vi-mode
-# if [ ! -d "$ZDATADIR/plugins/zsh-vi-mode" ]; then
-#   git clone https://github.com/jeffreytse/zsh-vi-mode.git "$ZDATADIR/plugins/zsh-vi-mode" &>/dev/null
-# fi
-# source "$ZDATADIR/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 # See https://wezfurlong.org/wezterm/shell-integration.html
-# if [ ! -f "$ZDATADIR/plugins/wezterm.sh" ]; then
-#   curl -flo "$ZDATADIR/plugins/wezterm.sh" \
-#     "https://raw.githubusercontent.com/wez/wezterm/main/assets/shell-integration/wezterm.sh" \
-#     &>/dev/null
-# fi
-# source "$ZDATADIR/plugins/wezterm.sh"
-
+if command -v wezterm &>/dev/null; then
+  if [ ! -f "$ZDATADIR/wezterm.sh" ]; then
+    curl -flo "$ZDATADIR/wezterm.sh" \
+      "https://raw.githubusercontent.com/wez/wezterm/main/assets/shell-integration/wezterm.sh" \
+      &>/dev/null
+  fi
+  source "$ZDATADIR/wezterm.sh"
+fi
 
 # build the PATH variable
-# PATH=~/.local/bin:$PATH
+PATH=~/.local/bin:$PATH
 
 # Add Go binary path
-# [ -d "$HOME/go/bin" ] && PATH="$HOME/go/bin:$PATH"
+[ -d "$HOME/go/bin" ] && PATH="$HOME/go/bin:$PATH"
 
-# [ -d "$HOMEBREW_PREFIX/opt/libpq/bin" ] && PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
-# Add direnv hook
-# command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
-
-# Initialize miniconda
-# [ -x "$HOMEBREW_PREFIX/Caskroom/miniconda/base/bin/conda" ] && \
-#   source "$ZDOTDIR/conda.zsh"
+# Make vagrant vcloud token available
+[ -f "$HOME/.vagrant.d/vcloud_token.sh" ] && source "$HOME/.vagrant.d/vcloud_token.sh"
 
 # build prompt
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
