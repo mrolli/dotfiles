@@ -13,6 +13,8 @@ zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 # keep syntax highlighting last
 zinit ice depth=1; zinit light zdharma-continuum/fast-syntax-highlighting
+# See https://wezfurlong.org/wezterm/shell-integration.html
+zinit snippet https://raw.githubusercontent.com/wez/wezterm/main/assets/shell-integration/wezterm.sh
 
 # Add direnv and its hook, see https://zdharma-continuum.github.io/zinit/wiki/Direnv-explanation/
 zinit from"gh-r" as"program" mv"direnv* -> direnv" \
@@ -64,16 +66,6 @@ fi
 source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/functions.zsh"
-
-# See https://wezfurlong.org/wezterm/shell-integration.html
-if command -v wezterm &>/dev/null; then
-  if [ ! -f "$ZDATADIR/wezterm.sh" ]; then
-    curl -flo "$ZDATADIR/wezterm.sh" \
-      "https://raw.githubusercontent.com/wez/wezterm/main/assets/shell-integration/wezterm.sh" \
-      &>/dev/null
-  fi
-  source "$ZDATADIR/wezterm.sh"
-fi
 
 # build the PATH variable
 PATH=~/.local/bin:$PATH
