@@ -15,7 +15,7 @@ export ZDATADIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
 export ZCACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 
 # Highlight section titles in manual pages in yellow.
-export LESS_TERMCAP_md="$(tput setaf 136)"
+export LESS_TERMCAP_md="$(tput bold; tput setaf 136)"
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X'
 
@@ -26,6 +26,11 @@ export GPG_TTY=$(tty)
 export EDITOR="nvim"
 export SVNEDITOR="nvim"
 export VISUAL="nvim"
+
+# Colors
+unset LSCOLORS
+export CLICOLOR=1
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43:or=40;31;07'
 
 # Make less the default pager, and specify some useful defaults.
 less_options=(
@@ -57,3 +62,7 @@ export PAGER='less';
 
 # Vagrant/Packer specific
 export PACKER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/packer"
+
+# Zsh Vi Mode plugin
+ZVM_VI_SURROUND_BINDKEY='s-prefix'
+ZVM_INIT_MODE=sourcing
