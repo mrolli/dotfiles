@@ -11,6 +11,7 @@ source "$ZINIT_HOME/zinit.zsh"
 zinit ice depth=1; zinit light zsh-users/zsh-completions
 zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+zinit ice depth=1; zinit light Aloxaf/fzf-tab
 # See https://wezfurlong.org/wezterm/shell-integration.html
 zinit snippet https://raw.githubusercontent.com/wez/wezterm/main/assets/shell-integration/wezterm.sh
 # keep syntax highlighting last
@@ -75,9 +76,6 @@ PATH=~/.local/bin:$PATH
 
 # Make vagrant vcloud token available
 [ -f "$HOME/.vagrant.d/vcloud_token.sh" ] && source "$HOME/.vagrant.d/vcloud_token.sh"
-
-# Setup fzf shell integration
-eval "$(fzf --zsh)"
 
 # build prompt
 eval "$(starship init zsh)"
