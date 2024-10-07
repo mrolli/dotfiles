@@ -76,5 +76,8 @@ PATH=~/.local/bin:$PATH
 # Make vagrant vcloud token available
 [ -f "$HOME/.vagrant.d/vcloud_token.sh" ] && source "$HOME/.vagrant.d/vcloud_token.sh"
 
+# Setup fzf shell integration
+eval "$(fzf --zsh)"
+
 # build prompt
 eval "$(starship init zsh)"

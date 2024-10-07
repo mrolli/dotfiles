@@ -65,3 +65,4 @@ export PACKER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/packer"
 
 # Zsh Vi Mode plugin
 ZVM_VI_SURROUND_BINDKEY='s-prefix'
+ZVM_INIT_MODE=sourcing
