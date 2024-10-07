@@ -44,7 +44,7 @@ fi
 
 # Active fzf autocompletion and shell integration
 if command -v fzf &>/dev/null; then
-  eval "$(fzf --zsh)"
+  source <(fzf --zsh)
 fi
 
 # Activate azure autocompletion if az is avaialble
