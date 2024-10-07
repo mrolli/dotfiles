@@ -8,10 +8,11 @@ fi
 source "$ZINIT_HOME/zinit.zsh"
 
 # Add in zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light jeffreytse/zsh-vi-mode
+zinit ice depth=1; zinit light zsh-users/zsh-completions
+zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
+zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+# keep syntax highlighting last
+zinit ice depth=1; zinit light zdharma-continuum/fast-syntax-highlighting
 
 # Add direnv and its hook, see https://zdharma-continuum.github.io/zinit/wiki/Direnv-explanation/
 zinit from"gh-r" as"program" mv"direnv* -> direnv" \
@@ -21,11 +22,12 @@ zinit from"gh-r" as"program" mv"direnv* -> direnv" \
 
 # On a MacOS machine I want my macos-goodies
 if [ "$(uname -s)" = "Darwin" ]; then
-  zinit light mrolli/zsh-macos-goodies
+  zinit ice depth=1; zinit light mrolli/zsh-macos-goodies
 fi
 
 # Explicitly set vi mode for key bindings
 bindkey -v
+export KEYTIMEOUT=1
 
 # History Management - keep plenty of history
 HISTFILE=$ZDATADIR/zhistory
@@ -34,7 +36,7 @@ SAVEHIST=100000
 HISTDUP=erase
 setopt APPEND_HISTORY            # Append history to the history file rather than replace it..
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
-setopt SHARE_HISTORY             # Share history between all sessions.
+# setopt SHARE_HISTORY             # Share history between all sessions.
 setopt INC_APPEND_HISTORY_TIME   # Append command right after execution.
 setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
 setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
@@ -48,19 +50,15 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "^\e[A" history-beginning-search-backward-end
-bindkey "^\e[B" history-beginning-search-forward-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
 
 # Go to folder path without using cd
 setopt AUTO_CD
 # Turn off all beeps
 unsetopt BEEP
 # Turn off autocomplete beeps
-unsetopt LIST_BEEP
-
-# Use colors functions to have color at hand
-# See https://github.com/zsh-users/zsh/blob/master/Functions/Misc/colors
-autoload -Uz colors && colors
+#unsetopt LIST_BEEP
 
 # Source my config files
 if [ "$(uname -s)" = "Darwin" ]; then

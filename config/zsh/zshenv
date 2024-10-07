@@ -15,7 +15,7 @@ export ZDATADIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
 export ZCACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 
 # Highlight section titles in manual pages in yellow.
-export LESS_TERMCAP_md="$(tput setaf 136)"
+export LESS_TERMCAP_md="$(tput bold; tput setaf 136)"
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X'
 
@@ -62,3 +62,6 @@ export PAGER='less';
 
 # Vagrant/Packer specific
 export PACKER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/packer"
+
+# Zsh Vi Mode plugin
+ZVM_VI_SURROUND_BINDKEY='s-prefix'
