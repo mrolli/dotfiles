@@ -76,6 +76,9 @@ stashed = "\\$${count}"
 staged = "++${count}"
 conflicted = "[](red)${count} "
 
+[golang]
+symbol = ' '
+
 [hostname]
 disabled = false
 format = "on [$hostname]($style) "
@@ -89,8 +92,15 @@ style = 'red'
 number_threshold = 1
 format = '[$symbol]($style)'
 
+[lua]
+symbol = ' '
+
 [nodejs]
+symbol = ' '
 detect_extensions = ["mjs", "cjs", "ts", "mts", "cts"]
+
+[package]
+symbol = '󰏗 '
 
 [php]
 symbol = "🐘"
@@ -100,6 +110,12 @@ symbol = ' '
 pyenv_version_name = false
 pyenv_prefix = ''
 style = 'yellow'
+
+[rust]
+symbol = ' '
+
+[ruby]
+symbol = ' '
 
 [terraform]
 format = 'via [$symbol$version \($workspace\)]($style) '
