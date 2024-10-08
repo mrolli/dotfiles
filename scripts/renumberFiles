@@ -11,7 +11,7 @@ save_ext=true
 print_usage() {
   echo -n >&2 "Usage: ${scriptname} [-f 'filter'] [-d numDigits] [-p prefix 'string'] [-s startInt] [-n]
 
-Renumber a bunch of files sequentially start at $start by default with an increment of 1 and the number parl
+Renumber a bunch of files sequentially start at $start by default with an increment of 1 and the number
 padded to $numdig digits. The filter can be used to select only a subset of all files in the current
 working dir or to fix numeric sort, i.e. when normal globbing would sort 10 between 1 and 2 and thus the
 previous file 10 would become file 02. This can be fixed with a filter like this:
@@ -23,7 +23,7 @@ Options:
   -f            Glob pattern to select the files for the action, defaults to $filter
   -n            By default the renaming is carried out as a dry-run to illustrate
                 what would happen. Add the flag -n to really rename the files.
-  -p            Prefix to prepend to the number part, also privde the delimiter; defauls to \"$prefix\"
+  -p            Prefix to prepend to the number part, also provide the delimiter; defauls to \"$prefix\"
   -x            Do not take extension into account; by default extension is split off before renaming
                 and finally readded again. This flag turns this behaviour off.
 "
@@ -42,6 +42,7 @@ do
     p) prefix="${OPTARG}";;
     s) start=${OPTARG};;
     x) save_ext=false;;
+    *) print_usage; exit 1;;
   esac
 done
 
@@ -49,17 +50,20 @@ i=$start
 workdone=0
 for file in $filter
 do
-  exit=""
   $save_ext && ext=".${file##*.}"
-  name="${prefix}$(printf "%"$numdig"s" $i | tr " " "0")"
+  name="${prefix}$(printf "%${numdig}s" "$i" | tr " " "0")"
   ((i++))
   [ "${file}" == "${name}${ext}" ] && continue
-  $dryrun mv -i $file $name$ext
+  $dryrun mv -i "$file" "$name$ext"
   workdone=1
 done
 
-[ $workdone -eq 0 ] && echo "Nothing to do." || \
-  ([ ! -z $dryrun ] && echo -e "\nThis was only a dry-run. Add -n if changes should really take effect.")
+if [ $workdone -eq 0 ]; then
+  echo "Nothing to do."
+fi
+
+[ -n "$dryrun" ] && \
+  echo -e "\nThis was only a dry-run. Add -n if changes should really take effect."
 
 exit 0
 
