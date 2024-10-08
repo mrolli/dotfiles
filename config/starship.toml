@@ -83,6 +83,12 @@ detect_extensions = ["mjs", "cjs", "ts", "mts", "cts"]
 [php]
 symbol = "🐘"
 
+[python]
+symbol = ' '
+pyenv_version_name = false
+pyenv_prefix = ''
+style = 'yellow'
+
 [terraform]
 format = 'via [$symbol$version \($workspace\)]($style) '
 
