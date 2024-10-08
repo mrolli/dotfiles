@@ -80,6 +80,9 @@ style = "green"
 [nodejs]
 detect_extensions = ["mjs", "cjs", "ts", "mts", "cts"]
 
+[php]
+symbol = "🐘"
+
 [terraform]
 format = 'via [$symbol$version \($workspace\)]($style) '
 
