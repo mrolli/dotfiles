@@ -1,6 +1,10 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# Insert a blank line between shell prompts
+add_newline = true
+
+# Color palette to use
 palette = "gruvbox-dark"
 
 # [custom.foo]
@@ -11,45 +15,56 @@ palette = "gruvbox-dark"
 
 [azure]
 disabled = false
-format = 'on [$symbol$subscription]($style) '
+format = 'in [$symbol$subscription]($style) '
 
 [character] # The name of the module we are configuring is "character"
 success_symbol = "[➜](bold green)"
 
 [cmd_duration]
-format = "[羽$duration]($style)"
-# min_time = 0
-show_milliseconds = true
+format = "[󰚭 $duration]($style) "
+show_milliseconds = false
+min_time = 5_000
 style = "purple"
 
 [directory]
 format = "[ $path]($style)[$read_only]($read_only_style) "
-style = "yellow bold"
+style = "yellow"
+truncation_length = 3
 # truncation_symbol = "…/"
 
 [git_branch]
 style = "blue"
+symbol = " "
 
 [git_metrics]
 disabled = true
 
 [git_status]
-format = "[$ahead_behind  $all_status]($style) "
-modified = "~($count)"
-up_to_date = "≡"
-untracked = " ?($count)"
+format = "[$ahead_behind $all_status]($style) "
 style = "blue"
+modified = "~${count}"
+deleted = "✘${count}"
+up_to_date = "≡"
+untracked = "?${count}"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+stashed = "\\$${count}"
+staged = "++${count}"
+conflicted = "[](red)${count} "
 
 [hostname]
+disabled = false
+format = "on [$hostname]($style) "
+ssh_symbol = " "
 ssh_only = false
-ssh_symbol = " "
 style = "green"
 
 [terraform]
 format = 'via [$symbol$version \($workspace\)]($style) '
 
 [username]
-format = "[$user]($style) at "
+format = "[$user]($style) "
 show_always = true
 style_user = "orange"
 
