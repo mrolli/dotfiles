@@ -2,6 +2,7 @@ config/asciinema/install-id
 config/gh/hosts.yml
 config/karabiner/automatic_backups/
 config/zsh/.zsh_sessions/
+temp/
 vim/autoload
 
 # Files installed by pip installed packages
