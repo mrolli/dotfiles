@@ -17,6 +17,7 @@ $cmd_duration\
 $fill\
 $all\
 $line_break\
+$jobs\
 $status\
 $container\
 $character"""
@@ -81,6 +82,12 @@ format = "on [$hostname]($style) "
 ssh_symbol = " "
 ssh_only = false
 style = "green"
+
+[jobs]
+symbol = ' '
+style = 'red'
+number_threshold = 1
+format = '[$symbol]($style)'
 
 [nodejs]
 detect_extensions = ["mjs", "cjs", "ts", "mts", "cts"]
