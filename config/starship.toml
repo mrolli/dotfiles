@@ -30,6 +30,10 @@ symbol = " "
 # when = ''' test "$HOME" = "$PWD" '''
 # format = ' transcending [$output]($style)'
 
+[aws]
+symbol = ' '
+style = 'yellow'
+
 [azure]
 disabled = false
 format = 'in [$symbol$subscription]($style) '
