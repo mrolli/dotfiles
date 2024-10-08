@@ -67,6 +67,9 @@ fi
 source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/functions.zsh"
+if command -v conda &>/dev/null; then
+  source "$ZDOTDIR/conda.zsh"
+fi
 
 # build the PATH variable
 PATH=~/.local/bin:$PATH
