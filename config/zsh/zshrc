@@ -7,47 +7,9 @@ fi
 
 source "$ZINIT_HOME/zinit.zsh"
 
-# Add in zsh plugins
-zinit ice depth=1; zinit light zsh-users/zsh-completions
-zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
-zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
-zinit ice depth=1; zinit light Aloxaf/fzf-tab
-# See https://wezfurlong.org/wezterm/shell-integration.html
-zinit snippet https://raw.githubusercontent.com/wez/wezterm/main/assets/shell-integration/wezterm.sh
-# Add direnv and its hook, see https://zdharma-continuum.github.io/zinit/wiki/Direnv-explanation/
-zinit from"gh-r" as"program" mv"direnv* -> direnv" \
-  atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-  pick"direnv" src="zhook.zsh" for \
-    direnv/direnv
-# keep syntax highlighting last
-zinit ice depth=1; zinit light zdharma-continuum/fast-syntax-highlighting
-
-# On a MacOS machine I want my macos-goodies
-if [ "$(uname -s)" = "Darwin" ]; then
-  zinit ice depth=1; zinit light mrolli/zsh-macos-goodies
-fi
-
 # Explicitly set vi mode for key bindings
 bindkey -v
 export KEYTIMEOUT=1
-
-# History Management - keep plenty of history
-HISTFILE=$ZDATADIR/zhistory
-HISTSIZE=100000
-SAVEHIST=100000
-HISTDUP=erase
-setopt APPEND_HISTORY            # Append history to the history file rather than replace it..
-setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
-# setopt SHARE_HISTORY             # Share history between all sessions.
-setopt INC_APPEND_HISTORY_TIME   # Append command right after execution.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
-setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
-setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
-setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
-setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
-setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
-
 # search history with up/down arrows based on what's typed in the prompt
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
@@ -60,11 +22,13 @@ unsetopt BEEP
 #unsetopt LIST_BEEP
 
 # Source my config files
+source "$ZDOTDIR/plugins.zsh"
+source "$ZDOTDIR/history.zsh"
 if [ "$(uname -s)" = "Darwin" ]; then
   source "$ZDOTDIR/macos.zsh"
 fi
 source "$ZDOTDIR/completion.zsh"
-source "$ZDOTDIR/aliases.zsh"
+# source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/functions.zsh"
 if command -v conda &>/dev/null; then
   source "$ZDOTDIR/conda.zsh"
