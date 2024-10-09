@@ -5,17 +5,15 @@
 [ -x "$HOME/Library/Python/3.9/bin" ] && export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 
 # On arm64 platform Homebrew is not automatically in PATH
-if ! commanmd -v brew &>/dev/null && [ -x /opt/homebrew/bin/brew ]
-then
-    export PATH="/opt/homebrew/bin:$PATH"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+if ! commanmd -v brew &>/dev/null && [ -x /opt/homebrew/bin/brew ]; then
+  export PATH="/opt/homebrew/bin:$PATH"
 fi
 
 # Initialize Homebrew for all platforms here
 command -v brew &>/dev/null && eval "$(brew shellenv)"
 
 # Make the lateest ruby version installed with brew the default
-[ -d "$HOMEBREW_PREFIX/opt/ruby/bin" ] && \
+[ -d "$HOMEBREW_PREFIX/opt/ruby/bin" ] &&
   export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
 
 # Add binary path of libpq if available
