@@ -17,7 +17,9 @@ PATH=~/.local/bin:$PATH
 export HOSTNAME
 
 # Source profile snippets outsourced to their own files
-for file in ~/.config/bash/{colors,exports} ~/.config/zsh/{aliases.sh,functions.sh,conda.sh}
+for file in \
+  ~/.config/bash/{colors,exports} \
+  ~/.config/zsh/{aliases.sh,functions.sh,conda.sh}
 do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
