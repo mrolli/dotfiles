@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # Initialize and configure autocompletion
 # Guide about style: https://thevaluable.dev/zsh-completion-guide-examples/
 

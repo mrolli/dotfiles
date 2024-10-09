@@ -25,11 +25,11 @@ unsetopt BEEP
 source "$ZDOTDIR/plugins.zsh"
 source "$ZDOTDIR/history.zsh"
 if [ "$(uname -s)" = "Darwin" ]; then
-  source "$ZDOTDIR/macos.zsh"
+  source "$ZDOTDIR/macos.sh"
 fi
 source "$ZDOTDIR/completion.zsh"
-# source "$ZDOTDIR/aliases.zsh"
-source "$ZDOTDIR/functions.zsh"
+source "$ZDOTDIR/aliases.sh"
+source "$ZDOTDIR/functions.sh"
 if command -v conda &>/dev/null; then
   source "$ZDOTDIR/conda.zsh"
 fi

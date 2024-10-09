@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+# Aliases definitions
 
 # Alias vi to nvim as Homebrew manages vi to be a symlink to
 # vim as long vim is still installed

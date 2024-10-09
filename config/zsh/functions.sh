@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+# Function definitions
 
 # Open manpages in terminalapp
 function manx { open x-man-page://$@ ; }

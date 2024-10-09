@@ -1,4 +1,3 @@
-#!/usr/bin/env zsh
 # This file contains stuff that is specific for macOS
 
 # Python packages installed using OS Python binary Make sure they are available
