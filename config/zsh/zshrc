@@ -14,14 +14,13 @@ zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 zinit ice depth=1; zinit light Aloxaf/fzf-tab
 # See https://wezfurlong.org/wezterm/shell-integration.html
 zinit snippet https://raw.githubusercontent.com/wez/wezterm/main/assets/shell-integration/wezterm.sh
-# keep syntax highlighting last
-zinit ice depth=1; zinit light zdharma-continuum/fast-syntax-highlighting
-
 # Add direnv and its hook, see https://zdharma-continuum.github.io/zinit/wiki/Direnv-explanation/
 zinit from"gh-r" as"program" mv"direnv* -> direnv" \
   atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
   pick"direnv" src="zhook.zsh" for \
     direnv/direnv
+# keep syntax highlighting last
+zinit ice depth=1; zinit light zdharma-continuum/fast-syntax-highlighting
 
 # On a MacOS machine I want my macos-goodies
 if [ "$(uname -s)" = "Darwin" ]; then
