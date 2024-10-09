@@ -1,20 +1,7 @@
 # This file contains stuff that is specific for macOS
 
-# Make user installed python packages avallable in PATH
-export PATH="$HOME/Library/Python/3.9/bin:$PATH"
-
-# Add newer ruby to the path if available
-[ -x /usr/local/opt/ruby@2.7/bin/ruby ] && export PATH="/usr/local/opt/ruby@2.7/bin:$PATH"
-
-# On amd64 Homebrew is now installed in /opt and not automatically available!
-if ! type brew &>/dev/null && [ -x /opt/homebrew/bin/brew ]
-then
-    export PATH="/opt/homebrew/bin:$PATH"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-# safe brew prefix
-brew_prefix=$(brew --prefix)
+# Source the commmon stuff from zsh folder
+source ~/.config/zsh/macos.sh
 
 # Add direnv bash hook
 eval "$(direnv hook bash)"
@@ -23,29 +10,6 @@ eval "$(direnv hook bash)"
 [[ -r "${brew_prefix}/etc/profile.d/bash_completion.sh" ]] && . "${brew_prefix}/etc/profile.d/bash_completion.sh"
 
 
-# Vagrant/Packer specific
 export PACKER_CACHE_DIR=$HOME/.local/cache/packer_cache
-[ -f $HOME/.vagrant.d/vcloud_token.sh ] && source $HOME/.vagrant.d/vcloud_token.sh
-
-
-# >>> conda initialize >>>
-__conda_setup="$('${brew_prefix}/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "${brew_prefix}/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "${brew_prefix}/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="${brew_prefix}/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# Add `killall` tab completion for common apps on macOS
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
-
-# unset again to not risk side effects
-unset $brew_prefix
 
 # vim: set ft=bash:
