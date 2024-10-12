@@ -9,4 +9,14 @@ return {
       virtcolumn = "80",
     },
   },
+  -- Modify core plugin bufferline
+  {
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+      },
+    },
+  },
 }
