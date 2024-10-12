@@ -8,6 +8,7 @@ return {
       virtcolumn = "80",
     },
   },
+  -- see https://github.com/b0o/incline.nvim
   {
     "b0o/incline.nvim",
     config = function()

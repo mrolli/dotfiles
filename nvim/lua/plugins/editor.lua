@@ -1,4 +1,25 @@
 return {
+  -- Modify core plugin neo-tree.nvim
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      window = {
+        position = "right",
+      },
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_by_name = {
+            ".git",
+            ".DS_Store",
+          },
+          always_show = {
+            ".env",
+          },
+        },
+      },
+    },
+  },
   -- see https://github.com/NvChad/nvim-colorizer.lua
   {
     "NvChad/nvim-colorizer.lua",
