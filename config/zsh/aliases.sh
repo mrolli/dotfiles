@@ -22,7 +22,7 @@ alias egrep='egrep --color=auto'
 # http://www.gnu.org/software/bash/manual/bashref.html#Aliases says: "If the
 # last character of the alias value is a space or tab character, then the next
 # command word following the alias is also checked for alias expansion."
-alias sudo='sudo ';
+alias sudo='sudo '
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
@@ -48,8 +48,7 @@ alias tldrf='tldr --list | fzf --preview "tldr {1}" --preview-window=right,60% |
 alias vssh='vagrant ssh'
 
 # Some GitHub copilot aliases if gh is available
-if command -v gh &> /dev/null
-then
+if command -v gh &>/dev/null; then
   if ! gh extension list | grep -q "github/gh-copilot"; then
     gh extension install github/gh-copilot
   fi
@@ -59,3 +58,6 @@ then
   alias gh\?="ghcs -t gh"
   alias ghe="GH_HOST=github.unibe.ch gh"
 fi
+
+alias devup="devcontainer up --dotfiles-repository https://github.com/mrolli/dotfiles --dotfiles-install-command setup_devcontainer.sh --workspace-folder ."
+alias devcon="devcontainer exec --workspace-folder . zsh"
