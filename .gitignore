@@ -11,3 +11,6 @@ markdown_py
 mkdocs
 rename_termtab
 watchmedo
+
+# Files installed by VS Code
+scripts/devcontainer
