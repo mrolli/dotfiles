@@ -11,7 +11,7 @@ rm install_starship.sh
 sudo rm -rf /squashfs-root
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
-./nvim.appimage --appimage-extract
+./nvim.appimage --appimage-extract >/dev/null
 sudo mv squashfs-root /
 sudo ln -sf /squashfs-root/AppRun /usr/bin/nvim
 rm nvim.appimage
@@ -28,7 +28,7 @@ done
 ln -sf ~/dotfiles/config/zsh/zshenv ~/.zshenv
 
 # Setup bash
-cat <<EOF >~/.bashrc
-source  ~/.bash_profile
-EOF
+if ! grep bash_profile ~/.bashrc >/dev/null 2>&1; then
+  echo "source ~/.bash_profile" >>~/.bashrc
+fi
 ln -sf ~/dotfiles/config/bash/profile ~/.bash_profile
