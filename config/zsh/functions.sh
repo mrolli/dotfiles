@@ -47,25 +47,6 @@ function https-cert {
   openssl s_client -showcerts -servername "${1}" -connect "${1}":443 </dev/null 2>/dev/null | openssl x509 -inform pem -noout -text
 }
 
-# load a local tmuxp config file in a directory by first changing pwd
-function tmuxpl {
-  # Show usage if no argument is provided
-  [ $# -ne 1 ] && echo "Usage: tmuxpl DIR" && return 1
-  # Is it a filepath or a named config to a configuration already? Load it!
-  if [ -f $1 -o -f ~/.config/tmuxp/$1.y*ml ]
-  then
-    tmuxp load $1
-    return 0
-  # Assume it's a directory, check for it
-  elif [ -d $1 ]
-  then
-    (cd $1 && tmuxp load .)
-    return 0
-  else
-     echo "Error: Provided path is not a readable directory path" && return 2
-  fi
-}
-
 # Check for valid Azure CLI session
 function __has_az_ready {
   if ! command -v az &>/dev/null; then
