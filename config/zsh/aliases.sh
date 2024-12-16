@@ -60,4 +60,5 @@ if command -v gh &>/dev/null; then
 fi
 
 alias devup="devcontainer up --dotfiles-repository https://github.com/mrolli/dotfiles --dotfiles-install-command setup_devcontainer.sh --workspace-folder ."
+alias devrm="docker rm \$(docker ps -q) -f"
 alias devcon="devcontainer exec --workspace-folder . zsh"
