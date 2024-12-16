@@ -30,12 +30,12 @@ zstyle ':completion:*' complete-options true
 zstyle ':completion:*' rehash true
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
-# Activate 1password autocompletion if 1password is avaialble
+# Activate 1password autocompletion if 1password is available
 if command -v op &>/dev/null; then
   eval "$(op completion zsh)"; compdef _op op
 fi
 
-# Activate wezterm autocompletion if wezterm is avaialble
+# Activate wezterm autocompletion if wezterm is available
 if command -v wezterm &>/dev/null; then
   eval "$(wezterm shell-completion --shell zsh)"
 fi
@@ -45,18 +45,23 @@ if command -v fzf &>/dev/null; then
   source <(fzf --zsh)
 fi
 
-# Activate azure autocompletion if az is avaialble
+# Activate azure autocompletion if az is available
 if command -v az &>/dev/null; then
   autoload autload -U +X bashcompinit && bashcompinit && \
   source $HOMEBREW_PREFIX/etc/bash_completion.d/az
 fi
 
-# Activate terraform autocompletion if terraform is avaialble
+# Activate terraform autocompletion if terraform is available
 if command -v terraform &>/dev/null; then
   complete -C "$(command -v terraform)" terraform
 fi
 
-# Activate packer autocompletion if packer is avaialble
+# Activate packer autocompletion if packer is available
 if command -v packer &>/dev/null; then
   complete -C "$(command -v packer)" packer
+fi
+
+# Activate wezterm autocompletion if wezterm is available
+if command -v colima &>/dev/null; then
+  eval "$(colima completion zsh)"
 fi
