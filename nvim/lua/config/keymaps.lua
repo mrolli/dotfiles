@@ -23,12 +23,6 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("n", "gd", "gdzzzv")
 
--- Resize window using <ctrl> arrow keys
-map("n", "<M-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<M-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<M-Left>", "<cmd>vertical resize +2<cr>", { desc = "Decrease window width" })
-map("n", "<M-Right>", "<cmd>vertical resize -2<cr>", { desc = "Increase window width" })
-
 -- Increment/decrement
 --map("n", "+", "<C-a>", { desc = "Increment" })
 --map("n", "-", "<C-x>", { desc = "Decrement" })
