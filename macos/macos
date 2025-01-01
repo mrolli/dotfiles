@@ -59,6 +59,9 @@ for lightApp in ${lightApps[0]}; do
   defaults write "${lightApp}" NSRequiresAquaSystemAppearance -bool true
 done
 
+# Always show scrollbar by default; OS default: Automatic
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
