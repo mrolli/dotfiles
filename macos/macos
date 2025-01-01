@@ -322,6 +322,12 @@ defaults write com.apple.Safari ShowOverlayStatusBar -bool true
 defaults write com.apple.Safari ShowFavoritesBar-v2 -bool true
 
 ###############################################################################
+# App Store                                                                   #
+###############################################################################
+# Disable in-app rating requests from apps downloaded from the App Store.
+defaults write com.apple.appstore InAppReviewEnabled -int 0
+
+###############################################################################
 # Time Machine                                                                #
 ###############################################################################
 
