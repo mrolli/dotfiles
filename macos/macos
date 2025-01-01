@@ -346,8 +346,12 @@ defaults write com.apple.Safari NewTabBehavior -int 4
 defaults write com.apple.Safari NewTabPageSetByUserGesture -bool true
 
 # Set HomePage to an empty string
-defaults write com.apple.Safari HomePage -string ""
+defaults write com.apple.Safari HomePage -string "about:blank"
 
+# Enable the Developer menu in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool true
 
 
 ###############################################################################
