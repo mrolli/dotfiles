@@ -35,6 +35,12 @@
     state: link
     force: true
   loop: "{{ dotfiles_additional_symlinks }}"
+
+- name: Remove unwanted files that may exist
+  ansible.builtin.file:
+    path: "~/.zshrc"
+    state: absent
+
 # - name: .ssh/config
 #   copy:
 #     src: ~/.config/.ssh.config
