@@ -87,6 +87,11 @@ if [[ "$RUN_AS_ROOT" = true ]]; then
   systemsetup -setrestartfreeze on
 fi
 
+# Set timezone to Europe/Zurich; see `systemsetup -listtimezones` for other values
+if [[ "$RUN_AS_ROOT" = true ]]; then
+  systemsetup -settimezone Europe/Zurich &>/dev/null
+fi
+
 # Disable smart quotes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
