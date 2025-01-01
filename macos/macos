@@ -359,6 +359,15 @@ defaults write com.apple.Safari AutoFillPasswords -bool false
 #defaults write com.apple.Safari AutoFillCreditCardData -bool false
 #defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
 
+# Enable “Do Not Track”
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+
+# Warn about fraudulent websites
+defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
+
+# Update extensions automatically
+defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
+
 ###############################################################################
 # App Store                                                                   #
 ###############################################################################
@@ -398,7 +407,7 @@ defaults write com.apple.TimeMachine SkipPaths -array \
 
 # Restart affected applications if `--no-restart` flag is not present.
 if [[ ! ($* == *--no-restart*) ]]; then
-  for app in "cfprefsd" "Dock" "Finder" "Mail" "SystemUIServer" "Terminal"; do
+  for app in "cfprefsd" "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" "Terminal"; do
     killall "${app}" >/dev/null 2>&1
   done
 fi
