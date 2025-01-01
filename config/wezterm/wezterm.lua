@@ -16,11 +16,11 @@ end
 wezterm.GLOBAL.platform = get_platform()
 
 -- Automatically start wezterm in full-screen mode
-local mux = wezterm.mux
-wezterm.on("gui-startup", function()
-  local _, _, window = mux.spawn_window({})
-  window:gui_window():maximize()
-end)
+-- local mux = wezterm.mux
+-- wezterm.on("gui-startup", function()
+--   local _, _, window = mux.spawn_window({})
+--   window:gui_window():maximize()
+-- end)
 
 -- This table will hold the configuration.
 local config = {}
