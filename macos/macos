@@ -47,6 +47,18 @@ osascript -e 'tell application "System Preferences" to quit'
 # Set system appearance theme to dark mode
 defaults write -g AppleInterfaceStyle "Dark"
 
+# But then change some applications back to light
+# To find the the app's ID use the following command; example for Apple Mail
+#   osascript -e 'id of app "Mail"'
+lightApps=(
+  com.apple.Mail
+  com.apple.Safari
+  com.runningwithcrayons.Alfred
+)
+for lightApp in ${lightApps[0]}; do
+  defaults write "${lightApp}" NSRequiresAquaSystemAppearance -bool true
+done
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
