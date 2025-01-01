@@ -92,6 +92,11 @@ if [[ "$RUN_AS_ROOT" = true ]]; then
   systemsetup -settimezone Europe/Zurich &>/dev/null
 fi
 
+# Disable the sound effects on boot
+if [[ "$RUN_AS_ROOT" = true ]]; then
+  nvram SystemAudioVolume=" "
+fi
+
 # Disable smart quotes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
