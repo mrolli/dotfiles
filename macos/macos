@@ -327,6 +327,12 @@ defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool true
 # Always show the tab bar
 defaults write com.apple.Safari AlwaysShowTabBar -bool true
 
+# Show overlay status bar
+defaults write com.apple.Safari ShowOverlayStatusBar -bool true
+
+# Show the favorites bar
+defaults write com.apple.Safari ShowFavoritesBar-v2 -bool true
+
 # Set default search eingine to DuckDuckGo, in private surfing mode too
 defaults write com.apple.Safari SearchProviderIdentifier -string "com.duckduckgo"
 defaults write com.apple.Safari PrivateSearchEngineUsesNormalSearchEngineToggle -bool true
@@ -342,11 +348,7 @@ defaults write com.apple.Safari NewTabPageSetByUserGesture -bool true
 # Set HomePage to an empty string
 defaults write com.apple.Safari HomePage -string ""
 
-# Show overlay status bar
-defaults write com.apple.Safari ShowOverlayStatusBar -bool true
 
-# Show the favorites bar
-defaults write com.apple.Safari ShowFavoritesBar-v2 -bool true
 
 ###############################################################################
 # App Store                                                                   #
