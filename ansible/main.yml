@@ -17,8 +17,11 @@
     dotfiles_omit_configs:
       - alacritty
       - kitty
+      - tmux
+      - tmuxp
+      - vbox
 
   tasks:
     - name: "Symlink dotfiles"
       ansible.builtin.import_tasks: tasks/dotfiles.yml
-      tags: ['dotfiles']
+      tags: ["dotfiles"]
