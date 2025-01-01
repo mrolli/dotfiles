@@ -160,6 +160,12 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Finder                                                                      #
 ###############################################################################
 
+# Sync the Documents folder automatically to the iCloud Drive
+defaults write com.apple.finder FXICloudDriveDesktop -bool true
+
+# Sync the Desktop folder automatically to the iCloud Drive
+defaults write com.apple.finder FXICloudDriveDocuments -bool true
+
 # Set the default location for new Finder windows
 # For Desktop paths, use `PfDe` and `file://${HOME}/Desktop/`
 # For Home folder, use `PfHm` and `file://${HOME}/`
