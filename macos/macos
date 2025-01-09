@@ -83,6 +83,7 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool true
+defaults wirte NSGlobalDomain NSAutomaticInlinePredictionEnabled -bool false
 
 # Restart automatically if the computer freezes
 if [[ "$RUN_AS_ROOT" = true ]]; then
