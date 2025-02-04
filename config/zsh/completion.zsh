@@ -47,8 +47,9 @@ fi
 
 # Activate azure autocompletion if az is available
 if command -v az &>/dev/null; then
-  autoload autload -U +X bashcompinit && bashcompinit && \
-  source $HOMEBREW_PREFIX/etc/bash_completion.d/az
+  autoload autload -U +X bashcompinit && bashcompinit
+  [ -r /etc/bash_completion.d/azure-cli ] && source /etc/bash_completion.d/azure-cli
+  [ -r $HOMEBREW_PREFIX/etc/bash_completion.d/az ] && source $HOMEBREW_PREFIX/etc/bash_completion.d/az
 fi
 
 # Activate terraform autocompletion if terraform is available
