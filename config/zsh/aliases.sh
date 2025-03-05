@@ -61,7 +61,8 @@ fi
 
 alias devup="devcontainer up --dotfiles-repository https://github.com/mrolli/dotfiles --dotfiles-install-command setup_devcontainer.sh --workspace-folder ."
 alias devrm="docker rm \$(docker ps -q) -f"
-alias devcon="devcontainer exec --workspace-folder . zsh"
+alias devcon="devcontainer exec --workspace-folder . --remote-env \"GH_TOKEN=\$(gh auth token)\" zsh"
+
 alias tfp="terraform plan"
 alias tfpp="terraform plan -out tfplan"
 alias tfa="terraform apply -auto-approve"
