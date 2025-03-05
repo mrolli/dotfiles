@@ -7,14 +7,9 @@ chmod 755 install_starship.sh
 rm install_starship.sh
 
 # Setup Neovim from appimage
-# see https://github.com/neovim/neovim/blob/master/install.md#install-from-package
-sudo rm -rf /squashfs-root
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-./nvim.appimage --appimage-extract >/dev/null
-sudo mv squashfs-root /
-sudo ln -sf /squashfs-root/AppRun /usr/bin/nvim
-rm nvim.appimage
+# As we have Homebrew installed, use it to install Neovim, its dependencies and
+# some other useful and often used tools.
+brew install nvim
 ln -sf ~/dotfiles/nvim ~/.config/nvim
 
 # setup symlinks
