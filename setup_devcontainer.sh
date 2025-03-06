@@ -9,7 +9,7 @@ rm install_starship.sh
 # Setup Neovim from appimage
 # As we have Homebrew installed, use it to install Neovim, its dependencies and
 # some other useful and often used tools.
-brew install nvim
+brew install nvim fzf delta
 ln -sf ~/dotfiles/nvim ~/.config/nvim
 
 # setup symlinks
