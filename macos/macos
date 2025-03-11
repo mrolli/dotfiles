@@ -397,6 +397,7 @@ defaults write com.apple.TimeMachine SkipPaths -array \
   "~mrolli/.cache" \
   "~mrolli/.cargo" \
   "~mrolli/.conda" \
+  "~mrolli/.colima" \
   "~mrolli/.docker" \
   "~mrolli/.local" \
   "~mrolli/.npm" \
@@ -404,8 +405,7 @@ defaults write com.apple.TimeMachine SkipPaths -array \
   "~mrolli/.packer.d" \
   "~mrolli/.vagrant" \
   "~mrolli/.vagrant.d" \
-  "~mrolli/Downloads/NoBackup" \
-  "~mrolli/VirtualBox VMs"
+  "~mrolli/Downloads/NoBackup"
 
 # Disable local Time Machine backups
 #hash tmutil &> /dev/null && sudo tmutil disablelocal
