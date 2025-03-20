@@ -27,3 +27,7 @@ if ! grep bash_profile ~/.bashrc >/dev/null 2>&1; then
   echo "source ~/.bash_profile" >>~/.bashrc
 fi
 ln -sf ~/dotfiles/config/bash/profile ~/.bash_profile
+
+# Make pinentry work in container
+mkdir -p /opt/homebrew/opt/pinentry-touchid/bin
+ln -s /usr/bin/pinentry /opt/homebrew/opt/pinentry-touchid/bin/pinentry-touchid
