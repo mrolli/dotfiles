@@ -143,6 +143,15 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 # Show text input menu in menu bar
 defaults write com.apple.TextInputMenu visible -bool true
 
+# Show VPN menu in menu bar and show connection duration
+defaults write "NSStatusItem Visible com.apple.menuextra.vpn" "com.apple.systemuiserver" -bool true
+defaults write "menuExtras" "com.apple.systemuiserver" '("/System/Library/CoreServices/Menu Extras/VPN.menu",)'
+defaults write "com.apple.networkConnect" '{VPNShowTime=1;}'
+
+# Show time machine menu in menu bar
+defaults write "NSStatusItem Visible com.apple.menuextra.TimeMachine" "com.apple.systemuiserver" -bool true
+defaults write "menuExtras" "com.apple.systemuiserver" '("/System/Library/CoreServices/Menu Extras/VPN.menu","/System/Library/CoreServices/Menu Extras/TimeMachine.menu",)'
+
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
