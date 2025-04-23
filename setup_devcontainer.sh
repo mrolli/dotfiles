@@ -29,5 +29,5 @@ fi
 ln -sf ~/dotfiles/config/bash/profile ~/.bash_profile
 
 # Make pinentry work in container
-mkdir -p /opt/homebrew/opt/pinentry-touchid/bin
-ln -s /usr/bin/pinentry /opt/homebrew/opt/pinentry-touchid/bin/pinentry-touchid
+sudo mkdir -p /opt/homebrew/opt/pinentry-touchid/bin
+sudo ln -s /usr/bin/pinentry /opt/homebrew/opt/pinentry-touchid/bin/pinentry-touchid
