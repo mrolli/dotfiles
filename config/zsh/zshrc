@@ -43,5 +43,10 @@ PATH=~/.local/bin:$PATH
 # Make vagrant vcloud token available
 [ -f "$HOME/.vagrant.d/vcloud_token.sh" ] && source "$HOME/.vagrant.d/vcloud_token.sh"
 
+# Initialze miniconda if available
+if command -v conda &>/dev/null; then
+  source "$ZDOTDIR/conda.zsh"
+fi
+
 # build prompt
 eval "$(starship init zsh)"
