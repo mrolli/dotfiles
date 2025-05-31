@@ -24,6 +24,9 @@ alias egrep='egrep --color=auto'
 # command word following the alias is also checked for alias expansion."
 alias sudo='sudo '
 
+# Because we all forget sudo
+alias pls='sudo !!'
+
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 alias fpath='echo -e ${FPATH//:/\\n}'
