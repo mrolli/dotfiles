@@ -29,6 +29,12 @@ trim_trailing_whitespace = false
 indent_style = space
 indent_size = 4
 
+# PHP
+# - 4 space indent
+[*.php]
+indent_style = space
+indent_size = 4
+
 # Makefiles are tab based
 [Makefile]
 indent_style = tab
