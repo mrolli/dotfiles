@@ -16,6 +16,12 @@ command -v brew &>/dev/null && eval "$(brew shellenv)"
 [ -d "$HOMEBREW_PREFIX/opt/ruby/bin" ] &&
   export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
 
+# Use a keg-only version of PHP
+if [ -d "$HOMEBREW_PREFIX/opt/php@8.3/bin" ]; then
+  export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
+  export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
+fi
+
 # Add binary path of libpq if available
 [ -d "$HOMEBREW_PREFIX/opt/libpq/bin" ] && PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
 
