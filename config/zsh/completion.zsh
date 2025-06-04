@@ -7,6 +7,7 @@ then
   FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
 fi
 
+autoload -U bashcompinit && bashcompinit
 autoload -U compinit && compinit -d $ZCACHEDIR/zcompdump
 
 # Replay recored compdef calls
@@ -47,7 +48,6 @@ fi
 
 # Activate azure autocompletion if az is available
 if command -v az &>/dev/null; then
-  autoload autload -U +X bashcompinit && bashcompinit
   [ -r /etc/bash_completion.d/azure-cli ] && source /etc/bash_completion.d/azure-cli
   [ -r $HOMEBREW_PREFIX/etc/bash_completion.d/az ] && source $HOMEBREW_PREFIX/etc/bash_completion.d/az
 fi
