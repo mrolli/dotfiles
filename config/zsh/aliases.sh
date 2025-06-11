@@ -44,12 +44,6 @@ alias wetter_bern='curl http://wttr\.in/bern'
 alias wetter_burgdorf2='curl http://v2.wttr\.in/burgdorf'
 alias wetter_bern2='curl http://v2.wttr\.in/bern'
 
-# All tldr pages with fzf preview
-alias tldrf='tldr --list | fzf --preview "tldr {1}" --preview-window=right,60% | xargs tldr'
-
-# Quicliy conect to a VM
-alias vssh='vagrant ssh'
-
 # Some GitHub copilot aliases if gh is available
 if command -v gh &>/dev/null; then
   if ! gh extension list | grep -q "github/gh-copilot"; then
