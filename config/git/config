@@ -33,6 +33,8 @@
     r = "!f() { local tl=$(git rev-parse --show-toplevel); echo ${tl##*/}; }; f"
     # Interactive rebase with the given number of latest commits.
     reb = "!r() { git rebase -i HEAD~$1; }; r"
+    # Interactive rebase current branch on common ancestor with main.
+    reba = "!r() { git rebase -i $(git merge-base main $(git rev-parse --abbrev-ref HEAD)); }; r"
     # Remove the old tag with this name and tag the latest commit with it.
     retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
     revert = revert -n
