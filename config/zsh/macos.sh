@@ -1,5 +1,8 @@
 # This file contains stuff that is specific for macOS
 
+# Do not archive resoruce forks when using system tar
+export COPYFILE_DISABLE=true
+
 # Python packages installed using OS Python binary Make sure they are available
 # in PATH
 [ -x "$HOME/Library/Python/3.9/bin" ] && export PATH="$HOME/Library/Python/3.9/bin:$PATH"
