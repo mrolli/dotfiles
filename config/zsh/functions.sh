@@ -1,12 +1,12 @@
 # Function definitions
 
 # Open manpages in terminalapp
-function manx { open x-man-page://$@; }
+manx() { open x-man-page://$@; }
 # Open mangpages as PDF in preview app
-function manp { man -t $@ | open -f -a "Preview"; }
+manp() { man -t $@ | open -f -a "Preview"; }
 
 # Prepend a string to a filename
-function prepend {
+prepend() {
   if [ $# -ne 2 ]; then
     echo "Usage: ${0} FILE PREFIX"
   else
@@ -15,7 +15,7 @@ function prepend {
 }
 
 # Append a sring to a filename
-function append {
+append() {
   if [ $# -ne 2 ]; then
     echo "Usage: ${0} FILE SUFFIX"
   else
@@ -24,7 +24,7 @@ function append {
 }
 
 # print week number based on date or now()
-function week {
+week() {
   if [ "${1}" = "-h" ]; then
     echo "Usage: week [YYYY-MM-DD]"
     return
@@ -38,7 +38,7 @@ function week {
 }
 
 # print SSL certificate of remote website
-function https-cert {
+https-cert() {
   if [ $# -ne 1 ]; then
     echo "Usage: https-cert HOST"
     return
@@ -48,7 +48,7 @@ function https-cert {
 }
 
 # Check for valid Azure CLI session
-function __has_az_ready {
+__has_az_ready() {
   if ! command -v az &>/dev/null; then
     echo "Azure CLI not found. Please install it first."
     return 1
@@ -61,7 +61,7 @@ function __has_az_ready {
 }
 
 # Switch between Azure subscriptions using fzf
-function azsubswitch {
+azsubswitch() {
   __has_az_ready || return 1
 
   if ! command -v fzf &>/dev/null; then
@@ -74,8 +74,20 @@ function azsubswitch {
 }
 
 # List available Azure subscriptions
-function azsublist {
+azsublist() {
   __has_az_ready || return 1
 
   az account list --query "[].{name:name, subscriptionId:id}" -o table
+}
+
+# Get id of a user by UPN
+azgetuserid() {
+  __has_az_ready || return 1
+
+  if [ $# -ne 1 ]; then
+    echo "Usage: azgetidofuser UPN"
+    return 1
+  fi
+
+  az ad user show --id "$1" --query id -o tsv
 }
