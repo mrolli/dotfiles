@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+backup_item=(
+  Archiv
+  Backup
+  Comics
+  Ebooks
+  Music
+)
+
 disk_backup_path=/Volumes/Backup
 disk_data_path=/Volumes/Data
 
@@ -26,12 +34,11 @@ while getopts hnv option; do
 done
 
 rsync_cmd="$(brew --prefix)/bin/rsync -av --delete ${verbosity} ${dryrun}"
+
 if [ "$verbosity" != "-q" ]; then
   echo "Using Rsync command: ${rsync_cmd}"
 fi
 
-# Backup stuff
-$rsync_cmd $disk_data_path/Archiv/ $disk_backup_path/Archiv/
-$rsync_cmd $disk_data_path/Backup/ $disk_backup_path/Backup/
-
-exit 0
+for dir in "${backup_item[@]}"; do
+  $rsync_cmd "$disk_data_path/$dir/" "$disk_backup_path/$dir/"
+done
