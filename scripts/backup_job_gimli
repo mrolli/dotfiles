@@ -3,7 +3,7 @@
 disk_backup_path=/Volumes/Backup
 disk_data_path=/Volumes/Data
 
-if [ ! -d $disk_backup_path/Archiv ] || [ ! -d $disk_data_path/Archiv ]; then
+if [ ! -d $disk_backup_path/Backup ] || [ ! -d $disk_data_path/Archiv ]; then
   echo "Backup volumes not mounted. Exiting..."
   exit 1
 fi
@@ -16,25 +16,22 @@ print_usage() {
 verbosity="-q"
 dryrun=""
 
-while getopts hnv option
-do
+while getopts hnv option; do
   case "${option}" in
-    h) print_usage;;
-    n) dryrun="-n";;
-    v) verbosity="--progress --stats";;
-    ?) print_usage;;
+  h) print_usage ;;
+  n) dryrun="-n" ;;
+  v) verbosity="--progress --stats" ;;
+  ?) print_usage ;;
   esac
 done
 
-rsync_cmd="$(brew --prefix)/bin/rsync -av --delete --rsync-path=$(brew --prefix)/rsync --iconv=utf8-mac ${verbosity} ${dryrun}"
-if [ "$verbosity" != "-q" ]
-then
+rsync_cmd="$(brew --prefix)/bin/rsync -av --delete ${verbosity} ${dryrun}"
+if [ "$verbosity" != "-q" ]; then
   echo "Using Rsync command: ${rsync_cmd}"
 fi
 
 # Backup stuff
 $rsync_cmd $disk_data_path/Archiv/ $disk_backup_path/Archiv/
-$rsync_cmd $disk_backup_path/Dokumente/ $disk_data_path/Backup/Dokumente/
+$rsync_cmd $disk_data_path/Backup/ $disk_backup_path/Backup/
 
 exit 0
-
