@@ -1,0 +1,22 @@
+theme = gruvbox-material-soft-dark
+font-family = "SF Mono"
+font-size = 16
+mouse-hide-while-typing = true
+scrollback-limit = 100000
+window-save-state = always
+macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
+# blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
+macos-icon = paper
+unfocused-split-opacity = 0.4
+
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+keybind = ctrl+l=goto_split:right
+
+keybind = ctrl+a>h=new_split:left
+keybind = ctrl+a>j=new_split:down
+keybind = ctrl+a>k=new_split:up
+keybind = ctrl+a>l=new_split:right
+keybind = ctrl+a>f=toggle_split_zoom
