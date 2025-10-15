@@ -1,0 +1,64 @@
+#!/bin/bash
+
+playlist_url="https://www.youtube.com/playlist?list=PLGe3z15K4zd9vc1UITjuGSCMuv0WvwEAt"
+data_dir=${XDG_DATA_HOME:-$HOME}/tytplay
+playlist_file=$data_dir/playlist.txt
+
+if ! command -v yt-dlp &>/dev/null; then
+  echo "yt-dlp not found, please install yt-dlp."
+  exit 0
+fi
+
+if ! command -v fzf &>/dev/null; then
+  echo "fzf not found, please install fzf."
+  exit 0
+fi
+
+if ! command -v mpv &>/dev/null; then
+  echo "mpv not found, please install mpv."
+  exit 0
+fi
+
+if [ ! -d "$data_dir" ]; then
+  echo "Create data directory at $data_dir."
+  mkdir "$data_dir"
+fi
+
+# Create playlist if necessary
+if [ ! -f "$playlist_file" ]; then
+  echo -n "Creating playlist file... "
+
+  yt-dlp --skip-download \
+    --no-warning \
+    --print title \
+    --print "#EXTIMG:%(thumbnail)s" \
+    --print webpage_url \
+    "$playlist_url" |
+    sed 's/#EXTIMG://' \
+    > "$playlist_file"
+
+  echo "done."
+fi
+
+awk '
+  NR % 3 == 1 { title = $0 }
+  NR % 3 == 2 { img = $0 }
+  NR % 3 == 0 { url = $0; print title "\t" img "\t" url }
+' "$playlist_file" |
+  fzf --delimiter='\t' \
+    --with-nth=1 \
+    --preview='
+        if command -v viu &> /dev/null; then
+          tmpimg=$(mktemp preview_img.XXXXXX)
+          curl -sL "$(echo {2})" -o "$tmpimg"
+          viu -h 20 "$tmpimg"
+          rm -f "$tmpimg"
+        else
+          echo "viu not found, please install viu to see image preview."
+          exit 0
+        fi
+
+      ' \
+    --preview-window up:border-none |
+  cut -f3 |
+  xargs -r mpv --no-video
