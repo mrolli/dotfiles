@@ -24,6 +24,11 @@ if [ ! -d "$data_dir" ]; then
   mkdir "$data_dir"
 fi
 
+profile=no-video
+if [ "$1" == "--video" ]; then
+  profile=secondary-screen
+fi
+
 # Create playlist if necessary
 if [ ! -f "$playlist_file" ]; then
   echo -n "Creating playlist file... "
@@ -61,4 +66,4 @@ awk '
       ' \
     --preview-window up:border-none |
   cut -f3 |
-  xargs -r mpv --no-video
+  xargs -r mpv --profile=$profile
