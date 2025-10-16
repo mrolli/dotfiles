@@ -33,6 +33,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   command = "set wrap",
 })
 
+-- Markdown should have wrapping enabled by default
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "bicep" },
+  command = "set commentstring=//\\ %s",
+})
+
 -- Disable the concealing in some file formats
 -- The default conceallevel is 3 in LazyVim
 -- vim.api.nvim_create_autocmd("FileType", {
