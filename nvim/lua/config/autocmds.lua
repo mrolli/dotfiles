@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- Markdown should have wrapping enabled by default
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "bicep" },
+  pattern = { "bicep", "bicep-params" },
   command = "set commentstring=//\\ %s",
 })
 
