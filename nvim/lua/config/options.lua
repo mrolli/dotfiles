@@ -11,3 +11,10 @@
 
 -- set spellcheck languages to English and Swiss German
 vim.o.spelllang = "en,de_ch"
+
+vim.filetype.add({
+extension = {
+bicep = 'bicep',
+bicepparam = 'bicep-params',
+}
+})
