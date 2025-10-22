@@ -9,5 +9,5 @@
 -- turn off formatting on save
 -- vim.g.autoformat = false
 
--- configure spellcheck to use both english and german
-vim.opt.spelllang = { "en", "de" }
+-- set spellcheck languages to English and Swiss German
+vim.o.spelllang = "en,de_ch"
