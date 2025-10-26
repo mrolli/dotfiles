@@ -7,10 +7,13 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
-if ! command -v op &> /dev/null; then
-  >&2 echo "The 'op' command is required but not found. Please install the 1Password CLI."
-  exit 1
-fi
+# Check for required dependencies
+for cmd in op curl jq; do
+  if ! command -v "$cmd" &> /dev/null; then
+    >&2 echo "The '$cmd' command is required but not found. Please install it."
+    exit 1
+  fi
+done
 
 set_number=$1
 bag_count=$2
