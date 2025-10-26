@@ -25,14 +25,23 @@ fi
 set_json=$(curl --silent --header "Authorization: key $api_key" "https://rebrickable.com/api/v3/lego/sets/${set_number}-1/")
 theme_id=$(echo "$set_json" | jq '.theme_id')
 theme_name=$(curl --silent --header "Authorization: key $api_key" "https://rebrickable.com/api/v3/lego/themes/$theme_id/" | jq -r '.name')
+lego_prod_url="https://www.lego.com/de-ch/product/${set_number}"
+lego_inst_url="https://www.lego.com/de-ch/service/building-instructions/$set_number"
 
-echo "$set_json" | jq -r --arg theme_name "$theme_name" '
+echo "$set_json" \
+  | jq -r \
+  --arg theme_name "$theme_name" \
+  --arg inst_url "$lego_inst_url" \
+  --arg lego_url "$lego_prod_url" \
+  '
   "  Set Number: \(.set_num)
   Name: \(.name)
   Year: \(.year)
   Parts: \(.num_parts)
   Theme: \($theme_name)
-  URL: \(.set_url)"
+  @LEGO Webpage: \($lego_url)
+  @Rebrickable: \(.set_url)
+  Instructions: \($inst_url)"
 '
 
 exit 0
