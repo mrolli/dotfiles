@@ -28,6 +28,12 @@ theme_name=$(curl --silent --header "Authorization: key $api_key" "https://rebri
 lego_prod_url="https://www.lego.com/de-ch/product/${set_number}"
 lego_inst_url="https://www.lego.com/de-ch/service/building-instructions/$set_number"
 
+# Check if the LEGO product page exists (301 due to redirect or 200 OK)
+http_status=$(curl -o /dev/null -s -w "%{http_code}" "$lego_prod_url")
+if [[ ! "$http_status" =~ ^(200|301)$ ]]; then
+  lego_prod_url="Product page does not exist aymore"
+fi
+
 echo "$set_json" \
   | jq -r \
   --arg theme_name "$theme_name" \
