@@ -1,5 +1,5 @@
 ---
-- name: Create different directories
+- name: Create XDG base directories needed
   ansible.builtin.file:
     path: "{{ item }}"
     mode: 0700
@@ -9,7 +9,7 @@
     - ~/.local
     - ~/.ssh/
 
-- name: Find .config files
+- name: Find .config items
   ansible.builtin.find:
     paths: ~/.dotfiles/config/
     recurse: no

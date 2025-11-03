@@ -7,7 +7,6 @@
     dotfiles_additional_symlinks:
       - { src: ~/.dotfiles/scripts, path: ~/.local/bin }
       - { src: ~/.dotfiles/macos/macos, path: ~/.macos }
-      - { src: ~/.dotfiles/nvim, path: ~/.config/nvim }
       - { src: ~/.dotfiles/vim, path: ~/.vim }
       - { src: ~/.dotfiles/wget/wgetrc, path: ~/.wgetrc }
       - { src: ~/.config/bash/bashrc, path: ~/.bashrc }
