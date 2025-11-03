@@ -7,13 +7,29 @@ if [ $# -ne 2 ]; then
   exit 1
 fi
 
-if ! command -v op &> /dev/null; then
-  >&2 echo "The 'op' command is required but not found. Please install the 1Password CLI."
-  exit 1
-fi
+for cmd in curl jq op; do
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    >&2 echo "Error: Required command '$cmd' is not installed."
+    exit 1
+  fi
+done
 
 set_number=$1
 bag_count=$2
+
+# Check set_number is alphanumeric
+if ! [[ "$set_number" =~ ^[1-9][0-9]*$ ]]; then
+  echo "Error: set_number must be a positive integer." >&2
+  exit 2
+fi
+
+# Check bag_count is a positive integer
+if ! [[ "$bag_count" =~ ^[1-9][0-9]*$ ]]; then
+  echo "Error: bag_count must be a positive integer." >&2
+  exit 3
+fi
+
+# Get API key from 1password
 if ! api_key=$(op read "$api_key_entry"); then
   >&2 echo "Failed to retrieve API key from 1Password."
   exit 1
@@ -26,11 +42,11 @@ if [ "$set_name" == null ]; then
   exit 2
 fi
 
-for ((i=1; i<=bag_count; i++)); do
+for ((i = 1; i <= bag_count; i++)); do
   printf "%s-%02d  " "$set_number" "$i"
 done
 
-for((i=1; i<=3;i++)); do
+for ((i = 1; i <= 3; i++)); do
   echo -n "${set_number} ${set_name}  "
 done
 
