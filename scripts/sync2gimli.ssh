@@ -27,4 +27,4 @@ fi
 
 $rsync_cmd $HOME/Documents/ $backup_host/Volumes/Backup/Dokumente/
 $rsync_cmd /Volumes/Sounddisk/MusicStuff/ $backup_host/Volumes/Backup/MusicStuff/
-$rsync_cmd $HOME/Downloads/NoBackup/Comix/ $backup_host/Volumes/Data/Comics/
+$rsync_cmd /Volumes/Sounddisk/ProGamesPkgs/ $backup_host/Volumes/Backup/ProGamesPkgs/
