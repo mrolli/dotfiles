@@ -19,7 +19,7 @@ while getopts hnv option; do
   esac
 done
 
-rsync_cmd="$(brew --prefix)/bin/rsync -av --delete --rsync-path=/opt/homebrew/bin/rsync ${verbosity} ${dryrun}"
+rsync_cmd="$(brew --prefix)/bin/rsync -cav --delete --rsync-path=/opt/homebrew/bin/rsync ${verbosity} ${dryrun}"
 if [ "$verbosity" != "-q" ]; then
   echo "Backup destination host: ${backup_host}"
   echo "Using Rsync command: ${rsync_cmd}"
