@@ -53,7 +53,6 @@ defaults write -g AppleInterfaceStyle "Dark"
 lightApps=(
   com.apple.Mail
   com.apple.Safari
-  com.runningwithcrayons.Alfred
   com.microsoft.Word
 )
 
