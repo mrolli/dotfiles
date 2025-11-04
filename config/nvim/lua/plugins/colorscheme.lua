@@ -31,7 +31,8 @@ return {
   -- Setup Modicator.nvim (auto color line number based on mode)
   -- see https://github.com/mawkler/modicator.nvim
   {
-    "mawkler/modicator.nvim",
+    "mrolli/modicator.nvim",
+    branch = "invert_colors",
     dependencies = "sainnhe/gruvbox-material",
     init = function()
       -- These are required for Modicator to work
@@ -45,6 +46,11 @@ return {
       -- ignore. Feel free to remove this line after you've gotten Modicator to
       -- work properly.
       show_warnings = true,
+      integration = {
+        lualine = {
+          highlight = "fg",
+        },
+      },
     },
   },
 }
