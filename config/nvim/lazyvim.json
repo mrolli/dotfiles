@@ -7,7 +7,8 @@
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.php",
     "lazyvim.plugins.extras.lang.terraform",
-    "lazyvim.plugins.extras.lang.yaml"
+    "lazyvim.plugins.extras.lang.yaml",
+    "lazyvim.plugins.extras.util.dot"
   ],
   "install_version": 8,
   "news": {
