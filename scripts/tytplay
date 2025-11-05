@@ -19,14 +19,31 @@ if ! command -v mpv &>/dev/null; then
   exit 0
 fi
 
-if [ ! -d "$data_dir" ]; then
-  echo "Create data directory at $data_dir."
-  mkdir "$data_dir"
+if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
+  echo "Usage: tytplay [--video] [--purge]"
+  echo ""
+  echo "Options:"
+  echo "  --video     Play videos with video profile"
+  echo "  --purge     Purge and refresh the playlist file"
+  echo "  --help, -h  Show this help message"
+  exit 0
 fi
 
 profile=no-video
 if [ "$1" == "--video" ]; then
   profile=secondary-screen
+fi
+
+# Create data directory if it doesn't exist
+if [ ! -d "$data_dir" ]; then
+  echo "Create data directory at $data_dir."
+  mkdir "$data_dir"
+fi
+
+# Purge playlist file if requested
+if [[ "$*" =~ --purge ]]; then
+  echo "Purging playlist file..."
+  rm -f "$playlist_file"
 fi
 
 # Create playlist if necessary
@@ -40,7 +57,7 @@ if [ ! -f "$playlist_file" ]; then
     --print webpage_url \
     "$playlist_url" |
     sed 's/#EXTIMG://' \
-    > "$playlist_file"
+      >"$playlist_file"
 
   echo "done."
 fi
