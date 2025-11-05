@@ -83,4 +83,4 @@ awk '
       ' \
     --preview-window up:border-none |
   cut -f3 |
-  xargs -r mpv --volume=40 --profile=$profile
+  xargs -r mpv --volume=60 --profile=$profile
