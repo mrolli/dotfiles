@@ -12,3 +12,15 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "bicep", "bicep-params" },
   command = "set commentstring=//\\ %s",
 })
+
+-- Set relative line numbers when not in insert mode
+vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
+  pattern = "*",
+  command = 'if &nu && mode() != "i" | set rnu   | endif',
+})
+
+-- Set absolute line numbers when in insert mode
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
+  pattern = "*",
+  command = "if &nu | set nornu | endif",
+})
