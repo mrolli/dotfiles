@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+num_set_labels=4
 api_key_entry="op://Private/Rebrickable API Key/password"
 
 if [ $# -ne 2 ]; then
@@ -46,7 +47,7 @@ for ((i = 1; i <= bag_count; i++)); do
   printf "%s-%02d  " "$set_number" "$i"
 done
 
-for ((i = 1; i <= 3; i++)); do
+for ((i = 1; i <= num_set_labels; i++)); do
   echo -n "${set_number} ${set_name}  "
 done
 
