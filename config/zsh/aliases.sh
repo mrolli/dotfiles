@@ -4,14 +4,14 @@
 # vim as long vim is still installed
 alias vi="\$EDITOR"
 
-# List all files colorized in long format
-alias l="ls -lF"
-
-# List all files colorized in long format, excluding . and ..
-alias la="ls -lAF"
-
-# List only directories
-alias lsd="ls -lF | grep --color=never '^d'"
+# Use eza instead of ls if available
+if command -v eza &>/dev/null; then
+  alias ls="eza --icons --group-directories-first"
+  alias la="eza -a --icons --group-directories-first"
+  alias ld="eza -D -a --icons"
+  alias ll="eza -lah --icons --git --group-directories-first"
+  alias lt="eza --tree --level=2 --icons"
+fi
 
 # Always enable colore *grep output
 alias grep='grep --color=auto'
@@ -19,7 +19,9 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # Use bat by default for cat if available
-alias cat='bat'
+if command -v bat &>/dev/null; then
+  alias cat='bat --paging=never'
+fi
 
 # Enable simple aliases to be sudo'ed. ("sudone"?)
 # http://www.gnu.org/software/bash/manual/bashref.html#Aliases says: "If the
