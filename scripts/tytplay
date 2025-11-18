@@ -62,7 +62,7 @@ if [ ! -f "$playlist_file" ]; then
   echo "done."
 fi
 
-awk '
+selection=$(awk '
   NR % 3 == 1 { title = $0 }
   NR % 3 == 2 { img = $0 }
   NR % 3 == 0 { url = $0; print title "\t" img "\t" url }
@@ -81,6 +81,11 @@ awk '
         fi
 
       ' \
-    --preview-window up:border-none |
-  cut -f3 |
-  xargs -r mpv --volume=60 --profile=$profile
+    --preview-window up:border-none)
+
+if [ -n "$selection" ]; then
+  title=$(echo "$selection" | cut -f1)
+  url=$(echo "$selection" | cut -f3)
+  echo "$title"
+  mpv --volume=60 --profile=$profile "$url"
+fi
