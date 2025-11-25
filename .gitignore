@@ -1,7 +1,7 @@
 config/asciinema/install-id
 config/gh/hosts.yml
 config/zsh/.zsh_sessions/
-nvim/spell/*add.spl
+**/nvim/spell/*.add.spl
 temp/
 vim/autoload
 
