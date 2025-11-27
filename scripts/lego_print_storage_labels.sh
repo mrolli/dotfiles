@@ -25,8 +25,8 @@ if ! [[ "$set_number" =~ ^[1-9][0-9]*$ ]]; then
 fi
 
 # Check bag_count is a positive integer
-if ! [[ "$bag_count" =~ ^[1-9][0-9]*$ ]]; then
-  echo "Error: bag_count must be a positive integer." >&2
+if ! [[ "$bag_count" =~ ^[0-9]*$ ]]; then
+  echo "Error: bag_count must be a positive integer or zero." >&2
   exit 3
 fi
 
