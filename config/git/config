@@ -12,8 +12,8 @@
     contribs = shortlog --summary --numbered --email
     # Diff current HEAD to common ancestor of current HEAD and main
     dam = "!f() { git diff $(git merge-base main HEAD)..HEAD; }; f"
-    # Find branches containing commit
     fap = fetch --all --prune
+    # Find branches containing commit
     fb = "!f() { git branch -a --contains $1; }; f"
     # Find tags containing commit
     ft = "!f() { git describe --always --contains $1; }; f"
@@ -45,6 +45,12 @@
     cop = checkout HEAD^1
     # Checkout next commit on current branch
     con = "!f() { git log --reverse --pretty=%H main | grep -A 1 $(git rev-parse HEAD) | tail -n1 | xargs git checkout; }; f"
+    # List branches already merged into main
+    lm = "!f() { git branch --merged main | grep -v main; }; f"
+    lmr = "!f() { git branch -r --merged main | grep -v origin/main; }; f"
+    # List branches not yet merged into main
+    lnm = "!f() { git branch --no-merged main | grep -v main; }; f"
+    lnmr = "!f() { git branch -r --no-merged main | grep -v origin/main; }; f"
 [color]
     ui = auto
     interactive = true
