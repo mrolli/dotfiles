@@ -91,3 +91,12 @@ azgetuserid() {
 
   az ad user show --id "$1" --query id -o tsv
 }
+
+copilotp() {
+  if ! command -v glow &>/dev/null; then
+    echo "glow not found. Please install it first."
+    return 1
+  fi
+
+  copilot -p "$*" | glow
+}
