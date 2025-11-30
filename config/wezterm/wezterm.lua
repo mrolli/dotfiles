@@ -2,6 +2,7 @@
 local wezterm = require("wezterm")
 local keybindings = require("keybindings")
 local trackinfo = require("plugins.trackinfo")
+local weather = require("plugins.weather")
 
 -- Trim a strng
 function trim(s)
@@ -95,16 +96,7 @@ function update_trackinfo()
 end
 
 function update_weather()
-  local success, stdout, _ = wezterm.run_child_process({
-    "curl",
-    "-m 2",
-    "--silent",
-    "wttr.in/Burgdorf?format=%l:+%c%t%20%20%w%20%20%m",
-  })
-  if not success or not stdout then
-    wezterm.GLOBAL.current_weather = ""
-  end
-  wezterm.GLOBAL.current_weather = stdout
+  wezterm.GLOBAL.current_weather = weather.get_weather()
 end
 
 wezterm.on("update-status", function(window, pane)
