@@ -4,19 +4,6 @@ local keybindings = require("keybindings")
 local trackinfo = require("plugins.trackinfo")
 local weather = require("plugins.weather")
 
--- Trim a strng
-function trim(s)
-  return (s:gsub("^%s*(.-)%s*$", "%1"))
-end
-
--- Get current platform we run on
-function get_platform()
-  local platform
-  _, platform, _ = wezterm.run_child_process({ "uname", "-s" })
-  return trim(platform)
-end
-wezterm.GLOBAL.platform = get_platform()
-
 -- Automatically start wezterm in full-screen mode
 -- local mux = wezterm.mux
 -- wezterm.on("gui-startup", function()
