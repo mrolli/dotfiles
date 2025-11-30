@@ -109,7 +109,7 @@ wezterm.on("update-status", function(window, pane)
   local cells = {}
 
   -- current music playing
-  table.insert(cells, trackinfo.get_trackinfo(wezterm.GLOBAL.platform))
+  table.insert(cells, trackinfo.get_trackinfo())
 
   -- current weather data
   table.insert(cells, weather.get_weather())
