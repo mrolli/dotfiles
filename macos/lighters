@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+lightApps=(
+  com.apple.Mail
+  com.apple.Safari
+  com.microsoft.Word
+)
+
+for lightApp in ${lightApps[0]}; do
+  defaults write "${lightApp}" NSRequiresAquaSystemAppearance -bool true
+done
