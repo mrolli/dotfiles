@@ -15,7 +15,7 @@ M.cache = {
 }
 
 -- Trim a string
-local function trim(s)
+function M.trim(s)
   return (s:gsub("^%s*(.-)%s*$", "%1"))
 end
 
@@ -24,7 +24,7 @@ local function get_platform()
   if not M.cache.platform then
     local platform
     _, platform, _ = wezterm.run_child_process({ "uname", "-s" })
-    M.cache.platform = trim(platform)
+    M.cache.platform = M.trim(platform)
   end
   return M.cache.platform
 end
@@ -39,7 +39,7 @@ local function fetch_trackinfo()
   local success, stdout, _ = wezterm.run_child_process({ trackinfo_script })
 
   if success and stdout then
-    return trim(stdout)
+    return M.trim(stdout)
   end
 
   return nil
