@@ -1,7 +1,7 @@
 {
   "CopilotChat.nvim": { "branch": "main", "commit": "df5376c132382dd47e3e552612940cbf25b3580c" },
   "LazyVim": { "branch": "main", "commit": "28db03f958d58dfff3c647ce28fdc1cb88ac158d" },
-  "SchemaStore.nvim": { "branch": "main", "commit": "4f5b624100600751eddfafb5d64bc81a1c2b6f70" },
+  "SchemaStore.nvim": { "branch": "main", "commit": "5f2299987a1937612c910f00db39156bab6a6b35" },
   "blink-copilot": { "branch": "main", "commit": "7ad8209b2f880a2840c94cdcd80ab4dc511d4f39" },
   "blink.cmp": { "branch": "main", "commit": "b19413d214068f316c78978b08264ed1c41830ec" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
@@ -27,7 +27,7 @@
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-lint": { "branch": "master", "commit": "d1118791070d090777398792a73032a0ca5c79ff" },
-  "nvim-lspconfig": { "branch": "master", "commit": "07f4e93de92e8d4ea7ab99602e3a8c9ac0fb778a" },
+  "nvim-lspconfig": { "branch": "master", "commit": "effe4bf2e1afb881ea67291c648b68dd3dfc927a" },
   "nvim-treesitter": { "branch": "main", "commit": "17885756e63df73ed90db62e4630f744ceda6514" },
   "nvim-treesitter-textobjects": { "branch": "main", "commit": "63c4dce4a56312ef1bdeafd16bdefa008fcc950a" },
   "nvim-ts-autotag": { "branch": "main", "commit": "c4ca798ab95b316a768d51eaaaee48f64a4a46bc" },
