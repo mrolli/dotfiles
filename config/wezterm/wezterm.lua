@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local keybindings = require("keybindings")
+local trackinfo = require("plugins.trackinfo")
 
 -- Trim a strng
 function trim(s)
@@ -90,14 +91,7 @@ config.key_tables = keybindings.key_tables
 -- config.send_composed_key_when_left_alt_is_pressed = true
 
 function update_trackinfo()
-  wezterm.GLOBAL.current_trackinfo = wezterm.GLOBAL.platform
-  if wezterm.GLOBAL.platform == "Darwin" then
-    local trackinfo_script = wezterm.config_dir .. "/musicplaying"
-    local success, stdout, _ = wezterm.run_child_process({ trackinfo_script })
-    if success then
-      wezterm.GLOBAL.current_trackinfo = trim(stdout)
-    end
-  end
+  wezterm.GLOBAL.current_trackinfo = trackinfo.get_trackinfo(wezterm.GLOBAL.platform)
 end
 
 function update_weather()
