@@ -91,27 +91,7 @@ config.key_tables = keybindings.key_tables
 -- option key behaviour - https://wezfurlong.org/wezterm/config/keyboard-concepts.html#macos-left-and-right-option-key
 -- config.send_composed_key_when_left_alt_is_pressed = true
 
-function update_trackinfo()
-  wezterm.GLOBAL.current_trackinfo = trackinfo.get_trackinfo(wezterm.GLOBAL.platform)
-end
-
-function update_weather()
-  wezterm.GLOBAL.current_weather = weather.get_weather()
-end
-
 wezterm.on("update-status", function(window, pane)
-  local tcnt = wezterm.GLOBAL.trackinfo_loop_counter or 0
-  if tcnt % 3 == 0 then
-    update_trackinfo()
-  end
-  wezterm.GLOBAL.trackinfo_loop_counter = tcnt + 1
-
-  local wcnt = wezterm.GLOBAL.weather_loop_counter or 0
-  if wcnt % 10 == 0 then -- every 10 mins
-    update_weather()
-  end
-  wezterm.GLOBAL.weather_loop_counter = wcnt + 1
-
   -- The powerline < symbol
   local LEFT_ARROW = "  " .. wezterm.nerdfonts.pl_right_soft_divider
 
@@ -129,10 +109,10 @@ wezterm.on("update-status", function(window, pane)
   local cells = {}
 
   -- current music playing
-  table.insert(cells, wezterm.GLOBAL.current_trackinfo)
+  table.insert(cells, trackinfo.get_trackinfo(wezterm.GLOBAL.platform))
 
   -- current weather data
-  table.insert(cells, wezterm.GLOBAL.current_weather)
+  table.insert(cells, weather.get_weather())
 
   -- Week, date and time
   local datetime = "KW"
