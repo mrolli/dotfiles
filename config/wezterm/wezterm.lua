@@ -3,6 +3,7 @@ local wezterm = require("wezterm")
 local keybindings = require("keybindings")
 local trackinfo = require("plugins.trackinfo")
 local weather = require("plugins.weather")
+local statusbar = require("plugins.statusbar")
 
 -- Automatically start wezterm in full-screen mode
 -- local mux = wezterm.mux
@@ -78,98 +79,8 @@ config.key_tables = keybindings.key_tables
 -- option key behaviour - https://wezfurlong.org/wezterm/config/keyboard-concepts.html#macos-left-and-right-option-key
 -- config.send_composed_key_when_left_alt_is_pressed = true
 
-wezterm.on("update-status", function(window, pane)
-  -- The powerline < symbol
-  local LEFT_ARROW = "  " .. wezterm.nerdfonts.pl_right_soft_divider
-
-  -- The filled in variant of the < symbol
-  local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
-
-  -- The powerline < symbol
-  local RIGHT_ARROW = wezterm.nerdfonts.pl_left_soft_divider .. " "
-
-  -- The filled in variant of the < symbol
-  -- local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
-  local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
-
-  -- Each element holds the text for a cell in a "powerline" style << fade
-  local cells = {}
-
-  -- current music playing
-  table.insert(cells, trackinfo.get_trackinfo())
-
-  -- current weather data
-  table.insert(cells, weather.get_weather())
-
-  -- Week, date and time
-  local datetime = "KW"
-    .. wezterm.strftime("%V")
-    .. LEFT_ARROW
-    .. wezterm.strftime("%d.%m.%y")
-    .. LEFT_ARROW
-    .. wezterm.nerdfonts.md_clock
-    .. " "
-    .. wezterm.strftime("%R")
-  table.insert(cells, datetime)
-
-  -- Figure out the cwd and host of the current pane.
-  table.insert(cells, wezterm.hostname())
-
-  -- Color palette for the backgrounds of each cell
-  local colors_bg = {
-    "#3c3836",
-    "#504945",
-    "#d79921",
-    "#fe8019",
-  }
-
-  -- Foreground color for the text across the fade
-  local colors_fg = {
-    "#ebdbb2",
-    "#ebdbb2",
-    "#3c3836",
-    "#3c3836",
-  }
-
-  -- The elements to be formatted
-  local elements = {}
-
-  -- How many cells have been formatted
-  local num_cells = 0
-
-  -- Translate a cell into elements
-  function push(text, is_last)
-    local cell_no = num_cells + 1
-    table.insert(elements, { Foreground = { Color = colors_fg[cell_no] } })
-    table.insert(elements, { Background = { Color = colors_bg[cell_no] } })
-    table.insert(elements, { Text = " " .. text .. "  " })
-    if not is_last then
-      table.insert(elements, { Foreground = { Color = colors_bg[cell_no + 1] } })
-      table.insert(elements, { Text = SOLID_LEFT_ARROW })
-    end
-    num_cells = num_cells + 1
-  end
-
-  while #cells > 0 do
-    local cell = table.remove(cells, 1)
-    push(cell, #cells == 0)
-  end
-
-  window:set_right_status(wezterm.format(elements))
-
-  local leftElements = {}
-  local keyTableName = window:active_key_table()
-  if keyTableName then
-    table.insert(leftElements, { Foreground = { Color = colors_fg[4] } })
-    table.insert(leftElements, { Background = { Color = colors_bg[4] } })
-    table.insert(leftElements, { Text = " TABLE: " .. keyTableName .. " " })
-  end
-  table.insert(leftElements, { Foreground = { Color = colors_bg[4] } })
-  table.insert(leftElements, { Background = { Color = colors_bg[1] } })
-  table.insert(leftElements, { Text = SOLID_RIGHT_ARROW .. " " })
-
-  window:set_left_status(wezterm.format(leftElements))
-end)
+-- Setup status bar
+statusbar.setup(trackinfo, weather)
 
 wezterm.on("user-var-changed", function(window, pane, name, value)
   local overrides = window:get_config_overrides() or {}
