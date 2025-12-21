@@ -11,6 +11,7 @@ if command -v eza &>/dev/null; then
   alias ld="eza -D -a --icons"
   alias ll="eza -lah --icons --git --group-directories-first"
   alias lt="eza --tree --level=2 --icons"
+  alias tree="eza --tree --icons"
 fi
 
 # Always enable colore *grep output
