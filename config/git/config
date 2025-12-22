@@ -4,7 +4,7 @@
     signingkey = 4DFE5E3BF4982CAE
 [alias]
     aliases = config --get-regexp alias
-    branches = branch --all
+    branches = branch --all -vv
     ci  = commit -v
     cia = commit -v --amend
     co  = checkout
@@ -38,7 +38,7 @@
     # Remove the old tag with this name and tag the latest commit with it.
     retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
     revert = revert -n
-    s   = status -s
+    s   = status -sb
     st  = status
     tag = tag -l
     # Checkout previous commit on current branch
