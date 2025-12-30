@@ -52,13 +52,6 @@ alias wetter_bern2='curl http://v2.wttr\.in/bern'
 
 # Some GitHub copilot aliases if gh is available
 if command -v gh &>/dev/null; then
-  if ! gh extension list | grep -q "github/gh-copilot"; then
-    gh extension install github/gh-copilot
-  fi
-  eval "$(gh copilot alias -- zsh)"
-  alias \?\?="ghcs -t shell"
-  alias git\?="ghcs -t git"
-  alias gh\?="ghcs -t gh"
   alias ghe="GH_HOST=github.unibe.ch gh"
 fi
 
