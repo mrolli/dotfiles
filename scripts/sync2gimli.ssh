@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-backup_host="gimli:"
+backup_target="gimli:/Volumes/Data"
 
 print_usage() {
   echo "Usage: ${0} [-vn]"
@@ -20,11 +20,19 @@ while getopts hnv option; do
 done
 
 rsync_cmd="$(brew --prefix)/bin/rsync -cav --delete --rsync-path=/opt/homebrew/bin/rsync ${verbosity} ${dryrun}"
+
 if [ "$verbosity" != "-q" ]; then
-  echo "Backup destination host: ${backup_host}"
+  echo "Backup destination host: ${backup_target}"
   echo "Using Rsync command: ${rsync_cmd}"
 fi
 
-$rsync_cmd $HOME/Documents/ $backup_host/Volumes/Backup/Dokumente/
-$rsync_cmd /Volumes/Sounddisk/MusicStuff/ $backup_host/Volumes/Backup/MusicStuff/
-$rsync_cmd /Volumes/Sounddisk/ProGamesPkgs/ $backup_host/Volumes/Backup/ProGamesPkgs/
+echo -e "\n\n----- Syncing Docments"
+$rsync_cmd "$HOME/Documents/" $backup_target/Dokumente/
+
+if [ -d /Volumes/Sounddisk ]; then
+  echo -e "\n\n----- Syncing Sounddisk/MusicStuff"
+  $rsync_cmd /Volumes/Sounddisk/MusicStuff/ $backup_target/MusicStuff/
+
+  echo -e "\n\n----- Syncing Sounddisk/ProGamesPkgs"
+  $rsync_cmd /Volumes/Sounddisk/ProGamesPkgs/ $backup_target/ProGamesPkgs/
+fi
