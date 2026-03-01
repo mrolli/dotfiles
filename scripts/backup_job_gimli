@@ -2,16 +2,16 @@
 
 backup_item=(
   Archiv
-  Backup
   Comics
+  Dokumente
   Ebooks
   Music
 )
 
-disk_backup_path=/Volumes/Backup
 disk_data_path=/Volumes/Data
+disk_backup_path=/Volumes/Backup/Backup
 
-if [ ! -d $disk_backup_path/Backup ] || [ ! -d $disk_data_path/Archiv ]; then
+if [ ! -d $disk_backup_path ] || [ ! -d $disk_data_path ]; then
   echo "Backup volumes not mounted. Exiting..."
   exit 1
 fi
@@ -40,5 +40,6 @@ if [ "$verbosity" != "-q" ]; then
 fi
 
 for dir in "${backup_item[@]}"; do
+  echo -e "\n\n----- Syncing $disk_data_path/$dir/ to $disk_backup_path/$dir/"
   $rsync_cmd "$disk_data_path/$dir/" "$disk_backup_path/$dir/"
 done
