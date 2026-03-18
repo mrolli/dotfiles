@@ -13,6 +13,15 @@
       - { src: ~/.config/bash/profile, path: ~/.bash_profile }
       - { src: ~/.config/editorconfig, path: ~/.editorconfig }
       - { src: ~/.config/zsh/zshenv, path: ~/.zshenv }
+      - { src: ~/.config/copilot/config.json, path: ~/.copilot/config.json }
+      - {
+          src: ~/.config/copilot/lsp-config.json,
+          path: ~/.copilot/lsp-config.json,
+        }
+      - {
+          src: ~/.config/copilot/mcp-config.json,
+          path: ~/.copilot/mcp-config.json,
+        }
     dotfiles_omit_configs:
       - alacritty
       - kitty

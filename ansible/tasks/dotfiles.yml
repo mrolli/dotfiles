@@ -8,6 +8,7 @@
     - ~/.config
     - ~/.local
     - ~/.ssh/
+    - ~/.copilot/
 
 - name: Find .config items
   ansible.builtin.find:
@@ -40,7 +41,6 @@
   ansible.builtin.file:
     path: "~/.zshrc"
     state: absent
-
 # - name: .ssh/config
 #   copy:
 #     src: ~/.config/.ssh.config
