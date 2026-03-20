@@ -57,7 +57,7 @@ fi
 
 alias devup="devcontainer up --mount type=bind,source=/Users/mrolli/.gnupg,target=/home/vscode/.gnupg --dotfiles-repository https://github.com/mrolli/dotfiles --dotfiles-install-command setup_devcontainer.sh --workspace-folder ."
 alias devrm="docker rm \$(docker ps -q) -f"
-alias devcon="devcontainer exec --workspace-folder . --remote-env \"GH_TOKEN=\$(gh auth token)\" zsh"
+alias devconn="devcontainer exec --workspace-folder . --remote-env \"GH_TOKEN=\$(gh auth token)\" zsh"
 
 alias tfp="terraform plan"
 alias tfpp="terraform plan -out tfplan"
