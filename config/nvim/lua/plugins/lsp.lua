@@ -8,6 +8,16 @@ return {
       servers = {
         -- automatically install with mason and load with lspconfig
         bicep = {},
+        phpactor = false, -- disable if you're using devsense instead
+        phptools = {
+          settings = {
+            php = {
+              codelens = {
+                enabled = true,
+              },
+            },
+          },
+        },
       },
     },
   },
