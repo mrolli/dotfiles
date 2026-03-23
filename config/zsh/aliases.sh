@@ -7,9 +7,9 @@ alias vi="\$EDITOR"
 # Use eza instead of ls if available
 if command -v eza &>/dev/null; then
   alias ls="eza --icons --group-directories-first"
-  alias la="eza -a --icons --group-directories-first"
-  alias ld="eza -D -a --icons"
-  alias ll="eza -lah --icons --git --group-directories-first"
+  alias la="eza -a -g --icons --group-directories-first"
+  alias ld="eza -D -a -g --icons"
+  alias ll="eza -lahg --icons --git --group-directories-first"
   alias lt="eza --tree --level=2 --icons"
   alias tree="eza --tree --icons"
 fi
