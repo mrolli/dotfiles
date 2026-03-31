@@ -5,8 +5,10 @@
   "theme": "auto",
   "allowed_urls": [
     "https://learn.microsoft.com",
-    "https://code.visualstudio.com"
+    "https://code.visualstudio.com",
+    "https://registry.terraform.io"
   ],
   "firstLaunchAt": "2026-03-11T00:00:00.000Z",
-  "alt_screen": true
+  "alt_screen": true,
+  "model": "claude-opus-4.6"
 }
