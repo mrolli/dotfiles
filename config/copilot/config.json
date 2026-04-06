@@ -10,5 +10,19 @@
   ],
   "firstLaunchAt": "2026-03-11T00:00:00.000Z",
   "alt_screen": true,
-  "model": "claude-opus-4.6"
+  "model": "claude-opus-4.6",
+  "installed_plugins": [
+    {
+      "name": "microsoft-docs",
+      "marketplace": "",
+      "version": "0.3.1",
+      "installed_at": "2026-04-06T04:15:43.024Z",
+      "enabled": true,
+      "cache_path": "/Users/mrolli/.copilot/installed-plugins/_direct/microsoftdocs--mcp",
+      "source": {
+        "source": "github",
+        "repo": "microsoftdocs/mcp"
+      }
+    }
+  ]
 }
