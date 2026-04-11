@@ -71,7 +71,7 @@ selection=$(awk '
     --with-nth=1 \
     --preview='
         if command -v viu &> /dev/null; then
-          tmpimg=$(mktemp preview_img.XXXXXX)
+          tmpimg=$(/tmp/mktemp preview_img.XXXXXX)
           curl -sL "$(echo {2})" -o "$tmpimg"
           viu -h 20 "$tmpimg"
           rm -f "$tmpimg"
