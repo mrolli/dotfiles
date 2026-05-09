@@ -6,9 +6,11 @@ chmod 755 install_starship.sh
 ./install_starship.sh -f
 rm install_starship.sh
 
-# Setup Neovim from appimage
+# Setup Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 # As we have Homebrew installed, use it to install Neovim, its dependencies and
-# some other useful and often used tools.
+# some other useful and often used tools and dependencies.
 brew install nvim fzf delta node npm yarn rg fd lazygit
 ln -sf ~/dotfiles/nvim ~/.config/nvim
 
