@@ -51,6 +51,7 @@ if [ ! -f "$playlist_file" ]; then
   echo -n "Creating playlist file... "
 
   yt-dlp --skip-download \
+    --cookies-from-browser Safari \
     --no-warning \
     --print title \
     --print "#EXTIMG:%(thumbnail)s" \
@@ -86,5 +87,5 @@ if [ -n "$selection" ]; then
   title=$(echo "$selection" | cut -f1)
   url=$(echo "$selection" | cut -f3)
   echo "$title"
-  mpv --volume=60 --profile=$profile "$url"
+  mpv --ytdl-raw-options="cookies-from-browser=Safari" --volume=60 --profile=$profile "$url"
 fi
