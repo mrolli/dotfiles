@@ -48,7 +48,10 @@ for ((i = 1; i <= bag_count; i++)); do
 done
 
 for ((i = 1; i <= num_set_labels; i++)); do
-  echo -n "${set_number} ${set_name}  "
+  echo -n "${set_number} ${set_name}"
+  if [ $i -ne $num_set_labels ]; then
+    echo -n "  "
+  fi
 done
 
 exit 0
