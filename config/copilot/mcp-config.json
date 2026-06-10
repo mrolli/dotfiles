@@ -1,16 +1,40 @@
 {
   "mcpServers": {
     "terraform-mcp-server": {
-      "type": "local",
-      "command": "terraform-mcp-server",
       "tools": [
         "*"
       ],
-      "args": []
-    }
+      "type": "local",
+      "command": "terraform-mcp-server",
+      "args": [],
+      "source": "user",
+      "sourcePath": "/Users/mrolli/.copilot/mcp-config.json"
+    },
     "atlassian-mcp-server": {
+      "tools": [
+        "*"
+      ],
       "command": "npx",
-      "args": ["-y", "mcp-remote@latest", "https://mcp.atlassian.com/v1/mcp"]
+      "args": [
+        "-y",
+        "mcp-remote@latest",
+        "https://mcp.atlassian.com/v1/mcp"
+      ],
+      "source": "user",
+      "sourcePath": "/Users/mrolli/.copilot/mcp-config.json"
+    },
+    "azure-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "tools": [
+        "*"
+      ],
+      "args": [
+        "-y",
+        "@azure/mcp@latest",
+        "server",
+        "start"
+      ]
     }
   }
 }

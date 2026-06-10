@@ -13,7 +13,7 @@
       - { src: ~/.config/bash/profile, path: ~/.bash_profile }
       - { src: ~/.config/editorconfig, path: ~/.editorconfig }
       - { src: ~/.config/zsh/zshenv, path: ~/.zshenv }
-      - { src: ~/.config/copilot/config.json, path: ~/.copilot/config.json }
+      - { src: ~/.config/copilot/settings.json, path: ~/.copilot/settings.json }
       - {
           src: ~/.config/copilot/lsp-config.json,
           path: ~/.copilot/lsp-config.json,

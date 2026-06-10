@@ -1,0 +1,16 @@
+{
+  "renderMarkdown": true,
+  "screenReader": false,
+  "theme": "auto",
+  "allowedUrls": [
+    "https://learn.microsoft.com",
+    "https://code.visualstudio.com",
+    "https://registry.terraform.io",
+    "https://docs.github.com"
+  ],
+  "enabledPlugins": {
+    "swift-mcp-development@awesome-copilot": true
+  },
+  "alt_screen": true,
+  "model": "claude-opus-4.7"
+}
