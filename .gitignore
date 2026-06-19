@@ -1,18 +1,12 @@
 config/asciinema/install-id
 config/gh/hosts.yml
+config/homebrew/trust.json.lock
 config/zsh/.zsh_sessions/
 config/zsh/.zcompdump
 **/nvim/spell/*.add.spl
 temp/
 vim/autoload
 
-# Files installed by pip installed packages
-ghp-import
-markdown_py
-mkdocs
-rename_termtab
-watchmedo
-
-# Files installed by VS Code
+# Files installed by other tools
 scripts/devcontainer
 scripts/specify

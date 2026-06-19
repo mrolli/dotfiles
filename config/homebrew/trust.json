@@ -1,0 +1,19 @@
+{
+  "trustedformulae": [
+    "azure/azd/azd",
+    "azure/functions/azure-functions-core-tools@4",
+    "azure/kubelogin/kubelogin",
+    "devconhq/tap/devcon",
+    "hashicorp/tap/packer",
+    "hashicorp/tap/terraform",
+    "hashicorp/tap/terraform-ls",
+    "id-unibe-ch/tap/bildschirmuniversum",
+    "jorgelbg/tap/pinentry-touchid",
+    "netbirdio/tap/netbird",
+    "powershell/tap/powershell",
+    "terraform-linters/tap/tflint"
+  ],
+  "trustedcasks": [
+    "terraform-linters/tap/tflint"
+  ]
+}
