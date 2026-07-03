@@ -1,7 +1,8 @@
 {
   "trustedformulae": [
     "azure/azd/azd",
-    "azure/functions/azure-functions-core-tools@4",
+    "azure/bicep/bicep",
+    "azure/functions/azure-functions-core-tools",
     "azure/kubelogin/kubelogin",
     "devconhq/tap/devcon",
     "hashicorp/tap/packer",
