@@ -2,6 +2,7 @@
   "trustedformulae": [
     "azure/azd/azd",
     "azure/bicep/bicep",
+    "azure/functions/azure-functions-core-tools",
     "azure/functions/azure-functions-core-tools@4",
     "azure/kubelogin/kubelogin",
     "devconhq/tap/devcon",
