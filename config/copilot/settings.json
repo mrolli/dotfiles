@@ -11,6 +11,5 @@
   "enabledPlugins": {
     "swift-mcp-development@awesome-copilot": true
   },
-  "alt_screen": true,
   "model": "claude-opus-4.7"
 }
