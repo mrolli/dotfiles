@@ -1,15 +1,28 @@
 {
-  "renderMarkdown": true,
-  "screenReader": false,
-  "theme": "auto",
   "allowedUrls": [
     "https://learn.microsoft.com",
     "https://code.visualstudio.com",
     "https://registry.terraform.io",
-    "https://docs.github.com"
+    "https://docs.github.com",
+    "https://portal.azure.com"
   ],
   "enabledPlugins": {
+    "azure@azure-skills": true,
     "swift-mcp-development@awesome-copilot": true
   },
-  "model": "claude-opus-4.7"
+  "extraKnownMarketplaces": {
+    "azure-skills": {
+      "source": {
+        "repo": "microsoft/azure-skills",
+        "source": "github"
+      }
+    }
+  },
+  "ide": {
+    "autoConnect": false
+  },
+  "model": "auto",
+  "renderMarkdown": true,
+  "screenReader": false,
+  "theme": "auto"
 }
