@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+  exit 1
+fi
+
+if ! command -v pandoc &>/dev/null || [ ! -x /Library/TeX/texbin/xetex ]; then
+  >&2 echo "pandoc or xetex (basictex) not found"
+  exit 1
+fi
+
+input_file=$(realpath "$1")
+output_file=$(basename "$input_file").pdf
+orientation=${2:-portrait}
+
+print_usage() {
+  >&2 echo "Usage $(basename "$0") INPUT_FILE [portrait|landscape]"
+}
+
+if [ "$orientation" != "portrait" ] && [ "$orientation" != "landscape" ]; then
+  >&2 print_usage
+  exit 1
+fi
+
+pandoc "$input_file" \
+  -o "$output_file" \
+  --pdf-engine=xelatex \
+  -V "mainfont:Arial" \
+  -V "geometry:a4paper,$orientation,margin=1.5cm" \
+  -V 'fontsize=10pt' \
+  -V 'header-includes:\AtBeginDocument{\raggedright}' 2>/dev/null
+
+exit $?
