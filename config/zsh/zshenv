@@ -17,7 +17,7 @@ export ZCACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 # Highlight section titles in manual pages in yellow.
 export LESS_TERMCAP_md="$(tput bold; tput setaf 136)"
 # Don’t clear the screen after quitting a manual page.
-export MANPAGER='less -X'
+export MANPAGER="bat -plman"
 
 # GPG env var used by gpg-agent
 export GPG_TTY=$(tty)
