@@ -99,12 +99,6 @@ if [[ "$RUN_AS_ROOT" = true ]]; then
   nvram SystemAudioVolume=" "
 fi
 
-# Disable smart quotes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# Disable smart dashes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
 # Set background to dark-grey color
 # TODO: Set my background here?
 #osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/System/Library/Desktop Pictures/Solid Colors/Stone.png"'
@@ -150,9 +144,6 @@ defaults write "com.apple.networkConnect" '{VPNShowTime=1;}'
 # Show time machine menu in menu bar
 defaults write "NSStatusItem Visible com.apple.menuextra.TimeMachine" "com.apple.systemuiserver" -bool true
 defaults write "menuExtras" "com.apple.systemuiserver" '("/System/Library/CoreServices/Menu Extras/VPN.menu","/System/Library/CoreServices/Menu Extras/TimeMachine.menu",)'
-
-# Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 ###############################################################################
 # Screen                                                                      #
